@@ -2,5 +2,12 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# Specify your gem's dependencies in tramway.gemspec
 gemspec
+
+gem 'tramway-admin'
+gem 'tramway-conference'
+gem 'tramway-core'
+gem 'tramway-landing'
+gem 'tramway-news'
+gem 'tramway-profiles'
+gem 'tramway-sport_school'
