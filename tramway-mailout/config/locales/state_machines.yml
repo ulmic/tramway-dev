@@ -1,0 +1,15 @@
+ru:
+  activerecord:
+    state_machines:
+      tramway/mailout/session:
+        mailing_state:
+          states:
+            ready: Готово к рассылке
+            during: В процессе рассылки
+            completed: Рассылка окончена
+            aborted: Рассылка прервана
+          events:
+            start: Начать рассылку
+            repeat: Повторить рассылку
+            abort: Прервать рассылку
+            continue: Продолжить рассылку
