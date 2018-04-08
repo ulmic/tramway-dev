@@ -1,0 +1,16 @@
+ru:
+  application:
+    name: Конференция
+    tagline: Главный слоган лендоса конференции
+  blocks:
+    navbar_links:
+      parents: Для родителей
+      schoolkids: Для школьников
+      adults: Для взрослых
+      contacts: Контакты
+    header_buttons:
+      parents: Я - родитель ребёнка
+      schoolkids: Я - школьник
+      adults: Я - взрослый
+      contacts: Контакты
+

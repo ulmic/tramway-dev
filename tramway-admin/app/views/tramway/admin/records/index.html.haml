@@ -1,0 +1,23 @@
+- default_page_title ||= nil; on_site_link ||= nil
+- current_title = default_page_title || plural(model_class).capitalize
+- title current_title
+- state_method ||= :state
+- tabs = get_collection model_class
+.page-header
+  .row
+    .col-md-6
+      %h1
+        = current_title
+        = link_to fa_icon(:plus), new_current_model_record_path, class: 'btn btn-primary'
+    = render 'search', model_class: model_class
+%hr
+%ul.nav.nav-tabs
+  - if params[:search]
+    %li.active.nav-item
+      = link_to search_tab_title(items.total_count), '#', class: 'nav-link'
+  - tabs.each_with_index do |tab, index|
+    %li.nav-item
+      = link_to admin_index_path_of_model(model_class, tab), class: "#{active_tab(tab, index)} nav-link" do
+        = tab_title(model_class, tab, @counts[tab], state_method)
+%div{ id: (params[:search] ? :search : params[:scope]) }
+  = render 'list'

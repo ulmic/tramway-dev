@@ -1,0 +1,16 @@
+= javascript_include_tag 'tramway/landing/footer'
+%footer.page-footer.indigo.center-on-small-only
+  .container-fluid
+    .row
+      .col-md-6
+        %h5.title
+          = yield :application_name
+        %p
+          = yield :application_tagline
+        .logo_collage.effect-parent
+          = yield :footer_logos
+      .col-md-6
+        = yield :footer_links
+  .footer-copyright
+    .container-fluid
+      = link_to copyright(2018, yield(:application_name)), yield(:application_url)

@@ -1,0 +1,45 @@
+= content_for :head_content do
+  = stylesheet_link_tag    'tramway/sport_school/application', media: 'all'
+  = javascript_include_tag 'tramway/sport_school/application'
+
+= content_for :application_name do
+  = @application.title || t('application.name')
+
+= content_for :title do
+  = @application.title || t('application.name')
+
+= content_for :application_tagline do
+  = @application.tagline || t('application.tagline')
+
+= content_for :address do
+  = @institution.address
+
+= content_for :phone do
+  = @institution.phone
+
+= content_for :navbar do
+  - [ :parents, :schoolkids, :adults, :contacts ].each do |block|
+    = menu_item t("blocks.navbar_links.#{block}"), "##{block}"
+
+= content_for :footer_links do
+  %h5.title
+    = plural Tramway::SportSchool::Document.model_name
+  %ul
+    - @documents.each do |document|
+      %li
+        = link_to document.title, document.file.url
+
+= content_for :footer_logos do
+  - @organizations.each do |organization|
+    = link_to organization.link do
+      = image_tag organization.logo.url
+
+= content_for :latitude do
+  = @institution.latitude
+
+= content_for :longtitude do
+  = @institution.longtitude
+
+- @collection_trainers = @trainers
+- @collection_kindsports = @kind_sports
+- @collection_news = @news

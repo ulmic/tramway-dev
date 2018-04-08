@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title
+      = yield :title
+    = stylesheet_link_tag    "tramway/landing/application", media: "all"
+    = javascript_include_tag "tramway/landing/application"
+    = javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity: "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin: "anonymous"
+    = javascript_include_tag "https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity: "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin: "anonymous"
+    = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js", integrity: "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin: "anonymous"
+    = csrf_meta_tags
+    = yield :head_content
+  %body
+    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
+    = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
+    - if @blocks&.any?
+      = render "tramway/landing/blocks/block_types/header", block: @blocks.header
+    %main{ class: ('mt-5' if @blocks&.any?) }
+      .container
+        - if @blocks&.any?
+          - array_of_blocks = (@blocks - [@blocks.header] - [@blocks.footer]) 
+          - array_of_blocks.each_with_index do |block, index|
+            = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
+            - if index < array_of_blocks.count - 1
+              %hr
+      .container-fluid
+        = yield
+    - if @blocks&.any?
+      = render "tramway/landing/blocks/block_types/footer", block: @blocks.footer

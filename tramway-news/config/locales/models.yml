@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      tramway/news/news: Новость
+  cases:
+    tramway/news/news:
+      plural: новости
+      genitive: новость

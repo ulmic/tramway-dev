@@ -1,0 +1,14 @@
+ru:
+  activerecord:
+    models:
+      tramway/conference/unity: Единство
+    attributes:
+      tramway/conference/unity:
+        title: Название
+        tagline: Лозунг
+        logo: Логотип
+        address: Адрес
+        phone: Телефон
+  cases:
+    tramway/conference/unity:
+      genitive: Единство

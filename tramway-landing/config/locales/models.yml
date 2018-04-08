@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    models:
+      tramway/landing/block: Блок
+    attributes:
+      tramway/landing/block:
+        title: Название
+        background: Изображение на фоне
+        position: Позиция на странице
+        block_type: Тип блока
+        view_state: Видимость на сайте
+  cases:
+    tramway/landing/block:
+      plural: Блоки
+      genitive: блок
+  enumerize:
+    tramway/landing/block:
+      block_type:
+        header: Начальный

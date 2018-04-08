@@ -1,0 +1,27 @@
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Tramway admin
+    = javascript_include_tag Ckeditor.cdn_url
+    :javascript
+      CKEDITOR.replace( 'post_content', {
+        customConfig: "#{javascript_url('tramway/admin/ckeditor/config.js')}"
+      } );
+    = stylesheet_link_tag    "tramway/admin/application", media: "all"
+    = javascript_include_tag "tramway/admin/application"
+    = csrf_meta_tags
+  %body
+    = render 'layouts/tramway/admin/shared/navbar'
+    %main.container{ role: :main }
+      .row
+        - if content_for?(:sidebar)
+          .col-lg-9
+            = yield
+          .col-lg-3.sidebar-canvas
+            = yield :sidebar
+        - else
+          .col-lg-12
+            = yield
+    %footer
+      .container
+        = copyright '2017', 'Tramway'
