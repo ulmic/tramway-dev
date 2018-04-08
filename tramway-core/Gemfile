@@ -9,6 +9,7 @@ gem 'disposable', github: 'apotonick/disposable'
 gem 'enumerize'
 gem 'mini_magick'
 gem 'rmagick'
+gem 'loofah', '~> 2.2.1'
 
 group :development do
   gem 'better_errors'
