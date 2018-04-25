@@ -1,12 +1,9 @@
-require 'tramway/admin/record_routes_helper'
-require "tramway/admin/engine"
-require "tramway/user"
-require 'font-awesome-rails'
+require 'tramway/admin/engine'
 
 module Tramway
+  User.layout_path = 'tramway/admin/application'
+
   module Admin
-    ::Tramway::User.layout_path = 'tramway/admin/application'
-    
     class << self
       def set_available_models(*models)
         @available_models ||= []

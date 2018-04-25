@@ -1,9 +1,5 @@
 source 'https://rubygems.org'
+
 gemspec
 
-gem 'font-awesome-rails'
-
-group :development do
-  gem 'better_errors'
-  gem 'pry'
-end
+gem 'tramway-user', path: '../tramway-user'
