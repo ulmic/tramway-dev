@@ -1,6 +1,4 @@
 require "tramway/core/engine"
-require 'tramway/core/generators/install_generator'
-require 'tramway/core/application'
 
 module Tramway
   module Core
