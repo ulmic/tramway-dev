@@ -40,7 +40,7 @@ module Tramway
       end
 
       def application
-        @application = ::Tramway::Core.application.model_class.first
+        @application = ::Tramway::Core.application&.model_class&.first
       end
 
       private
