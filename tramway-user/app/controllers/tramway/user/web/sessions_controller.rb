@@ -25,7 +25,7 @@ module Tramway::User
       private
 
       def redirect_if_signed_in
-        redirect_to ::Tramway::User.root_path if signed_in?
+        redirect_to ::Tramway::User.root_path if signed_in? && request.env['PATH_INFO'] != ::Tramway::User.root_path
       end
     end
   end
