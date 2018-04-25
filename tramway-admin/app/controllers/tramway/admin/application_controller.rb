@@ -40,18 +40,25 @@ module Tramway
       end
 
       def application
-        @application = ::Tramway::Core.application.model_class.first
+        @application = ::Tramway::Core.application&.model_class&.first
       end
 
       private
 
       def model_given?
-        params[:model].in?(::Tramway::Admin.available_models.map(&:to_s)) ||
-          params[:model].in?(::Tramway::Admin.singleton_models.map(&:to_s))
+        available_models_given? || singleton_models_given?
       end
 
       def available_scope_given?
         params[:scope].present? && params[:scope].in?(decorator_class.collections.map(&:to_s))
+      end
+
+      def available_models_given?
+        ::Tramway::Admin.available_models && params[:model].in?(::Tramway::Admin.available_models.map(&:to_s))
+      end
+
+      def singleton_models_given?
+        ::Tramway::Admin.singleton_models && params[:model].in?(::Tramway::Admin.singleton_models.map(&:to_s))
       end
     end
   end
