@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'tramway-user', '~> 1.1.0.1', '>= 1.1.0.1'
   s.add_dependency 'bootstrap-kaminari-views-reload', '0.0.5'
-  s.add_runtime_dependency 'font-awesome-rails', '~> 0'
-  s.add_runtime_dependency 'copyright_mafa', '~> 0'
-  s.add_runtime_dependency 'kaminari', '~> 0'
-  s.add_runtime_dependency 'state_machine_buttons', '~> 0'
+  s.add_runtime_dependency 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
+  s.add_runtime_dependency 'copyright_mafa', '~> 0.1.2', '>= 0.1.2'
+  s.add_runtime_dependency 'kaminari', '~> 1.1.1', '>= 1.1.1'
+  s.add_runtime_dependency 'state_machine_buttons', '~> 0.4.1', '>= 0.4.1'
 end
