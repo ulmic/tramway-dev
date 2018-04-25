@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 gemspec
 
+gem 'enumerize'
+
 group :development do
   gem 'better_errors'
 end

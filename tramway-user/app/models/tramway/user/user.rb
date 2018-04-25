@@ -7,6 +7,4 @@ class Tramway::User::User < ::Tramway::Core::ApplicationRecord
   def admin?
     role.admin?
   end
-
-  # FIXME
 end
