@@ -21,7 +21,7 @@ module Tramway
       end
 
       def root_path
-        @root_path
+        @root_path || '/'
       end
     end
   end
