@@ -5,7 +5,7 @@ module Tramway
     class ApplicationRecord < ActiveRecord::Base
       self.abstract_class = true
       audited
-      extend Enumerize
+      extend ::Enumerize
 
       state_machine :state, initial: :active do
         state :active
