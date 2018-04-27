@@ -16,6 +16,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'tramway-core', '~> 1.0.1', '>= 1.0.1.5'
   s.add_dependency 'bcrypt', '~> 3.1.11', '>= 3.1.11'
-  s.add_dependency 'tramway-core', '1.0.1.5'
   s.add_dependency 'enumerize', '~> 2.1', '>= 2.1.2'
 end
