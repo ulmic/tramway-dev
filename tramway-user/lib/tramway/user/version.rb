@@ -1,5 +1,5 @@
 module Tramway
   module User
-    VERSION = '1.0.2.2'
+    VERSION = '1.0.2.3'
   end
 end
