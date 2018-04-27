@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency 'tramway-user', '~> 1.0.2', '>= 1.0.2'
-  s.add_dependency 'bootstrap-kaminari-views-reload', '0.0.5'
+  s.add_dependency 'bootstrap-kaminari-views', '0.0.5'
   s.add_dependency 'ckeditor', '4.2.4'
   s.add_dependency 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
   s.add_dependency 'copyright_mafa', '~> 0.1.2', '>= 0.1.2'
