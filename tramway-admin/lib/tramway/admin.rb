@@ -31,6 +31,10 @@ module Tramway
       def additional_buttons(view: nil, record: nil)
         @additional_buttons&.dig record, view
       end
+
+      def customized_admin_navbar
+        @customized_admin_navbar
+      end
     end
   end
 end

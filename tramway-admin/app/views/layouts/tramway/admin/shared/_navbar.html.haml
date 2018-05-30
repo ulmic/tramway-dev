@@ -1,20 +1,23 @@
 %nav.navbar.navbar-expand-md.navbar-dark.bg-dark
-  = link_to @application&.title || t('application.title'), try(:root_path) || '/', class: 'navbar-brand'
-  .navbar-collapse.collapse
-    - if signed_in?
-      %ul.navbar-nav
-        - ::Tramway::Admin.singleton_models&.each do |model|
-          = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
-        - ::Tramway::Admin.available_models&.each do |model|
-          = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model)
-    %ul.nav.navbar-nav.ml-auto
+  - if customized_admin_navbar_given?
+    = customized_admin_navbar
+  - else
+    = link_to @application&.title || t('application.title'), try(:root_path) || '/', class: 'navbar-brand'
+    .navbar-collapse.collapse
       - if signed_in?
-        %li.nav-item
-          = link_to '/session', method: :delete, class: 'nav-link' do
-            = fa_icon 'sign-out'
-            = t('helpers.links.sign_out')
-      - else
-        %li.nav-item
-          = link_to new_session_path, class: 'nav-link' do
-            = fa_icon 'sign-in'
-            = t('helpers.links.enter')
+        %ul.navbar-nav
+          - ::Tramway::Admin.singleton_models&.each do |model|
+            = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
+          - ::Tramway::Admin.available_models&.each do |model|
+            = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model)
+      %ul.nav.navbar-nav.ml-auto
+        - if signed_in?
+          %li.nav-item
+            = link_to '/session', method: :delete, class: 'nav-link' do
+              = fa_icon 'sign-out'
+              = t('helpers.links.sign_out')
+        - else
+          %li.nav-item
+            = link_to new_session_path, class: 'nav-link' do
+              = fa_icon 'sign-in'
+              = t('helpers.links.enter')

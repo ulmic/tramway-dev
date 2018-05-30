@@ -17,6 +17,14 @@ module Tramway
       def page_title(action, model_name)
         t("helpers.actions.#{action}") + ' ' + genitive(model_name)
       end
+
+      def customized_admin_navbar_given?
+        customized_admin_navbar.present?
+      end
+
+      def customized_admin_navbar
+        ::Tramway::Admin.customized_admin_navbar
+      end
     end
   end
 end
