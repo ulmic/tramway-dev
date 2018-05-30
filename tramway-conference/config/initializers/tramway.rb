@@ -4,5 +4,5 @@
 #                                      ::Tramway::SportSchool::Document,
 #                                      ::Tramway::SportSchool::Organization
 ::Tramway::Admin.set_singleton_models ::Tramway::Conference::Unity
-::Tramway::Core.initialize_application model_class: ::Tramway::Conference::Unity
+#::Tramway::Core.initialize_application model_class: ::Tramway::Conference::Unity
 ::Tramway::Profiles.records = [ ::Tramway::Conference::Unity ]
