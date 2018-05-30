@@ -9,6 +9,9 @@ ru:
         position: Позиция на странице
         block_type: Тип блока
         view_state: Видимость на сайте
+        navbar_link: Ссылка в навигационной панели
+        anchor: Якорь (ссылка в строке URL)
+        description: Описание
   cases:
     tramway/landing/block:
       plural: Блоки
@@ -16,4 +19,13 @@ ru:
   enumerize:
     tramway/landing/block:
       block_type:
-        header: Начальный
+        header: Начальный (Header)
+        footer: Подвал (Footer)
+        page: Свободный блок (картинка + текст)
+        cards: "Карточки (выводит определённый набор карточек): Программируется"
+        features: "Список возможностей (выделяет возможности): Программируется"
+        contacts: Блок с контактами
+        news: Блок новостей
+      navbar_link:
+        exist: Присутствует
+        not_exist: Отсутствует
