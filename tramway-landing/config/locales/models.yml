@@ -12,6 +12,8 @@ ru:
         navbar_link: Ссылка в навигационной панели
         anchor: Якорь (ссылка в строке URL)
         description: Описание
+        link_object_type: Тип объекта, на который делается ссылка
+        link_object_id: ID объекта, на который делается ссылка
   cases:
     tramway/landing/block:
       plural: Блоки
@@ -26,6 +28,7 @@ ru:
         features: "Список возможностей (выделяет возможности): Программируется"
         contacts: Блок с контактами
         news: Блок новостей
+        link: Ссылка на объект
       navbar_link:
         exist: Присутствует
         not_exist: Отсутствует

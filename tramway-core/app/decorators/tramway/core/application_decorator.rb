@@ -32,6 +32,10 @@ class Tramway::Core::ApplicationDecorator
   delegate :class, to: :object
   delegate :human_state_name, to: :object
 
+  def link
+    object.file.url
+  end
+
   def model
     object
   end

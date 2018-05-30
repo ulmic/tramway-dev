@@ -1,0 +1,9 @@
+.row{ id: block.anchor }
+  .col-md-7
+    - decorated_link_object = "#{block.link_object_type.camelize}Decorator".constantize.new(block.link_object)
+    = link_to  decorated_link_object.link do
+      = fa_icon :download
+      = decorated_link_object.name
+  .col-md-5
+    %p
+      = block.description

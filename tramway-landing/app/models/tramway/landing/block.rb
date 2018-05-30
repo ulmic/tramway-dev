@@ -1,6 +1,9 @@
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
-  enumerize :block_type, in: [ :header, :footer, :page, :cards, :features, :contacts, :news ]
+  belongs_to :link_object, polymorphic: true
+
+  enumerize :block_type, in: [ :header, :footer, :page, :cards, :features, :contacts, :news, :link ]
   enumerize :navbar_link, in: [ :exist, :not_exist ], default: :not_exist
+  enumerize :link_object_type, in: [ 'Tramway::SportSchool::Document' ]
 
   mount_uploader :background, PhotoUploader
 
