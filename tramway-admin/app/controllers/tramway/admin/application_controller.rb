@@ -1,6 +1,6 @@
 module Tramway
   module Admin
-    class ApplicationController < ActionController::Base
+    class ApplicationController < ::Tramway::Core::ApplicationController
       include AuthManagment
       include RecordRoutesHelper
       before_action :authenticate_admin!
