@@ -1,6 +1,6 @@
 module Tramway
   module Conference
-    class ApplicationController < ActionController::Base
+    class ApplicationController < ::Tramway::Core::ApplicationController
       layout 'tramway/landing/application'
       protect_from_forgery with: :exception
       before_action :application
