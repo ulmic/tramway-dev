@@ -1,6 +1,4 @@
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
-  belongs_to :link_object, polymorphic: true
-
   enumerize :block_type, in: [ :header, :footer, :page, :cards, :features, :contacts, :news, :link ]
   enumerize :navbar_link, in: [ :exist, :not_exist ], default: :not_exist
   enumerize :link_object_type, in: [ 'Tramway::SportSchool::Document' ]
@@ -24,4 +22,8 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   scope :with_navbar_link, -> { where navbar_link: :exist }
   scope :header, -> { on_main_page.where(block_type: :header).first }
   scope :footer, -> { on_main_page.where(block_type: :footer).first }
+
+  def link_object
+    link_object_type.constantize.find link_object_id
+  end
 end

@@ -9,5 +9,10 @@ class Tramway::SportSchool::Web::WelcomeController < ::Tramway::SportSchool::App
     @blocks = ::Tramway::Landing::Block.on_main_page
     @organizations = ::Tramway::SportSchool::Organization.published
     @news = ::Tramway::News::News.active.last(3).reverse.map { |t| ::Tramway::Landing::Cards::NewsDecorator.new t }
+    @education_documents = ::Tramway::SportSchool::Document.published.education.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
+    @school_info_documents = ::Tramway::SportSchool::Document.published.school_info.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
+    @provision_documents = ::Tramway::SportSchool::Document.published.provision.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
+    @headers_documents = ::Tramway::SportSchool::Document.published.headers.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
+    @finance_documents = ::Tramway::SportSchool::Document.published.finance.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
   end
 end

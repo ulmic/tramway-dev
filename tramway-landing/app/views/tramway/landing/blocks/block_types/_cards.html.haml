@@ -8,29 +8,30 @@
     - eval("@collection_#{block.anchor}")&.each do |item|
       .col-lg-4.col-md-12.mb-4
         - if item.path.present?
-          = link_to item.path do
-            .card.link
-              .view.overlay.hm-white-slight
-                = image_tag item.image, class: 'img-fluid'
-              = link_to '#' do
-                .mask
-              .card-body
-                %h4.card-title
-                  = item.title
-                %p.card-text
-                  = strip_tags item.description
-                - if item.button.present?
-                  = link_to item.button.text, item.button.url, class: 'btn btn-primary'
-        - else
-          .card
+          -# FIXME
+          .card.link{ onclick: "window.location.href = '#{item.path}';" }
             .view.overlay.hm-white-slight
-              = image_tag item.image, class: 'img-fluid'
+              = image_tag item.image || '', class: 'img-fluid'
             = link_to '#' do
               .mask
             .card-body
               %h4.card-title
                 = item.title
               %p.card-text
-                = item.description
+                = strip_tags item.description
+              - if item.button.present?
+                = link_to item.button.text, item.button.url, class: 'btn btn-primary'
+        - else
+          .card
+            .view.overlay.hm-white-slight
+              = image_tag item.image || '', class: 'img-fluid'
+            = link_to '#' do
+              .mask
+            .card-body
+              %h4.card-title
+                = item.title
+              - if item.description
+                %p.card-text
+                  = item.description
               - if item.button.present?
                 = link_to item.button.text, item.button.url, class: 'btn btn-primary'
