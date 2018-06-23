@@ -1,7 +1,7 @@
 require "tramway/page/engine"
+require 'tramway/page/generators/install_generator'
 
 module Tramway
   module Page
-    # Your code goes here...
   end
 end

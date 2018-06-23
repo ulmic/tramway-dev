@@ -46,7 +46,7 @@
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
-    - if @blocks.any?
+    - if @blocks&.any?
       -# FIXME
       = render "tramway/landing/blocks/block_types/header", block: @blocks.on_main_page.where(block_type: :header).first
     %main{ class: ('mt-5' if @blocks&.any?) }
@@ -57,5 +57,7 @@
             = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
             - if index < array_of_blocks.count - 1
               %hr
+      .container-fluid
+        = yield
     - if @blocks&.any?
       = render "tramway/landing/blocks/block_types/footer", block: @blocks.footer
