@@ -4,6 +4,7 @@ module Tramway
       include ::FontAwesome::Rails::IconHelper
       include AuthManagment
       include AdditionalButtonsBuilder
+      include RussianCasesHelper
 
       def title(page_title = default_title)
         title_text = "#{page_title} | #{t('application.name')}"
