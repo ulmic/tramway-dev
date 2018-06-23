@@ -11,6 +11,7 @@ module Tramway::SportSchool::Generators
       generate 'tramway:landing:install'
       generate 'tramway:profiles:install'
       generate 'tramway:news:install'
+      generate 'tramway:page:install'
       generate 'ckeditor:install --orm=active_record --backend=carrierwave'
     end
 
