@@ -49,7 +49,9 @@ class Tramway::Core::ApplicationDecorator
         hash.merge! attribute[0] => I18n.l(attribute[1])
       elsif value.class.superclass == ApplicationUploader
         tags = content_tag(:div) do
-          concat image_tag value.small.url if value.url.match(/jpg|JPG|png|PNG$/)
+          if value.url.match(/jpg|JPG|png|PNG$/)
+            concat image_tag value.try(:small) ? value.small.url : value.url
+          end
           concat link_to(fa_icon(:download), value.url, class: 'btn btn-success')
         end
         hash.merge! attribute[0] => tags
