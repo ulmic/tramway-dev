@@ -8,4 +8,8 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
   def lead
     object.body.first 200
   end
+
+  def link
+    Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug
+  end
 end
