@@ -9,17 +9,18 @@
       %ul.navbar-nav.mr-auto
         - @blocks.with_navbar_link.each do |block|
           = menu_item block.title, "##{block.anchor}"
-  #intro.view.hm-black-strong{ style: "background-image: url('#{block.background.url}')" }
-    .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
-      .row.d-flex.justify-content-center
-        .col-md-10.text-center
-          %h2.display-3.font-bold.white-text.mb-2
-            = yield(:application_name)
-          %hr.hr-light
-          %h4.white-text.my-4
-            = yield(:application_tagline)
-          - @blocks.with_navbar_link.each do |block|
-            %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{block.anchor}" } }
-              = block.title
+  - if block
+    #intro.view.hm-black-strong{ style: "background-image: url('#{block.background.url}')" }
+      .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
+        .row.d-flex.justify-content-center
+          .col-md-10.text-center
+            %h2.display-3.font-bold.white-text.mb-2
+              = yield(:application_name)
+            %hr.hr-light
+            %h4.white-text.my-4
+              = yield(:application_tagline)
+            - @blocks.with_navbar_link.each do |block|
+              %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{block.anchor}" } }
+                = block.title
   %script
     var scroll = new SmoothScroll('a[href*="#"]');

@@ -5,11 +5,15 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def list_attributes
-      [ :position, :view_state ]
+      [ :position, :view_state, :block_type ]
     end
   end
 
   delegate :position, to: :object
+
+  def block_type
+    object.block_type_text
+  end
 
   def view_state
     object.human_view_state_name
