@@ -17,8 +17,8 @@ module Tramway::SportSchool
       end
     end
 
-    scope :published, -> { where view_state: :published }
-    scope :hidden, -> { where view_state: :hidden }
+    scope :published, -> { active.where view_state: :published }
+    scope :hidden, -> { active.where view_state: :hidden }
 
     scope :education, -> { where document_type: :education }
     scope :school_info, -> { where document_type: :school_info }
