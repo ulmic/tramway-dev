@@ -19,4 +19,4 @@
           = value
         %td
           - if attribute_name != 'state' && @record.model.class.state_machines.keys.include?(attribute_name.to_sym)
-            = state_events_buttons @record, state_method: attribute_name, model_param_name: :record, route_method: :current_model_record_path, parameters: { redirect: current_model_records_path }
+            = state_events_buttons @record, state_method: attribute_name, model_param_name: :record, route_method: :current_model_record_path
