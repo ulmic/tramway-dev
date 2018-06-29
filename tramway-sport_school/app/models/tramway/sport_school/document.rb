@@ -2,7 +2,7 @@ module Tramway::SportSchool
   class Document < ::Tramway::Core::ApplicationRecord
     mount_uploader :file, FileUploader
 
-    enumerize :document_type, in: [ :education, :school_info, :provision, :headers, :finance ], default: :education
+    enumerize :document_type, in: [ :education, :school_info, :provision, :headers, :finance, :materially ], default: :education
 
     state_machine :view_state, initial: :published do
       state :published
@@ -25,5 +25,6 @@ module Tramway::SportSchool
     scope :provision, -> { where document_type: :provision }
     scope :headers, -> { where document_type: :headers }
     scope :finance, -> { where document_type: :finance }
+    scope :materially, -> { where document_type: :materially }
   end
 end
