@@ -4,5 +4,14 @@ require 'font-awesome-rails'
 
 module Tramway
   module Conference
+    class << self
+      def dependencies
+        [ :landing ]
+      end
+
+      def application
+        :unity
+      end
+    end
   end
 end

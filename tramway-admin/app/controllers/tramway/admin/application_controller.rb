@@ -54,11 +54,11 @@ module Tramway
       end
 
       def available_models_given?
-        ::Tramway::Admin.available_models && params[:model].in?(::Tramway::Admin.available_models.map(&:to_s))
+        ::Tramway::Admin.available_models.any? && params[:model].in?(::Tramway::Admin.available_models.map(&:to_s))
       end
 
       def singleton_models_given?
-        ::Tramway::Admin.singleton_models && params[:model].in?(::Tramway::Admin.singleton_models.map(&:to_s))
+        ::Tramway::Admin.singleton_models.any? && params[:model].in?(::Tramway::Admin.singleton_models.map(&:to_s))
       end
     end
   end

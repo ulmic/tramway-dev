@@ -7,7 +7,7 @@
       %h1
         = current_title
         = link_to fa_icon(:pencil), edit_current_model_record_path(@record.id), class: 'btn btn-warning btn-xs'
-        = ::Tramway::Admin.additional_buttons(record: @record.model.model_name, view: :show)
+        = ::Tramway::Admin.additional_buttons(record: @record.model.model_name, view: :show, project: @application_engine)
 %hr
 .row
   %table.table.table-striped.table-bordered
