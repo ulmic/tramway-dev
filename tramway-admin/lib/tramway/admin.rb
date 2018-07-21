@@ -12,7 +12,7 @@ module Tramway
       end
 
       def available_models_for(project)
-        @available_models[project] + "::Tramway::#{project.to_s.camelize}".constantize.dependencies.map do |dependency|
+        (@available_models[project] || []) + "::Tramway::#{project.to_s.camelize}".constantize.dependencies.map do |dependency|
           @available_models[dependency]
         end.flatten.compact
       end
@@ -28,7 +28,9 @@ module Tramway
       end
 
       def singleton_models_for(project)
-        @singleton_models[project]
+        (@singleton_models[project] || []) + "::Tramway::#{project.to_s.camelize}".constantize.dependencies.map do |dependency|
+          @singleton_models[dependency]
+        end.flatten.compact
       end
 
       def singleton_models
