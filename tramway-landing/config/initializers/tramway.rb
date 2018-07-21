@@ -1,1 +1,1 @@
-::Tramway::Admin.set_available_models ::Tramway::Landing::Block
+::Tramway::Admin.set_available_models(::Tramway::Landing::Block, project: :landing)

@@ -1,1 +1,1 @@
-::Tramway::Admin.set_available_models ::Tramway::News::News
+::Tramway::Admin.set_available_models(::Tramway::News::News, project: :news)
