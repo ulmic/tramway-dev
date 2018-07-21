@@ -14,5 +14,6 @@ class Tramway::SportSchool::Web::WelcomeController < ::Tramway::SportSchool::App
     @provision_documents = ::Tramway::SportSchool::Document.published.provision.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
     @headers_documents = ::Tramway::SportSchool::Document.published.headers.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
     @finance_documents = ::Tramway::SportSchool::Document.published.finance.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
+    @materially_documents = ::Tramway::SportSchool::Document.published.materially.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
   end
 end
