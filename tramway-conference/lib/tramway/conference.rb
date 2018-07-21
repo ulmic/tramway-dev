@@ -8,6 +8,10 @@ module Tramway
       def dependencies
         [ :landing ]
       end
+
+      def application
+        :unity
+      end
     end
   end
 end

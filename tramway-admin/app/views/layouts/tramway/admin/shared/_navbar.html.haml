@@ -7,9 +7,9 @@
     .navbar-collapse.collapse
       - if signed_in?
         %ul.navbar-nav
-          - ::Tramway::Admin.singleton_models_for(:conference)&.each do |model|
+          - ::Tramway::Admin.singleton_models_for(@application_engine)&.each do |model|
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
-          - ::Tramway::Admin.available_models_for(:conference)&.each do |model|
+          - ::Tramway::Admin.available_models_for(@application_engine)&.each do |model|
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model)
       %ul.nav.navbar-nav.ml-auto
         - if signed_in?
