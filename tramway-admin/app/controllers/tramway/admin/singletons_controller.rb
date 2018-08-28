@@ -1,11 +1,26 @@
 module Tramway::Admin
   class SingletonsController < ApplicationController
     def show
-      @singleton = decorator_class.decorate model_class.active.first
+      if model_class.active.first.present?
+        @singleton = decorator_class.decorate model_class.active.first
+      else
+        @singleton_form = form_class.new model_class.new
+        render :new
+        return
+      end
     end
 
     def edit
       @singleton_form = form_class.new model_class.active.first
+    end
+
+    def create
+      @singleton_form = form_class.new model_class.new
+      if @singleton_form.submit params[:singleton]
+        redirect_to params[:redirect] || singleton_path(model: params[:model])
+      else
+        render :edit
+      end
     end
 
     def update

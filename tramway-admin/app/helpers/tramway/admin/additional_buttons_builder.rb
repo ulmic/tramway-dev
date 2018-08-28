@@ -1,18 +1,20 @@
 module Tramway::Admin::AdditionalButtonsBuilder
   def build_buttons(additional_buttons)
-    additional_buttons = additional_buttons.is_a?(Hash) ? [ additional_buttons ] : additional_buttons
-    additional_buttons.each do |button|
-      concat(
-        link_to(
-          send(
-            "#{button[:action]}_record_path",
-            build_params(button[:params]).merge(model: button[:model_name])
-          ),
-          class: "btn btn-#{button_color(button[:action])} btn-xs"
-        ) do
-          button[:text] || button_icon(button[:action])
-        end
-      )
+    if additional_buttons
+      additional_buttons = additional_buttons.is_a?(Hash) ? [ additional_buttons ] : additional_buttons
+      additional_buttons.each do |button|
+        concat(
+          link_to(
+            send(
+              "#{button[:action]}_record_path",
+              build_params(button[:params]).merge(model: button[:model_name])
+            ),
+            class: "btn btn-#{button_color(button[:action])} btn-xs"
+          ) do
+            button[:text] || button_icon(button[:action])
+          end
+        )
+      end
     end
     return
   end
