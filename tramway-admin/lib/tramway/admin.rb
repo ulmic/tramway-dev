@@ -43,7 +43,7 @@ module Tramway
         @additional_buttons[project].merge! buttons
       end
 
-      def additional_buttons(view: nil, record: nil)
+      def additional_buttons(view: nil, record: nil, project: nil)
         @additional_buttons&.dig record, view
       end
 

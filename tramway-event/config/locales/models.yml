@@ -1,0 +1,14 @@
+ru:
+  activerecord:
+    models:
+      tramway/event/event: Мероприятие
+    attributes:
+      tramway/event/event:
+        title: Название
+        description: Описание
+        begin_date: Дата начала
+        end_date: Дата конца
+  cases:
+    tramway/event/event:
+      plural: мероприятия
+      genitive: мероприятие
