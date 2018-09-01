@@ -7,8 +7,8 @@
       = fa_icon :bars
     .collapse.navbar-collapse#navbarSupportedContent
       %ul.navbar-nav.mr-auto
-        - @blocks.with_navbar_link.each do |block|
-          = menu_item block.title, "##{block.anchor}"
+        - @links.each do |link|
+          = menu_item link.title, link.link
   - if block
     #intro.view.hm-black-strong{ style: "background-image: url('#{block.background.url}')" }
       .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
@@ -19,8 +19,8 @@
             %hr.hr-light
             %h4.white-text.my-4
               = yield(:application_tagline)
-            - @blocks.with_navbar_link.each do |block|
-              %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{block.anchor}" } }
-                = block.title
+            - @links.each do |link|
+              %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{link.link}" } }
+                = link.title
   %script
     var scroll = new SmoothScroll('a[href*="#"]');

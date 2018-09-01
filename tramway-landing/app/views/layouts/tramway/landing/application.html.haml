@@ -48,16 +48,16 @@
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
     - if @blocks&.any?
       -# FIXME
-      = render "tramway/landing/blocks/block_types/header", block: @blocks.on_main_page.where(block_type: :header).first
+      = render "tramway/landing/blocks/block_types/header", block: @blocks.select { |block| block.model.block_type.header? }.first
     %main{ class: ('mt-5' if @blocks&.any?) }
       .container
         - if @blocks&.any?
-          - array_of_blocks = (@blocks - [@blocks.header] - [@blocks.footer]) 
-          - array_of_blocks.each_with_index do |block, index|
-            = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
-            - if index < array_of_blocks.count - 1
-              %hr
+          - @blocks.each_with_index do |block, index|
+            - if !block.model.block_type.header? && !block.model.block_type.footer?
+              = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
+              - if index < array_of_blocks.count - 1
+                %hr
       .container-fluid
         = yield
     - if @blocks&.any?
-      = render "tramway/landing/blocks/block_types/footer", block: @blocks.footer
+      = render "tramway/landing/blocks/block_types/footer", block: @blocks.select { |block| block.model.block_type.footer? }.first

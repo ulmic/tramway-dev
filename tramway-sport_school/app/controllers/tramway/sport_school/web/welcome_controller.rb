@@ -6,7 +6,9 @@ class Tramway::SportSchool::Web::WelcomeController < ::Tramway::SportSchool::App
     @documents = ::Tramway::SportSchool::Document.active.published
     @trainers = ::Tramway::SportSchool::Trainer.active.published.map { |t| ::Tramway::SportSchool::Cards::TrainerDecorator.new t }
     @institution = ::Tramway::SportSchool::Institution.includes(:social_networks).first
-    @blocks = ::Tramway::Landing::Block.on_main_page
+    blocks = ::Tramway::Landing::Block.on_main_page
+    @links = ::Tramway::Landing::BlockDecorator.decorate blocks.with_navbar_link
+    @blocks = ::Tramway::Landing::BlockDecorator.decorate blocks.where block_type: :header
     @organizations = ::Tramway::SportSchool::Organization.published
     @news = ::Tramway::News::News.active.last(3).reverse.map { |t| ::Tramway::Landing::Cards::NewsDecorator.new t }
     @education_documents = ::Tramway::SportSchool::Document.published.education.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
