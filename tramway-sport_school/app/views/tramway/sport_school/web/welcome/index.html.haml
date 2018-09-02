@@ -17,10 +17,6 @@
 = content_for :phone do
   = @institution.phone
 
-= content_for :navbar do
-  - [ :parents, :schoolkids, :adults, :contacts ].each do |block|
-    = menu_item t("blocks.navbar_links.#{block}"), "##{block}"
-
 = content_for :footer_links do
   %h5.title
     = plural Tramway::SportSchool::Document.model_name
