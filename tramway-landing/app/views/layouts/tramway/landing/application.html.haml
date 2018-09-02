@@ -13,7 +13,7 @@
     = yield :head_content
     -#= render 'layouts/tramway/landing/yandex_metrika'
     / Yandex.Metrika counter
-    :javascript
+    -#:javascript
       (function (d, w, c) {
           (w[c] = w[c] || []).push(function() {
               try {
@@ -38,7 +38,7 @@
               d.addEventListener("DOMContentLoaded", f, false);
           } else { f(); }
       })(document, window, "yandex_metrika_callbacks");
-    %noscript
+    -#%noscript
       %div
         %img{alt: "", src: "https://mc.yandex.ru/watch/49054148", style: "position:absolute; left:-9999px;"}/
     / /Yandex.Metrika counter
@@ -46,18 +46,17 @@
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
+    = yield :body_content
     - if @blocks&.any?
       -# FIXME
       = render "tramway/landing/blocks/block_types/header", block: @blocks.select { |block| block.model.block_type.header? }.first
-    %main{ class: ('mt-5' if @blocks&.any?) }
-      .container
-        - if @blocks&.any?
+      %main{ class: ('mt-5' if @blocks&.any?) }
+        .container
           - @blocks.each_with_index do |block, index|
             - if !block.model.block_type.header? && !block.model.block_type.footer?
               = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
               - if index < array_of_blocks.count - 1
                 %hr
-      .container-fluid
-        = yield
-    - if @blocks&.any?
+        .container-fluid
+          = yield
       = render "tramway/landing/blocks/block_types/footer", block: @blocks.select { |block| block.model.block_type.footer? }.first

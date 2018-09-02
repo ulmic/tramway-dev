@@ -1,26 +1,13 @@
 = javascript_include_tag 'tramway/landing/smooth-scroll'
-%header
+- content_for(:navbar) do
   %nav.navbar.navbar-expand-lg.navbar-dark.indigo.scrolling-navbar.fixed-top
     = link_to yield(:application_name), '#', class: 'navbar-brand'
-
     %button.navbar-toggler{ type: :button, data: { toggle: :collapse, target: '#navbarSupportedContent' }, aria: { controls: 'navbarSupportedContent', expanded: 'false', label: 'Toggle navigation' } }
       = fa_icon :bars
     .collapse.navbar-collapse#navbarSupportedContent
       %ul.navbar-nav.mr-auto
         - @links.each do |link|
           = menu_item link.title, link.link
-  - if block
-    #intro.view.hm-black-strong{ style: "background-image: url('#{block.background.url}')" }
-      .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
-        .row.d-flex.justify-content-center
-          .col-md-10.text-center
-            %h2.display-3.font-bold.white-text.mb-2
-              = yield(:application_name)
-            %hr.hr-light
-            %h4.white-text.my-4
-              = yield(:application_tagline)
-            - @links.each do |link|
-              %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{link.link}" } }
-                = link.title
-  %script
-    var scroll = new SmoothScroll('a[href*="#"]');
+= render 'tramway/landing/blocks/templates/full_page', block: header_block(block, title: yield(:application_name), tagline: yield(:application_tagline)), buttons: @links
+%script
+  var scroll = new SmoothScroll('a[href*="#"]');

@@ -1,0 +1,17 @@
+%header
+  = yield :navbar
+  #intro.view.hm-black-strong{ style: "background-image: url('#{block.background.url}')" }
+    .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
+      .row.d-flex.justify-content-center
+        .col-md-10.text-center
+          %h2.display-3.font-bold.white-text.mb-2
+            = block.title
+          %hr.hr-light
+          %h4.white-text.my-4
+            = block.tagline
+          - if defined?(buttons)
+            - buttons.each do |button|
+              %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{button.link}" } }
+                = button.title
+          - else
+            = yield

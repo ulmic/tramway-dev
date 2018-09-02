@@ -6,7 +6,8 @@ class Tramway::Event::EventForm < ::Tramway::Core::ApplicationForm
     form_properties title: :string,
                     description: :ckeditor,
                     begin_date: :default,
-                    end_date: :default
+                    end_date: :default,
+                    photo: :file
     form_object
   end
 end
