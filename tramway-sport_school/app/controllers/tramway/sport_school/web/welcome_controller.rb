@@ -8,7 +8,7 @@ class Tramway::SportSchool::Web::WelcomeController < ::Tramway::SportSchool::App
     @institution = ::Tramway::SportSchool::Institution.includes(:social_networks).first
     blocks = ::Tramway::Landing::Block.on_main_page
     @links = ::Tramway::Landing::BlockDecorator.decorate blocks.with_navbar_link
-    @blocks = ::Tramway::Landing::BlockDecorator.decorate blocks.where block_type: :header
+    @blocks = ::Tramway::Landing::BlockDecorator.decorate blocks
     @organizations = ::Tramway::SportSchool::Organization.published
     @news = ::Tramway::News::News.active.last(3).reverse.map { |t| ::Tramway::Landing::Cards::NewsDecorator.new t }
     @education_documents = ::Tramway::SportSchool::Document.published.education.map { |t| ::Tramway::SportSchool::Cards::DocumentDecorator.new t }
