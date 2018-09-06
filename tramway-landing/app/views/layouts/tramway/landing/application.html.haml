@@ -1,14 +1,14 @@
 !!!
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{ content: 'text/html; charset=UTF-8', http: { equiv: 'Content-Type' } }
     %title
       = yield :title
-    = stylesheet_link_tag    "tramway/landing/application", media: "all"
-    = javascript_include_tag "tramway/landing/application"
-    = javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity: "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin: "anonymous"
-    = javascript_include_tag "https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity: "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin: "anonymous"
-    = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js", integrity: "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin: "anonymous"
+    = stylesheet_link_tag    'tramway/landing/application', media: 'all'
+    = javascript_include_tag 'tramway/landing/application'
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity: 'sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin: 'anonymous'
+    = javascript_include_tag 'https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity: 'sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin: 'anonymous'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity: 'sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin: 'anonymous'
     = csrf_meta_tags
     = yield :head_content
     -#= render 'layouts/tramway/landing/yandex_metrika'
@@ -47,10 +47,10 @@
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
     = yield :body_content
-    - headers = @blocks.select { |block| block.model.block_type.header? }
-    - footers = @blocks.select { |block| block.model.block_type.footer? }
-    - other_blocks = @blocks - headers - footers
     - if @blocks&.any?
+      - headers = @blocks.select { |block| block.model.block_type.header? }
+      - footers = @blocks.select { |block| block.model.block_type.footer? }
+      - other_blocks = @blocks - headers - footers
       -# FIXME
       = render "tramway/landing/blocks/block_types/header", block: headers.first
       %main{ class: ('mt-5' if @blocks&.any?) }
