@@ -1,0 +1,5 @@
+.row
+  .col-lg-12
+    = simple_form_for @participant_form, url: { controller: 'tramway/event/participants', action: :create } do |f|
+      - @event.participant_form_fields.each do |field|
+        = f.input field.title.to_sym

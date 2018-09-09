@@ -3,3 +3,5 @@
 - content_for :body_content do
   = stylesheet_link_tag 'tramway/event/events/show'
   = render 'tramway/landing/blocks/templates/full_page', block: @event, buttons: []
+  .container
+    = render 'tramway/event/participants/form'

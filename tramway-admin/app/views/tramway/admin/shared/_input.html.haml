@@ -1,0 +1,9 @@
+- value = params.dig(model_class.to_s.underscore, property.to_s)
+- form_object = instance_variable_get "@#{object}_form"
+- case type
+- when :default
+  = form.input property, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
+- when :association
+  = form.association property, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
+- else
+  = form.input property, as: type, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.model.send(property) || value) } 

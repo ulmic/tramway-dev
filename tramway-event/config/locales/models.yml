@@ -2,6 +2,8 @@ ru:
   activerecord:
     models:
       tramway/event/event: Мероприятие
+      tramway/event/participant: Участник
+      tramway/event/participant_form_field: Поле анкеты
     attributes:
       tramway/event/event:
         title: Название
@@ -12,3 +14,9 @@ ru:
     tramway/event/event:
       plural: мероприятия
       genitive: мероприятие
+    tramway/event/participant:
+      plural: участники
+      genitive: участника
+    tramway/event/participant_form_field:
+      plural: поля анкеты
+      genitive: поле анкеты

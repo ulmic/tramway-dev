@@ -10,9 +10,6 @@
   .col-lg-12
     = simple_form_for @singleton_form.model, url: { controller: :singletons, action: action, model: @singleton_form.model.class }, input_html: { class: 'form-horizontal' } do |f|
       - @singleton_form.properties.each do |property, type|
-        - if type == :default
-          = f.input property, input_html: { name: "singleton[#{property}]", id: "singleton_#{property}" } 
-        - else
-          = f.input property, as: type, input_html: { name: "singleton[#{property}]", id: "singleton_#{property}" } 
+        = render 'tramway/admin/shared/input', property: property, object: :singleton, type: type, form: f
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), singleton_path, class: 'btn btn-secondary'

@@ -6,6 +6,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   delegate :title, to: :object
+  delegate :participant_form_fields, to: :object
 
   def background
     object.photo
