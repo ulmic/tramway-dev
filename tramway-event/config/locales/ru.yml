@@ -1,0 +1,7 @@
+ru:
+  tramway:
+    event:
+      participants:
+        form:
+          registration: Регистрация на мероприятие
+          submit_form: Отправить заявку
