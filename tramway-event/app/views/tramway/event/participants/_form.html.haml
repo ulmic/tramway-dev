@@ -5,5 +5,5 @@
         = t('.registration')
       = simple_form_for @participant_form, url: { controller: 'tramway/event/participants', action: :create } do |f|
         - @event.participant_form_fields.each do |field|
-          = f.input field.title.to_sym
+          = f.input field.title.to_sym, as: field.field_type
         = f.button :submit, t('.submit_form')
