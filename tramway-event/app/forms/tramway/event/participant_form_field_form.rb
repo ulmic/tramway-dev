@@ -1,5 +1,5 @@
 class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ApplicationForm
-  properties :title, :description, :field_type, :event, :options
+  properties :title, :description, :field_type, :event, :options, :position
 
   def initialize(object)
     form_object = super object
@@ -7,7 +7,8 @@ class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ApplicationFor
                     title: :string,
                     description: :string,
                     field_type: :default,
-                    options: :text
+                    options: :text,
+                    position: :numeric
     form_object
   end
 

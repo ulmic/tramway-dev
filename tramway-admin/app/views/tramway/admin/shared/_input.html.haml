@@ -4,6 +4,6 @@
 - when :default
   = form.input property, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
 - when :association
-  = form.association property, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
+  = form.association property, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.model.send("#{property}_id") || value) }, selected: (form_object.model.send("#{property}_id") || value)
 - else
   = form.input property, as: type, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.model.send(property) || value) } 
