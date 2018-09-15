@@ -1,12 +1,13 @@
 class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ApplicationForm
-  properties :title, :description, :field_type, :event
+  properties :title, :description, :field_type, :event, :options
 
   def initialize(object)
     form_object = super object
     form_properties event: :association,
                     title: :string,
                     description: :string,
-                    field_type: :default
+                    field_type: :default,
+                    options: :text
     form_object
   end
 

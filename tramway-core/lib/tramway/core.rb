@@ -1,4 +1,5 @@
 require "tramway/core/engine"
+require "tramway/collection"
 
 module Tramway
   module Core

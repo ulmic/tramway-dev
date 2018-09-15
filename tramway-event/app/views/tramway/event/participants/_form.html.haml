@@ -4,6 +4,12 @@
       %h1
         = t('.registration')
       = simple_form_for @participant_form, url: { controller: 'tramway/event/participants', action: :create } do |f|
-        - @event.participant_form_fields.each do |field|
-          = f.input field.title.to_sym, as: field.field_type
+        - @event.participant_form_fields.active.each do |field|
+          - case field.field_type
+          - when 'text', 'string', 'numeric', 'date_picker'
+            = f.input field.title.to_sym, as: field.field_type
+          - when 'select'
+            - parsed_json = JSON.parse(field.options) 
+            - if parsed_json['collection']['name']
+              = f.input field.title.to_sym, as: :select, collection: collection_list_by(name: parsed_json['collection']['name'])
         = f.button :submit, t('.submit_form')
