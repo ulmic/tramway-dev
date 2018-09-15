@@ -2,6 +2,32 @@
   = @event.title
 - content_for :body_content do
   = stylesheet_link_tag 'tramway/event/events/show'
+
+
+  - if params[:flash] == 'success'
+    .alert.alert-success{role: "alert"}
+      %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
+        %span{"aria-hidden" => "true"} ×
+      %h4.alert-heading Заявка успешно отправлена!
+      %p Орг.комитет мероприятия свяжется с вами по одному из указанных вами каналов связи: телефон, email, страница ВКонтакте
+      %hr/
+      %p.mb-0
+        По всем вопросам обращайтесь по телефону
+        = tel_tag '+79603727276'
+        или пишите на email
+        = mail_to 'kalashnikov@ulmic.ru'
+  - if params[:flash] == 'error'
+    .alert.alert-danger{role: "alert"}
+      %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
+        %span{"aria-hidden" => "true"} ×
+      %h4.alert-heading Ошибка при отправлении заявки!
+      %p Подробности ошибки описаны ниже в форме приёма заявок
+      %hr/
+      %p.mb-0
+        Если ошибка повторяется или не отображается, обращайтесь по телефону
+        = tel_tag '+79603727276'
+        или пишите на email
+        = mail_to 'kalashnikov@ulmic.ru'
   = render 'tramway/landing/blocks/templates/full_page', block: @event, buttons: []
   .container
     = render 'tramway/event/participants/form'
