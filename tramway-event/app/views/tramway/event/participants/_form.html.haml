@@ -3,15 +3,17 @@
     .col-lg-12
       %h1
         = t('.registration')
-      = simple_form_for @participant_form, url: { controller: 'tramway/event/participants', action: :create } do |f|
+      - class_name = 'tramway_event_participant'
+      = simple_form_for @participant_form, url: { controller: 'tramway/event/participants', action: :create }, html: { class: class_name, id: class_name } do |f|
+        = f.input :event_id, as: :hidden, input_html: { value: @event.id, class: class_name, id: "#{class_name}_event_id", name: "#{class_name}[event_id]" }
         - @event.participant_form_fields.inputs_list.each do |field|
           - case field.field_type
           - when 'text', 'string', 'numeric', 'date_picker'
-            = f.input field.title.to_sym, as: field.field_type
+            = f.input field.title.to_sym, as: field.field_type, input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }
           - when 'select'
             - parsed_json = JSON.parse(field.options) unless field.options == ''
             - if parsed_json && parsed_json['collection']['name']
-              = f.input field.title.to_sym, as: :select, collection: collection_list_by(name: parsed_json['collection']['name'])
+              = f.input field.title.to_sym, as: :select, collection: collection_list_by(name: parsed_json['collection']['name']), input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }
             - else
-              = f.input field.title.to_sym, as: :select
+              = f.input field.title.to_sym, as: :select, input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }
         = f.button :submit, t('.submit_form')
