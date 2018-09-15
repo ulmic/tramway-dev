@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    tramway-landing (1.2.12)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    copyright_mafa (0.1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  copyright_mafa
+  tramway-landing!
+
+BUNDLED WITH
+   1.16.2

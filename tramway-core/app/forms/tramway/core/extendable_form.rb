@@ -7,7 +7,7 @@ class Tramway::Core::ExtendableForm
         Object.const_set(name, Class.new(::Tramway::Core::ApplicationForm) do
           define_method 'submit' do |params|
             model.values ||= {}
-            model.values = params.reduce({}) do |hash, attribute, value|
+            model.values = params.permit!.to_h.reduce({}) do |hash, attribute, value|
               hash.merge! attribute => value
             end
             super params
