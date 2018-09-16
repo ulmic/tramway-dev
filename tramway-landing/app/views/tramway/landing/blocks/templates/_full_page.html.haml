@@ -11,7 +11,10 @@
             = block.tagline
           - if defined?(buttons)
             - buttons.each do |button|
-              %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{button.link}" } }
+              - data_obj = {}
+              - data_obj = data_obj.merge(href: button.link) if button.try :link
+              - data_obj = data_obj.merge(anchor: button.anchor) if button.try :anchor
+              %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons.link{ type: :button, data: data_obj }
                 = button.title
           - else
             = yield

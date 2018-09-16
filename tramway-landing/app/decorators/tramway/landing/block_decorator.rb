@@ -14,6 +14,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   delegate :background, to: :object
   delegate :anchor, to: :object
   delegate :description, to: :object
+  delegate :anchor, to: :object
 
   def block_type
     object.block_type_text
@@ -21,10 +22,6 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
 
   def view_state
     object.human_view_state_name
-  end
-
-  def link
-    "##{object.anchor}"
   end
 
   def view_state_button_color(event)

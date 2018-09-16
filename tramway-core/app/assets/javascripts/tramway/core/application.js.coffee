@@ -3,7 +3,11 @@
 #= require_tree .
 
 $ ->
-  $('.date_picker').datepicker({
-    format: 'dd.mm.yyyy',
-    language: 'ru'
-  })
+  unless $('.date_picker').length == 0
+    $('.date_picker').datepicker({
+      format: 'dd.mm.yyyy',
+      language: 'ru'
+    })
+
+  $('.link').click ->
+    location.href = $(this).data('href')

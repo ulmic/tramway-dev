@@ -42,7 +42,7 @@ class Tramway::Core::ApplicationDecorator
 
   def attributes
     object.attributes.reduce({}) do |hash, attribute|
-      value = object.send attribute[0]
+      value = try(attribute[0]) ? send(attribute[0]) : object.send(attribute[0])
       if attribute[0].to_s.in? object.class.state_machines.keys.map(&:to_s)
         hash.merge! attribute[0] => object.send("human_#{attribute[0]}_name")
       elsif value.class.in? [ ActiveSupport::TimeWithZone, DateTime, Time ]
@@ -58,7 +58,7 @@ class Tramway::Core::ApplicationDecorator
       elsif value.is_a? Enumerize::Value
         hash.merge! attribute[0] => value.text
       else
-        hash.merge! attribute[0] => attribute[1]
+        hash.merge! attribute[0] => value
       end
     end
   end
