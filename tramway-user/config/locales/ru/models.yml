@@ -1,7 +1,7 @@
 ru:
   activerecord:
-    tramway/user/user: пользователь
+    models:
+      tramway/user/user: пользователь
   cases:
     tramway/user/user:
       plural: пользователи
-
