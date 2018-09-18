@@ -15,4 +15,12 @@ class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ApplicationFor
   def event=(value)
     super ::Tramway::Event::Event.find value
   end
+
+  def options
+    model.options.to_json
+  end
+
+  def options=(value)
+    super JSON.parse value
+  end
 end

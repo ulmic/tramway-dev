@@ -6,7 +6,7 @@ module Tramway
   module Conference
     class << self
       def dependencies
-        [ :landing, :event ]
+        [ :landing, :event, :profiles ]
       end
 
       def application
