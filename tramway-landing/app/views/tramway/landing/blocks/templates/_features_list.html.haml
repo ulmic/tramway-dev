@@ -1,0 +1,27 @@
+%main.mt-5{ id: block.anchor }
+  .container
+    %section#best-features.text-center
+      %h2.mb-4.font-weight-bold
+        = block.title
+      .row.d-flex.justify-content-center.mb-4
+        .col-md-8
+          %p.grey-text
+            = block.description
+      - collection.each_slice 5 do |sub_collection|
+        .row
+          - sub_collection.each do |item|
+            .col.mb-1
+              - if item.icon.present?
+                = fa_icon item.icon, class: 'fa-4x blue-text'
+              - else
+                = image_tag item.image
+              %h4.my-4
+                = item.title
+              %p.grey-text
+                != item.text
+    %hr.my-5/
+    %section#examples
+    %hr.my-5/
+    %section#gallery
+    %hr.my-5/
+    %section#contact

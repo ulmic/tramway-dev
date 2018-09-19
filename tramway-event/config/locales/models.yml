@@ -4,6 +4,7 @@ ru:
       tramway/event/event: Мероприятие
       tramway/event/participant: Участник
       tramway/event/participant_form_field: Поле анкеты
+      tramway/event/section: Секция
     attributes:
       tramway/event/event:
         title: Название
@@ -17,6 +18,9 @@ ru:
     tramway/event/participant:
       plural: участники
       genitive: участника
+    tramway/event/section:
+      plural: секции
+      genitive: секцию
     tramway/event/participant_form_field:
       plural: поля анкеты
       genitive: поле анкеты

@@ -3,6 +3,8 @@ require "tramway/collection"
 module Tramway
   module Event
     module ApplicationHelper
+      include ::FontAwesome::Rails::IconHelper
+
       def collection_list_by(name:)
         require name # needed to load class name with collection
         unless ::Tramway::Collection.descendants.map(&:to_s).include?(name.camelize)
