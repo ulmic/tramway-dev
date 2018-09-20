@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      tramway/page/page: Страница
+  cases:
+    tramway/page/page:
+      plural: страницы
+      genitive: страницу

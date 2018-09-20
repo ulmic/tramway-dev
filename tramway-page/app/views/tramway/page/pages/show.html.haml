@@ -1,1 +1,4 @@
-!= @page.body
+- content_for :title do
+  = @page.title
+- content_for :body_content do
+  != @page.body

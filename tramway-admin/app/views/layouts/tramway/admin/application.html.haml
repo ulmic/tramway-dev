@@ -2,13 +2,8 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Tramway admin
-    = javascript_include_tag Ckeditor.cdn_url
     = stylesheet_link_tag    "tramway/admin/application", media: "all"
     = javascript_include_tag "tramway/admin/application"
-    :javascript
-      CKEDITOR.replace( 'post_content', {
-        customConfig: "#{javascript_url('tramway/admin/ckeditor/config.js')}"
-      } );
     = csrf_meta_tags
   %body
     = render 'layouts/tramway/admin/shared/navbar'

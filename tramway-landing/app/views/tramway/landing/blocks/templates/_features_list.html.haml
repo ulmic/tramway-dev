@@ -10,7 +10,7 @@
       - collection.each_slice 5 do |sub_collection|
         .row
           - sub_collection.each do |item|
-            .col.mb-1
+            .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto
               - if item.icon.present?
                 = fa_icon item.icon, class: 'fa-4x blue-text'
               - else

@@ -5,7 +5,8 @@ module Tramway::Core
         @@associations&.each do |association|
           class_name = object.class.reflect_on_all_associations(:belongs_to).select do |a|
             a.name == association.to_sym
-          end.first.options[:class_name].constantize
+          end.first&.options&.require(:class_name)&.constantize
+          next unless class_name
 
           self.class.send(:define_method, "#{association}=") do |value|
             super class_name.find value

@@ -4,7 +4,7 @@ class Tramway::Page::PageForm < ::Tramway::Core::ApplicationForm
   def initialize(object)
     form_object = super object
     form_properties title: :string,
-                    body: :default,
+                    body: :ckeditor,
                     slug: :string
     form_object
   end

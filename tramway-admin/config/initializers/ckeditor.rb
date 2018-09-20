@@ -1,3 +1,5 @@
 Ckeditor.setup do |config|
-  config.cdn_url = "//cdn.ckeditor.com/4.6.1/basic/ckeditor.js"
+  require "ckeditor/orm/active_record"
+
+  config.assets_plugins = [ 'image', 'copyformatting', 'filebrowser', 'sourcedialog' ]
 end
