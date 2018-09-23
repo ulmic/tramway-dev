@@ -1,9 +1,1 @@
-.row{ id: block.anchor }
-  .col-md-7
-    = image_tag block.background, class: 'img-fluid'
-  .col-md-5
-    %h2
-      = block.title
-    %hr
-    %p
-      = block.description
+= render 'tramway/landing/blocks/templates/section_with_image_and_text', block: block

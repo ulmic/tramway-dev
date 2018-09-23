@@ -10,7 +10,7 @@
       - collection.each_slice 5 do |sub_collection|
         .row
           - sub_collection.each do |item|
-            .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto
+            .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
               - if item.icon.present?
                 = fa_icon item.icon, class: 'fa-4x blue-text'
               - else

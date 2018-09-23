@@ -2,8 +2,6 @@
   = @event.title
 - content_for :body_content do
   = stylesheet_link_tag 'tramway/event/events/show'
-
-
   - if params[:flash] == 'success'
     .alert.alert-success{role: "alert"}
       %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
@@ -29,6 +27,10 @@
         или пишите на email
         = mail_to 'kalashnikov@ulmic.ru'
   = render 'tramway/landing/blocks/templates/full_page', block: @event, buttons: []
-  = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Направления IT Way'18", description: "Вы можете выбрать любое из направлений", anchor: :features), collection: @sections_as_features
-  .container
-    = render 'tramway/event/participants/form'
+  %main
+    .container
+      = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Направления IT Way'18", description: "Вы можете выбрать любое из направлений", anchor: :features), collection: @sections_as_features
+      = render 'tramway/event/participants/form'
+      %hr
+      - @sections.each do |section|
+        = render 'tramway/landing/blocks/templates/section_with_image_and_text', block: section

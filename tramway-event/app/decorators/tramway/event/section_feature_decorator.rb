@@ -7,4 +7,8 @@ class ::Tramway::Event::SectionFeatureDecorator < ::Tramway::Core::ApplicationDe
   def image
     object.photo.small.url
   end
+
+  def anchor
+    "section-#{object.id}"
+  end
 end
