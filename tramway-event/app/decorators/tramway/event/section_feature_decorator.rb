@@ -2,7 +2,10 @@ class ::Tramway::Event::SectionFeatureDecorator < ::Tramway::Core::ApplicationDe
   delegate :icon, to: :object
   delegate :title, to: :object
   delegate :description, to: :object
-  alias text description
+
+  def text
+    object.description.scan(/<strong>.*?<\/strong>/).join(' ')
+  end
 
   def image
     object.photo.small.url
