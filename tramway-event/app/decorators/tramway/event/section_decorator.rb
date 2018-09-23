@@ -5,7 +5,10 @@ class Tramway::Event::SectionDecorator < ::Tramway::Core::ApplicationDecorator
     end
   end
 
-  delegate :title, to: :object
+  def title
+    "#{fa_icon(object.icon)} #{object.title}".html_safe
+  end
+
   delegate :description, to: :object
 
   def background

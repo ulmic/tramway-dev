@@ -33,5 +33,7 @@
       %hr
       = render 'tramway/event/participants/form'
       %hr
-      - @sections.each do |section|
+      - @sections.each_with_index do |section, index|
         = render 'tramway/landing/blocks/templates/section_with_image_and_text', block: section
+        - if index < @sections.count - 1
+          %br
