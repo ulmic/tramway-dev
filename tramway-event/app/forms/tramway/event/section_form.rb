@@ -1,5 +1,5 @@
 class Tramway::Event::SectionForm < ::Tramway::Core::ApplicationForm
-  properties :event, :title, :description, :photo, :icon
+  properties :event, :title, :description, :photo, :icon, :position
   association :event
 
   def initialize(object)
@@ -8,7 +8,8 @@ class Tramway::Event::SectionForm < ::Tramway::Core::ApplicationForm
                       description: :ckeditor,
                       event: :association,
                       photo: :file,
-                      icon: :string
+                      icon: :string,
+                      position: :numeric
     end       
   end
 end

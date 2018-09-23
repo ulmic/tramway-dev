@@ -32,7 +32,7 @@
       = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Направления IT Way'18", description: "Вы можете выбрать любое из направлений", anchor: :features), collection: @sections_as_features
       %hr
       = render 'tramway/event/participants/form'
-      %hr
+      %br
       - @sections.each_with_index do |section, index|
         = render 'tramway/landing/blocks/templates/section_with_image_and_text', block: section
         - if index < @sections.count - 1

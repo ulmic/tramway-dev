@@ -23,6 +23,7 @@ module Tramway::Event::Generators
       migration_template 'add_position_to_tramway_event_participant_form_fields.rb', 'db/migrate/add_position_to_tramway_event_participant_form_fields.rb'
       migration_template 'create_tramway_event_sections.rb', 'db/migrate/create_tramway_event_sections.rb'
       migration_template 'add_icon_to_tramway_event_sections.rb', 'db/migrate/add_icon_to_tramway_event_sections.rb'
+      migration_template 'add_position_to_tramway_event_sections.rb', 'db/migrate/add_position_to_tramway_event_sections.rb'
     end
   end
 end
