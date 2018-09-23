@@ -29,6 +29,6 @@
         или пишите на email
         = mail_to 'kalashnikov@ulmic.ru'
   = render 'tramway/landing/blocks/templates/full_page', block: @event, buttons: []
-  = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Направления IT Way'18", description: "Вы можете выбрать любое из направлений", anchor: :features), collection: @sections
+  = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Направления IT Way'18", description: "Вы можете выбрать любое из направлений", anchor: :features), collection: @sections_as_features
   .container
     = render 'tramway/event/participants/form'

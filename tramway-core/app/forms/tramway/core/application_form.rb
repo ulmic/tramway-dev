@@ -3,11 +3,12 @@ module Tramway::Core
     def initialize(object)
       super(object).tap do
         @@associations&.each do |association|
-          class_name = object.class.reflect_on_all_associations(:belongs_to).select do |a|
+          options = object.class.reflect_on_all_associations(:belongs_to).select do |a|
             a.name == association.to_sym
-          end.first&.options&.require(:class_name)&.constantize
-          next unless class_name
+          end.first&.options
+          next unless options
 
+          class_name = options[:class_name].constantize
           self.class.send(:define_method, "#{association}=") do |value|
             super class_name.find value
           end
