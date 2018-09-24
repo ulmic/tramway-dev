@@ -3,8 +3,10 @@
   - if ::Tramway::Admin.customized_admin_navbar.present?
     = ::Tramway::Admin.customized_admin_navbar
   - else
-    = link_to @application&.title || t('application.title'), try(:root_path) || '/', class: 'navbar-brand'
-    .navbar-collapse.collapse
+    = link_to @application&.title || t('aplication.title'), try(:root_path) || '/', class: 'navbar-brand'
+    %button.navbar-toggler.collapsed{ aria: { controls: :navbar, expanded: "false", label: 'Toggle Navigation' }, data: { target: "#navbar", toggle: :collapse }, type: :button }
+      %span.navbar-toggler-icon
+    .navbar-collapse.collapse#navbar
       - if signed_in?
         %ul.navbar-nav
           - ::Tramway::Admin.singleton_models_for(@application_engine)&.each do |model|
