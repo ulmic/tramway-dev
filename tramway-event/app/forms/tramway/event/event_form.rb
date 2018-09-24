@@ -1,5 +1,5 @@
 class Tramway::Event::EventForm < ::Tramway::Core::ApplicationForm
-  properties :title, :description, :begin_date, :end_date, :photo
+  properties :title, :description, :begin_date, :end_date, :photo, :status
 
   def initialize(object)
     form_object = super object
@@ -7,7 +7,8 @@ class Tramway::Event::EventForm < ::Tramway::Core::ApplicationForm
                     description: :ckeditor,
                     begin_date: :default,
                     end_date: :default,
-                    photo: :file
+                    photo: :file,
+                    status: :default
     form_object
   end
 end

@@ -30,3 +30,6 @@
   = @unity&.longtitude
 
 - @collection_news = @news
+
+- if @main_event.present?
+  = render 'tramway/event/events/show_page', event: @main_event, sections: @sections, sections_as_features: @sections_as_features

@@ -24,6 +24,7 @@ module Tramway::Event::Generators
       migration_template 'create_tramway_event_sections.rb', 'db/migrate/create_tramway_event_sections.rb'
       migration_template 'add_icon_to_tramway_event_sections.rb', 'db/migrate/add_icon_to_tramway_event_sections.rb'
       migration_template 'add_position_to_tramway_event_sections.rb', 'db/migrate/add_position_to_tramway_event_sections.rb'
+      migration_template 'add_status_to_tramway_event_events.rb', 'db/migrate/add_status_to_tramway_event_events.rb'
     end
   end
 end
