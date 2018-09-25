@@ -4,7 +4,7 @@
       %h1
         = t('.registration')
       - class_name = 'tramway_event_participant'
-      = simple_form_for @participant_form, url: { controller: 'tramway/event/participants', action: :create }, html: { class: class_name, id: class_name } do |f|
+      = simple_form_for @participant_form, url: ::Tramway::Event::Engine.routes.url_helpers.participants_path, method: :post, html: { class: class_name, id: class_name } do |f|
         = f.input :event_id, as: :hidden, input_html: { value: event.id, class: class_name, id: "#{class_name}_event_id", name: "#{class_name}[event_id]" }
         - event.participant_form_fields.inputs_list.each do |field|
           - case field.field_type

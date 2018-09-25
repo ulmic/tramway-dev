@@ -5,8 +5,8 @@ class Tramway::Event::EventForm < ::Tramway::Core::ApplicationForm
     form_object = super object
     form_properties title: :string,
                     description: :ckeditor,
-                    begin_date: :default,
-                    end_date: :default,
+                    begin_date: :date_picker,
+                    end_date: :date_picker,
                     photo: :file,
                     status: :default
     form_object

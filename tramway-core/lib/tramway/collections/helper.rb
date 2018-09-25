@@ -1,6 +1,6 @@
 module Tramway
-  module Collection
-    class Helper
+  module Collections
+    module Helper
       def collection_list_by(name:)
         require name # needed to load class name with collection
         unless ::Tramway::Collection.descendants.map(&:to_s).include?(name.camelize)
