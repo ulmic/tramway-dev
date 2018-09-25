@@ -30,7 +30,8 @@
     = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Направления IT Way'18", description: "Вы можете выбрать любое из направлений", anchor: :features), collection: sections_as_features
     %br
     .row
-      != event.description
+      .col
+        != event.description
     %hr
     = render 'tramway/event/participants/form', event: event
     %br
