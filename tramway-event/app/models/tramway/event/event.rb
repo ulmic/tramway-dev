@@ -7,5 +7,5 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
 
   enumerize :status, default: :common, in: [ :common, :main ]
 
-  scope :main_event, -> { where(status: :main).last }
+  scope :main_event, -> { where(status: :main) }
 end
