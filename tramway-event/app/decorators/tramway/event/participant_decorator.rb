@@ -6,15 +6,17 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
   end
 
   def title
-    first_name = object.values['Фамилия']
-    last_name = object.values['Имя']
-    patronymic = object.values['Отчество']
-    "#{first_name} #{last_name} #{patronymic}"
+    if object.values.present?
+      first_name = object.values['Фамилия']
+      last_name = object.values['Имя']
+      patronymic = object.values['Отчество']
+      "#{first_name} #{last_name} #{patronymic}"
+    end
   end
 
   def values
     content_tag :table, class: :table do
-      object.values.each do |key, value|
+      object.values&.each do |key, value|
         concat(content_tag(:tr) do
           concat(content_tag(:td) do
             key

@@ -1,9 +1,15 @@
-class Tramway::Event::ParticipantForm < ::Tramway::Core::ApplicationForm
-  properties :event_id, :values
+require 'securerandom'
 
-  def initialize(object, event)
-    form_object = super object
-    form_properties event_id: :default
-    form_object
+class Tramway::Event::ParticipantForm < ::Tramway::Core::ApplicationForm
+  association :event
+
+  def self.new(object)
+    if object.event_id.present?
+      ::Tramway::Event::ParticipantExtendedFormCreator.create_form_class(SecureRandom.hex, object.event).new object
+    else
+      super(object).tap do |obj|
+        obj.form_properties event: :association
+      end
+    end
   end
 end

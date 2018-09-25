@@ -1,9 +1,14 @@
 - value = params.dig(model_class.to_s.underscore, property.to_s)
 - form_object = instance_variable_get "@#{object}_form"
-- case type
-- when :default
-  = form.input property, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
-- when :association
-  = form.association property, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send("#{property}_id") || value) }, selected: (form_object.model.send("#{property}_id") || value)#, collection: property.to_s.camelize.constantize.active
+- if type.is_a? Symbol
+  = form.label form_object.model.class.human_attribute_name property
+  - case type
+  - when :default
+    = form.input property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
+  - when :association
+    = form.association property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send("#{property}_id") || value) }, selected: (form_object.model.send("#{property}_id") || value)#, collection: property.to_s.camelize.constantize.active
+  - else
+    = form.input property, as: type, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) } 
 - else
-  = form.input property, as: type, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) } 
+  - property_value = form_object.model.values.present? && form_object.model.values[property.to_s]
+  = render 'tramway/core/shared/input_extended', field: type[:extended_form_property], class_name: :record, value: property_value, f: form

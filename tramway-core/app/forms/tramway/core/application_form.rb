@@ -2,6 +2,9 @@ module Tramway::Core
   class ApplicationForm < ::Reform::Form
     def initialize(object)
       super(object).tap do
+        @@model_class = object.class
+        @@enumerized_attributes = object.class.enumerized_attributes
+
         @@associations&.each do |association|
           options = object.class.reflect_on_all_associations(:belongs_to).select do |a|
             a.name == association.to_sym
@@ -26,7 +29,7 @@ module Tramway::Core
     end
 
     def properties
-      @form_properties
+      @form_properties || []
     end
 
     class << self
@@ -34,6 +37,14 @@ module Tramway::Core
         properties property
         @@associations ||= []
         @@associations << property
+      end
+      
+      def enumerized_attributes
+        @@enumerized_attributes
+      end
+
+      def reflect_on_association(*args)
+        @@model_class.reflect_on_association(*args)
       end
     end
   end

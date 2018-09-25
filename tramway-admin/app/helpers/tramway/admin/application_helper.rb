@@ -7,6 +7,7 @@ module Tramway
       include RussianCasesHelper
       include ::Tramway::Admin::RecordsHelper
       include ::Tramway::Admin::SingletonHelper
+      include ::Tramway::Collections::Helper
 
       def title(page_title = default_title)
         title_text = "#{page_title} | #{t('application.name')}"
