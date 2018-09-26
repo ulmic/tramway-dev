@@ -1,6 +1,6 @@
 module Tramway
   module Conference
-    class ApplicationRecord < ActiveRecord::Base
+    class ApplicationRecord < ::Tramway::Core::ApplicationRecord
       self.abstract_class = true
     end
   end
