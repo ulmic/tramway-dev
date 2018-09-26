@@ -23,7 +23,7 @@
       - other_blocks = @blocks - headers - footers
       -# FIXME
       = render "tramway/landing/blocks/block_types/header", block: headers.first
-      %main{ class: ('mt-5' if @blocks&.any?) }
+      %main.mt-5
         .container
           - other_blocks.each_with_index do |block, index|
             = render "tramway/landing/blocks/block_types/#{block.model.block_type}", block: block

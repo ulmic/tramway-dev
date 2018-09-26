@@ -1,7 +1,7 @@
 ru:
   activerecord:
     models:
-      tramway/conference/unity: Единство
+      tramway/conference/unity: Проект
     attributes:
       tramway/conference/unity:
         title: Название
@@ -11,4 +11,4 @@ ru:
         phone: Телефон
   cases:
     tramway/conference/unity:
-      genitive: Единство
+      genitive: проект

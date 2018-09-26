@@ -21,19 +21,26 @@ module Tramway::SportSchool::Generators
     end
 
     def copy_migrations
-      migration_template 'create_tramway_sport_school_kind_sports.rb', 'db/migrate/create_tramway_sport_school_kind_sports.rb'
-      migration_template 'add_state_to_tramway_sport_school_kind_sports.rb', 'db/migrate/add_state_to_tramway_sport_school_kind_sports.rb'
-      migration_template 'add_image_to_tramway_sport_school_kind_sports.rb', 'db/migrate/add_image_to_tramway_sport_school_kind_sports.rb'
-      migration_template 'create_tramway_sport_school_trainers.rb', 'db/migrate/create_tramway_sport_school_trainers.rb'
-      migration_template 'create_tramway_sport_school_documents.rb', 'db/migrate/create_tramway_sport_school_documents.rb'
-      migration_template 'add_degree_to_tramway_sport_school_trainers.rb', 'db/migrate/add_degree_to_tramway_sport_school_trainers.rb'
-      migration_template 'add_description_to_tramway_sport_school_trainers.rb', 'db/migrate/add_description_to_tramway_sport_school_trainers.rb'
-      migration_template 'create_tramway_sport_school_institutions.rb', 'db/migrate/create_tramway_sport_school_institutions.rb'
-      migration_template 'add_description_to_tramway_sport_school_kind_sports.rb', 'db/migrate/add_description_to_tramway_sport_school_kind_sports.rb'
-      migration_template 'create_tramway_sport_school_organizations.rb', 'db/migrate/create_tramway_sport_school_organizations.rb'
-      migration_template 'add_contacts_to_tramway_sport_school_institutions.rb', 'db/migrate/add_contacts_to_tramway_sport_school_institutions.rb'
-      migration_template 'add_ll_to_tramway_sport_school_institutions.rb', 'db/migrate/add_ll_to_tramway_sport_school_institutions.rb'
-      migration_template 'add_document_type_to_tramway_sport_school_documents.rb', 'db/migrate/add_document_type_to_tramway_sport_school_documents.rb'
+      migrations = [
+        :create_tramway_sport_school_kind_sports,
+        :add_state_to_tramway_sport_school_kind_sports,
+        :add_image_to_tramway_sport_school_kind_sports,
+        :create_tramway_sport_school_trainers,
+        :create_tramway_sport_school_documents,
+        :add_degree_to_tramway_sport_school_trainers,
+        :add_description_to_tramway_sport_school_trainers,
+        :create_tramway_sport_school_institutions,
+        :add_description_to_tramway_sport_school_kind_sports,
+        :create_tramway_sport_school_organizations,
+        :add_contacts_to_tramway_sport_school_institutions,
+        :add_ll_to_tramway_sport_school_institutions,
+        :add_document_type_to_tramway_sport_school_documents,
+        :add_url_to_tramway_sport_school_institutions,
+        :add_found_date_to_tramway_sport_school_institutions
+      ]
+      migrations.each do |migration|
+        migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
+      end
       ::Tramway::SportSchool::Institution.create!
     end
   end

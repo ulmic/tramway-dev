@@ -1,5 +1,5 @@
 class Tramway::SportSchool::InstitutionForm < ::Tramway::Core::ApplicationForm
-  properties :title, :tagline, :logo, :state, :phone, :address, :longtitude, :latitude
+  properties :title, :tagline, :logo, :state, :phone, :address, :longtitude, :latitude, :url, :found_date
 
   def initialize(object)
     form_object = super object
@@ -8,7 +8,9 @@ class Tramway::SportSchool::InstitutionForm < ::Tramway::Core::ApplicationForm
                     phone: :string,
                     address: :string,
                     latitude: :string,
-                    longtitude: :string
+                    longtitude: :string,
+                    url: :string,
+                    found_date: :date_picker
     form_object
   end
 end

@@ -4,13 +4,17 @@
     .row
       .col-md-6
         %h5.title
-          = yield :application_name
+          = @application.title
         %p
-          = yield :application_tagline
+          = @application.tagline
         .logo_collage.effect-parent
           = yield :footer_logos
       .col-md-6
         = yield :footer_links
   .footer-copyright
     .container-fluid
-      = link_to copyright(2018, yield(:application_name)), yield(:application_url)
+      - external_url = if @application.url.present?
+        - @application.url.include?('http') || @application.url.include?('https') ? @application.url : "http://#{@application.url}"
+      - else
+        - ''
+      = link_to copyright(@application&.found_date&.year || DateTime.now.year, @application.title), external_url

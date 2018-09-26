@@ -1,5 +1,5 @@
 module Tramway
   module Landing
-    VERSION = '1.2.19'
+    VERSION = '1.3'
   end
 end

@@ -12,12 +12,18 @@ module Tramway::Landing::Generators
     end
 
     def copy_migrations
-      migration_template 'create_tramway_landing_blocks.rb', 'db/migrate/create_tramway_landing_blocks.rb'
-      migration_template 'add_navbar_link_to_tramway_landing_blocks.rb', 'db/migrate/add_navbar_link_to_tramway_landing_blocks.rb'
-      migration_template 'add_anchor_to_tramway_landing_blocks.rb', 'db/migrate/add_anchor_to_tramway_landing_blocks.rb'
-      migration_template 'add_description_to_tramway_landing_blocks.rb', 'db/migrate/add_description_to_tramway_landing_blocks.rb'
-      migration_template 'add_link_object_id_to_tramway_landing_blocks.rb', 'db/migrate/add_link_object_id_to_tramway_landing_blocks.rb'
-      migration_template 'add_link_object_type_to_tramway_landing_blocks.rb', 'db/migrate/add_link_object_type_to_tramway_landing_blocks.rb'
+      migrations = [
+        :create_tramway_landing_blocks,
+        :add_navbar_link_to_tramway_landing_blocks,
+        :add_anchor_to_tramway_landing_blocks,
+        :add_description_to_tramway_landing_blocks,
+        :add_link_object_id_to_tramway_landing_blocks,
+        :add_link_object_type_to_tramway_landing_blocks
+      ]
+
+      migrations.each do |migration|
+        migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
+      end
     end
   end
 end

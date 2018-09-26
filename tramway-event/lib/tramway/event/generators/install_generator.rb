@@ -15,16 +15,21 @@ module Tramway::Event::Generators
     end
 
     def copy_migrations
-      migration_template 'create_tramway_event_events.rb', 'db/migrate/create_tramway_event_events.rb'
-      migration_template 'add_photo_to_tramway_event_events.rb', 'db/migrate/add_photo_to_tramway_event_events.rb'
-      migration_template 'create_tramway_event_participant_form_fields.rb', 'db/migrate/create_tramway_event_participant_form_fields.rb'
-      migration_template 'create_tramway_event_participants.rb', 'db/migrate/create_tramway_event_participants.rb'
-      migration_template 'add_options_to_tramway_event_participant_form_fields.rb', 'db/migrate/add_options_to_tramway_event_participant_form_fields.rb'
-      migration_template 'add_position_to_tramway_event_participant_form_fields.rb', 'db/migrate/add_position_to_tramway_event_participant_form_fields.rb'
-      migration_template 'create_tramway_event_sections.rb', 'db/migrate/create_tramway_event_sections.rb'
-      migration_template 'add_icon_to_tramway_event_sections.rb', 'db/migrate/add_icon_to_tramway_event_sections.rb'
-      migration_template 'add_position_to_tramway_event_sections.rb', 'db/migrate/add_position_to_tramway_event_sections.rb'
-      migration_template 'add_status_to_tramway_event_events.rb', 'db/migrate/add_status_to_tramway_event_events.rb'
+      migrations = [
+        :create_tramway_event_events,
+        :add_photo_to_tramway_event_events,
+        :create_tramway_event_participant_form_fields,
+        :create_tramway_event_participants,
+        :add_options_to_tramway_event_participant_form_fields,
+        :add_position_to_tramway_event_participant_form_fields,
+        :create_tramway_event_sections,
+        :add_icon_to_tramway_event_sections,
+        :add_position_to_tramway_event_sections,
+        :add_status_to_tramway_event_events
+      ]
+      migrations.each do |migration|
+        migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
+      end
     end
   end
 end
