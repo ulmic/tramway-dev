@@ -33,6 +33,8 @@ module Tramway::Core
     end
 
     class << self
+      delegate :defined_enums, to: :model_class
+
       def association(property)
         properties property
         @@associations ||= []
@@ -45,6 +47,10 @@ module Tramway::Core
 
       def reflect_on_association(*args)
         @@model_class.reflect_on_association(*args)
+      end
+
+      def model_class
+        @@model_class ||= self.name.to_s.sub(/Form$/, '')
       end
     end
   end
