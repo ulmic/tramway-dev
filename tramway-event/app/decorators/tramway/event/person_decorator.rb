@@ -1,4 +1,4 @@
-class Tramway::Conference::PersonDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Event::PersonDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
       [ :all ]

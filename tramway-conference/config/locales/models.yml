@@ -2,7 +2,6 @@ ru:
   activerecord:
     models:
       tramway/conference/unity: Проект
-      tramway/conference/person: Член команды
     attributes:
       tramway/conference/unity:
         title: Название
@@ -13,6 +12,3 @@ ru:
   cases:
     tramway/conference/unity:
       genitive: проект
-    tramway/conference/person:
-      genitive: профиль члена команды
-      plural: Команда

@@ -2,4 +2,5 @@
                                       ::Tramway::Event::ParticipantFormField,
                                       ::Tramway::Event::Participant,
                                       ::Tramway::Event::Section,
+                                      ::Tramway::Event::Person,
                                       project: :event)

@@ -22,9 +22,7 @@ module Tramway::Conference::Generators
       migrations = [
         :create_tramway_conference_unities,
         :add_url_to_tramway_conference_unities,
-        :add_found_date_to_tramway_conference_unities,
-        :create_tramway_conference_people,
-        :create_tramway_conference_people_event_sections
+        :add_found_date_to_tramway_conference_unities
       ]
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"

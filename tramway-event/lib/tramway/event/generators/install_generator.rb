@@ -27,6 +27,7 @@ module Tramway::Event::Generators
         :add_position_to_tramway_event_sections,
         :add_status_to_tramway_event_events,
         :create_tramway_event_people,
+        :create_tramway_event_people_sections
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

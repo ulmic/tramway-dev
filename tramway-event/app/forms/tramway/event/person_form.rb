@@ -1,4 +1,4 @@
-class Tramway::Conference::PersonForm < ::Tramway::Core::ApplicationForm
+class Tramway::Event::PersonForm < ::Tramway::Core::ApplicationForm
   properties :first_name, :last_name, :photo, :sections
 
   def initialize(object)

@@ -5,6 +5,7 @@ ru:
       tramway/event/participant: Участник
       tramway/event/participant_form_field: Поле анкеты
       tramway/event/section: Секция
+      tramway/event/person: Член команды
     attributes:
       tramway/event/event:
         title: Название
@@ -24,3 +25,6 @@ ru:
     tramway/event/participant_form_field:
       plural: поля анкеты
       genitive: поле анкеты
+    tramway/event/person:
+      genitive: профиль члена команды
+      plural: Команда
