@@ -14,6 +14,3 @@ $(document).ready ->
 
   $('.link').click ->
     location.href = $(this).data('href')
-
-  $('.selectize .selectize-control .selectize-input input[type="text"]').addClass('form-control')
-  $('.selectize .selectize-control .selectize-input input[type="text"]').width '100%'

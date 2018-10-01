@@ -26,6 +26,18 @@ class Tramway::Core::ApplicationDecorator
         new object_or_array
       end
     end
+
+    def decorate_association(association_name)
+      @@decorated_associations ||= []
+      @@decorated_associations << association_name
+
+      define_method association_name do
+        class_name = object.class.reflect_on_association(association_name).options[:class_name]
+        object.send(association_name).map do |association_object|
+          "#{class_name}Decorator".constantize.decorate association_object
+        end
+      end
+    end
   end
 
   delegate :id, to: :object
@@ -38,6 +50,12 @@ class Tramway::Core::ApplicationDecorator
 
   def model
     object
+  end
+
+  def associations
+    object.class.reflect_on_all_associations.map do |association|
+      association unless association.name == :audits
+    end.compact
   end
 
   def attributes

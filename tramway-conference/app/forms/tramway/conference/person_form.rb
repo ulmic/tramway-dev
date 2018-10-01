@@ -11,5 +11,6 @@ class Tramway::Conference::PersonForm < ::Tramway::Core::ApplicationForm
   end
 
   def sections=(value)
+    model.sections = ::Tramway::Event::Section.where id: value.split(',')
   end
 end

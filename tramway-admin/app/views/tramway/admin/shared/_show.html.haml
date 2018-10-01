@@ -1,0 +1,39 @@
+- default_page_title ||= nil; on_site_link ||= nil
+- current_title = default_page_title || model_class.model_name.human.pluralize(:ru)
+- title current_title
+
+= content_for :sidebar do
+  - buttons = ::Tramway::Admin.additional_buttons(record: object.model.class.to_s, view: :show)
+  - if buttons
+    .btn-group-vertical
+      = build_buttons buttons
+.page-header
+  .row
+    .col-md-6
+      %h2
+        = current_title
+        = link_to fa_icon(:pencil), edit_current_model_singleton_path, class: 'btn btn-warning btn-xs'
+%hr
+.row
+  %table.table.table-striped.table-bordered
+    - object.attributes.each do |attribute_name, value|
+      %tr
+        %td
+          = model_class.human_attribute_name attribute_name
+        %td
+          = value
+        %td
+          - if attribute_name != 'state' && object.model.class.state_machines.keys.include?(attribute_name.to_sym)
+            = state_events_buttons object, state_method: attribute_name, model_param_name: :record, route_method: :current_model_record_path
+    - object.associations.each do |association|
+      %tr
+        %td
+          = model_class.human_attribute_name association.name
+        %td{ colspan: 2 }
+          %table.table.table-striped.table-bordered
+            - object.send(association.name).each do |association_object|
+              %tr
+                %td
+                  = association_object.id
+                %td
+                  = association_object.name
