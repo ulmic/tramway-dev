@@ -52,8 +52,8 @@ class Tramway::Core::ApplicationDecorator
     object
   end
 
-  def associations
-    object.class.reflect_on_all_associations.map do |association|
+  def associations(associations_type)
+    object.class.reflect_on_all_associations(associations_type).map do |association|
       association unless association.name == :audits
     end.compact
   end

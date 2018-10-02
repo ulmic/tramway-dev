@@ -5,6 +5,8 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
     end
   end
 
+  decorate_association :event
+
   def title
     if object.values.present?
       first_name = object.values['Фамилия']

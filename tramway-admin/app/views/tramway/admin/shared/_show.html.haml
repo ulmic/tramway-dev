@@ -25,7 +25,7 @@
         %td
           - if attribute_name != 'state' && object.model.class.state_machines.keys.include?(attribute_name.to_sym)
             = state_events_buttons object, state_method: attribute_name, model_param_name: :record, route_method: :current_model_record_path
-    - object.associations.each do |association|
+    - object.associations(:has_many).each do |association|
       %tr
         %td
           = model_class.human_attribute_name association.name
