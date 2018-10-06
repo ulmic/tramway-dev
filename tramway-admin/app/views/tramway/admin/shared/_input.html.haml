@@ -6,7 +6,8 @@
   - when :default
     = form.input property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
   - when :association
-    = form.association property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send("#{property}_id") || value) }, selected: (form_object.model.send("#{property}_id") || value)#, collection: property.to_s.camelize.constantize.active
+    - full_class_name_association = form_object.class.full_class_name_association(property)
+    = form.association property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send("#{property}_id") || value) }, selected: (form_object.model.send("#{property}_id") || value), collection: full_class_name_association.active.map { |obj| decorator_class(full_class_name_association).decorate obj }
   - else
     = form.input property, as: type, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) } 
 - else

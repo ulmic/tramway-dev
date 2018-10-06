@@ -27,7 +27,13 @@ module Tramway::Event::Generators
         :add_position_to_tramway_event_sections,
         :add_status_to_tramway_event_events,
         :create_tramway_event_people,
-        :create_tramway_event_people_sections
+        :create_tramway_event_people_sections,
+
+        # NOTE must be removed until tramway-event 2.0
+        :rename_tramway_event_people_sections_to_tramway_event_partakings,
+
+        :add_position_to_tramway_event_partakings,
+        :add_state_to_tramway_event_partakings
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

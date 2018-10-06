@@ -36,6 +36,6 @@
     = render 'tramway/event/participants/form', event: event
     %br
     - sections.each_with_index do |section, index|
-      = render 'tramway/landing/blocks/templates/section_with_image_and_text', block: section
+      = render 'tramway/event/sections/show_page', section: section
       - if index < sections.count - 1
         %br

@@ -3,4 +3,5 @@
                                       ::Tramway::Event::Participant,
                                       ::Tramway::Event::Section,
                                       ::Tramway::Event::Person,
+                                      ::Tramway::Event::Partaking,
                                       project: :event)

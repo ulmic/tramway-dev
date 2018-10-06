@@ -1,16 +1,11 @@
 class Tramway::Event::PersonForm < ::Tramway::Core::ApplicationForm
-  properties :first_name, :last_name, :photo, :sections
+  properties :first_name, :last_name, :photo
 
   def initialize(object)
     super(object).tap do
       form_properties first_name: :string,
         last_name: :string,
-        photo: :file,
-        sections: :selectize
+        photo: :file
     end
-  end
-
-  def sections=(value)
-    model.sections = ::Tramway::Event::Section.where id: value.split(',')
   end
 end

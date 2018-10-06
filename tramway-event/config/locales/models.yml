@@ -6,6 +6,7 @@ ru:
       tramway/event/participant_form_field: Поле анкеты
       tramway/event/section: Секция
       tramway/event/person: Член команды
+      tramway/event/partaking: Должность
     attributes:
       tramway/event/event:
         title: Название
@@ -27,4 +28,7 @@ ru:
       genitive: поле анкеты
     tramway/event/person:
       genitive: профиль члена команды
-      plural: Команда
+      plural: члены команды
+    tramway/event/partaking:
+      genitive: должность
+      plural: должности

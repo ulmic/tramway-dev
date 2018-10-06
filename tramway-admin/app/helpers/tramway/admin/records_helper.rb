@@ -21,8 +21,8 @@ module Tramway::Admin
       params[:model].constantize
     end
 
-    def decorator_class
-      "#{model_class}Decorator".constantize
+    def decorator_class(model_name = nil)
+      "#{model_name || model_class}Decorator".constantize
     end
 
     def get_collection(model_class)
