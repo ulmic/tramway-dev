@@ -9,7 +9,7 @@ class Tramway::Landing::BlockForm < ::Tramway::Core::ApplicationForm
                     block_type: :default,
                     navbar_link: :default,
                     anchor: :string,
-                    description: :default,
+                    description: :ckeditor,
                     link_object_type: :default,
                     link_object_id: :numeric
     form_object
