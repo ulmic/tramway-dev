@@ -1,13 +1,14 @@
 - if collection.any?
-  %main.mt-5{ id: block.anchor }
+  %main.mt-5{ id: defined?(block) ? block.anchor : "#{collection.class.name.underscore}_as_features" }
     .container
       %section#best-features.text-center
-        %h2.mb-4.font-weight-bold
-          = block.title
-        .row.d-flex.justify-content-center.mb-4
-          .col-md-8
-            %p.grey-text
-              = block.description
+        - if defined?(block)
+          %h2.mb-4.font-weight-bold
+            = block.title
+          .row.d-flex.justify-content-center.mb-4
+            .col-md-8
+              %p.grey-text
+                = block.description
         - collection.each_slice 5 do |sub_collection|
           .row
             - sub_collection.each do |item|
@@ -15,7 +16,8 @@
                 - if item.icon.present?
                   = fa_icon item.icon, class: 'fa-4x blue-text'
                 - else
-                  = image_tag item.image
+                  - image_css_class_name = defined?(options) ? options.dig(:image, :css, :class_name) : ''
+                  = image_tag item.image, class: image_css_class_name
                 %h4.my-4
                   = item.title
                 %p.grey-text

@@ -6,4 +6,6 @@ class Tramway::Landing::BlockTypes::FeaturesDecorator < ::Tramway::Core::Applica
   def title; end
 
   def text; end
+
+  def anchor; end
 end

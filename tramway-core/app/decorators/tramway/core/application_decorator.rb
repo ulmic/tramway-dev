@@ -27,14 +27,20 @@ class Tramway::Core::ApplicationDecorator
       end
     end
 
-    def decorate_association(association_name)
+    def decorate_association(association_name, decorator: nil)
       @@decorated_associations ||= []
       @@decorated_associations << association_name
 
       define_method association_name do
         class_name = object.class.reflect_on_association(association_name).options[:class_name]
-        object.send(association_name).map do |association_object|
-          "#{class_name}Decorator".constantize.decorate association_object
+        #FIXME use error abstraction
+        unless class_name
+          raise "Please, specify `#{association_name}` association class_name in #{object.class} model. For example: `has_many :#{association_name}, class_name: 'ModelName'`"
+        end
+
+        object.send(association_name).active.map do |association_object|
+          decorator_class_name = decorator || "#{class_name.singularize}Decorator".constantize
+          decorator_class_name.decorate association_object
         end
       end
     end

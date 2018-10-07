@@ -1,15 +1,16 @@
-class Tramway::Event::SectionDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::FeaturesDecorator
   class << self
     def collections
       [ :all ]
     end
   end
 
+  delegate :description, to: :object
+  decorate_association :partakings, decorator: Tramway::Event::PartakingFeatureDecorator
+
   def title
     "#{fa_icon(object.icon)} #{object.title}".html_safe
   end
-
-  delegate :description, to: :object
 
   def background
     object.photo
