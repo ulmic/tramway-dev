@@ -3,6 +3,10 @@ class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::Feature
     def collections
       [ :all ]
     end
+
+    def list_attributes
+      [ :event_title ]
+    end
   end
 
   delegate :description, to: :object
@@ -18,5 +22,9 @@ class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::Feature
 
   def anchor
     "section-#{object.id}"
+  end
+
+  def event_title
+    object.event.title
   end
 end

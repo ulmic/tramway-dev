@@ -18,7 +18,7 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     end
 
     event :reject do
-      transition [ :requested, :without_answer, :waiting ] => :rejected
+      transition [ :requested, :without_answer, :waiting, :prev_approved ] => :rejected
     end
 
     event :approve do
