@@ -1,7 +1,7 @@
 class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [ :requested, :waiting, :prev_approved, :without_answer, :approved, :rejected, :all ]
     end
 
     def list_attributes
@@ -49,6 +49,17 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
           end)
         end)
       end
+    end
+  end
+
+  def participation_state_button_color(event)
+    case event
+    when :previous_approve, :approve
+      :success
+    when :wait_for_decision, :not_got_answer
+      :warning
+    when :reject
+      :danger
     end
   end
 end

@@ -1,0 +1,22 @@
+ru:
+  collections:
+    tramway/event/participant:
+      published: Опубликованные
+      hidden: Скрытые
+  activerecord:
+    state_machines:
+      tramway/event/participant:
+        participation_state:
+          states:
+            requested: Заявка отправлена
+            prev_approved: Получено предварительное подтверждение
+            waiting: Ожидание решения
+            rejected: Заявка отклонена
+            approved: Окончательное подтверждение
+            without_answer: Без ответа
+          events:
+            previous_approve: Предварительно подтвердить
+            wait_for_decision: Ожидать ответа
+            reject: Отклонить
+            approve: Окончательно подтвердить
+            not_got_answer: Связаться не удалось

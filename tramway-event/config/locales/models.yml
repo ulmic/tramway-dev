@@ -32,3 +32,12 @@ ru:
     tramway/event/partaking:
       genitive: должность
       plural: должности
+  collections:
+    tramway/event/participant:
+      requested: Необработанные
+      prev_approved: Предварительно подтверждены
+      waiting: Ожидаем ответа
+      rejected: Отклонены
+      approved: Окончательно подтверждены
+      without_answer: Не ответили
+

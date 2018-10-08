@@ -33,7 +33,8 @@ module Tramway::Event::Generators
         :rename_tramway_event_people_sections_to_tramway_event_partakings,
 
         :add_position_to_tramway_event_partakings,
-        :add_state_to_tramway_event_partakings
+        :add_state_to_tramway_event_partakings,
+        :add_more_fields_to_tramway_event_participants
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
