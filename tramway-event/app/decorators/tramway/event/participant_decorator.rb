@@ -22,6 +22,14 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
 
   def list_fields
     content_tag :table, class: :table do
+      concat(content_tag(:tr) do
+        concat(content_tag(:td) do
+          object.class.human_attribute_name(:event)
+        end)
+        concat(content_tag(:td) do
+          object.event.title
+        end)
+      end)
       object.event.participant_form_fields.map do |field|
         hash = field.options.is_a?(Hash) ? field.options : JSON.parse(field.options.present? ? field.options : '{}')
         if hash.dig('list_field') == 'true'

@@ -15,6 +15,7 @@ ru:
         end_date: Дата конца
       tramway/event/participant:
         comment: Примечание
+        event: Мероприятие
   cases:
     tramway/event/event:
       plural: мероприятия
