@@ -1,5 +1,5 @@
 - default_page_title ||= nil; on_site_link ||= nil
-- current_title = default_page_title || model_class.model_name.human.pluralize(:ru)
+- current_title = default_page_title || "#{object.name} | #{model_class.model_name.human.pluralize(:ru)}"
 - title current_title
 - object_type = ::Tramway::Admin.available_models_for(@application_engine).include?(object.class) ? :record : :singleton
 = content_for :sidebar do
@@ -9,7 +9,7 @@
       = build_buttons buttons
 .page-header
   .row
-    .col-md-6
+    .col-md-12
       %h2
         = current_title
         - edit_path = object_type == :singleton ? edit_current_model_singleton_path : edit_current_model_record_path(object.id)
