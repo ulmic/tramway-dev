@@ -6,4 +6,5 @@ class Tramway::Conference::UnityDecorator < ::Tramway::Core::ApplicationDecorato
   end
 
   delegate :logo, to: :object
+  decorate_association :social_networks
 end
