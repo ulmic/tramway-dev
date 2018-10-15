@@ -6,8 +6,10 @@
   - when :default
     = form.input property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
   - when :association
-    - full_class_name_association = form_object.class.full_class_name_association(property)
-    = form.association property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send("#{property}_id") || value) }, selected: (form_object.model.send("#{property}_id") || value), collection: full_class_name_association.active.map { |obj| decorator_class(full_class_name_association).decorate obj }
+    = form.association property, **association_params(form_object: form_object, property: property, value: value, object: object)
+  - when :polymorphic_association
+    = form.input property, **polymorphic_association_params(object: object, form_object: form_object, property: property, value: value)
+    = form.input "#{property}_type", input_html: { name: "#{object}[#{property}_type]", id: "#{object}_#{property}_type", value: (form_object.send(property) || form_object.model.send("#{property}_type") || value) }, selected: (form_object.model.send("#{property}_type") || value)
   - else
     = form.input property, as: type, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) } 
 - else

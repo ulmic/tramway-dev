@@ -8,6 +8,7 @@ module Tramway
       include ::Tramway::Admin::RecordsHelper
       include ::Tramway::Admin::SingletonHelper
       include ::Tramway::Admin::NavbarHelper
+      include ::Tramway::Admin::InputsHelper
       include ::Tramway::Collections::Helper
     end
   end

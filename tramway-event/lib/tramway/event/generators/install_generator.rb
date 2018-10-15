@@ -34,7 +34,10 @@ module Tramway::Event::Generators
 
         :add_position_to_tramway_event_partakings,
         :add_state_to_tramway_event_partakings,
-        :add_more_fields_to_tramway_event_participants
+        :add_more_fields_to_tramway_event_participants,
+        
+        # NOTE must be removed until tramway-event 2.0
+        :rebuild_association_between_participant_and_partakings_to_polymorphic
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

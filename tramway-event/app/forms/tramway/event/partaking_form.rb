@@ -1,10 +1,10 @@
 class Tramway::Event::PartakingForm < ::Tramway::Core::ApplicationForm
-  properties :section_id, :person_id, :position
-  associations :section, :person
+  properties :part_id, :part_type, :person_id, :position
+  associations :person, :part
 
   def initialize(object)
     super(object).tap do
-      form_properties section: :association,
+      form_properties part: :polymorphic_association,
         person: :association,
         position: :string
     end

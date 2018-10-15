@@ -16,6 +16,13 @@ ru:
       tramway/event/participant:
         comment: Примечание
         event: Мероприятие
+      tramway/event/section:
+        title: Название
+        description: Описание
+        event: Мероприятие
+        photo: Изображение
+        icon: Иконка
+        position: Позиция на странице мероприятия
   cases:
     tramway/event/event:
       plural: мероприятия

@@ -6,8 +6,15 @@ module Tramway::Core
         @@enumerized_attributes = object.class.enumerized_attributes
 
         self.class.full_class_name_associations.each do |association, class_name|
-          self.class.send(:define_method, "#{association}=") do |value|
-            super class_name.find value
+          if class_name.is_a? Array
+            self.class.send(:define_method, "#{association}=") do |value|
+              association_class = send("#{association}_type")
+              super association_class.constantize.find value
+            end
+          else
+            self.class.send(:define_method, "#{association}=") do |value|
+              super class_name.find value
+            end
           end
         end
       end
@@ -47,7 +54,14 @@ module Tramway::Core
             a.name == association.to_sym
           end.first&.options
           
-          options ? hash.merge!(association => options[:class_name].constantize) : hash
+          if options
+            if options[:polymorphic]
+              hash.merge! association => @@model_class.send("#{association}_type").values
+            else
+              hash.merge!(association => options[:class_name].constantize)
+            end
+          end
+          hash
         end
       end
 
