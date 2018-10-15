@@ -8,5 +8,6 @@ class Tramway::Event::EventsController < Tramway::Event::ApplicationController
     @sections = @event.sections.order(position: :asc).map { |s| ::Tramway::Event::SectionDecorator.decorate s }
     @footer = ::Tramway::Landing::BlockDecorator.decorate ::Tramway::Landing::Block.footer
     @events = ::Tramway::Event::Event.active.map { |e| ::Tramway::Event::EventDecorator.decorate e }
+    @people_as_features = @event.partakings.map { |p| ::Tramway::Event::PartakingFeatureDecorator.decorate p }
   end
 end

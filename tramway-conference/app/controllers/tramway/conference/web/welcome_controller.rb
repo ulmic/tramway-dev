@@ -12,6 +12,7 @@ class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::Appli
       @sections_as_features = main_event.sections.order(position: :asc).map { |s| ::Tramway::Event::SectionFeatureDecorator.decorate s }
       @sections = main_event.sections.order(position: :asc).map { |s| ::Tramway::Event::SectionDecorator.decorate s }
       @participant_form = ::Tramway::Event::ParticipantExtendedFormCreator.create_form_class(request.uuid, main_event).new ::Tramway::Event::Participant.new
+      @people_as_features = @main_event.partakings.map { |p| ::Tramway::Event::PartakingFeatureDecorator.decorate p }
     end
   end
 end

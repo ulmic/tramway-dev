@@ -9,6 +9,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   delegate :description, to: :object
   delegate :participant_form_fields, to: :object
   delegate :sections, to: :object
+  delegate :partakings, to: :object
   decorate_association :participants
 
   def background
