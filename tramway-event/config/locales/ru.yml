@@ -8,5 +8,5 @@ ru:
           request_collecting_state:
             not_initialized: Сбор заявок не объявлен
             will_begin_soon: Сбор заявок скоро начнётся
-            are_being_right_now: Сбор заявок на мероприятие
+            are_being_right_now: Подайте заявку на мероприятие
             is_over: Сбор заявок завершён
