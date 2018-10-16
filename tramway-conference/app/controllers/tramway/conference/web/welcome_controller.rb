@@ -8,7 +8,7 @@ class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::Appli
     @links = ::Tramway::Event::EventLinkDecorator.decorate ::Tramway::Event::Event.active
     main_event = ::Tramway::Event::Event.main_event&.last
     if main_event.present?
-      @main_event = ::Tramway::Event::EventDecorator.decorate main_event
+      @main_event = ::Tramway::Event::Events::Show::EventDecorator.decorate main_event
       @sections_as_features = main_event.sections.order(position: :asc).map { |s| ::Tramway::Event::SectionFeatureDecorator.decorate s }
       @sections = main_event.sections.order(position: :asc).map { |s| ::Tramway::Event::SectionDecorator.decorate s }
       @participant_form = ::Tramway::Event::ParticipantExtendedFormCreator.create_form_class(request.uuid, main_event).new ::Tramway::Event::Participant.new

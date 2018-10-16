@@ -1,4 +1,4 @@
-class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
       [ :all ]
@@ -7,10 +7,9 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
 
   delegate :title, to: :object
   delegate :description, to: :object
-  decorate_association :participants
-  decorate_association :participant_form_fields
-  decorate_association :sections
-  decorate_association :partakings
+  delegate :participant_form_fields, to: :object
+  delegate :sections, to: :object
+  delegate :partakings, to: :object
 
   def background
     object.photo
