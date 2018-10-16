@@ -37,7 +37,9 @@ module Tramway::Event::Generators
         :add_more_fields_to_tramway_event_participants,
         
         # NOTE must be removed until tramway-event 2.0
-        :rebuild_association_between_participant_and_partakings_to_polymorphic
+        :rebuild_association_between_participant_and_partakings_to_polymorphic,
+
+        :add_request_period_to_tramway_event_events
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

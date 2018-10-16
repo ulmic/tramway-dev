@@ -13,6 +13,8 @@ ru:
         description: Описание
         begin_date: Дата начала
         end_date: Дата конца
+        request_collecting_begin_date: Дата начала приёма заявок на мероприятие
+        request_collecting_end_date: Дата окончания приёма заявок на мероприятие
       tramway/event/participant:
         comment: Примечание
         event: Мероприятие

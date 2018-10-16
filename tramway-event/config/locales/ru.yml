@@ -5,3 +5,8 @@ ru:
         form:
           registration: Регистрация на мероприятие
           submit_form: Отправить заявку
+          request_collecting_state:
+            not_initialized: Сбор заявок не объявлен
+            will_begin_soon: Сбор заявок скоро начнётся
+            are_being_right_now: Сбор заявок на мероприятие
+            is_over: Сбор заявок завершён

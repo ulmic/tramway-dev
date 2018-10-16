@@ -10,6 +10,7 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   delegate :participant_form_fields, to: :object
   delegate :sections, to: :object
   delegate :partakings, to: :object
+  delegate :request_collecting_state, to: :object
 
   def background
     object.photo
