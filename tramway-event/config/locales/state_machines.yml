@@ -14,9 +14,11 @@ ru:
             rejected: Заявка отклонена
             approved: Окончательное подтверждение
             without_answer: Без ответа
+            reserved: В резерве
           events:
             previous_approve: Предварительно подтвердить
             wait_for_decision: Ожидать ответа
             reject: Отклонить
             approve: Окончательно подтвердить
             not_got_answer: Связаться не удалось
+            reserve: Отправить в резерв

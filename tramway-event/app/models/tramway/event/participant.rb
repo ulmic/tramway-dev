@@ -8,6 +8,7 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     state :rejected
     state :approved
     state :without_answer
+    state :reserved
 
     event :previous_approve do
       transition [ :requested, :without_answer, :waiting ] => :prev_approved
@@ -22,11 +23,15 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     end
 
     event :approve do
-      transition prev_approved: :approved
+      transition [ :prev_approved, :reserved ] => :approved
     end
 
     event :not_got_answer do
       transition requested: :without_answer
+    end
+
+    event :reserve do
+      transition [ :requested, :without_answer, :waiting ] => :reserved
     end
   end
 
@@ -36,4 +41,5 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
   scope :rejected, -> { where participation_state: :rejected }
   scope :approved, -> { where participation_state: :approved }
   scope :without_answer, -> { where participation_state: :without_answer }
+  scope :reserved, -> { where participation_state: :reserved }
 end

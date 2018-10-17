@@ -1,7 +1,7 @@
 class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :requested, :waiting, :prev_approved, :without_answer, :approved, :rejected, :all ]
+      [ :requested, :waiting, :prev_approved, :without_answer, :approved, :rejected, :reserved, :all ]
     end
 
     def list_attributes
@@ -69,6 +69,8 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
       :warning
     when :reject
       :danger
+    when :reserve
+      :warning
     end
   end
 end
