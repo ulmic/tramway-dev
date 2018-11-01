@@ -8,4 +8,6 @@ class Tramway::Landing::BlockTypes::FeaturesDecorator < ::Tramway::Core::Applica
   def text; end
 
   def anchor; end
+
+  def full_text; end
 end

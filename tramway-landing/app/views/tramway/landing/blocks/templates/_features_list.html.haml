@@ -9,16 +9,32 @@
             .col-md-8
               %p.grey-text
                 = block.description
-        - collection.each_slice 3 do |sub_collection|
-          .row
-            - sub_collection.each do |item|
-              .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
-                - if item.icon.present?
-                  = fa_icon item.icon, class: 'fa-4x blue-text'
-                - else
-                  - image_css_class_name = defined?(options) ? options.dig(:image, :css, :class_name) : ''
-                  = image_tag item.image, class: image_css_class_name
-                %h4.my-4
-                  = item.title
-                %p.grey-text
-                  != item.text
+        .row
+          - if collection.count == 1
+            - item = collection.first
+            .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
+              - if item.icon.present?
+                = fa_icon item.icon, class: 'fa-4x blue-text'
+              - else
+                - image_css_class_name = defined?(options) ? options.dig(:image, :css, :class_name) : ''
+                = image_tag item.image, class: image_css_class_name
+              %h4.my-4
+                = item.title
+              %p.grey-text
+                != item.text
+            .col.col-sm-10.col-xl-8.col-lg-8.col-md-8.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
+              %p.grey-text
+                != item.full_text
+          - else
+            - collection.each_slice 3 do |sub_collection|
+              - sub_collection.each do |item|
+                .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
+                  - if item.icon.present?
+                    = fa_icon item.icon, class: 'fa-4x blue-text'
+                  - else
+                    - image_css_class_name = defined?(options) ? options.dig(:image, :css, :class_name) : ''
+                    = image_tag item.image, class: image_css_class_name
+                  %h4.my-4
+                    = item.title
+                  %p.grey-text
+                    != item.text

@@ -3,6 +3,10 @@ class ::Tramway::Event::PartakingFeatureDecorator < ::Tramway::Landing::BlockTyp
     object.position&.html_safe
   end
 
+  def full_text
+    object.person.description
+  end
+
   def title
     "#{object.person.first_name} #{object.person.last_name}"
   end
