@@ -12,4 +12,11 @@ $(document).ready ->
     })
 
   $('.link').click ->
-    location.href = $(this).data('href')
+    href = $(this).data('href')
+    if href
+      location.href = href
+    else
+      anchor = $(this).data('anchor')
+      console.log(anchor)
+      $(window).scrollTop $(anchor).offset().top
+

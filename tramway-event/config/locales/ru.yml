@@ -1,6 +1,9 @@
 ru:
   tramway:
     event:
+      events:
+        show_page:
+          registration: Регистрация
       participants:
         form:
           registration: Регистрация на мероприятие
