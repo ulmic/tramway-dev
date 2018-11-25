@@ -3,14 +3,14 @@ class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::Feature
     def collections
       [ :all ]
     end
-
-    def list_attributes
-      [ :event_title ]
-    end
   end
 
   delegate :description, to: :object
   decorate_association :partakings, decorator: Tramway::Event::PartakingFeatureDecorator
+
+  def name
+    "#{object.title} | #{object.event.title}"
+  end
 
   def title
     "#{fa_icon(object.icon)} #{object.title}".html_safe
