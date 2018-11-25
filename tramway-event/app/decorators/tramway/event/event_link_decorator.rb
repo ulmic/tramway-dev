@@ -1,4 +1,4 @@
-class Tramway::Event::EventLinkDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Event::EventLinkDecorator < ::Tramway::Landing::LinkDecorator
   delegate :title, to: :object
 
   def link

@@ -7,7 +7,15 @@
     .collapse.navbar-collapse#navbarSupportedContent
       %ul.navbar-nav.mr-auto
         - @links.each do |link|
-          = menu_item link.title, link.link
-= render 'tramway/landing/blocks/templates/full_page', block: header_block(block, title: yield(:application_name), tagline: yield(:application_tagline)), buttons: @links
+          - if link.is_a? Hash
+            .nav-item.dropdown
+              %a.nav-link.dropdown-toggle{ id: "dropdown_menu_button_#{link.keys.first}", aria: { expanded: :false, haspopup: :true }, data: { toggle: :dropdown } }
+                = t(".#{link.keys.first}")
+              .dropdown-menu.dropdown-primary{ aria: { labelledby: "dropdown_menu_button_#{link.keys.first}" } }
+                - link.values.first.each do |menu_item|
+                  = link_to menu_item.title, menu_item.link, class: 'dropdown-item'
+          - else
+            = menu_item link.title, link.link
+= render 'tramway/landing/blocks/templates/full_page', block: header_block(block, title: yield(:application_name), tagline: yield(:application_tagline)), buttons: @links.select { |link| !link.is_a? Hash }
 %script
   var scroll = new SmoothScroll('a[href*="#"]');

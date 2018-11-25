@@ -5,7 +5,10 @@ class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::Appli
     @unity = ::Tramway::Conference::Unity.includes(:social_networks).first
     @blocks = ::Tramway::Landing::BlockDecorator.decorate ::Tramway::Landing::Block.on_main_page
     @news = ::Tramway::News::News.active.first(3).map { |t| ::Tramway::Landing::Cards::NewsDecorator.new t }
-    @links = ::Tramway::Event::EventLinkDecorator.decorate ::Tramway::Event::Event.active.actual.order :begin_date
+    past_events = ::Tramway::Event::EventLinkDecorator.decorate ::Tramway::Event::Event.active.past.order begin_date: :desc
+    past_events_links = Tramway::Landing::NavbarDecorator.new [{ past_events: past_events }]
+    actual_events = ::Tramway::Event::EventLinkDecorator.decorate ::Tramway::Event::Event.active.actual.order :begin_date
+    @links = actual_events + past_events_links
     main_event = ::Tramway::Event::Event.main_event&.last
     if main_event.present?
       @main_event = ::Tramway::Event::Events::Show::EventDecorator.decorate main_event

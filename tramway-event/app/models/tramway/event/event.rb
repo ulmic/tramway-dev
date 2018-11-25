@@ -10,6 +10,7 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
 
   scope :main_event, -> { where(status: :main) }
   scope :actual, -> { where 'end_date > ?', DateTime.now }
+  scope :past, -> { where 'end_date < ?', DateTime.now }
 
   def request_collecting_state
     return :not_initialized unless request_collecting_begin_date.present? || request_collecting_end_date.present?
