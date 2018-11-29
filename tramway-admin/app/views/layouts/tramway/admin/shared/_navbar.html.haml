@@ -12,7 +12,7 @@
           - ::Tramway::Admin.singleton_models_for(@application_engine)&.each do |model|
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
           - ::Tramway::Admin.available_models_for(@application_engine)&.each do |model|
-            = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model)
+            = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first)
       %ul.nav.navbar-nav.ml-auto
         - if signed_in?
           %li.nav-item
