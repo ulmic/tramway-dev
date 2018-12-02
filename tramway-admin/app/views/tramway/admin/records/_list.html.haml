@@ -21,7 +21,7 @@
           .btn-group{ data: { toggle: :buttons } }
             - record.model.class.state_machines.keys.each do |state_method|
               - unless state_method == :state
-                = state_events_buttons record, state_method: state_method, model_param_name: :record, route_method: :current_model_record_path, parameters: { redirect: current_model_records_path }
+                = state_events_buttons record, state_method: state_method, model_param_name: :record, route_method: :current_model_record_path, parameters: { redirect: current_model_records_path(page: params[:page], scope: params[:scope]) }
           = link_to fa_icon(:pencil), edit_current_model_record_path(record.id), class: 'btn btn-warning btn-xs'
           = link_to fa_icon(:remove), current_model_record_path(record.id), method: :delete, class: 'btn btn-xs btn-danger'
 = paginate @records, theme: 'twitter-bootstrap-4'
