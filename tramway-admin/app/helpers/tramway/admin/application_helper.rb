@@ -9,6 +9,7 @@ module Tramway
       include ::Tramway::Admin::SingletonHelper
       include ::Tramway::Admin::NavbarHelper
       include ::Tramway::Admin::InputsHelper
+      include ::Tramway::Admin::FocusGeneratorHelper
       include ::Tramway::Collections::Helper
     end
   end

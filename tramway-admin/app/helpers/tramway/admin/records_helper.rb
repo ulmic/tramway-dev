@@ -63,10 +63,5 @@ module Tramway::Admin
       return :active if params[:scope].nil? && index == 0
       return :active if params[:search].nil? && params[:scope].to_s == tab.to_s
     end
-
-    #FIXME create independent focus generator
-    def focus_selector(index)
-      "table:nth-child(2)>tbody>tr:nth-child(#{index - 1})"
-    end
   end
 end
