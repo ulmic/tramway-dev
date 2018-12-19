@@ -1,17 +1,12 @@
 require 'rails/generators'
 require 'tramway/core/generators/install_generator'
 
-module Tramway::Conference::Generators
+module Tramway::Partner::Generators
   class InstallGenerator < ::Tramway::Core::Generators::InstallGenerator
     include Rails::Generators::Migration
     source_root File.expand_path('../templates', __FILE__)
 
     def run_other_generators
-      generate 'tramway:user:install'
-      generate 'tramway:landing:install'
-      generate 'tramway:profiles:install'
-      generate 'tramway:event:install'
-      generate 'tramway:partner:install'
     end
 
     def self.next_migration_number(path)
@@ -21,12 +16,10 @@ module Tramway::Conference::Generators
 
     def copy_migrations
       migrations = [
-        :create_tramway_conference_unities,
-        :add_url_to_tramway_conference_unities,
-        :add_found_date_to_tramway_conference_unities
+        :create_tramway_partner_partners,
       ]
-      migrations.each do |migration_name|
-        migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"
+      migrations.each do |migration|
+        migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
       end
     end
   end

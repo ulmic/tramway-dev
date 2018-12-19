@@ -7,6 +7,7 @@ module Tramway::Event::Generators
     source_root File.expand_path('../templates', __FILE__)
 
     def run_other_generators
+      generate 'tramway:partner:install'
     end
 
     def self.next_migration_number(path)
