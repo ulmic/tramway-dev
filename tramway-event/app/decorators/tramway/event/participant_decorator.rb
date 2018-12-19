@@ -1,4 +1,5 @@
 class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorator
+  include HTMLTagsHelpers
   class << self
     def collections
       [ :requested, :waiting, :prev_approved, :without_answer, :approved, :rejected, :reserved, :all ]
@@ -38,7 +39,12 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
               field.title
             end)
             concat(content_tag(:td) do
-              object.values&.dig( field.title )
+              value = object.values&.dig( field.title )
+              if russian_phone_number?(value)
+                tel_tag value
+              else
+                value
+              end
             end)
           end)
         end
@@ -54,7 +60,11 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
             key
           end)
           concat(content_tag(:td) do
-            value
+            concat(if russian_phone_number?(value)
+                    tel_tag value
+                   else
+                     value
+                   end)
           end)
         end)
       end
@@ -72,5 +82,11 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
     when :reserve
       :warning
     end
+  end
+
+  private
+
+  def russian_phone_number?(value)
+    value.to_s.match(/((8|\+7)-?)?\(?\d{3}\)?-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}/)
   end
 end
