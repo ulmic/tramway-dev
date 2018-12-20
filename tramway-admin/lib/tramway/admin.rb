@@ -1,4 +1,5 @@
 require 'tramway/admin/engine'
+require 'tramway/error'
 
 module Tramway
   User.layout_path = 'tramway/admin/application'
@@ -13,7 +14,16 @@ module Tramway
 
       def available_models_for(project)
         (@available_models[project.to_sym] || []) + "::Tramway::#{project.to_s.camelize}".constantize.dependencies.map do |dependency|
-          @available_models[dependency]
+          if @available_models[dependency].present?
+            @available_models[dependency]
+          else
+            error= Tramway::Error.new(
+              plugin: :admin,
+              method: :available_models_for,
+              message: "There is no dependency `#{dependency}` for plugin: #{project}. Please, check file `tramway-#{project}/lib/tramway/#{project}/#{project}.rb`"
+            )
+            raise error
+          end
         end.flatten.compact
       end
 
