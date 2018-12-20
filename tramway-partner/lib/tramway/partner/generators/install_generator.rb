@@ -16,7 +16,7 @@ module Tramway::Partner::Generators
 
     def copy_migrations
       migrations = [
-        :create_tramway_partner_partners,
+        :create_tramway_partner_organizations
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

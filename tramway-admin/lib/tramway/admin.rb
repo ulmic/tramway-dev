@@ -17,7 +17,7 @@ module Tramway
           if @available_models[dependency].present?
             @available_models[dependency]
           else
-            error= Tramway::Error.new(
+            error = Tramway::Error.new(
               plugin: :admin,
               method: :available_models_for,
               message: "There is no dependency `#{dependency}` for plugin: #{project}. Please, check file `tramway-#{project}/lib/tramway/#{project}/#{project}.rb`"

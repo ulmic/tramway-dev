@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      tramway/partner/organization: Партнёр
+    attributes:
+      tramway/partner/organization:
+        title: Название
+        logo: Логотип
+        url: Ссылка на сайт
+  cases:
+    tramway/partner/organization:
+      plural: партнёры
+      genitive: партнёра
