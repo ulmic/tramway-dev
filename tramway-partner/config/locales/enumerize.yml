@@ -1,0 +1,8 @@
+ru:
+  enumerize:
+    tramway/partner/partnership:
+      partnership_type:
+        organizator: Организатор
+        program: Программный партнёр
+        support: При поддержке
+        info: Информационный партнёр

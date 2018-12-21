@@ -2,12 +2,21 @@ ru:
   activerecord:
     models:
       tramway/partner/organization: Партнёр
+      tramway/partner/partnership: Партнёрство
     attributes:
       tramway/partner/organization:
         title: Название
         logo: Логотип
         url: Ссылка на сайт
+      tramway/partner/partnership:
+        partner: Сущность, для которой добавляем партнёра
+        partner_type: Тип сущности
+        organization: Партнёрская организация
+        partnership_type: Тип партнёрства
   cases:
     tramway/partner/organization:
       plural: партнёры
       genitive: партнёра
+    tramway/partner/partnership:
+      plural: партнёрства
+      genitive: партнёрство

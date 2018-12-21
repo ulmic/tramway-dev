@@ -12,6 +12,10 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   delegate :partakings, to: :object
   delegate :request_collecting_state, to: :object
 
+  ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
+    decorate_association partnership_type.to_s.pluralize
+  end
+
   def background
     object.photo
   end

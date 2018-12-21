@@ -27,7 +27,6 @@
   = render 'tramway/landing/blocks/templates/full_page', block: event, buttons: [OpenStruct.new(title: t('.registration'), anchor: '#registration')]
 %main
   .container
-    -#= render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Направления IT Way'18", description: "Вы можете выбрать любое из направлений", anchor: :features), collection: sections_as_features
     = render 'tramway/landing/blocks/templates/features_list', collection: sections_as_features
     %br
     .row
@@ -42,3 +41,5 @@
       - if index < sections.count - 1
         %br
     = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Оргкомитет", description: "", anchor: :organizers), collection: people_as_features, options: { image: { css: { class_name: 'circle' } } }
+    - ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
+      = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: t("enumerize.tramway/partner/partnership.partnership_type.#{partnership_type}")), collection: event.send(partnership_type.to_s.pluralize)
