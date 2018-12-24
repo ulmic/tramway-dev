@@ -2,7 +2,7 @@ ru:
   enumerize:
     tramway/partner/partnership:
       partnership_type:
-        organizator: Организатор
-        program: Программный партнёр
+        organizator: Организаторы
+        program: Программные партнёры
         support: При поддержке
-        info: Информационный партнёр
+        info: Информационные партнёры
