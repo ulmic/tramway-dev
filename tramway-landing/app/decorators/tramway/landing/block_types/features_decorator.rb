@@ -10,4 +10,22 @@ class Tramway::Landing::BlockTypes::FeaturesDecorator < ::Tramway::Core::Applica
   def anchor; end
 
   def full_text; end
+
+  def external_link; end
+
+  def active_link
+    if anchor.present?
+      "##{anchor}"
+    else
+      if external_link.present?
+        if external_link.match?(/^https?:\/\//)
+          external_link
+        else
+          "http://#{external_link}"
+        end
+      else
+        ''
+      end
+    end
+  end
 end

@@ -12,7 +12,7 @@
         .row
           - if collection.count == 1
             - item = collection.first
-            .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
+            .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.active_link.present? ? :link : ''), data: { href: item.active_link } }
               - if item.icon.present?
                 = fa_icon item.icon, class: 'fa-4x blue-text'
               - else
@@ -22,13 +22,13 @@
                 = item.title
               %p.grey-text
                 != item.text
-            .col.col-sm-10.col-xl-8.col-lg-8.col-md-8.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
+            .col.col-sm-10.col-xl-8.col-lg-8.col-md-8.mb-1.auto{ class:  (item.active_link.present? ? :link : ''), data: { href: item.active_link } }
               %p.grey-text
                 != item.full_text
           - else
             - collection.each_slice 3 do |sub_collection|
               - sub_collection.each do |item|
-                .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.anchor.present? ? :link : ''), data: { href: item.anchor.present? ? "##{item.anchor}" : '' } }
+                .col.col-sm-2.col-xl-4.col-lg-4.col-md-4.mb-1.auto{ class:  (item.active_link.present? ? :link : ''), data: { href: item.active_link } }
                   - if item.icon.present?
                     = fa_icon item.icon, class: 'fa-4x blue-text'
                   - else

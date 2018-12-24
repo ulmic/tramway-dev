@@ -4,4 +4,6 @@ class Tramway::Partner::OrganizationDecorator < ::Tramway::Core::ApplicationDeco
       [ :all ]
     end
   end
+
+  decorate_association :partnerships
 end

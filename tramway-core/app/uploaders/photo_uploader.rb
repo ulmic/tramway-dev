@@ -31,6 +31,11 @@ class PhotoUploader < ApplicationUploader
     process resize_to_fill: [800, 350, 'North']
   end
 
+  # FIXME move to tramway-landing uploader
+  version :mini do
+    process resize_to_limit: [300, nil]
+  end
+
   attr_reader :width, :height
 
   before :cache, :capture_size
@@ -42,7 +47,7 @@ class PhotoUploader < ApplicationUploader
         @width = img[:width]
         @height = img[:height]
       else
-        @width, @height = `identify -format "%wx %h" #{file.path}`.split(/x/).map{|dim| dim.to_i }
+        @width, @height = `identify -format "%wx %h" #{file.path}`.split(/x/).map(&:to_i)
       end
     end
   end

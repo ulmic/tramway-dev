@@ -1,4 +1,4 @@
-class ::Tramway::Event::SectionFeatureDecorator < ::Tramway::Core::ApplicationDecorator
+class ::Tramway::Event::SectionFeatureDecorator < ::Tramway::Landing::BlockTypes::FeaturesDecorator
   delegate :icon, to: :object
   delegate :title, to: :object
   delegate :description, to: :object

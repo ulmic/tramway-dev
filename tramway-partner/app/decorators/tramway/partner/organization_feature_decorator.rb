@@ -6,6 +6,10 @@ class Tramway::Partner::OrganizationFeatureDecorator < ::Tramway::Landing::Block
   end
   
   def image
-    object.logo.small.url
+    object.logo.mini.url
+  end
+
+  def external_link
+    object.url
   end
 end
