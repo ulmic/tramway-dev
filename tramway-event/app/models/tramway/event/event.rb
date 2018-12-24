@@ -10,7 +10,7 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
 
   ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
     has_many partnership_type.pluralize.to_sym, (-> do
-      joins(:partnerships).where 'tramway_partner_partnerships.partnership_type = ?', partnership_type
+      joins(:partnerships).where 'tramway_partner_partnerships.partnership_type = ? AND tramway_partner_partnerships.state = \'active\'', partnership_type
     end), foreign_key: :organization_id, source: :organization, through: :partnerships, class_name: 'Tramway::Partner::Organization'
   end
 
