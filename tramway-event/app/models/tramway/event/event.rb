@@ -8,11 +8,6 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   has_many :partnerships, class_name: 'Tramway::Partner::Partnership', as: :partner
   has_many :organizations, as: :partners, through: :partnerships, class_name: 'Tramway::Partner::Organization'
 
-  ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
-    has_many partnership_type.pluralize.to_sym, (-> do
-      joins(:partnerships).where 'tramway_partner_partnerships.partnership_type = ? AND tramway_partner_partnerships.state = \'active\'', partnership_type
-    end), foreign_key: :organization_id, source: :organization, through: :partnerships, class_name: 'Tramway::Partner::Organization'
-  end
 
   enumerize :status, default: :common, in: [ :common, :main ]
 
@@ -27,4 +22,15 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
     return :are_being_right_now if request_collecting_begin_date&.past? && request_collecting_end_date&.future?
   end
 
+  ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
+    define_method partnership_type.pluralize.to_sym do
+      query = <<-SQL
+        tramway_partner_partnerships.partnership_type = '#{partnership_type}'
+        AND tramway_partner_partnerships.partner_id = '#{id}'
+        AND tramway_partner_partnerships.state = 'active'
+        AND tramway_partner_partnerships.partner_type = 'Tramway::Event::Event'
+      SQL
+      Tramway::Partner::Organization.joins(:partnerships).where(query)
+    end
+  end
 end
