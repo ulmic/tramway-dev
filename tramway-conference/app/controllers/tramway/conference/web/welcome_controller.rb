@@ -17,5 +17,10 @@ class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::Appli
       @participant_form = ::Tramway::Event::ParticipantExtendedFormCreator.create_form_class(request.uuid, main_event).new ::Tramway::Event::Participant.new
       @people_as_features = @main_event.partakings.active.map { |p| ::Tramway::Event::PartakingFeatureDecorator.decorate p }
     end
+    @partners = ::Tramway::Partner::Partnership.partnership_type.values.reduce({}) do |hash, partnership_type|
+      hash.merge! partnership_type => (@unity.send(partnership_type.to_s.pluralize).active.map do |partner|
+        Tramway::Partner::OrganizationFeatureDecorator.decorate partner
+      end)
+    end
   end
 end
