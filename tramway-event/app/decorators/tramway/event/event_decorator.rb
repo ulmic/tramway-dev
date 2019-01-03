@@ -11,6 +11,8 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   decorate_association :participant_form_fields
   decorate_association :sections
   decorate_association :partakings
+  decorate_association :partnerships
+  decorate_association :organizations
 
   def background
     object.photo
