@@ -32,9 +32,9 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
     end
 
     context 'with TestModel' do
-      let(:models) { create_list(:test_model, 10) }
-
       it 'should have 10 items' do
+        create_list :test_model, 10
+        models = TestModel.limit(10)
         expect(described_class.decorate(models).count).to eq 10
       end
     end

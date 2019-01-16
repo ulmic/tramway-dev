@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190116223755) do
+ActiveRecord::Schema.define(version: 20190116224139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "association_models", force: :cascade do |t|
+    t.integer "test_model_id"
+    t.integer "uid"
+    t.text "text"
+    t.text "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"

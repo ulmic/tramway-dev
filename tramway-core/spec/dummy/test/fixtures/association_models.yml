@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test_model_id: 1
+  uid: 1
+  text: MyText
+  state: MyText
+
+two:
+  test_model_id: 1
+  uid: 1
+  text: MyText
+  state: MyText
