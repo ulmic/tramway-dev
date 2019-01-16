@@ -1,0 +1,28 @@
+language: ruby
+rvm:
+  - 2.6.0
+  - 2.5.3
+  - 2.5.2
+  - 2.5.1
+  - 2.5.0
+  - 2.4.5
+  - 2.4.4
+  - 2.4.3
+  - 2.4.1
+  - 2.4.0
+  - 2.3.8
+  - 2.3.7
+  - 2.3.6
+  - 2.3.5
+  - 2.3.4
+  - 2.3.3
+  - 2.3.2
+  - 2.3.1
+services:
+  postgresql
+addons:
+  postgresql: "10.0"
+before_script:
+  - RAILS_ENV=test bundle exec rails db:create db:migrate
+before_install:
+  - gem install bundler
