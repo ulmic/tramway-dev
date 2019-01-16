@@ -1,6 +1,7 @@
 require 'tramway/core/generators/install_generator'
 require 'tramway/core/application'
 require 'simple_form'
+require 'enumerize'
 
 module Tramway
   module Core

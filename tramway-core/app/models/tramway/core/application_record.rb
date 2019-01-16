@@ -1,4 +1,6 @@
-require 'carrierwave/orm/activerecord'
+if defined?(CarrierWave::Mount)
+  require 'carrierwave/orm/activerecord'
+end
 
 module Tramway
   module Core

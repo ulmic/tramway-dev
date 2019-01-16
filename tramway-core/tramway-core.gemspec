@@ -21,13 +21,16 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form', '~> 3.5', '>= 3.5.0'
   s.add_dependency 'sass-rails', '~> 5.0', '>= 5.0.7'
   s.add_dependency 'bootstrap', '~> 4.1', '>= 4.1.0'
-  s.add_dependency 'audited', '~> 4.5', '>= 4.5.0'
+  s.add_dependency 'audited', '>= 4.8.0'
   s.add_dependency 'mini_magick', '~> 4.8', '>= 4.8.0'
   s.add_dependency 'rmagick', '~> 2.16', '>= 2.16.0'
   s.add_dependency 'loofah', '~> 2.2', '>= 2.2.1'
   s.add_dependency 'haml-rails', '~> 1.0', '>= 1.0.0'
   s.add_dependency 'font-awesome-rails'
+  s.add_dependency 'carrierwave'
 
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'pry'
+  s.add_development_dependency 'pg'
+  s.add_development_dependency 'factory_bot_rails'
 end
