@@ -26,6 +26,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'rmagick', '~> 2.16', '>= 2.16.0'
   s.add_dependency 'loofah', '~> 2.2', '>= 2.2.1'
   s.add_dependency 'haml-rails', '~> 1.0', '>= 1.0.0'
+  s.add_dependency 'font-awesome-rails'
 
   s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'pry'
 end

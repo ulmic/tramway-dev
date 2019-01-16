@@ -1,7 +1,7 @@
 require "tramway/core/engine"
 require "tramway/collection"
 require "tramway/collections/helper"
-#require 'string'
+require 'font-awesome-rails'
 
 module Tramway
   module Core
