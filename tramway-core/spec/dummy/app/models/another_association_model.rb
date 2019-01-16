@@ -1,0 +1,2 @@
+class AnotherAssociationModel < ApplicationRecord
+end

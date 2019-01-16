@@ -37,6 +37,26 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         models = TestModel.limit(10)
         expect(described_class.decorate(models).count).to eq 10
       end
+
+      it 'should decorate all items' do
+        create_list :test_model, 10
+        models = TestModel.limit(10)
+        expect(described_class.decorate(models)).to all be_a(described_class)
+      end
+
+      it 'should decorate association models' do
+        test_model = create :test_model
+        create_list :association_model, 10, test_model_id: test_model.id
+        decorated_test_model = TestModelDecorator.decorate test_model
+        expect(decorated_test_model.association_models).to all be_a(AssociationModelDecorator)
+      end
+
+      it 'should raise error about specify class_name of association' do
+        test_model = create :test_model
+        create_list :another_association_model, 10, test_model_id: test_model.id
+        decorated_test_model = TestModelDecorator.decorate test_model
+        expect{ decorated_test_model.another_association_models }.to raise_error("Plugin: core; Method: decorate_association; Message: Please, specify `another_association_models` association class_name in TestModel model. For example: `has_many :another_association_models, class_name: 'AnotherAssociationModel'`") 
+      end
     end
   end
 end
