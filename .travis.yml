@@ -18,3 +18,5 @@ before_install:
   - sudo apt-get install postgresql-9.5
   - cd tramway-core
   - gem install bundler -v '~> 2.0'
+script:
+  - make

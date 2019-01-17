@@ -58,5 +58,17 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         expect{ decorated_test_model.another_association_models }.to raise_error("Plugin: core; Method: decorate_association; Message: Please, specify `another_association_models` association class_name in TestModel model. For example: `has_many :another_association_models, class_name: 'AnotherAssociationModel'`") 
       end
     end
+
+  end
+
+  context 'Delegation checks' do
+    context 'with TestModel' do
+      let(:test_model) { create :test_model }
+
+      it 'delegates ID to object' do
+        decorated_test_model = described_class.decorate test_model
+        expect(decorated_test_model.id).to eq test_model.id
+      end
+    end
   end
 end

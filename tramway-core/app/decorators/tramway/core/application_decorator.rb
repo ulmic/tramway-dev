@@ -35,7 +35,6 @@ class Tramway::Core::ApplicationDecorator
 
       define_method association_name do
         class_name = object.class.reflect_on_association(association_name).options[:class_name]
-        #FIXME use error abstraction
         unless class_name
           error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: ("Please, specify `#{association_name}` association class_name in #{object.class} model. For example: `has_many :#{association_name}, class_name: '#{association_name.to_s.singularize.camelize}'`"))
           raise error.message
