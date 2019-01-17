@@ -69,6 +69,16 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         decorated_test_model = described_class.decorate test_model
         expect(decorated_test_model.id).to eq test_model.id
       end
+
+      it 'delegates class to object' do
+        decorated_test_model = described_class.decorate test_model
+        expect(decorated_test_model.class).to eq test_model.class
+      end
+
+      it 'delegates human_state_name to object' do
+        decorated_test_model = described_class.decorate test_model
+        expect(decorated_test_model.human_state_name).to eq test_model.human_state_name
+      end
     end
   end
 end
