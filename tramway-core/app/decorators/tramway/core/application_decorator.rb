@@ -13,6 +13,11 @@ class Tramway::Core::ApplicationDecorator
     object.try(:name) || object.try(:title) || title
   end
 
+  def title
+    error = Tramway::Error.new(plugin: :core, method: :title, message: ("Please, implement `title` method in a #{self.class} or #{object.class}"))
+    raise error.message
+  end
+
   class << self
     def list_attributes
       []

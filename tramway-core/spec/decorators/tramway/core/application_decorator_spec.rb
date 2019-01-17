@@ -64,20 +64,29 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
   context 'Delegation checks' do
     context 'with TestModel' do
       let(:test_model) { create :test_model }
+      let(:decorated_test_model) { described_class.decorate test_model }
 
       it 'delegates ID to object' do
-        decorated_test_model = described_class.decorate test_model
         expect(decorated_test_model.id).to eq test_model.id
       end
 
       it 'delegates class to object' do
-        decorated_test_model = described_class.decorate test_model
         expect(decorated_test_model.class).to eq test_model.class
       end
 
       it 'delegates human_state_name to object' do
-        decorated_test_model = described_class.decorate test_model
         expect(decorated_test_model.human_state_name).to eq test_model.human_state_name
+      end
+    end
+  end
+
+  context 'Object methods checks' do
+    context 'with TestModel' do
+      let(:test_model) { create :test_model }
+      let(:decorated_test_model) { described_class.decorate test_model }
+
+      it 'returns name' do
+        expect{ decorated_test_model.name }.to raise_error("Plugin: core; Method: title; Message: Please, implement `title` method in a TestModel or TestModel")
       end
     end
   end
