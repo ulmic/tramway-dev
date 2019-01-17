@@ -9,7 +9,6 @@ services:
 before_script:
   - cd spec/dummy
   - RAILS_ENV=test bundle exec rails db:create db:migrate
-  - cd ../../
 before_install:
   - sudo /etc/init.d/postgresql stop
   - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
