@@ -1,3 +1,5 @@
+require 'carrierwave'
+
 class ApplicationUploader < CarrierWave::Uploader::Base
   storage :file
 

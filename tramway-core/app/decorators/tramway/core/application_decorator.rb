@@ -58,7 +58,15 @@ class Tramway::Core::ApplicationDecorator
   delegate :human_state_name, to: :object
 
   def link
-    object.file.url
+    if object.try :file
+      object.file.url
+    else
+      error = Tramway::Error.new(
+        plugin: :core,
+        method: :link,
+        message: ("Method `link` uses `file` attribute of the decorated object. If decorated object doesn't contain `file`, you shouldn't use `link` method."))
+      raise error.message
+    end
   end
 
   def model

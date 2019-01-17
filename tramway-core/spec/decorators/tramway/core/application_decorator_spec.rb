@@ -88,6 +88,32 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       it 'returns name' do
         expect{ decorated_test_model.name }.to raise_error("Plugin: core; Method: title; Message: Please, implement `title` method in a TestModel or TestModel")
       end
+
+      it 'returns link' do
+        expect{ decorated_test_model.link }.to raise_error("Plugin: core; Method: link; Message: Method `link` uses `file` attribute of the decorated object. If decorated object doesn't contain `file`, you shouldn't use `link` method.")
+      end
+
+      it 'returns model' do
+        expect(decorated_test_model.model).to eq test_model
+      end
+
+      it 'returns associations' do
+        expect(decorated_test_model.associations(:has_many).map(&:name).should =~ [:association_models, :another_association_models]).to be_truthy
+        expect(decorated_test_model.associations(:belongs_to).map(&:name).should =~ []).to be_truthy
+        expect(decorated_test_model.associations(:has_and_belongs_to_many).map(&:name).should =~ []).to be_truthy
+        expect(decorated_test_model.associations(:has_one).map(&:name).should =~ []).to be_truthy
+      end
+
+      it 'returns attributes' do
+        expect(decorated_test_model.attributes).to eq({
+          text: test_model.text,
+          created_at: test_model.created_at.strftime("%d.%m.%Y %H:%M"),
+          id: test_model.id,
+          state: test_model.human_state_name,
+          uid: test_model.uid,
+          updated_at: test_model.updated_at.strftime("%d.%m.%Y %H:%M")
+        }.with_indifferent_access)
+      end
     end
   end
 end
