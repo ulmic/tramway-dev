@@ -4,6 +4,7 @@ module Tramway::Core
       super(object).tap do
         @@model_class = object.class
         @@enumerized_attributes = object.class.enumerized_attributes
+        @@associations ||= []
 
         self.class.full_class_name_associations.each do |association, class_name|
           if class_name.is_a? Array
@@ -32,6 +33,8 @@ module Tramway::Core
     def properties
       @form_properties || []
     end
+
+    def build_errors; end
 
     class << self
       delegate :defined_enums, to: :model_class
