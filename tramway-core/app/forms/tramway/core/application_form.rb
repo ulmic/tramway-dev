@@ -22,8 +22,12 @@ module Tramway::Core
     end
 
     def submit(params)
-      raise 'ApplicationForm::Params should not be nil'.inspect unless params
-      save if validate params
+      if params
+        save if validate params
+      else
+        error = Tramway::Error.new(plugin: :core, method: :title, message: ('ApplicationForm::Params should not be nil'))
+        raise error.message
+      end
     end
 
     def form_properties(**args)
