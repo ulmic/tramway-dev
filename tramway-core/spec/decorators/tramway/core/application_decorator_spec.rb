@@ -111,7 +111,8 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
           id: test_model.id,
           state: test_model.human_state_name,
           uid: test_model.uid,
-          updated_at: test_model.updated_at.strftime("%d.%m.%Y %H:%M")
+          updated_at: test_model.updated_at.strftime("%d.%m.%Y %H:%M"),
+          enumerized: test_model.enumerized.text
         }.with_indifferent_access)
       end
     end
