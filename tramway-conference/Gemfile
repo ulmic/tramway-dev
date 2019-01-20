@@ -8,7 +8,6 @@ gem 'tramway-admin', github: 'ulmic/tramway-admin', branch: :develop
 gem 'tramway-landing', github: 'ulmic/tramway-landing', branch: :develop
 gem 'haml-rails'
 gem 'sass-rails'
-gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'audited'
 gem 'simple_form'
 gem 'font-awesome-rails'
