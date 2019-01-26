@@ -23,8 +23,8 @@
               %p.grey-text
                 != item.text
             .col.col-sm-10.col-xl-8.col-lg-8.col-md-8.mb-1.auto{ class:  (item.active_link.present? ? :link : ''), data: { href: item.active_link } }
-              %p.grey-text
-                != item.full_text
+              %p.grey-text{ style: 'text-align: justify' }
+                = strip_tags(item.full_text)
           - else
             - collection.each_slice 3 do |sub_collection|
               - sub_collection.each do |item|
