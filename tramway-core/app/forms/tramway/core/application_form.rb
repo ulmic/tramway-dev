@@ -86,7 +86,17 @@ module Tramway::Core
       end
 
       def model_class
-        @@model_class ||= self.name.to_s.sub(/Form$/, '')
+        if @@model_class
+          @@model_class
+        else
+          model_class_name ||= self.name.to_s.sub(/Form$/, '')
+          begin
+            @@model_class = model_class_name.constantize
+          rescue
+            error = Tramway::Error.new(plugin: :core, method: :model_class, message: ("There is not model class name for #{self.name}. Should be #{model_class_name} or you can use another class to initialize form object."))
+            raise error.message
+          end
+        end
       end
     end
   end
