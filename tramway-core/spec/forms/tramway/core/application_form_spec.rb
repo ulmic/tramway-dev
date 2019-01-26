@@ -26,4 +26,37 @@ RSpec.describe Tramway::Core::ApplicationForm do
       expect{ test_model_form.submit(params[:test_model]) }.to raise_error('Plugin: core; Method: title; Message: ApplicationForm::Params should not be nil')
     end
   end
+
+  context 'Properties' do
+    it 'set form_properties' do
+      test_model = create :test_model
+      test_model_form = Tramway::Core::ApplicationForm.new test_model
+      test_model_form.form_properties text: :default, enumerized: :default
+      expect(test_model_form.properties).to eq text: :default, enumerized: :default
+    end
+  end
+
+  context 'Associations' do
+    context 'with setted class_name' do
+      it 'adds new association to form' do
+        class_name = 'TestingAssociationWithSettedClassName'
+        Object.const_set(class_name, Class.new(::Tramway::Core::ApplicationForm))
+        class_name.constantize.associations :test_model
+        association_model = create :association_model
+        association_model_form = class_name.constantize.new association_model
+        expect(association_model_form).to respond_to("test_model=").with(1).argument
+      end
+    end
+
+    context 'without setted class_name' do
+      it 'adds new association to form' do
+        class_name = 'TestingAnother2AssociationWithSettedClassName'
+        Object.const_set(class_name, Class.new(::Tramway::Core::ApplicationForm))
+        class_name.constantize.associations :test_model
+        association_model = create :another2_association_model
+        association_model_form = class_name.constantize.new association_model
+        expect(association_model_form).to respond_to("test_model=").with(1).argument
+      end
+    end
+  end
 end

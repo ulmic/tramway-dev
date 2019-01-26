@@ -60,12 +60,13 @@ module Tramway::Core
           options = @@model_class.reflect_on_all_associations(:belongs_to).select do |a|
             a.name == association.to_sym
           end.first&.options
-          
+
           if options
             if options[:polymorphic]
               hash.merge! association => @@model_class.send("#{association}_type").values
             else
-              hash.merge!(association => options[:class_name].constantize)
+              class_name = options[:class_name] || association.to_s.camelize
+              hash.merge!(association => class_name.constantize)
             end
           end
           hash
