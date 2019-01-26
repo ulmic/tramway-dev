@@ -58,5 +58,25 @@ RSpec.describe Tramway::Core::ApplicationForm do
         expect(association_model_form).to respond_to("test_model=").with(1).argument
       end
     end
+
+    context 'full_class_name_association' do
+      context 'with setted class_name' do
+        it 'return full_class_name_association' do
+          class_name = 'NameAssociationAssociationWithSettedClassName'
+          Object.const_set(class_name, Class.new(::Tramway::Core::ApplicationForm))
+          class_name.constantize.associations :test_model
+          expect(class_name.constantize.full_class_name_association(:test_model)).to eq TestModel
+        end
+      end
+
+      context 'without setted class_name' do
+        it 'return full_class_name_association' do
+          class_name = 'NameAssociation2AssociationWithSettedClassName'
+          Object.const_set(class_name, Class.new(::Tramway::Core::ApplicationForm))
+          class_name.constantize.associations :test_model
+          expect(class_name.constantize.full_class_name_association(:test_model)).to eq TestModel
+        end
+      end
+    end
   end
 end
