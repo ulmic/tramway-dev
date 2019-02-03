@@ -5,3 +5,9 @@
 
 @import "bootstrap";
 @import "tramway/admin/application";
+
+.row {
+  &.main_event {
+    margin-top: 150px;
+  }
+}
