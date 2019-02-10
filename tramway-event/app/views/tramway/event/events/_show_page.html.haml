@@ -4,7 +4,7 @@
     %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
       %span{"aria-hidden" => "true"} ×
     %h4.alert-heading Заявка успешно отправлена!
-    %p Ваша заявка на мероприятие подтверждена. Ждём!
+    %p Ваша заявка на мероприятие подтверждена!
     %hr/
     %p.mb-0
       По всем вопросам обращайтесь по телефону
@@ -12,7 +12,7 @@
       или пишите на email
       = mail_to 'kalashnikov@ulmic.ru'
 - if params[:flash] == 'error'
-  .alert.alert-danger{role: "alert"}
+  .alert.alert-danger{ role: "alert" }
     %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
       %span{"aria-hidden" => "true"} ×
     %h4.alert-heading Ошибка при отправлении заявки!
@@ -25,6 +25,8 @@
       = mail_to 'kalashnikov@ulmic.ru'
 - if request.path == ::Tramway::Event::Engine.routes.url_helpers.event_path(event.id)
   = render 'tramway/landing/blocks/templates/full_page', block: event, buttons: [OpenStruct.new(title: t('.registration'), anchor: '#registration')]
+- content_for :main_image do
+  = event.background.url
 %main.event.show
   .container
     = render 'tramway/landing/blocks/templates/features_list', collection: sections_as_features

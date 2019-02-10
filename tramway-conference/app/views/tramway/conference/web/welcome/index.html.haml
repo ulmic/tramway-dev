@@ -31,6 +31,9 @@
 
 - @collection_news = @news
 
+- content_for :main_image do
+  = @blocks.select { |block| block.model.block_type.header? }.first.background.url
+
 - if @main_event.present?
   .row.main_event
     .col
