@@ -13,18 +13,22 @@ module Tramway
       end
 
       def available_models_for(project)
-        (@available_models[project.to_sym] || []) + "::Tramway::#{project.to_s.camelize}".constantize.dependencies.map do |dependency|
-          if @available_models[dependency].present?
-            @available_models[dependency]
-          else
-            error = Tramway::Error.new(
-              plugin: :admin,
-              method: :available_models_for,
-              message: "There is no dependency `#{dependency}` for plugin: #{project}. Please, check file `tramway-#{project}/lib/tramway/#{project}/#{project}.rb`"
-            )
-            raise error
-          end
-        end.flatten.compact
+        if project_is_engine?(project)
+          get_models_by_key(@available_models, project) + engine_class(project).dependencies.map do |dependency|
+            if @available_models[dependency].present?
+              @available_models[dependency]
+            else
+              error = Tramway::Error.new(
+                plugin: :admin,
+                method: :available_models_for,
+                message: "There is no dependency `#{dependency}` for plugin: #{project}. Please, check file `tramway-#{project}/lib/tramway/#{project}/#{project}.rb`"
+              )
+              raise error
+            end
+          end.flatten.compact
+        else
+          get_models_by_key(@available_models, project)
+        end
       end
 
       def available_models
@@ -43,9 +47,13 @@ module Tramway
       end
 
       def singleton_models_for(project)
-        (@singleton_models[project.to_sym] || []) + "::Tramway::#{project.to_s.camelize}".constantize.dependencies.map do |dependency|
-          @singleton_models[dependency]
-        end.flatten.compact
+        if project_is_engine?(project)
+          get_models_by_key(@singleton_models, project) + engine_class(project).dependencies.map do |dependency|
+            @singleton_models[dependency]
+          end.flatten.compact
+        else
+          get_models_by_key(singleton_models, project)
+        end
       end
 
       def singleton_models
@@ -64,6 +72,19 @@ module Tramway
 
       def customized_admin_navbar
         @customized_admin_navbar
+      end
+
+      def engine_class(project)
+        class_name = "::Tramway::#{project.to_s.camelize}"
+        class_name.constantize if self.const_defined?(class_name)
+      end
+
+      def project_is_engine?(project)
+        engine_class(project)
+      end
+
+      def get_models_by_key(checked_models, project)
+        checked_models && checked_models != [] && checked_models[project.to_sym] || []
       end
     end
   end
