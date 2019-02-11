@@ -32,7 +32,7 @@
 - @collection_news = @news
 
 - content_for :main_image do
-  = @blocks.select { |block| block.model.block_type.header? }.first.background.url
+  = request.protocol + request.host_with_port + @blocks.select { |block| block.model.block_type.header? }.first.background.url
 
 - if @main_event.present?
   .row.main_event
