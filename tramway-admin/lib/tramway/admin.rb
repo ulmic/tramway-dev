@@ -49,12 +49,7 @@ module Tramway
       end
 
       def singleton_models
-        if @singleton_models
-          @singleton_models.values.flatten
-        else
-          error = Tramway::Error.new(plugin: :admin, method: :singleton_models, message: ('List of singleton_models is empty. You should add some of them using `::Tramway::Admin.set_singleton_models(*list_of_classes, project: :your_project_name)` in `config/initializers/tramway.rb`'))
-          raise error.message
-        end
+        @singleton_models&.values&.flatten || []
       end
 
       def set_additional_buttons(buttons, project:)
