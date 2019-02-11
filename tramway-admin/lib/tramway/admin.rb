@@ -52,7 +52,7 @@ module Tramway
             @singleton_models[dependency]
           end.flatten.compact
         else
-          get_models_by_key(singleton_models, project)
+          get_models_by_key(@singleton_models, project)
         end
       end
 
@@ -76,7 +76,7 @@ module Tramway
 
       def engine_class(project)
         class_name = "::Tramway::#{project.to_s.camelize}"
-        class_name.constantize if self.const_defined?(class_name)
+        class_name.classify.safe_constantize
       end
 
       def project_is_engine?(project)

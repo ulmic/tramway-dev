@@ -20,3 +20,12 @@ module Tramway
     end
   end
 end
+
+# HACK FIXME
+
+module ActiveModel
+  class Errors
+    def merge!(*args)
+    end
+  end
+end

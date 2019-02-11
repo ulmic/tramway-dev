@@ -1,7 +1,7 @@
 - default_page_title ||= nil; on_site_link ||= nil
 - current_title = default_page_title || "#{object.name} | #{model_class.model_name.human.pluralize(:ru)}"
 - title current_title
-- object_type = ::Tramway::Admin.available_models_for(@application_engine).include?(object.class) ? :record : :singleton
+- object_type = ::Tramway::Admin.available_models_for(@application_engine || @application.name).include?(object.class) ? :record : :singleton
 = content_for :sidebar do
   - buttons = ::Tramway::Admin.additional_buttons(record: object.model.class.to_s, view: :show)
   - if buttons
