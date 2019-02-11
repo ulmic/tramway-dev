@@ -28,7 +28,12 @@ module Tramway
       end
 
       def available_models
-        @available_models.values.flatten
+        if @available_models
+          @available_models.values.flatten
+        else
+          error = Tramway::Error.new(plugin: :admin, method: :available_models, message: ('List of available_models is empty. You should add some of them using `::Tramway::Admin.set_available_models(*list_of_classes, project: :your_project_name)` in `config/initializers/tramway.rb`'))
+          raise error.message
+        end
       end
 
       def set_singleton_models(*models, project:)
