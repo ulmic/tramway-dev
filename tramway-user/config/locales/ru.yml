@@ -1,0 +1,7 @@
+ru:
+  tramway:
+    user:
+      web:
+        sessions:
+          new:
+            title: Авторизация
