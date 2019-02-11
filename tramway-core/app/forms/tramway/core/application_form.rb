@@ -18,9 +18,11 @@ module Tramway::Core
             end
           end
         end
+
+        delegating object
       end
     end
-
+    
     def submit(params)
       if params
         save if validate params
@@ -28,6 +30,10 @@ module Tramway::Core
         error = Tramway::Error.new(plugin: :core, method: :title, message: ('ApplicationForm::Params should not be nil'))
         raise error.message
       end
+    end
+
+    def model_name
+      @@model_class.model_name
     end
 
     def form_properties(**args)
@@ -39,6 +45,15 @@ module Tramway::Core
     end
 
     def build_errors; end
+
+    def delegating(object)
+      methods = [:to_key, :errors]
+      methods.each do |method|
+        self.class.send(:define_method, method) do
+          object.send method
+        end
+      end
+    end
 
     class << self
       delegate :defined_enums, to: :model_class
@@ -97,6 +112,10 @@ module Tramway::Core
             raise error.message
           end
         end
+      end
+
+      def validation_group_class
+        ActiveModel
       end
     end
   end
