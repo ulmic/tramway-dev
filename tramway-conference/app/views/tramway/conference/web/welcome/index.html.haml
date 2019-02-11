@@ -31,10 +31,10 @@
 
 - @collection_news = @news
 
-- content_for :main_image do
-  = request.protocol + request.host_with_port + @blocks.select { |block| block.model.block_type.header? }.first.background.url
 
 - if @main_event.present?
+  - content_for :main_image do
+    = request.protocol + request.host_with_port + @main_event.photo.url
   .row.main_event
     .col
       %h1.text-center
@@ -43,5 +43,7 @@
         = @main_event.duration
   = render 'tramway/event/events/show_page', event: @main_event, sections: @sections, sections_as_features: @sections_as_features, people_as_features: @people_as_features, partners: @main_event.partners
 - else
+  - content_for :main_image do
+    = request.protocol + request.host_with_port + @blocks.select { |block| block.model.block_type.header? }.first.background.url
   - ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
     = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: t("enumerize.tramway/partner/partnership.partnership_type.#{partnership_type}")), collection: @partners[partnership_type]
