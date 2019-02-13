@@ -1,3 +1,5 @@
+require 'tramway/class_name_helpers'
+
 module Tramway
   module Admin
     class ApplicationController < ::Tramway::Core::ApplicationController
@@ -27,18 +29,6 @@ module Tramway
         end
       end
 
-      def model_class
-        params[:model].constantize
-      end
-
-      def decorator_class
-        "#{model_class}Decorator".constantize
-      end
-
-      def form_class
-        "#{model_class}Form".constantize
-      end
-
       def application
         if ::Tramway::Core.application
           @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
@@ -46,6 +36,20 @@ module Tramway
       end
 
       private
+
+      include Tramway::ClassNameHelpers
+
+      def model_class
+        model_class_name(params[:model])
+      end
+
+      def decorator_class
+        decorator_class_name
+      end
+
+      def form_class
+        form_class_name
+      end
 
       def model_given?
         available_models_given? || singleton_models_given?

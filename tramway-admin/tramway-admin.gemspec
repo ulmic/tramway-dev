@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Tramway::Admin::VERSION
   s.authors     = ["Pavel Kalashnikov"]
   s.email       = ["kalashnikovisme@gmail.com"]
-  s.homepage    = "https://github.com/kalashnikovisme/tramway-admin"
+  s.homepage    = "https://github.com/kalashnikovisme/tramway-dev"
   s.summary     = "Engine for admin"
   s.description = "Engine for admin"
   s.license     = "MIT"

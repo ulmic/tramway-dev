@@ -9,10 +9,9 @@ Gem::Specification.new do |spec|
   spec.version     = Tramway::Api::VERSION
   spec.authors     = ["Pavel Kalashnikov"]
   spec.email       = ["kalashnikovisme@gmail.com"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of Tramway::Api."
-  spec.description = "TODO: Description of Tramway::Api."
-  spec.license     = "MIT"
+  spec.homepage    = "https://github.com/kalashnikovisme/tramway-dev"
+  spec.summary     = "Engine for api"
+  spec.description = "Engine for api"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -25,7 +24,5 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 5.2.2"
-
-  spec.add_development_dependency "sqlite3"
+  spec.add_dependency 'knock'
 end
