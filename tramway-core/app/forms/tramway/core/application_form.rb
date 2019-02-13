@@ -3,7 +3,7 @@ module Tramway::Core
     def initialize(object)
       super(object).tap do
         @@model_class = object.class
-        @@enumerized_attributes = object.class.enumerized_attributes
+        @@enumerized_attributes = object.class.try :enumerized_attributes
         @@associations ||= []
 
         self.class.full_class_name_associations.each do |association, class_name|
