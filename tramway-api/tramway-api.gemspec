@@ -16,4 +16,5 @@ Gem::Specification.new do |spec|
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   spec.add_dependency 'knock'
+  spec.add_dependency 'tramway-core', '>= 1.9.2'
 end

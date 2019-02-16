@@ -1,4 +1,4 @@
-require 'tramway/class_name_helpers'
+require 'tramway/helpers/class_name_helpers'
 
 module Tramway
   module Admin
