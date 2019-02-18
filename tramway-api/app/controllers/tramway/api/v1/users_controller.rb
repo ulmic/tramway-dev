@@ -6,7 +6,7 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
 
   def create
     user_form = form_class_name(Tramway::Api.user_based_model).new Tramway::Api.user_based_model.new
-    if user_form.validate params
+    if user_form.validate params[Tramway::Api.user_based_model.name.underscore]
       user_form.save
       token = ::Knock::AuthToken.new(payload: { sub: user_form.model.id }).token
       serialized_user = OpenStruct.new user_form.model.attributes.merge authentication_token: token
