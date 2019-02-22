@@ -11,7 +11,7 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
       serialized_user = OpenStruct.new user_form.model.attributes.merge authentication_token: token
       render json: serialized_user, status: :created
     else
-      render json: user_form.errors.messages, status: :unprocessable_entity
+      render_errors_for user_form
     end
   end
 

@@ -17,4 +17,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'knock'
   spec.add_dependency 'tramway-core', '>= 1.9.2'
+  spec.add_dependency 'active_model_serializers', '0.10.5' # 0.10.6 breaks the returned json, need to investigate
 end
