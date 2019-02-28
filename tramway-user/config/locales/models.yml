@@ -2,6 +2,17 @@ ru:
   activerecord:
     models:
       tramway/user/user: Пользователь
+    attributes:
+      tramway/user/user:
+        password: Новый пароль
+        first_name: Имя
+        last_name: Фамилия
+        role: Роль
+  enumerize:
+    tramway/user/user:
+      role:
+        user: Обычный пользователь
+        admin: Администратор
   cases:
     tramway/user/user:
       plural: пользователи
