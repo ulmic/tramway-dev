@@ -11,7 +11,7 @@ module Tramway::Api::V1
     def create
       record_form = form_class.new model_class.new
       if record_form.submit params[:data][:attributes]
-        render json: company_form.model,
+        render json: record_form.model,
           serializer: serializer_class,
           status: :created
       else
