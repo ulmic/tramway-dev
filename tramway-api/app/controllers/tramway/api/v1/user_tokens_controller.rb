@@ -6,7 +6,8 @@ class Tramway::Api::V1::UserTokensController < ::Tramway::Api::V1::ApplicationCo
       render json: {
         auth_token: token,
         user: {
-          email: @entity.email
+          email: @entity.email,
+          id: @entity.id
         }
       }, status: :created
     else
