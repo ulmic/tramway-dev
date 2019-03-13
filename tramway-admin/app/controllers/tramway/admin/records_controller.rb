@@ -1,7 +1,9 @@
 module Tramway::Admin
   class RecordsController < ApplicationController
     def index
-      @records = decorator_class.decorate model_class.active.order(id: :desc).send(params[:scope] || :all).page params[:page]
+      records = model_class.active.order(id: :desc).send params[:scope] || :all
+      records.search params[:search] if params[:search]
+      @records = decorator_class.decorate records.page params[:page]
     end
 
     def show
