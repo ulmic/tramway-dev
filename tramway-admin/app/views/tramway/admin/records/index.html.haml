@@ -13,11 +13,14 @@
 %hr
 %ul.nav.nav-tabs
   - if params[:search]
-    %li.active.nav-item
-      = link_to search_tab_title(items.total_count), '#', class: 'nav-link'
-  - tabs.each_with_index do |tab, index|
     %li.nav-item
-      = link_to admin_index_path_of_model(model_class, tab), class: "#{active_tab(tab, index)} nav-link" do
-        != tab_title(model_class, tab, @counts[tab], state_method)
+      = link_to search_tab_title(@records.total_count), '#', class: 'nav-link active'
+    %li.nav-item
+      = link_to t('helpers.actions.reset'), records_path(model: params[:model]), class: 'nav-link'
+  - else
+    - tabs.each_with_index do |tab, index|
+      %li.nav-item
+        = link_to admin_index_path_of_model(model_class, tab), class: "#{active_tab(tab, index)} nav-link" do
+          != tab_title(model_class, tab, @counts[tab], state_method)
 %div{ id: (params[:search] ? :search : params[:scope]) }
   = render 'list'

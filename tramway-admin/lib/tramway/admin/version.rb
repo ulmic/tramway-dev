@@ -1,5 +1,5 @@
 module Tramway
   module Admin
-    VERSION = '1.9.0.3'
+    VERSION = '1.10'
   end
 end

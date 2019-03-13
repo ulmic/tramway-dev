@@ -34,11 +34,11 @@ module Tramway::Admin
     end
 
     def search_tab_title(count)
-      "#{t("helpers.found")} / #{count}"
+      "#{t("helpers.scope.found")} / #{count}"
     end
 
     def searchable_model?(model_class)
-      model_class.methods.include?(:search) || model_class.methods.include?(:search_everywhere)
+      model_class.methods.include? :search
     end
 
     def admin_index_path_of_model(model_class, tab = nil)

@@ -20,6 +20,8 @@ module Tramway
 
       scope :active, -> { where state: :active }
 
+      include PgSearch
+
       # FIXME detect inhertited locales
       class << self
         def human_attribute_name(attribute_name, *args)
