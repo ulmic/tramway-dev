@@ -1,0 +1,12 @@
+- title @exception.message
+%h2
+  = @exception.message
+%ul
+  - @exception.source_extract.each do |line|
+    %li
+      = line
+%ul
+  - @exception.backtrace.each do |line|
+    %li
+      = line
+
