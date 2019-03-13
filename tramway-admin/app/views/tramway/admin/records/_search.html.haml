@@ -1,9 +1,11 @@
 - if searchable_model?(model_class)
   .col-md-6
     .search
-      = form_tag search_path, method: :get do |f|
+      = form_tag records_path, method: :get do |f|
         .form-group.text
           .input-group
             = text_field_tag :search, params[:search], class: 'text form-control'
+            = hidden_field_tag :model, params[:model]
+            = hidden_field_tag :scope, params[:scope]
             .input-group-append
               = submit_tag t('helpers.actions.search'), class: 'btn btn-primary'

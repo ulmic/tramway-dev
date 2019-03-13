@@ -10,3 +10,6 @@ ru:
       create: Создать
       update: Редактировать
       search: Искать
+      reset: Сбросить
+    scope:
+      found: Найденные
