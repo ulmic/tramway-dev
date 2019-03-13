@@ -35,7 +35,7 @@ module Tramway
         end
       end
 
-      rescue_from StandardError do |exception|
+      rescue_from Exception do |exception|
         Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
         Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
         @exception = exception
