@@ -38,7 +38,11 @@ module Tramway::Admin
     end
 
     def searchable_model?(model_class)
-      model_class.methods.include?(:search) || model_class.methods.include?(:search_everywhere)
+      model_class.methods.include? :search
+    end
+
+    def search_path
+      request.fullpath + "&model=#{params[:model]}&scope=#{params[:scope]}"
     end
 
     def admin_index_path_of_model(model_class, tab = nil)
