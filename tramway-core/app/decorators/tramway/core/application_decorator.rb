@@ -23,6 +23,10 @@ class Tramway::Core::ApplicationDecorator
       []
     end
 
+    def show_attributes
+      []
+    end
+
     def decorate(object_or_array)
       if object_or_array.class.superclass == ActiveRecord::Relation
         decorated_array = object_or_array.map do |obj|
@@ -54,7 +58,6 @@ class Tramway::Core::ApplicationDecorator
   end
 
   delegate :id, to: :object
-  delegate :class, to: :object
   delegate :human_state_name, to: :object
 
   def link

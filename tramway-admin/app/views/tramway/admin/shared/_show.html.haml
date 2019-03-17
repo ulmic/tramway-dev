@@ -16,25 +16,23 @@
 %hr
 .row
   %table.table.table-striped.table-bordered
-    - object.attributes.each do |attribute_name, value|
-      %tr
-        %td
-          = model_class.human_attribute_name attribute_name
-        %td
-          = value
-        %td
-          - if attribute_name != 'state' && object.model.class.state_machines.keys.include?(attribute_name.to_sym)
-            = state_events_buttons object, state_method: attribute_name, model_param_name: :record, route_method: :current_model_record_path
-    - object.associations(:has_many).each do |association|
-      %tr
-        %td
-          = model_class.human_attribute_name association.name
-          = link_to fa_icon(:plus), new_record_path(model: association.class_name, redirect: current_model_record_path(object)), class: 'btn btn-primary'
-        %td{ colspan: 2 }
-          %table.table.table-striped.table-bordered
-            - object.send(association.name).each do |association_object|
-              %tr
-                %td
-                  = association_object.id
-                %td
-                  = association_object.name
+    - if object.class.show_attributes.any?
+      - object.class.show_attributes.each do |attribute_name|
+        - value = object.send attribute_name
+        = render 'tramway/admin/shared/show/attribute_tr', attribute_name: attribute_name, value: value, object: object
+    - else
+      - object.attributes.each do |attribute_name, value|
+        = render 'tramway/admin/shared/show/attribute_tr', attribute_name: attribute_name, value: value, object: object
+      - object.associations(:has_many).each do |association|
+        %tr
+          %td
+            = model_class.human_attribute_name association.name
+            = link_to fa_icon(:plus), new_record_path(model: association.class_name, redirect: current_model_record_path(object)), class: 'btn btn-primary'
+          %td{ colspan: 2 }
+            %table.table.table-striped.table-bordered
+              - object.send(association.name).each do |association_object|
+                %tr
+                  %td
+                    = association_object.id
+                  %td
+                    = association_object.name
