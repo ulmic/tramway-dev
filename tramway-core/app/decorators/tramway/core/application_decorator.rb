@@ -106,7 +106,7 @@ class Tramway::Core::ApplicationDecorator
   end
 
   def yes_no(boolean_attr)
-    boolean_attr ? I18n.t('helpers.yes') : I18n.t('helpers.no')
+    boolean_attr.to_s == 'true' ? I18n.t('helpers.yes') : I18n.t('helpers.no')
   end
 
   protected
