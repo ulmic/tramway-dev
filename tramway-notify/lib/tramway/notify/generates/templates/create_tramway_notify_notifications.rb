@@ -5,6 +5,7 @@ class CreateTramwayNotifyNotifications < ActiveRecord::Migration[5.1]
       t.text :body
       t.text :sender
       t.text :receiver
+      t.text :notification_type
 
       t.datetime :departure_date
 
