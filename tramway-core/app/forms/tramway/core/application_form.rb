@@ -1,6 +1,7 @@
 module Tramway::Core
   class ApplicationForm < ::Reform::Form
-    def initialize(object)
+    def initialize(object = nil)
+      object = self.class.model_class.new unless object
       super(object).tap do
         @@model_class = object.class
         @@enumerized_attributes = object.class.try :enumerized_attributes
@@ -101,7 +102,7 @@ module Tramway::Core
       end
 
       def model_class
-        if @@model_class
+        if defined?(@@model_class) && @@model_class
           @@model_class
         else
           model_class_name ||= self.name.to_s.sub(/Form$/, '')
