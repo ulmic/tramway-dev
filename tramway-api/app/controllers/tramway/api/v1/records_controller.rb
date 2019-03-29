@@ -9,7 +9,7 @@ module Tramway::Api::V1
     end
 
     def create
-      record_form = form_class.new model_class.new
+      record_form = form_class.new
       if record_form.submit params[:data][:attributes]
         render json: record_form.model,
           serializer: serializer_class,
