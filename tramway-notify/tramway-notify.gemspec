@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-  spec.add_dependency 'whenever', require: false
+  spec.add_dependency 'whenever'
 end

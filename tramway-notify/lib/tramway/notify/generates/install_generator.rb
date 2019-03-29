@@ -13,10 +13,15 @@ module Tramway::Notify::Generators
 
     def copy_migrations
       migrations = [
-        :create_tramway_notify_notifications
+        :create_tramway_notify_notifications,
+        :create_tramway_notify_deliveries
       ]
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"
+      end
+      create_file 'config/schedule.rb'
+      append_to_file 'config/schedule.rb' do
+        File.readlines(File.expand_path('../templates/schedule.rb', __FILE__)).join
       end
     end
   end
