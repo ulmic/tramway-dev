@@ -19,9 +19,19 @@ module Tramway::Notify::Generators
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"
       end
+
+      # Create schedule
+
       create_file 'config/schedule.rb'
       append_to_file 'config/schedule.rb' do
         File.readlines(File.expand_path('../templates/schedule.rb', __FILE__)).join
+      end
+
+      # Update tramway initializer
+
+      create_file 'config/initializers/tramway.rb'
+      append_to_file 'config/initializers/tramway.rb' do
+        'system "whenever --update-crontab"'
       end
     end
   end
