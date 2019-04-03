@@ -33,6 +33,7 @@ module Tramway
           end
         end
       end
+
       # FIXME detect inhertited locales
       def human_state_name
         I18n.t "activerecord.state_machines.tramway/core/application_record.state.states.#{state}"
