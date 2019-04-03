@@ -82,13 +82,15 @@ class Tramway::Core::ApplicationDecorator
     end.compact
   end
 
+  include Tramway::Core::Concerns::AttributesDecoratorHelper
+
   def attributes
     object.attributes.reduce({}) do |hash, attribute|
       value = try(attribute[0]) ? send(attribute[0]) : object.send(attribute[0])
       if attribute[0].to_s.in? object.class.state_machines.keys.map(&:to_s)
-        hash.merge! attribute[0] => object.send("human_#{attribute[0]}_name")
+        hash.merge! attribute[0] => state_machine_view(object, attribute[0])
       elsif value.class.in? [ ActiveSupport::TimeWithZone, DateTime, Time ]
-        hash.merge! attribute[0] => I18n.l(attribute[1])
+        hash.merge! attribute[0] => datetime_view(attribute[1])
       elsif value.class.superclass == ApplicationUploader
         tags = content_tag(:div) do
           if value.url.match(/jpg|JPG|png|PNG$/)

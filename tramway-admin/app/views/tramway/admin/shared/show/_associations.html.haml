@@ -1,0 +1,13 @@
+- object.associations(:has_many).each do |association|
+  %tr
+    %td
+      = model_class.human_attribute_name association.name
+      = link_to fa_icon(:plus), new_record_path(model: association.class_name, redirect: current_model_record_path(object)), class: 'btn btn-primary'
+    %td{ colspan: 2 }
+      %table.table.table-striped.table-bordered
+        - object.send(association.name).each do |association_object|
+          %tr
+            %td
+              = association_object.id
+            %td
+              = link_to association_object.name, record_path(association_object.id, model: 'Project')

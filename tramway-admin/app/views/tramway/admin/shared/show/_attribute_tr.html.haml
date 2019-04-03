@@ -4,5 +4,5 @@
   %td
     = value
   %td
-    - if attribute_name != 'state' && object.model.class.state_machines.keys.include?(attribute_name.to_sym)
+    - if attribute_name.to_s != 'state' && object.model.class.state_machines.keys.include?(attribute_name.to_sym)
       = state_events_buttons object, state_method: attribute_name, model_param_name: :record, route_method: :current_model_record_path
