@@ -11,15 +11,8 @@ Gem::Specification.new do |spec|
   spec.email       = ["kalashnikovisme@gmail.com"]
   spec.summary     = "Rails engine for notifications"
   spec.description = "Rails engine for notifications"
+  spec.homepage    = "https://github.com/ulmic/tramway-dev"
   spec.license     = "MIT"
 
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
-
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-  spec.add_dependency 'whenever'
 end
