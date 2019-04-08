@@ -28,7 +28,7 @@ module Tramway::Core
       if params
         save if validate params
       else
-        error = Tramway::Error.new(plugin: :core, method: :title, message: ('ApplicationForm::Params should not be nil'))
+        error = Tramway::Error.new(plugin: :core, method: :submit, message: ('ApplicationForm::Params should not be nil'))
         raise error.message
       end
     end
