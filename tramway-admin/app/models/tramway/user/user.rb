@@ -6,4 +6,7 @@ class Tramway::User::User < ::Tramway::Core::ApplicationRecord
   def admin?
     role.admin?
   end
+
+  scope :admins, -> { where role: :admin }
+  scope :simple_users, -> { where role: :user }
 end
