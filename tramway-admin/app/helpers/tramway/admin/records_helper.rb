@@ -17,6 +17,10 @@ module Tramway::Admin
       records_path args, options.merge(model: params[:model])
     end
 
+    def public_path(record)
+      record.public_path || try("#{record.class.name.underscore.gsub('/', '_')}_path", record)
+    end
+
     def model_class
       params[:model].constantize
     end

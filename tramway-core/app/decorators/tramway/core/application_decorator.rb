@@ -72,6 +72,8 @@ class Tramway::Core::ApplicationDecorator
     end
   end
 
+  def public_path; end
+
   def model
     object
   end
