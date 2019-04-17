@@ -13,7 +13,12 @@ module Tramway
       include ::Tramway::Collections::Helper
 
       def object_type(object)
-        ::Tramway::Admin.available_models_for(@application_engine || @application.name).map(&:to_s).include?(object.class.name) ? :record : :singleton
+        object_class_name = if object.class.ancestors.include? ::Tramway::Core::ApplicationDecorator
+                              object.class.model_class.name
+                            else
+                              object.class.name
+                            end
+        ::Tramway::Admin.available_models_for(@application_engine || @application.name).map(&:to_s).include?(object_class_name) ? :record : :singleton
       end
     end
   end
