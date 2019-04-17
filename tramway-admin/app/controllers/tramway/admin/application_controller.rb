@@ -44,8 +44,6 @@ module Tramway
         end
       end
 
-      private
-
       include Tramway::ClassNameHelpers
 
       def model_class
