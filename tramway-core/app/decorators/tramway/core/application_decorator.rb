@@ -55,6 +55,10 @@ class Tramway::Core::ApplicationDecorator
         end
       end
     end
+
+    def model_name
+      try(:object)&.class&.model_name || self.to_s.sub(/Decorator$/, '').constantize.model_name
+    end
   end
 
   delegate :id, to: :object
