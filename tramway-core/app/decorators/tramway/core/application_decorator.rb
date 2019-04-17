@@ -56,8 +56,12 @@ class Tramway::Core::ApplicationDecorator
       end
     end
 
+    def model_class
+      self.to_s.sub(/Decorator$/, '').constantize
+    end
+
     def model_name
-      try(:object)&.class&.model_name || self.to_s.sub(/Decorator$/, '').constantize.model_name
+      try(:object)&.class&.model_name || model_class.model_name
     end
   end
 

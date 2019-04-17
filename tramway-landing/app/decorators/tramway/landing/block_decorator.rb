@@ -7,6 +7,8 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     def list_attributes
       [ :position, :view_state, :block_type ]
     end
+
+    delegate :human_view_state_event_name, to: :model_class
   end
 
   delegate :position, to: :object
