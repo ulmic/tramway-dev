@@ -2,9 +2,12 @@ module Tramway
   module Landing
     class ApplicationController < ActionController::Base
       protect_from_forgery with: :exception
+      before_action :application
 
       def application
-        @application = ::Tramway::Core::Application.first
+        if ::Tramway::Core.application
+          @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
+        end
       end
     end
   end
