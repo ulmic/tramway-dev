@@ -7,3 +7,5 @@
     %hr
     %p
       != block.description
+      - if block.try :button
+        = link_to block.button[:title], block.button[:link], class: 'btn btn-primary'
