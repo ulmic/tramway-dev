@@ -4,7 +4,7 @@ module Tramway
       protect_from_forgery with: :exception
 
       def application
-        ::Tramway::Core::Application.first
+        @application = ::Tramway::Core::Application.first
       end
     end
   end
