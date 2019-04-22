@@ -15,7 +15,6 @@
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
-    = yield :body_content
     - if @blocks&.any?
       - headers = @blocks.select { |block| block.model.block_type.header? }
       - footers = @blocks.select { |block| block.model.block_type.footer? }
@@ -30,4 +29,9 @@
               %hr
         .container-fluid
           = yield
+    - else
+      .container-fluid
+        = yield
+    - if @blocks&.any?
+      - footers = @blocks.select { |block| block.model.block_type.footer? }
       = render "tramway/landing/blocks/block_types/footer", block: footers.first

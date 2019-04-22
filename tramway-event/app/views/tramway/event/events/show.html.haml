@@ -5,6 +5,5 @@
     - @events.each do |event|
       %li
         = link_to event.title, event_path(event.id)
-- content_for :body_content do
-  = render 'tramway/event/events/show_page', event: @event, sections: @sections, sections_as_features: @sections_as_features, people_as_features: @people_as_features, partners: @partners
-  = render "tramway/landing/blocks/block_types/footer", block: @footer
+= render 'tramway/event/events/show_page', event: @event, sections: @sections, sections_as_features: @sections_as_features, people_as_features: @people_as_features, partners: @partners
+= render "tramway/landing/blocks/block_types/footer", block: @footer
