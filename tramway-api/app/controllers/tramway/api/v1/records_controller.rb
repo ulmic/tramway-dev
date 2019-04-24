@@ -3,8 +3,7 @@ module Tramway::Api::V1
     def index
       records = model_class.active.order(id: :desc).send params[:scope] || :all
       render json: records,
-        meta: meta_pagination(records),
-        each_serializer: serializer,
+        each_serializer: serializer_class,
         status: :ok
     end
 
