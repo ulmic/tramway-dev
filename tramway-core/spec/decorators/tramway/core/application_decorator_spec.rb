@@ -19,7 +19,14 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
     }
 
     it 'class should have only this methods list' do
-      expect(class_methods.should =~ [:decorate_association, :list_attributes, :decorate]).to be_truthy
+      expect(class_methods.should =~ [
+        :decorate_association,
+        :list_attributes,
+        :decorate,
+        :model_class,
+        :model_name,
+        :show_attributes
+      ]).to be_truthy
     end
 
     it 'returns list attributes' do
@@ -70,10 +77,6 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         expect(decorated_test_model.id).to eq test_model.id
       end
 
-      it 'delegates class to object' do
-        expect(decorated_test_model.class).to eq test_model.class
-      end
-
       it 'delegates human_state_name to object' do
         expect(decorated_test_model.human_state_name).to eq test_model.human_state_name
       end
@@ -86,7 +89,10 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       let(:decorated_test_model) { described_class.decorate test_model }
 
       it 'returns name' do
-        expect{ decorated_test_model.name }.to raise_error("Plugin: core; Method: title; Message: Please, implement `title` method in a TestModel or TestModel")
+        expect{ decorated_test_model.name }.to raise_error(
+          RuntimeError,
+          "Plugin: core; Method: title; Message: Please, implement `title` method in a Tramway::Core::ApplicationDecorator or TestModel"
+        )
       end
 
       it 'returns link' do
