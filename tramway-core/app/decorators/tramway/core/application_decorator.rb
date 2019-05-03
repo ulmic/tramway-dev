@@ -61,7 +61,7 @@ class Tramway::Core::ApplicationDecorator
     end
 
     def model_name
-      try(:object)&.class&.model_name || model_class.model_name
+      model_class.try(:model_name)
     end
   end
 

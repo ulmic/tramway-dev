@@ -33,6 +33,18 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       expect(described_class.list_attributes).to eq []
     end
 
+    it 'returns show attributes' do
+      expect(described_class.show_attributes).to eq []
+    end
+
+    it 'returns model class' do
+      expect(described_class.model_class).to eq Tramway::Core::Application
+    end
+
+    it 'return model name' do
+      expect(described_class.model_name).to be_nil
+    end
+
     it 'decorates simple object' do
       obj = 'it can be any object'
       expect(described_class.decorate(obj)).to be_a described_class
@@ -65,7 +77,6 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         expect{ decorated_test_model.another_association_models }.to raise_error("Plugin: core; Method: decorate_association; Message: Please, specify `another_association_models` association class_name in TestModel model. For example: `has_many :another_association_models, class_name: 'AnotherAssociationModel'`") 
       end
     end
-
   end
 
   context 'Delegation checks' do
