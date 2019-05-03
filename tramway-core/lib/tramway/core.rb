@@ -3,6 +3,7 @@ require 'tramway/collection'
 require 'tramway/collections/helper'
 require 'font-awesome-rails'
 require 'reform'
+require 'pg_search'
 
 module Tramway
   module Core
