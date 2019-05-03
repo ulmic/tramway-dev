@@ -28,7 +28,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   end
 
   def create
-    @record_form = form_class.new 
+    @record_form = form_class.new model_class.new
     if @record_form.submit params[:record]
       redirect_to params[:redirect] || record_path(@record_form.model)
     else

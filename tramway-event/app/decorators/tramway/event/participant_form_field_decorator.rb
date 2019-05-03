@@ -9,6 +9,10 @@ class Tramway::Event::ParticipantFormFieldDecorator < ::Tramway::Core::Applicati
     end
   end
 
+  def title
+    "#{object.title} #{object.event.title}"
+  end
+
   def event_title
     object.event.title
   end
