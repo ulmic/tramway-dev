@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Tramway::User::VERSION
   s.authors     = ["Pavel Kalashnikov"]
   s.email       = ["kalashnikovisme@gmail.com"]
-  s.homepage    = 'https://github.com/kalashnikovisme/tramway-user'
+  s.homepage    = 'https://github.com/ulmic/tramway-dev'
   s.summary     = 'Engine for users in your Rails app'
   s.description = 'Engine for users in your Rails app'
   s.license     = "MIT"

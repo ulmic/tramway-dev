@@ -1,5 +1,5 @@
 Tramway::Admin::Engine.routes.draw do
-  mount Tramway::User::Engine, at: '/users'
+  mount Tramway::Auth::Engine, at: '/auth'
 
   root to: 'welcome#index'
 
