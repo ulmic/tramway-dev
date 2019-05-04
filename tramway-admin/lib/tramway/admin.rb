@@ -2,7 +2,7 @@ require 'tramway/admin/engine'
 require 'tramway/error'
 
 module Tramway
-  User.layout_path = 'tramway/admin/application'
+  Auth.layout_path = 'tramway/admin/application'
 
   module Admin
     class << self

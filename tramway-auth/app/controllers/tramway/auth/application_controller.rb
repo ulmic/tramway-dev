@@ -1,5 +1,5 @@
 module Tramway
-  module User
+  module Auth
     class ApplicationController < ActionController::Base
       layout ::Tramway::Auth.layout_path
       protect_from_forgery with: :exception

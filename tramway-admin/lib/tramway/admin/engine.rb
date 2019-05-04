@@ -1,5 +1,5 @@
 require 'tramway/admin/record_routes_helper'
-require 'tramway/user'
+require 'tramway/auth'
 require 'font-awesome-rails'
 require 'ckeditor'
 

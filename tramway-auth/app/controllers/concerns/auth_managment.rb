@@ -17,9 +17,9 @@ module AuthManagment
 
   def authenticate_admin!
     if signed_in?
-      redirect_to ::Tramway::User.root_path if !current_user.admin? && request.env['PATH_INFO'] != ::Tramway::User.root_path
+      redirect_to ::Tramway::Auth.root_path if !current_user.admin? && request.env['PATH_INFO'] != ::Tramway::Auth.root_path
     else
-      redirect_to '/users/session/new'
+      redirect_to '/auth/session/new'
     end
   end
 

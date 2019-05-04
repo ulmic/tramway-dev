@@ -1,4 +1,4 @@
-module Tramway::User
+module Tramway::Auth
   class SessionForm < ::Tramway::Core::ApplicationForm
     properties :email
     attr_accessor :password 

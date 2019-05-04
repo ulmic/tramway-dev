@@ -1,6 +1,6 @@
 ru:
   tramway:
-    user:
+    auth:
       web:
         sessions:
           new:
