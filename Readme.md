@@ -17,8 +17,3 @@ Gem name | Version and Link
 [tramway-profiles](https://github.com/ulmic/tramway-dev/tree/develop/tramway-profiles) | [![Gem Version](https://badge.fury.io/rb/tramway-profiles.svg)](https://badge.fury.io/rb/tramway-profiles)
 [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school) | [![Gem Version](https://badge.fury.io/rb/tramway-sport_school.svg)](https://badge.fury.io/rb/tramway-sport_school)
 [tramway-user](https://github.com/ulmic/tramway-dev/tree/develop/tramway-user) | [![Gem Version](https://badge.fury.io/rb/tramway-user.svg)](https://badge.fury.io/rb/tramway-user)
-
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
