@@ -17,12 +17,8 @@ module Tramway
 
       protected
 
-      def authenticate_user
-        authenticate_for Tramway::Api.user_based_model
-      end
-
       def authenticate
-        unauthorized unless entity.present? && entity.authenticate(auth_params[:password])
+        return unauthorized unless current_user
       end
 
       def auth_token
