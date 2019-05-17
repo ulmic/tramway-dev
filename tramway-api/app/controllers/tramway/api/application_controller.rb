@@ -11,10 +11,18 @@ module Tramway
         render json: { data: [] }, status: :not_found
       end
 
+      def unauthorized
+        head :unauthorized
+      end
+
       protected
 
+      def authenticate_user
+        authenticate_for Tramway::Api.user_based_model
+      end
+
       def authenticate
-        raise ActiveRecord::RecordNotFound unless entity.present? && entity.authenticate(auth_params[:password])
+        unauthorized unless entity.present? && entity.authenticate(auth_params[:password])
       end
 
       def auth_token
@@ -30,12 +38,12 @@ module Tramway
           if Tramway::Api.user_based_model.respond_to? :from_token_request
             Tramway::Api.user_based_model.from_token_request request
           else
-            Tramway::Api.user_based_model.find_by email: auth_params[:email]
+            params[:auth] && Tramway::Api.user_based_model.find_by(email: auth_params[:email])
           end
       end
 
       def auth_params
-        params.require(:auth).permit :email, :password
+        params[:auth]&.permit :email, :password
       end
     end
   end
