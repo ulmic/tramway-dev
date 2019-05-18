@@ -7,7 +7,7 @@ class Tramway::Api::V1::UserTokensController < ::Tramway::Api::V1::ApplicationCo
         auth_token: token,
         user: {
           email: @entity.email,
-          id: @entity.id
+          uid: @entity.uid
         }
       }, status: :created
     else
