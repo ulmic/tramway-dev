@@ -27,6 +27,10 @@ class Tramway::Core::ApplicationDecorator
       []
     end
 
+    def show_associations
+      []
+    end
+
     def decorate(object_or_array)
       if object_or_array.class.superclass == ActiveRecord::Relation
         decorated_array = object_or_array.map do |obj|
