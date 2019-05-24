@@ -3,10 +3,10 @@
 Gem name | Version and Link
 -------- | ----------------
 [tramway-admin](https://github.com/ulmic/tramway-dev/tree/develop/tramway-admin) | [![Gem Version](https://badge.fury.io/rb/tramway-admin.svg)](https://badge.fury.io/rb/tramway-admin)
-[tramway-core](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core) | [![Gem Version](https://badge.fury.io/rb/tramway-core.svg)](https://badge.fury.io/rb/tramway-core)
 [tramway-api](https://github.com/ulmic/tramway-dev/tree/develop/tramway-api) | [![Gem Version](https://badge.fury.io/rb/tramway-api.svg)](https://badge.fury.io/rb/tramway-api)
 [tramway-auth](https://github.com/ulmic/tramway-dev/tree/develop/tramway-auth) | [![Gem Version](https://badge.fury.io/rb/tramway-auth.svg)](https://badge.fury.io/rb/tramway-auth)
 [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) | [![Gem Version](https://badge.fury.io/rb/tramway-conference.svg)](https://badge.fury.io/rb/tramway-conference)
+[tramway-core](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core) | [![Gem Version](https://badge.fury.io/rb/tramway-core.svg)](https://badge.fury.io/rb/tramway-core)
 [tramway-event](https://github.com/ulmic/tramway-dev/tree/develop/tramway-event) | [![Gem Version](https://badge.fury.io/rb/tramway-event.svg)](https://badge.fury.io/rb/tramway-event)
 [tramway-landing](https://github.com/ulmic/tramway-dev/tree/develop/tramway-landing) | [![Gem Version](https://badge.fury.io/rb/tramway-landing.svg)](https://badge.fury.io/rb/tramway-landing)
 [tramway-mailout](https://github.com/ulmic/tramway-dev/tree/develop/tramway-mailout) | [![Gem Version](https://badge.fury.io/rb/tramway-mailout.svg)](https://badge.fury.io/rb/tramway-mailout)
