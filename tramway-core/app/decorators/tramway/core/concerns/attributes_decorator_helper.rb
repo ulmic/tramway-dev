@@ -1,4 +1,8 @@
 module Tramway::Core::Concerns::AttributesDecoratorHelper
+  def date_view(value)
+    I18n.l value.to_date
+  end
+
   def datetime_view(value)
     I18n.l value
   end
