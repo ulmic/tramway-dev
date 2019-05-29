@@ -5,3 +5,5 @@ ru:
         sessions:
           new:
             title: Авторизация
+  errors:
+    wrong_email_or_password: Неверный логин или пароль

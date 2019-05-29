@@ -19,7 +19,7 @@ module Tramway::Auth
 
       def destroy
         sign_out
-        redirect_to root_path
+        redirect_to ::Tramway::Auth.root_path
       end
 
       private
