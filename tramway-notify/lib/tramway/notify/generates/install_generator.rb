@@ -14,7 +14,8 @@ module Tramway::Notify::Generators
     def copy_migrations
       migrations = [
         :create_tramway_notify_notifications,
-        :create_tramway_notify_deliveries
+        :create_tramway_notify_deliveries,
+        :add_action_to_tramway_notify_notifications
       ]
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"

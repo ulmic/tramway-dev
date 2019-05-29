@@ -109,7 +109,7 @@ module Tramway::Core
           begin
             @@model_class = model_class_name.constantize
           rescue
-            error = Tramway::Error.new(plugin: :core, method: :model_class, message: ("There is not model class name for #{self.name}. Should be #{model_class_name} or you can use another class to initialize form object."))
+            error = Tramway::Error.new(plugin: :core, method: :model_class, message: ("There is not model class name for #{self.name}. Should be #{model_class_name} or you can use another class to initialize form object or just initialize form with object."))
             raise error.message
           end
         end
