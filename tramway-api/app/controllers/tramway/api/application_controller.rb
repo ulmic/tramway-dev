@@ -32,9 +32,9 @@ module Tramway
       def entity
         @entity ||=
           if Tramway::Api.user_based_model.respond_to? :from_token_request
-            Tramway::Api.user_based_model.from_token_request request
+            Tramway::Api.user_based_model.active.from_token_request request
           else
-            params[:auth] && Tramway::Api.user_based_model.find_by(email: auth_params[:email])
+            params[:auth] && Tramway::Api.user_based_model.active.find_by(email: auth_params[:email])
           end
       end
 
