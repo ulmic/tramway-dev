@@ -25,7 +25,8 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         :decorate,
         :model_class,
         :model_name,
-        :show_attributes
+        :show_attributes,
+        :show_associations
       ]).to be_truthy
     end
 
@@ -35,6 +36,10 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
 
     it 'returns show attributes' do
       expect(described_class.show_attributes).to eq []
+    end
+
+    it 'returns show associations' do
+      expect(described_class.show_associations).to eq []
     end
 
     it 'returns model class' do
