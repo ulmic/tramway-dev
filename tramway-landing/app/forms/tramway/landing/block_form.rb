@@ -1,5 +1,5 @@
-class Tramway::Landing::BlockForm < ::Tramway::Core::ApplicationForm
-  properties :title, :background, :view_state, :block_type, :position, :navbar_link, :anchor, :description, :link_object_type, :link_object_id, :button
+class Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationForm
+  properties :title, :background, :view_state, :block_type, :position, :navbar_link, :anchor, :description, :link_object_type, :link_object_id, :button_title, :button_link
 
   def initialize(object = nil)
     form_object = super object
@@ -18,19 +18,23 @@ class Tramway::Landing::BlockForm < ::Tramway::Core::ApplicationForm
   end
 
   def button_title
-    model.button&.require(:title) || ""
+    model.button ||= {}
+    model.button['title'] || ""
   end
 
   def button_link
-    model.button&.require(:link) || ""
+    model.button ||= {}
+    model.button['link'] || ""
   end
 
   def button_title=(value)
+    model.button ||= {}
     model.button[:title] = value
     model.save
   end
 
   def button_link=(value)
+    model.button ||= {}
     model.button[:link] = value
     model.save
   end
