@@ -4,4 +4,6 @@ class ::Tramway::Profiles::SocialNetworkDecorator < ::Tramway::Core::Application
       [ :all ]
     end
   end
+
+  delegate :title, to: :object
 end
