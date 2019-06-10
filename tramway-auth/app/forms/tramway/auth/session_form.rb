@@ -8,11 +8,8 @@ module Tramway::Auth
     end
 
     def validate(params)
-      begin
-        add_wrong_email_or_password_error unless self.model.authenticate params[:password]
-      rescue
-        add_wrong_email_or_password_error
-        false
+      (!model.new_record? && model.authenticate(params[:password])).tap do |result|
+        add_wrong_email_or_password_error unless result
       end
     end
 
