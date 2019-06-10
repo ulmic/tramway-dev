@@ -8,6 +8,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
     def list_attributes
       [:list_fields]
     end
+    delegate :human_participation_state_event_name, to: :model_class
   end
 
   decorate_association :event
