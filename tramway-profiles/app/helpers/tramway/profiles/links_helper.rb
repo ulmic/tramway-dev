@@ -22,7 +22,11 @@ module Tramway::Profiles::LinksHelper
   end
 
   def telegram(uid, title)
-    profile_link_template title, "https://teleg.run/#{uid}", :telegram
+    profile_link_template title, "https://intg.me/#{uid}", :telegram
+  end
+
+  def patreon(uid, title)
+    profile_link_template title, "https://patreon.com/#{uid}", :patreon
   end
 
   def profile_link_template(title, link, icon)
