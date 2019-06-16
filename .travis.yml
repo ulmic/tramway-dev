@@ -12,7 +12,6 @@ before_script:
   - RAILS_ENV=test bundle exec rails db:create db:migrate
   - cd ../../..
   - gem install bundler -v '~> 2.0'
-  - bundle install
 before_install:
   - sudo /etc/init.d/postgresql stop
   - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
@@ -20,5 +19,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install postgresql-9.5
   - cd tramway-core
+  - bundle install
 script:
   - make
