@@ -15,7 +15,7 @@ rails g tramway:core:install
 
 # Базовые классы
 
-* ApplicationDecorator - Базовый класс декоратора. В него по умолчанию включены `ActionView::Helpers` и `ActionView::Context` и `FontAwesome`. `FontAwesome` считается в `Tramway` основным шрифтом для иконок.
+* ApplicationDecorator - Базовый класс декоратора. В него по умолчанию включены `ActionView::Helpers` и `ActionView::Context` и `FontAwesome5` (версия гема FontAwesome, которая поддерживает 5 версию шрифта). `FontAwesome` считается в `Tramway` основным шрифтом для иконок.
 * ApplicationForm - наследованный от Reform::Form класс форм.
 * ApplicationRecord  - базовый класс для AR моделей
 * ApplicationUploader - базовый класс для Carrierwave аплоадеров.

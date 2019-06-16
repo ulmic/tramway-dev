@@ -1,7 +1,7 @@
 module Tramway
   module SportSchool
     module ApplicationHelper
-      include ::FontAwesome::Rails::IconHelper
+      include ::FontAwesome5::Rails::IconHelper
     end
   end
 end

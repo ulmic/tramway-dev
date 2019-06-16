@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require bootstrap-datepicker-1.8.0
 #= require bootstrap-datepicker-1.8.0.ru.min
+#= require font_awesome5
 #= require_tree .
 
 $(document).ready ->

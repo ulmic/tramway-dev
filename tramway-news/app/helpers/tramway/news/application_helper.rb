@@ -1,7 +1,7 @@
 module Tramway
   module News
     module ApplicationHelper
-      include ::FontAwesome::Rails::IconHelper
+      include ::FontAwesome5::Rails::IconHelper
 
       def title(text)
         content_for :title do

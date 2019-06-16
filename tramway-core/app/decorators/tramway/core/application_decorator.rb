@@ -3,7 +3,7 @@ require 'tramway/error'
 class Tramway::Core::ApplicationDecorator
   include ActionView::Helpers
   include ActionView::Context
-  include ::FontAwesome::Rails::IconHelper
+  include ::FontAwesome5::Rails::IconHelper
 
   def initialize(object)
     @object = object

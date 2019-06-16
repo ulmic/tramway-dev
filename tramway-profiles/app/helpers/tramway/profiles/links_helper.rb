@@ -31,7 +31,7 @@ module Tramway::Profiles::LinksHelper
 
   def profile_link_template(title, link, icon)
     link_to link, target: '_blank' do
-      concat fa_icon icon
+      concat fab_icon icon
       concat ' '
       concat title 
     end

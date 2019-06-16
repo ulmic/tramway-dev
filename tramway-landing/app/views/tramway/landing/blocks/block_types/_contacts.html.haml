@@ -32,17 +32,17 @@
         - if yield(:address).present?
           .col-lg-4.col-md-12.mb-3
             %p
-              = fa_icon :map, class: 'fa-lx mr-2 grey-text'
+              = fa_icon :map, class: 'grey-text'
               = yield :address
         - if yield(:schedule).present?
           .col-lg-4.col-md-6.mb-3
             %p
-              = fa_icon :building, class: 'fa-lx mr-2 grey-text'
+              = fas_icon :building, class: 'grey-text'
               = yield :schedule
         - if yield(:phone).present?
           .col-lg-4.col-md-6.mb-3
             %p
               = tel_tag yield(:phone) do
-                = fa_icon :phone, class: 'fa-lx mr-2 grey-text'
+                = fa_icon :phone, class: 'grey-text'
                 = yield :phone
       #map-container.z-depth-1-half.map-container{ style: 'height: 400px' }

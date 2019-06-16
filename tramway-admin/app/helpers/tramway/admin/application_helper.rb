@@ -1,7 +1,7 @@
 module Tramway
   module Admin
     module ApplicationHelper
-      include ::FontAwesome::Rails::IconHelper
+      include ::FontAwesome5::Rails::IconHelper
       include AuthManagment
       include AdditionalButtonsBuilder
       include RussianCasesHelper
