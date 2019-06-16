@@ -82,6 +82,8 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
       :danger
     when :reserve
       :warning
+    when :return_to_requested
+      :warning
     end
   end
 

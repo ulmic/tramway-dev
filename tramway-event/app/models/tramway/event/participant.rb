@@ -23,7 +23,7 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     end
 
     event :approve do
-      transition [ :prev_approved, :reserved ] => :approved
+      transition [ :prev_approved, :reserved, :requested ] => :approved
     end
 
     event :not_got_answer do
@@ -32,6 +32,10 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
 
     event :reserve do
       transition [ :requested, :without_answer, :waiting ] => :reserved
+    end
+
+    event :return_to_requested do
+      transition rejected: :requested
     end
   end
 
