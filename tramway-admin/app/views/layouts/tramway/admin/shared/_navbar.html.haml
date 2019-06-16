@@ -17,10 +17,10 @@
         - if signed_in?
           %li.nav-item
             = link_to Tramway::Auth::Engine.routes.url_helpers.session_path, method: :delete, class: 'nav-link' do
-              = fa_icon 'sign-out'
+              = fa_icon 'sign-out-alt'
               = t('helpers.links.sign_out')
         - else
           %li.nav-item
             = link_to new_session_path, class: 'nav-link' do
-              = fa_icon 'sign-in'
+              = fa_icon 'sign-in-alt'
               = t('helpers.links.enter')

@@ -12,7 +12,7 @@
       %h2
         = current_title
         - edit_path = object_type(object) == :singleton ? edit_current_model_singleton_path : edit_current_model_record_path(object.id)
-        = link_to fa_icon(:pencil), edit_path, class: 'btn btn-warning btn-xs'
+        = link_to fa_icon('pencil-alt'), edit_path, class: 'btn btn-warning btn-xs'
         - if public_path(object)
           = link_to fa_icon(:share), public_path(object), class: 'btn btn-primary btn-xs'
 %hr
