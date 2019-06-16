@@ -2,7 +2,7 @@ require 'tramway/core/engine'
 require 'tramway/collection'
 require 'tramway/collections/helper'
 require 'tramway/error'
-require 'font-awesome-rails'
+require 'font_awesome5_rails'
 require 'reform'
 require 'pg_search'
 
