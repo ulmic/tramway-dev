@@ -36,7 +36,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def button
-    if object.button['title'].present? && object.button['link'].present?
+    if object.button.present? && object.button['title'].present? && object.button['link'].present?
       content_tag :a, href: object.button['link'], target: '_blank', class: 'btn btn-primary' do
         object.button['title']
       end
