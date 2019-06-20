@@ -1,0 +1,6 @@
+ru:
+  tramway:
+    core:
+      shared:
+        messages:
+          some_errors_was_found: Найдены ошибки
