@@ -3,6 +3,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     scope = params[:scope].present? ? params[:scope] : :all
     records = model_class.active.order(id: :desc).send scope
     records = records.search params[:search] if params[:search]
+    records = records.ransack params[:filter] if params[:filter]
     @records = decorator_class.decorate records.page params[:page]
   end
 

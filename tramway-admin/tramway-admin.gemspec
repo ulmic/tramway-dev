@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'copyright_mafa', '~> 0.1.2', '>= 0.1.2'
   s.add_dependency 'kaminari', '~> 1.1.1', '>= 1.1.1'
   s.add_dependency 'state_machine_buttons', '~> 0.4.1', '>= 0.4.1'
+  s.add_dependency 'ransack'
 end
