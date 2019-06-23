@@ -10,11 +10,20 @@ ru:
     attributes:
       tramway/event/event:
         title: Название
+        name: Название
         description: Описание
         begin_date: Дата начала
         end_date: Дата конца
         request_collecting_begin_date: Дата начала приёма заявок на мероприятие
         request_collecting_end_date: Дата окончания приёма заявок на мероприятие
+        request_collecting_duration: Продолжительность сбора заявок
+        status: Статус на сайте
+        photo: Фоновое изображение
+        duration: Продолжительность
+        requested_participants: Количество заявившихся
+        approved_participants: Количество пришедших
+        not_yet_held: мероприятие ещё не проведено
+        participants_list: Список участников
       tramway/event/participant:
         comment: Примечание
         event: Мероприятие
@@ -55,4 +64,8 @@ ru:
       approved: Окончательно подтверждены
       without_answer: Не ответили
       reserved: В резерве
-
+  enumerize:
+    tramway/event/event:
+      status:
+        main: На главной странице
+        common: Не на главной странице

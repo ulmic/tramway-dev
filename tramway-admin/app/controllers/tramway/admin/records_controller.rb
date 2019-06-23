@@ -3,7 +3,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     scope = params[:scope].present? ? params[:scope] : :all
     records = model_class.active.order(id: :desc).send scope
     records = records.search params[:search] if params[:search]
-    records = records.ransack params[:filter] if params[:filter]
+    records = records.ransack(params[:filter]).result if params[:filter]
     @records = decorator_class.decorate records.page params[:page]
   end
 
@@ -42,23 +42,4 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     record.remove
     redirect_to records_path
   end
-end
-
-private
-
-# FIXME replace to module
-def record_path(*args, **options)
-  super args, options.merge(model: params[:model])
-end
-
-def edit_record_path(*args, **options)
-  super args, options.merge(model: params[:model])
-end
-
-def new_record_path(*args, **options)
-  super args, options.merge(model: params[:model])
-end
-
-def records_path(*args, **options)
-  super args, options.merge(model: params[:model])
 end

@@ -106,15 +106,9 @@ class Tramway::Core::ApplicationDecorator
       elsif value.class.in? [ ActiveSupport::TimeWithZone, DateTime, Time ]
         hash.merge! attribute[0] => datetime_view(attribute[1])
       elsif value.class.superclass == ApplicationUploader
-        tags = content_tag(:div) do
-          if value.url.match(/jpg|JPG|png|PNG$/)
-            concat image_tag value.try(:small) ? value.small.url : value.url
-          end
-          concat link_to(fa_icon(:download), value.url, class: 'btn btn-success')
-        end
-        hash.merge! attribute[0] => tags
+        hash.merge! attribute[0] => image_view(attribute[1])
       elsif value.is_a? Enumerize::Value
-        hash.merge! attribute[0] => value.text
+        hash.merge! attribute[0] => enumerize_view(value)
       else
         hash.merge! attribute[0] => value
       end

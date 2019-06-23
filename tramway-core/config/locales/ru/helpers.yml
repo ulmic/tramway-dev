@@ -6,6 +6,7 @@ ru:
       back: Назад
       sign_out: Выйти
       actions: Действия
+      open: Открыть
     actions:
       create: Создать
       update: Редактировать

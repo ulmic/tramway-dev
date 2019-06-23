@@ -45,11 +45,11 @@ module Tramway::Admin
       model_class.methods.include? :search
     end
 
-    def admin_index_path_of_model(model_class, tab = nil)
+    def admin_index_path_of_model(model_class, tab, filter)
       if tab
-        records_path model: model_class, scope: tab
+        records_path model: model_class, filter: filter, scope: tab
       else
-        records_path model: model_class
+        records_path model: model_class, filter: filter
       end
     end
 
@@ -60,7 +60,7 @@ module Tramway::Admin
              else 
                t("default.collections.#{tab}")
              end
-      "#{name} / #{count}"
+      params[:filter].present? ? name : "#{name} / #{count}"
     end
 
     def active_tab(tab, index)

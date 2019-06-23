@@ -33,21 +33,33 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
         end)
       end)
       object.event.participant_form_fields.map do |field|
-        hash = field.options.is_a?(Hash) ? field.options : JSON.parse(field.options.present? ? field.options : '{}')
-        if hash.dig('list_field') == 'true'
-          concat(content_tag(:tr) do
-            concat(content_tag(:td) do
-              field.title
+        hash = if field.options.is_a?(Hash)
+                 field.options 
+               else
+                 begin
+                   JSON.parse(field.options.present? ? field.options : '{}')
+                 rescue => e
+                   I18n.t('.invalid_field_with_error', e)
+                 end
+               end
+        if hash.is_a? Hash
+          if hash.dig('list_field') == 'true'
+            concat(content_tag(:tr) do
+              concat(content_tag(:td) do
+                field.title
+              end)
+              concat(content_tag(:td) do
+                value = object.values&.dig( field.title )
+                if russian_phone_number?(value)
+                  tel_tag value
+                else
+                  value
+                end
+              end)
             end)
-            concat(content_tag(:td) do
-              value = object.values&.dig( field.title )
-              if russian_phone_number?(value)
-                tel_tag value
-              else
-                value
-              end
-            end)
-          end)
+          end
+        else
+          hash
         end
       end.compact
     end
