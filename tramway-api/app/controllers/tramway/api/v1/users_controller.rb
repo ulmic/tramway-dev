@@ -5,7 +5,7 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
   include Tramway::ClassNameHelpers
 
   def create
-    user_form = form_class_name(Tramway::Api.user_based_model).new Tramway::Api.user_based_model.new
+    user_form = sign_up_form_class_name(Tramway::Api.user_based_model).new Tramway::Api.user_based_model.new
     if user_form.submit params[Tramway::Api.user_based_model.name.underscore]
       token = ::Knock::AuthToken.new(payload: { sub: user_form.model.id }).token
       # FIXME refactor this bullshit
@@ -23,5 +23,11 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
 
   def show
     render json: current_user, status: :ok
+  end
+
+  private
+
+  def sign_up_form_class_name(model_class)
+    form_class_name "#{model_class}SignUp"
   end
 end
