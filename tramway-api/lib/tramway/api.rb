@@ -3,12 +3,20 @@ require 'tramway/api/engine'
 module Tramway
   module Api
     class << self
-      def user_based_model
-        @@user_based_model ||= ::Tramway::User::User
+      def auth_config
+        @@auth_config ||= { user_model: ::Tramway::User::User, auth_attributes: :email }
       end
 
-      def user_based_model=(model_class)
-        @@user_based_model = model_class
+      def auth_config=(**params)
+        @@auth_config = params
+      end
+
+      def user_based_model
+        @@auth_config[:user_model]
+      end
+
+      def auth_attributes
+        @@auth_config[:auth_attributes]
       end
 
       def set_available_models(**models)

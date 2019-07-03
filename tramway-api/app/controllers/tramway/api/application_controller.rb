@@ -34,12 +34,20 @@ module Tramway
           if Tramway::Api.user_based_model.respond_to? :from_token_request
             Tramway::Api.user_based_model.active.from_token_request request
           else
-            params[:auth] && Tramway::Api.user_based_model.active.find_by(email: auth_params[:email])
+            params[:auth] && find_user_by_auth_attributes
           end
       end
 
+      def find_user_by_auth_attributes
+        Tramway::Api.auth_attributes.each do |attribute|
+          object = Tramway::Api.user_based_model.active.where.not(attribute => nil).find_by(attribute => auth_params[:login])
+          return object if object
+        end
+        nil
+      end
+
       def auth_params
-        params[:auth]&.permit :email, :password
+        params[:auth]&.permit(:login, :password)
       end
     end
   end
