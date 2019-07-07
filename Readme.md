@@ -17,6 +17,7 @@ Gem name | Version and Link
 [tramway-page](https://github.com/ulmic/tramway-dev/tree/develop/tramway-page) | [![Gem Version](https://badge.fury.io/rb/tramway-page.svg)](https://badge.fury.io/rb/tramway-page)
 [tramway-partner](https://github.com/ulmic/tramway-dev/tree/develop/tramway-partner) | [![Gem Version](https://badge.fury.io/rb/tramway-partner.svg)](https://badge.fury.io/rb/tramway-partner)
 [tramway-profiles](https://github.com/ulmic/tramway-dev/tree/develop/tramway-profiles) | [![Gem Version](https://badge.fury.io/rb/tramway-profiles.svg)](https://badge.fury.io/rb/tramway-profiles)
+[tramway-site](https://github.com/ulmic/tramway-dev/tree/develop/tramway-site) | [![Gem Version](https://badge.fury.io/rb/tramway-site.svg)](https://badge.fury.io/rb/tramway-site)
 [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school) | [![Gem Version](https://badge.fury.io/rb/tramway-sport_school.svg)](https://badge.fury.io/rb/tramway-sport_school)
 [tramway-user](https://github.com/ulmic/tramway-dev/tree/develop/tramway-user) | [![Gem Version](https://badge.fury.io/rb/tramway-user.svg)](https://badge.fury.io/rb/tramway-user)
 
@@ -53,6 +54,7 @@ Tramway решает две проблемы:
 [tramway-page](https://github.com/ulmic/tramway-dev/tree/develop/tramway-page) | **Функциональность**: информационные страницы. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
 [tramway-partner](https://github.com/ulmic/tramway-dev/tree/develop/tramway-partner) | **Функциональность**: партнёры. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference)
 [tramway-profiles](https://github.com/ulmic/tramway-dev/tree/develop/tramway-profiles) | **Функциональность**: профили социальных сетей. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
+[tramway-site](https://github.com/ulmic/tramway-dev/tree/develop/tramway-site) | **Функциональность**: сайт персоналии
 [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school) | **Функциональность**: сайт спортивной школы
 [tramway-user](https://github.com/ulmic/tramway-dev/tree/develop/tramway-user) | **Функциональность**: пользователи. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
 
@@ -60,4 +62,5 @@ Tramway решает две проблемы:
 
 * [IT Way](http://it-way.pro)
 * [Peklo Tool](https://tool.peklo.studio/)
+* [kalashnikovisme.ru](http://kalashnikovisme.ru)
 * [МБУ ДО ДЮСШ Ленинского района](http://sportschool-ulsk.ru/)
