@@ -10,4 +10,6 @@ Gem::Specification.new do |spec|
   spec.summary     = "Rails engine for person site"
   spec.description = "Rails engine for person site"
   spec.license     = "MIT"
+
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 end
