@@ -8,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'tramway-blog'
+gem 'tramway-site'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install tramway-blog
+$ gem install tramway-site
 ```
 
 ## Contributing
