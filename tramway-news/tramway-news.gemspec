@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Tramway::News::VERSION
   s.authors     = ["Pavel Kalashnikov"]
   s.email       = ["kalashnikovisme@gmail.com"]
-  s.homepage    = "https://github.com/ulmic/tramway-news"
+  s.homepage    = "https://github.com/ulmic/tramway-dev"
   s.summary     = "Rails engine for news"
   s.description = "Rails engine for news"
   s.license     = "MIT"

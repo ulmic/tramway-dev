@@ -3,7 +3,7 @@ require 'tramway/helpers/class_name_helpers'
 module Tramway
   module Admin
     class ApplicationController < ::Tramway::Core::ApplicationController
-      include AuthManagment
+      include AuthManagement
       include RecordRoutesHelper
       before_action :authenticate_admin!
       before_action :check_available!

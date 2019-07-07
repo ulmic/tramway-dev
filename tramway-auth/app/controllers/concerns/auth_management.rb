@@ -1,4 +1,4 @@
-module AuthManagment
+module AuthManagement
   def sign_in(user)
     session[:user_id] = user.id
   end

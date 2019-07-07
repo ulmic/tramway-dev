@@ -19,6 +19,10 @@ class Tramway::Core::ApplicationDecorator
   end
 
   class << self
+    def collections
+      [:all]
+    end
+
     def list_attributes
       []
     end
