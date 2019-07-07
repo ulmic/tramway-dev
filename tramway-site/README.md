@@ -1,4 +1,4 @@
-# Tramway::Blog
+# Tramway::Site
 Short description and motivation.
 
 ## Usage
