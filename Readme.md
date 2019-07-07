@@ -17,3 +17,15 @@ Gem name | Version and Link
 [tramway-profiles](https://github.com/ulmic/tramway-dev/tree/develop/tramway-profiles) | [![Gem Version](https://badge.fury.io/rb/tramway-profiles.svg)](https://badge.fury.io/rb/tramway-profiles)
 [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school) | [![Gem Version](https://badge.fury.io/rb/tramway-sport_school.svg)](https://badge.fury.io/rb/tramway-sport_school)
 [tramway-user](https://github.com/ulmic/tramway-dev/tree/develop/tramway-user) | [![Gem Version](https://badge.fury.io/rb/tramway-user.svg)](https://badge.fury.io/rb/tramway-user)
+
+## Docs English
+
+... coming soon
+
+## Docs Russian
+
+Tramway - набор Rails гемов. Каждый гем является mountable библиотекой, которая предоставляет по сути готовый функционал или абстракции для быстрого создания **простых** сайтов.
+
+# Проблема
+
+Tramway решает две проблемы
