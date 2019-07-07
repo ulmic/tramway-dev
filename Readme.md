@@ -1,3 +1,5 @@
+![Logo](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/logo.png)
+###### Author [@noTea](https://vk.com/kiborgvviborge)
 # Main Repo of Tramway Engine [![Build Status](https://travis-ci.org/ulmic/tramway-dev.svg?branch=develop)](https://travis-ci.org/ulmic/tramway-dev)
 
 Gem name | Version and Link
