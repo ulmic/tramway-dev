@@ -58,5 +58,5 @@ Tramway решает две проблемы:
 
 ## Products
 
-* [IT Way](https://it-way.pro)
-* [Peklo Tool](https://peklo.maddevs.io)
+* [IT Way](http://it-way.pro)
+* [Peklo Tool](https://tool.peklo.studio/)
