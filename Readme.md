@@ -37,3 +37,21 @@ Tramway решает две проблемы:
 имеют похожие задачи и цели. Достигать этих целей помогает функциональность сайтов этих некомммерческих проектов. Эта функциональность предоставляет Tramway. Выбор сферы деятельности связан с деятельностью автора проекта.
 
 Архитектура Tramway предполагает создание готового функционала для видов деятельности. Например, в данный момент реализован минимальный набор функциональности для сайтов спортивных школ.
+
+Гем | Описание
+-------- | ----------------
+[tramway-admin](https://github.com/ulmic/tramway-dev/tree/develop/tramway-admin) | **Абстракция**: Админка
+[tramway-api](https://github.com/ulmic/tramway-dev/tree/develop/tramway-api) | **Абстракция**: внутреннее API
+[tramway-auth](https://github.com/ulmic/tramway-dev/tree/develop/tramway-auth) | **Абстракция**: авторизация пользователя в Web 
+[tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) | **Функциональность**: Сайт конференций (сейчас является функциональностью для некоммерческого проекта, будет переименован)
+[tramway-core](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core) | **Абстракция**: нужные абстракции для создания небольшого сайта на Rails
+[tramway-event](https://github.com/ulmic/tramway-dev/tree/develop/tramway-event) | **Функциональность**: функциональность мероприятий. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference)
+[tramway-landing](https://github.com/ulmic/tramway-dev/tree/develop/tramway-landing) | **Абстракция**: Функциональность для создания landing страницы. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
+[tramway-mailout](https://github.com/ulmic/tramway-dev/tree/develop/tramway-mailout) | *(не готово)* **Функциональность**: функциональность массовых рассылок
+[tramway-news](https://github.com/ulmic/tramway-dev/tree/develop/tramway-news) | **Функциональность**: новости на сайте. Является составной частью [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school) | [![Gem Version](https://badge.fury.io/rb/tramway-sport_school.svg)](https://badge.fury.io/rb/tramway-sport_school)
+[tramway-notify](https://github.com/ulmic/tramway-dev/tree/develop/tramway-notify) | **Функциональность**: оповещения пользователей
+[tramway-page](https://github.com/ulmic/tramway-dev/tree/develop/tramway-page) | **Функциональность**: информационные страницы. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
+[tramway-partner](https://github.com/ulmic/tramway-dev/tree/develop/tramway-partner) | **Функциональность**: партнёры. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference)
+[tramway-profiles](https://github.com/ulmic/tramway-dev/tree/develop/tramway-profiles) | **Функциональность**: профили социальных сетей. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
+[tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school) | **Функциональность**: сайт спортивной школы
+[tramway-user](https://github.com/ulmic/tramway-dev/tree/develop/tramway-user) | **Функциональность**: пользователи. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
