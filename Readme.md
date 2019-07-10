@@ -63,4 +63,4 @@ Tramway решает две проблемы:
 * [IT Way](http://it-way.pro)
 * [Peklo Tool](https://tool.peklo.studio/)
 * [kalashnikovisme.ru](http://kalashnikovisme.ru)
-* [МБУ ДО ДЮСШ Ленинского района](http://sportschool-ulsk.ru/)
+* [МБУ ДО ДЮСШ Ленинского района](http://sportschool-ulsk.ru/) (не поддерживается)
