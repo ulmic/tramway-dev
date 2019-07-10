@@ -1,4 +1,4 @@
-- if collection.any?
+- if collection&.any?
   %main.mt-5{ id: defined?(block) ? block.anchor : "#{collection.class.name.underscore}_as_features" }
     .container
       %section#best-features.text-center
