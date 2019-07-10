@@ -36,6 +36,10 @@ ru:
         position: Позиция на странице мероприятия
       tramway/event/participant_form_field:
         title: Название (в Tramway название Поля анкеты - это ключ для выборки пользователей. Если вы измените ключ к выборке пользователей, то все пользователи, получившие данные по предыдущему ключу по этой выборке показываться не будут)
+      tramway/event/partaking:
+        part_name: Мероприятие
+        event_duration: Дата мероприятия
+        part_description: Описание
   cases:
     tramway/event/event:
       plural: мероприятия

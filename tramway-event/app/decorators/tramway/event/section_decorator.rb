@@ -6,6 +6,7 @@ class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::Feature
   end
 
   delegate :description, to: :object
+  decorate_association :event
   decorate_association :partakings, decorator: Tramway::Event::PartakingFeatureDecorator
 
   def name
@@ -25,6 +26,10 @@ class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::Feature
   end
 
   def event_title
-    object.event.title
+    event.title
+  end
+
+  def event_duration
+    event.duration
   end
 end

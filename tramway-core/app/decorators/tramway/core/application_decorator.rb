@@ -51,15 +51,25 @@ class Tramway::Core::ApplicationDecorator
       @@decorated_associations << association_name
 
       define_method association_name do
-        class_name = object.class.reflect_on_association(association_name).options[:class_name]
-        unless class_name
-          error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: ("Please, specify `#{association_name}` association class_name in #{object.class} model. For example: `has_many :#{association_name}, class_name: '#{association_name.to_s.singularize.camelize}'`"))
-          raise error.message
+        association = object.class.reflect_on_association(association_name)
+        class_name = if association.polymorphic?
+                       object.send(association_name).class
+                     else
+                       unless association.options[:class_name]
+                         error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: ("Please, specify `#{association_name}` association class_name in #{object.class} model. For example: `has_many :#{association_name}, class_name: '#{association_name.to_s.singularize.camelize}'`"))
+                         raise error.message
+                       end
+                       association.options[:class_name]
+                     end
+        decorator_class_name = decorator || "#{class_name.to_s.singularize}Decorator".constantize
+        # FIXME rails has_many association don't have belongs_to? method... bullshit. Need PR to rails
+        if association.try :has_many?
+          object.send(association_name).active.map do |association_object|
+            decorator_class_name.decorate association_object
+          end
         end
-
-        object.send(association_name).active.map do |association_object|
-          decorator_class_name = decorator || "#{class_name.singularize}Decorator".constantize
-          decorator_class_name.decorate association_object
+        if association.try :belongs_to?
+          decorator_class_name.decorate object.send association_name
         end
       end
     end
@@ -127,5 +137,8 @@ class Tramway::Core::ApplicationDecorator
   
   def object
     @object
+  end
+
+  def association_class_name
   end
 end 
