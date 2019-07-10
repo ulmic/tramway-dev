@@ -32,6 +32,10 @@ module Tramway
             super attribute_name
           end
         end
+
+        def search_by(*attributes, **associations)
+          pg_search_scope :full_text_search, against: attributes, associated_against: associations
+        end
       end
 
       # FIXME detect inhertited locales

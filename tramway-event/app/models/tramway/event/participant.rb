@@ -47,5 +47,5 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
   scope :without_answer, -> { where participation_state: :without_answer }
   scope :reserved, -> { where participation_state: :reserved }
 
-  pg_search_scope :search, against: [:values]
+  search_by :value
 end

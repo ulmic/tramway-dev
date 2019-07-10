@@ -2,8 +2,8 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   def index
     scope = params[:scope].present? ? params[:scope] : :all
     records = model_class.active.order(id: :desc).send scope
-    records = records.search params[:search] if params[:search]
-    records = records.ransack(params[:filter]).result if params[:filter]
+    records = records.full_text_search params[:search] if params[:search]
+    records = records.ransack(params[:filter]).result if params[:filter].present?
     @records = decorator_class.decorate records.page params[:page]
   end
 

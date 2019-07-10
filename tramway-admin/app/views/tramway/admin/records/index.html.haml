@@ -20,7 +20,7 @@
   - else
     - tabs.each_with_index do |tab, index|
       %li.nav-item
-        = link_to admin_index_path_of_model(model_class, tab, params[:filter]&.permit!), class: "#{active_tab(tab, index)} nav-link" do
+        = link_to admin_index_path_of_model(model_class, tab, (params[:filter].present? ? params[:filter] : nil)&.permit!), class: "#{active_tab(tab, index)} nav-link" do
           != tab_title(model_class, tab, @counts[tab], state_method)
 %div{ id: (params[:search] ? :search : params[:scope]) }
   = render 'list'
