@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'kaminari', '~> 1.1.1', '>= 1.1.1'
   s.add_dependency 'state_machine_buttons', '~> 0.4.1', '>= 0.4.1'
   s.add_dependency 'ransack'
+  s.add_dependency 'selectize-rails'
 end

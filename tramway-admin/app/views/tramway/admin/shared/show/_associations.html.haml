@@ -6,7 +6,7 @@
         = link_to fa_icon(:plus), new_record_path(model: association.class_name, redirect: current_model_record_path(object)), class: 'btn btn-primary'
       %td{ colspan: 2 }
         %table.table.table-striped.table-bordered
-          - object.send(association.name).each do |association_object|
+          - object.send(association.name)&.each do |association_object|
             %tr
               %td
                 = association_object.id
