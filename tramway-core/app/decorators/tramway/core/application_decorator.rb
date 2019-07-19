@@ -62,14 +62,13 @@ class Tramway::Core::ApplicationDecorator
                        association.options[:class_name]
                      end
         decorator_class_name = decorator || "#{class_name.to_s.singularize}Decorator".constantize
-        # FIXME rails has_many association don't have belongs_to? method... bullshit. Need PR to rails
-        if association.try :has_many?
-          object.send(association_name).active.map do |association_object|
+        if association.class == ActiveRecord::Reflection::HasManyReflection
+          return object.send(association_name).active.map do |association_object|
             decorator_class_name.decorate association_object
           end
         end
-        if association.try :belongs_to?
-          decorator_class_name.decorate object.send association_name
+        if association.class == ActiveRecord::Reflection::BelongsToReflection
+          return decorator_class_name.decorate object.send association_name
         end
       end
     end
