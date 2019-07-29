@@ -26,7 +26,8 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         :model_class,
         :model_name,
         :show_attributes,
-        :show_associations
+        :show_associations,
+        :collections
       ]).to be_truthy
     end
 
@@ -46,8 +47,12 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       expect(described_class.model_class).to eq Tramway::Core::Application
     end
 
-    it 'return model name' do
+    it 'returns model name' do
       expect(described_class.model_name).to be_nil
+    end
+
+    it 'returns collection only with all by default' do
+      expect(described_class.collections).to eq [:all]
     end
 
     it 'decorates simple object' do
