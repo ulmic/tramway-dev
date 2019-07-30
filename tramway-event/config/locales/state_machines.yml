@@ -12,14 +12,14 @@ ru:
             prev_approved: Получено предварительное подтверждение
             waiting: Ожидание решения
             rejected: Заявка отклонена
-            approved: Окончательное подтверждение
+            approved: Прибывшие
             without_answer: Без ответа
             reserved: В резерве
           events:
             previous_approve: Предварительно подтвердить
             wait_for_decision: Ожидать ответа
             reject: Отклонить
-            approve: Окончательно подтвердить
+            approve: Прибыл(а)
             not_got_answer: Связаться не удалось
             reserve: Отправить в резерв
             return_to_requested: Вернуть в необработанные

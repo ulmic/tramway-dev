@@ -1,0 +1,10 @@
+- if Tramway::Export.exportable_model? model_class, project: @application_engine
+  - model_name = model_class.name.underscore
+  - id = "export-#{model_name}"
+  .btn-group{ role: :group }
+    %button{ id: id, type: :button, class: 'btn btn-primary dropdown-toggle', data: { toggle: :dropdown, aria: { haspopup: :true, expanded: :false } } }
+      = fa_icon(:download)
+    .dropdown-menu{ aria: { labelledby: id } }
+      - decorator_class.collections.each do |collection|
+        = link_to collection_human_name(model_name: model_name, collection_name: collection), Tramway::Export::Engine.routes.url_helpers.exports_path(model: model_class, scope: collection), class: 'dropdown-item'
+

@@ -27,6 +27,10 @@ ru:
       tramway/event/participant:
         comment: Примечание
         event: Мероприятие
+        full_name: Полное имя
+        email: Email
+        phone: Телефон
+        organization: Организация
       tramway/event/section:
         title: Название
         description: Описание
@@ -65,7 +69,7 @@ ru:
       prev_approved: Предварительно подтверждены
       waiting: Ожидаем ответа
       rejected: Отклонены
-      approved: Окончательно подтверждены
+      approved: Пришли
       without_answer: Не ответили
       reserved: В резерве
   enumerize:

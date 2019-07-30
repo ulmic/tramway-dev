@@ -53,13 +53,17 @@ module Tramway::Admin
       end
     end
 
+    def collection_human_name(model_name:, collection_name:)
+      if t("default.collections.#{collection_name}").include?('<span')
+        t("collections.#{model_name}.#{collection_name}").pluralize(:ru)
+      else 
+        t("default.collections.#{collection_name}")
+      end
+    end
+
     def tab_title(model_class, tab, count, state_method = :state)
       model = model_class.name.underscore
-      name = if t("default.collections.#{tab}").include?('<span')
-               t("collections.#{model}.#{tab}").pluralize(:ru)
-             else 
-               t("default.collections.#{tab}")
-             end
+      name = collection_human_name model_name: model, collection_name: tab
       params[:filter].present? ? name : "#{name} / #{count}"
     end
 
