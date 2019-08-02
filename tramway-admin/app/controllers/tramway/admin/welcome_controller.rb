@@ -1,8 +1,6 @@
-module Tramway::Admin
-  class WelcomeController < ApplicationController
-    skip_before_action :check_available!
+class Tramway::Admin::WelcomeController < Tramway::Admin::ApplicationController
+  skip_before_action :check_available!
 
-    def index
-    end
+  def index
   end
 end
