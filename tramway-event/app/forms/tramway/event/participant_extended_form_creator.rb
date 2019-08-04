@@ -2,7 +2,7 @@ class Tramway::Event::ParticipantExtendedFormCreator < Tramway::Core::FormCreato
   def self.create_form_class(uuid, event, **simple_properties)
     class_name = "ParticipantExtendedForm#{uuid.gsub('-', '')}"
     properties = event.participant_form_fields.inputs_list.reduce({}) do |hash, field|
-      hash.merge! field.title.to_sym => field
+      hash.merge! field.title.to_sym => { object: field, validates: field.options['validations'] }
     end
     if simple_properties.keys.any?
       ::Tramway::Core::ExtendableForm.new(class_name, simple_properties: simple_properties, **properties)
