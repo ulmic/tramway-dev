@@ -8,6 +8,12 @@ ru:
         first_name: Имя
         last_name: Фамилия
         role: Роль
+    errors:
+      models:
+        tramway/user/user:
+          attributes:
+            email:
+              email: имеет неверный формат
   enumerize:
     tramway/user/user:
       role:

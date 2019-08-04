@@ -118,6 +118,10 @@ module Tramway::Core
       def validation_group_class
         ActiveModel
       end
+
+      def validates(attribute, **options)
+        model_class.validates attribute, **options
+      end
     end
   end
 end
