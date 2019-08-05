@@ -1,7 +1,7 @@
 module Tramway
   module Api
     class ApplicationController < ::Tramway::Core::ApplicationController
-      include Knock::Authenticable
+      include ::Knock::Authenticable
       protect_from_forgery with: :null_session, if: proc { |c| c.request.format == 'application/json' }
       rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
@@ -23,9 +23,9 @@ module Tramway
 
       def auth_token
         if entity.respond_to? :to_token_payload
-          Knock::AuthToken.new payload: entity.to_token_payload
+          ::Knock::AuthToken.new payload: entity.to_token_payload
         else
-          Knock::AuthToken.new payload: { sub: entity.id }
+          ::Knock::AuthToken.new payload: { sub: entity.id }
         end
       end
 
