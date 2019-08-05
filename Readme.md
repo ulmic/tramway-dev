@@ -10,6 +10,7 @@ Gem name | Version and Link
 [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) | [![Gem Version](https://badge.fury.io/rb/tramway-conference.svg)](https://badge.fury.io/rb/tramway-conference)
 [tramway-core](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core) | [![Gem Version](https://badge.fury.io/rb/tramway-core.svg)](https://badge.fury.io/rb/tramway-core)
 [tramway-event](https://github.com/ulmic/tramway-dev/tree/develop/tramway-event) | [![Gem Version](https://badge.fury.io/rb/tramway-event.svg)](https://badge.fury.io/rb/tramway-event)
+[tramway-export](https://github.com/ulmic/tramway-dev/tree/develop/tramway-export) | [![Gem Version](https://badge.fury.io/rb/tramway-export.svg)](https://badge.fury.io/rb/tramway-export)
 [tramway-landing](https://github.com/ulmic/tramway-dev/tree/develop/tramway-landing) | [![Gem Version](https://badge.fury.io/rb/tramway-landing.svg)](https://badge.fury.io/rb/tramway-landing)
 [tramway-mailout](https://github.com/ulmic/tramway-dev/tree/develop/tramway-mailout) | [![Gem Version](https://badge.fury.io/rb/tramway-mailout.svg)](https://badge.fury.io/rb/tramway-mailout)
 [tramway-news](https://github.com/ulmic/tramway-dev/tree/develop/tramway-news) | [![Gem Version](https://badge.fury.io/rb/tramway-news.svg)](https://badge.fury.io/rb/tramway-news)
@@ -47,6 +48,7 @@ Tramway решает две проблемы:
 [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) | **Функциональность**: Сайт конференций (сейчас является функциональностью для некоммерческого проекта, будет переименован)
 [tramway-core](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core) | **Абстракция**: нужные абстракции для создания небольшого сайта на Rails
 [tramway-event](https://github.com/ulmic/tramway-dev/tree/develop/tramway-event) | **Функциональность**: функциональность мероприятий. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference)
+[tramway-export](https://github.com/ulmic/tramway-dev/tree/develop/tramway-export) | **Функциональность**: выгрузка списков в XLS документы. Нативно подключается к [tramway-admin](https://github.com/ulmic/tramway-dev/tree/develop/tramway-admin)
 [tramway-landing](https://github.com/ulmic/tramway-dev/tree/develop/tramway-landing) | **Абстракция**: Функциональность для создания landing страницы. Является составной частью [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) и [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school)
 [tramway-mailout](https://github.com/ulmic/tramway-dev/tree/develop/tramway-mailout) | *(не готово)* **Функциональность**: функциональность массовых рассылок
 [tramway-news](https://github.com/ulmic/tramway-dev/tree/develop/tramway-news) | **Функциональность**: новости на сайте. Является составной частью [tramway-sport_school](https://github.com/ulmic/tramway-dev/tree/develop/tramway-sport_school) | [![Gem Version](https://badge.fury.io/rb/tramway-sport_school.svg)](https://badge.fury.io/rb/tramway-sport_school)
