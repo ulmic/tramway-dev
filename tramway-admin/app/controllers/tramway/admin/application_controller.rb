@@ -13,6 +13,8 @@ module Tramway
 
       protect_from_forgery with: :exception
 
+      protected
+
       def check_available!
         render '/404' unless model_given?
       end

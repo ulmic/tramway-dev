@@ -1,6 +1,6 @@
 Tramway::Admin::Engine.routes.draw do
   mount Tramway::Auth::Engine, at: '/auth'
-  if defined? Tramway::Export
+  if defined? Tramway::Export::Engine
     mount Tramway::Export::Engine, at: '/'
   end
 
