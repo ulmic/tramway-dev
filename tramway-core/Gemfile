@@ -6,3 +6,7 @@ gem 'state_machine', github: 'seuros/state_machine'
 group :development do
   gem 'better_errors'
 end
+
+group :test do
+  gem 'coveralls', require: false
+end

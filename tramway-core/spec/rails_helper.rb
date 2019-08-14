@@ -1,6 +1,8 @@
 require 'spec_helper'
 require 'factory_bot'
 require 'rspec/rails'
+require 'coveralls'
+Coveralls.wear!
 
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
