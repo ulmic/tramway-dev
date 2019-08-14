@@ -1,6 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/logo.png)
 ###### Author [@noTea](https://vk.com/kiborgvviborge)
-# Main Repo of Tramway Engine [![Build Status](https://travis-ci.org/ulmic/tramway-dev.svg?branch=develop)](https://travis-ci.org/ulmic/tramway-dev) [![Maintainability](https://api.codeclimate.com/v1/badges/28cac3df130da91785a4/maintainability)](https://codeclimate.com/github/ulmic/tramway-dev/maintainability)
+# Main Repo of Tramway Engine [![Build Status](https://travis-ci.org/ulmic/tramway-dev.svg?branch=develop)](https://travis-ci.org/ulmic/tramway-dev) [![Maintainability](https://api.codeclimate.com/v1/badges/28cac3df130da91785a4/maintainability)](https://codeclimate.com/github/ulmic/tramway-dev/maintainability) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 Gem name | Version and Link | Test coverage
 -------- | ---------------- | -------------
