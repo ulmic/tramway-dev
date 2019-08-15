@@ -9,7 +9,7 @@
       %h1
         = current_title
         = link_to fa_icon(:plus), new_current_model_record_path, class: 'btn btn-primary'
-        - if defined? Tramway::Export
+        - if defined? Tramway::Export::Engine
           = render 'tramway/export/button'
     = render 'search', model_class: model_class
 %hr
