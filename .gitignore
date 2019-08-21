@@ -6,3 +6,4 @@ pkg/
 /**/spec/dummy/test/
 *.gem
 /**/Gemfile.lock
+tramway-core/coverage/*
