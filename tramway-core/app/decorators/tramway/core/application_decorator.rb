@@ -119,7 +119,7 @@ class Tramway::Core::ApplicationDecorator
       elsif value.class.in? [ ActiveSupport::TimeWithZone, DateTime, Time ]
         hash.merge! attribute[0] => datetime_view(attribute[1])
       elsif value.class.superclass == ApplicationUploader
-        hash.merge! attribute[0] => image_view(attribute[1])
+        hash.merge! attribute[0] => image_view(object.send(attribute[0]))
       elsif value.is_a? Enumerize::Value
         hash.merge! attribute[0] => enumerize_view(value)
       else
