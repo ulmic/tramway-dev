@@ -13,7 +13,7 @@ module Tramway
           selected: (form_object.model.send("#{property}_id") || value),
           collection: full_class_name_association.active.map do |obj|
             decorator_class(full_class_name_association).decorate obj
-          end
+          end.sort_by { |obj| obj.name }
         }
       end
 
@@ -23,7 +23,7 @@ module Tramway
           class_name.active.map do |obj|
             decorator_class(class_name).decorate obj
           end
-        end.flatten
+        end.flatten.sort_by { |obj| obj.name }
         {
           as: :select,
           label: false,
