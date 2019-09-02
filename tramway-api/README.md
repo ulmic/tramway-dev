@@ -30,7 +30,7 @@ coming soon...
   * font_awesome5_rails
   * haml
 
-## Использование
+## Usage
 
 ```
 rails new tramway_api_sample
@@ -38,26 +38,19 @@ rails new tramway_api_sample
 
 *Gemfile*
 
-```
+```ruby
 gem 'tramway-api', '>= 1.1.0.1'
 ```
 
-## Installation
-Add this line to your application's Gemfile:
+Run `bundle install`
+
+Create file `config/initializers/tramway.rb`
 
 ```ruby
-gem 'tramway-api'
+::Tramway::Api.auth_config = { user_model: User, auth_attributes: %i[email username] }
+::Tramway::Api.set_available_models user: %i[create update]
 ```
 
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install tramway-api
-```
 
 ## Contributing
 Contribution directions go here.
