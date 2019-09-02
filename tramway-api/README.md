@@ -82,6 +82,8 @@ end
 
 Run `bundle install`
 
+Run `RAILS_ENV=test rails db:create db:migrate`
+
 Run `mkdir spec`
 
 Create file `spec/spec_helper.rb` with:
