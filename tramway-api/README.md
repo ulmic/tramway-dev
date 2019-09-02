@@ -188,6 +188,8 @@ RSpec.describe 'Post creating user', type: :feature do
 end
 ```
 
+Run `rspec` to test
+
 ## Methods
 
 ### Initializer methods
