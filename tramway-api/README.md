@@ -20,6 +20,7 @@ coming soon...
 * аутентификация пользователя через JWT (используется `knock`)
 * поддержка по умолчанию JSON API спецификации (через гем `active_model_serializers`)
 * мягкое удаление записей по умолчанию
+* поддержка коммуникации по уникальному uid объектов, чтобы не публиковать ID в базе
 
 Ограничения:
 
@@ -64,7 +65,7 @@ Run `bundle install`
 Then generate User (you use another name, it's just an example) model
 
 ```
-rails g model user email:text password_digest:text username:text state:text
+rails g model user email:text password_digest:text username:text state:text uid:text
 ```
 
 *app/models/user.rb*
