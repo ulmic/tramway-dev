@@ -3,10 +3,10 @@
 # Main Repo of Tramway Engine
 [![Build Status](https://travis-ci.org/ulmic/tramway-dev.svg?branch=develop)](https://travis-ci.org/ulmic/tramway-dev) [![Maintainability](https://api.codeclimate.com/v1/badges/28cac3df130da91785a4/maintainability)](https://codeclimate.com/github/ulmic/tramway-dev/maintainability) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![codebeat badge](https://codebeat.co/badges/0e4f5106-e697-48fd-bfbb-e77c0e43fbb2)](https://codebeat.co/projects/github-com-ulmic-tramway-dev-develop)
 
-Gem name | Version and Link | Test coverage
--------- | ---------------- | -------------
+Gem name | Version and Link | Test coverage | Docs
+-------- | ---------------- | ------------- | ----
 [tramway-admin](https://github.com/ulmic/tramway-dev/tree/develop/tramway-admin) | [![Gem Version](https://badge.fury.io/rb/tramway-admin.svg)](https://badge.fury.io/rb/tramway-admin) | 💩💩💩💩💩
-[tramway-api](https://github.com/ulmic/tramway-dev/tree/develop/tramway-api) | [![Gem Version](https://badge.fury.io/rb/tramway-api.svg)](https://badge.fury.io/rb/tramway-api) | 💀💀💀💀💀 | [Docs](https://github.com/ulmic/tramway-dev/tree/develop/tramway-api)
+[tramway-api](https://github.com/ulmic/tramway-dev/tree/develop/tramway-api) | [![Gem Version](https://badge.fury.io/rb/tramway-api.svg)](https://badge.fury.io/rb/tramway-api) | 💀💀💀💀💀 | [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway-api)
 [tramway-auth](https://github.com/ulmic/tramway-dev/tree/develop/tramway-auth) | [![Gem Version](https://badge.fury.io/rb/tramway-auth.svg)](https://badge.fury.io/rb/tramway-auth) | ☠☠☠☠☠
 [tramway-conference](https://github.com/ulmic/tramway-dev/tree/develop/tramway-conference) | [![Gem Version](https://badge.fury.io/rb/tramway-conference.svg)](https://badge.fury.io/rb/tramway-conference) | 🤡🤡🤡🤡🤡
 [tramway-core](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core) | [![Gem Version](https://badge.fury.io/rb/tramway-core.svg)](https://badge.fury.io/rb/tramway-core) | [![Coverage Status](https://coveralls.io/repos/github/ulmic/tramway-dev/badge.svg?branch=develop)](https://coveralls.io/github/ulmic/tramway-dev?branch=develop)
