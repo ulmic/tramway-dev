@@ -52,6 +52,9 @@ rails new tramway_api_sample
 
 ```ruby
 gem 'tramway-api', '>= 1.1.0.1'
+gem 'active_model_serializers', '0.10.5'
+gem 'tramway-core'
+gem 'state_machine', github: 'seuros/state_machine'
 ```
 
 Run `bundle install`
@@ -76,6 +79,10 @@ Create file `config/initializers/tramway.rb`
 ::Tramway::Api.auth_config = { user_model: User, auth_attributes: %i[email username] }
 ::Tramway::Api.set_available_models user: %i[create update]
 ```
+
+Run `rails g tramway:core:install`
+
+Run `rails db:create db:migrate`
 
 **DONE!**
 
