@@ -71,7 +71,13 @@ Let's write RSpec test to check what we have:
 *Gemfile*
 
 ```ruby
-gem 'rspec-rails', '~> 3.5'
+group :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-json_expectations', '2.2.0'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'json_matchers'
+  gem 'json_api_test_helpers', '1.1.1'
+end
 ```
 
 Run `bundle install`
