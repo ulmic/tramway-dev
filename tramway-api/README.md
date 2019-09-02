@@ -62,6 +62,14 @@ Then generate User (you use another name, it's just an example) model
 rails g model user email:text password_digest:text username:text state:text
 ```
 
+*app/models/user.rb*
+
+```ruby
+class User < ApplicationRecord
+  has_secure_password
+end
+```
+
 Create file `config/initializers/tramway.rb`
 
 ```ruby
@@ -127,7 +135,6 @@ RSpec.configure do |config|
   config.include RSpec::Rails::RequestExampleGroup, type: :feature
   config.include JsonApiTestHelpers
 end
-
 ```
 
 Create file `spec/tramway_api_spec.rb` with:
