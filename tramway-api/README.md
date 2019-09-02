@@ -84,6 +84,14 @@ Run `rails g tramway:core:install`
 
 Run `rails db:create db:migrate`
 
+*config/routes.rb*
+
+```ruby
+Rails.application.routes.draw do
+  mount Tramway::Api::Engine, at: '/'
+end
+```
+
 **DONE!**
 
 Let's write RSpec test to check what we have:
