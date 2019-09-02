@@ -30,7 +30,7 @@ rails new tramway_api_sample
 *Gemfile*
 
 ```
-gem 'tramway-api', `>= 1.1.0.1`
+gem 'tramway-api', '>= 1.1.0.1'
 ```
 
 ## Installation
