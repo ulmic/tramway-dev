@@ -174,7 +174,18 @@ end
 Create file `spec/tramway_api_spec.rb` with:
 
 ```ruby
+require 'rails_helper'
 
+RSpec.describe 'Post creating user', type: :feature do
+  describe 'POST /api/v1/user with model User' do
+    let(:attributes) { attributes_for :user }
+
+    it 'returns created status' do
+      post '/api/v1/user', params: { user: attributes }
+      expect(response.status).to eq 201
+    end
+  end
+end
 ```
 
 ## Methods
