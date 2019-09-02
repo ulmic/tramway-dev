@@ -88,7 +88,7 @@ Run `rails db:create db:migrate`
 
 ```ruby
 Rails.application.routes.draw do
-  mount Tramway::Api::Engine, at: '/'
+  mount Tramway::Api::Engine, at: '/api'
 end
 ```
 
