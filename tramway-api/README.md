@@ -64,6 +64,22 @@ Create file `config/initializers/tramway.rb`
 ::Tramway::Api.set_available_models user: %i[create update]
 ```
 
+DONE!
+
+Let's write RSpec test to check what we have:
+
+*Gemfile*
+
+```ruby
+gem 'rspec-rails', '~> 3.5'
+```
+
+Run `bundle install`
+
+Run `mkdir spec`
+
+
+
 ## Methods
 
 ### Initializer methods
