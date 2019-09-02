@@ -92,6 +92,14 @@ Rails.application.routes.draw do
 end
 ```
 
+Create file *app/forms/user_sign_up_form.rb*
+
+```ruby
+class UserSignUpForm < ApplicationForm
+  properties :username, :email, :password
+end
+```
+
 **DONE!**
 
 Let's write RSpec test to check what we have:
