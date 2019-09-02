@@ -40,6 +40,7 @@ coming soon...
   gem 'active_model_serializers', '0.10.5'
   gem 'tramway-core'
   gem 'state_machine', github: 'seuros/state_machine'
+  gem 'knock'
   ```
 
 ## Usage
@@ -55,6 +56,7 @@ gem 'tramway-api', '>= 1.1.0.1'
 gem 'active_model_serializers', '0.10.5'
 gem 'tramway-core'
 gem 'state_machine', github: 'seuros/state_machine'
+gem 'knock'
 ```
 
 Run `bundle install`
