@@ -17,11 +17,14 @@ coming soon...
 * готовый CRUD для определённых разработчиком моделей
 * сохранение истории изменений записей (используется гем `audited`)
 * поддержка загрузки файлов (используется `carrierwave`)
+* аутентификация пользователя через JWT (используется `knock`)
+* поддержка по умолчанию JSON API спецификации (через гем `active_model_serializers`)
 
 Ограничения:
 
 * только с ActiveRecord
 * только с версией Rails 5.1.* (поддержка 5.2 вскоре будет реализована автором гема, поддержка автором Rails 6 начнётся с версии 6.1. По религиозным автор не использует Rails версий *.0.*
+* Ruby >= 2.3
 
 Недостатки, которые будут вскоре ликвидированы:
 
@@ -29,6 +32,10 @@ coming soon...
   * bootstrap
   * font_awesome5_rails
   * haml
+* требуется ручное добавление требуемых для работы гемов
+  ```ruby
+  gem 'active_model_serializers', '0.10.5'
+  ```
 
 ## Usage
 
@@ -50,6 +57,14 @@ Create file `config/initializers/tramway.rb`
 ::Tramway::Api.auth_config = { user_model: User, auth_attributes: %i[email username] }
 ::Tramway::Api.set_available_models user: %i[create update]
 ```
+
+## Methods
+
+### Initializer methods
+
+#### auth_config
+
+Sets default ActiveRecord model, which used as main user to be authenticated with JWT.
 
 
 ## Contributing
