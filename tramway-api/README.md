@@ -51,6 +51,12 @@ gem 'tramway-api', '>= 1.1.0.1'
 
 Run `bundle install`
 
+Then generate User (you use another name, it's just an example) model
+
+```
+rails g model user email:text password_digest:text username:text
+```
+
 Create file `config/initializers/tramway.rb`
 
 ```ruby
