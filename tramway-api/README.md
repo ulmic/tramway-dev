@@ -190,6 +190,30 @@ end
 
 Run `rspec` to test
 
+We have route `user`, which create new authenticable user.
+
+For other models we have route `records`.
+
+```
+~: rails routes
+     Prefix Verb URI Pattern Controller#Action
+tramway_api      /api        Tramway::Api::Engine
+
+Routes for Tramway::Api::Engine:
+ v1_user_token POST   /v1/user_token(.:format)       tramway/api/v1/user_tokens#create
+       v1_user GET    /v1/user(.:format)             tramway/api/v1/users#show
+               POST   /v1/user(.:format)             tramway/api/v1/users#create
+    v1_records GET    /v1/records(.:format)          tramway/api/v1/records#index
+               POST   /v1/records(.:format)          tramway/api/v1/records#create
+ new_v1_record GET    /v1/records/new(.:format)      tramway/api/v1/records#new
+edit_v1_record GET    /v1/records/:id/edit(.:format) tramway/api/v1/records#edit
+     v1_record GET    /v1/records/:id(.:format)      tramway/api/v1/records#show
+               PATCH  /v1/records/:id(.:format)      tramway/api/v1/records#update
+               PUT    /v1/records/:id(.:format)      tramway/api/v1/records#update
+               DELETE /v1/records/:id(.:format)      tramway/api/v1/records#destroy
+
+```
+
 ## Methods
 
 ### Initializer methods
