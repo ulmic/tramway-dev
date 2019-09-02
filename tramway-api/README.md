@@ -64,7 +64,7 @@ Create file `config/initializers/tramway.rb`
 ::Tramway::Api.set_available_models user: %i[create update]
 ```
 
-DONE!
+**DONE!**
 
 Let's write RSpec test to check what we have:
 
@@ -96,6 +96,31 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 end
+```
+
+Create file `spec/rails_helper.rb` with:
+
+```ruby
+require 'spec_helper'
+require 'factory_bot'
+require 'rspec/rails'
+require 'rspec/json_expectations'
+require 'json_matchers/rspec'
+require 'json_api_test_helpers'
+require 'rake'
+
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+  config.include RSpec::Rails::RequestExampleGroup, type: :feature
+  config.include JsonApiTestHelpers
+end
+
+```
+
+Create file `spec/tramway_api_spec.rb` with:
+
+```ruby
+
 ```
 
 ## Methods
