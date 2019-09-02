@@ -68,6 +68,14 @@ Then generate User (you use another name, it's just an example) model
 rails g model user email:text password_digest:text username:text state:text uid:text
 ```
 
+Add generating uid by default
+
+*db/migrate/create_users_*.rb
+
+```ruby
+t.uuid :uid, default: 'uuid_generate_v4()'
+```
+
 *app/models/user.rb*
 
 ```ruby
