@@ -59,7 +59,7 @@ Run `bundle install`
 Then generate User (you use another name, it's just an example) model
 
 ```
-rails g model user email:text password_digest:text username:text
+rails g model user email:text password_digest:text username:text state:text
 ```
 
 Create file `config/initializers/tramway.rb`
