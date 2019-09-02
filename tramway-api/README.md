@@ -95,7 +95,7 @@ end
 Create file *app/forms/user_sign_up_form.rb*
 
 ```ruby
-class UserSignUpForm < ApplicationForm
+class UserSignUpForm < Tramway::Core::ApplicationForm
   properties :username, :email, :password
 end
 ```
