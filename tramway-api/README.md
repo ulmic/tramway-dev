@@ -203,6 +203,20 @@ Sets default ActiveRecord model, which used as main user to be authenticated wit
 
 this model must have field `password_digest`, because we use `bcrypt` gem for authentication (providing other name of password attribute instead of `password` is coming soon)
 
+### set_available_models
+
+Sets ActiveRecord models which will be used in API
+
+Argument is a hash. Keys are underscored models names, values are arrays of available methods for every model.
+
+Enabled methods:
+
+* create
+* update
+* show
+* index
+* destroy
+
 
 ## Contributing
 Contribution directions go here.
