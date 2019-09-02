@@ -66,6 +66,11 @@ Create file `config/initializers/tramway.rb`
 
 Sets default ActiveRecord model, which used as main user to be authenticated with JWT.
 
+`user_model` - model name
+`auth_attributes` - array of available attributes used as login. 
+
+this model must have field `password_digest`, because we use `bcrypt` gem for authentication (providing other name of password attribute instead of `password` is coming soon)
+
 
 ## Contributing
 Contribution directions go here.
