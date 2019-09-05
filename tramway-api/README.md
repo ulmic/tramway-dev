@@ -184,6 +184,12 @@ RSpec.describe 'Post creating user', type: :feature do
       post '/api/v1/user', params: { user: attributes }
       expect(response.status).to eq 201
     end
+    
+    it 'returns no errors' do
+      post '/api/v1/user', params: { user: attributes }
+
+      expect(json_response[:response]). to be_nil
+    end
   end
 end
 ```
