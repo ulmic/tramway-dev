@@ -204,6 +204,19 @@ end
 # SignIn User
 
 ```ruby
+require 'rails_helper'
+
+RSpec.describe 'Post generate token', type: :feature do
+  describe 'POST /api/v1/user_token' do
+    let(:user) { create :user, password: '123456789' }
+
+    it 'returns created status' do
+      post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
+
+      expect(response.status).to eq 201
+    end
+  end
+end
 
 ```
 
