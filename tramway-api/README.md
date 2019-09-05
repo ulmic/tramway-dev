@@ -29,6 +29,7 @@ coming soon...
 * Ruby >= 2.3
 * все модели, которые будут использованы гемом должны наследоваться от `Tramway::Core::ApplicationRecord`
 * все модели, которые будут использованы гемом должны иметь атрибут `state`, типа `string` или `text`. Этот атрибут нужен для реализации мягкого удаления. Полное удаление записей из базы не поддерживается
+* все модели, которые будут использованы гемом должны иметь атрибут 
 
 Недостатки, которые будут вскоре ликвидированы:
 
@@ -79,7 +80,7 @@ t.uuid :uid, default: 'uuid_generate_v4()'
 *app/models/user.rb*
 
 ```ruby
-class User < ApplicationRecord
+class User < Tramway::Core::ApplicationRecord
   has_secure_password
 end
 ```
@@ -112,6 +113,10 @@ end
 ```
 
 **DONE!**
+
+## Testing
+
+# Preparation (optional)
 
 Let's write RSpec test to check what we have:
 
@@ -171,6 +176,8 @@ RSpec.configure do |config|
 end
 ```
 
+# SignUp user
+
 Create file `spec/tramway_api_spec.rb` with:
 
 ```ruby
@@ -192,6 +199,12 @@ RSpec.describe 'Post creating user', type: :feature do
     end
   end
 end
+```
+
+# SignIn User
+
+```ruby
+
 ```
 
 Run `rspec` to test
