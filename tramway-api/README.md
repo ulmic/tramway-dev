@@ -215,6 +215,14 @@ RSpec.describe 'Post generate token', type: :feature do
 
       expect(response.status).to eq 201
     end
+    
+    it 'returns token' do
+      post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
+
+      expect(json_response[:auth_token].present?).to be_truthy
+      expect(json_response[:user]).to include_json({ email: user.email, uid: user.uid })
+    end
+
   end
 end
 
