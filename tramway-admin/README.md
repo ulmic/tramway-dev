@@ -1,11 +1,16 @@
 # Tramway::Admin
 Short description and motivation.
 
+## English readme
+
+coming soon...
+
+## Russian readme
+
+coming soon...
+
 ## Usage
 How to use my plugin.
-
-## Installation
-Add this line to your application's Gemfile:
 
 ```ruby
 gem 'tramway-admin'
@@ -16,9 +21,10 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install tramway-admin
+*app/config/initializers/tramway.rb*
+
+```ruby
+::Tramway::Admin.set_available_models 
 ```
 
 ## Contributing
