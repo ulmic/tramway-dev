@@ -6,4 +6,6 @@ class Tramway::Partner::OrganizationDecorator < ::Tramway::Core::ApplicationDeco
   end
 
   decorate_association :partnerships
+
+  delegate :title, to: :object
 end
