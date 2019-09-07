@@ -23,7 +23,7 @@ module Tramway::Api::V1
     end
 
     def update
-      record_form = form_class.new model_class.find params[:id]
+      record_form = form_class.new model_class.active.find params[:id]
       if record_form.submit params[:data][:attributes]
         render json: record_form.model,
           serializer: serializer_class,
@@ -31,6 +31,13 @@ module Tramway::Api::V1
       else
         render_errors_for record_form
       end
+    end
+
+    def show
+      record = model_class.active.find params[:id]
+      render json: record,
+        serializer: serializer_class,
+        status: :ok
     end
 
     private
