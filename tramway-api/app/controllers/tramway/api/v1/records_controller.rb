@@ -40,6 +40,14 @@ module Tramway::Api::V1
         status: :ok
     end
 
+    def destroy
+      record = model_class.active.find params[:id]
+      record.remove
+      render json: record,
+        serializer: serializer_class,
+        status: :no_content
+    end
+
     private
 
     def check_available_model_class
