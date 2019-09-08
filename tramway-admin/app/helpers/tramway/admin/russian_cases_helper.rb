@@ -19,7 +19,7 @@ module Tramway
         case_word word, :dative
       end
 
-      def plural(word)
+      def russian_plural(word)
         case_word word, :plural
       end
     end

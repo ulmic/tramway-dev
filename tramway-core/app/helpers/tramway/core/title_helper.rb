@@ -16,7 +16,11 @@ module Tramway
       end
 
       def page_title(action, model_name)
-        t("helpers.actions.#{action}") + ' ' + genitive(model_name)
+        if I18n.locale == :ru
+          t("helpers.actions.#{action}") + ' ' + genitive(model_name)
+        else
+          t("helpers.actions.#{action}") + ' ' + model_name.model_name.human.downcase
+        end
       end
     end
   end

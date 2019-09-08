@@ -1,0 +1,21 @@
+en:
+  activerecord:
+    models:
+      tramway/user/user: Administrators
+    attributes:
+      tramway/user/user:
+        password: Password
+        first_name: First name
+        last_name: Last name
+        role: Role
+    errors:
+      models:
+        tramway/user/user:
+          attributes:
+            email:
+              email: is invalid
+  enumerize:
+    tramway/user/user:
+      role:
+        user: Just user
+        admin: Administrator
