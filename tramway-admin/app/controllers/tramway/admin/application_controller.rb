@@ -56,8 +56,8 @@ module Tramway
         decorator_class_name
       end
 
-      def form_class
-        form_class_name
+      def admin_form_class
+        "Admin::#{model_class}Form".constantize
       end
 
       def model_given?

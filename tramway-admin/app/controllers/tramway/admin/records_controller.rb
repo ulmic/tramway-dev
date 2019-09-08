@@ -12,11 +12,11 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   end
 
   def edit
-    @record_form = form_class.new model_class.active.find params[:id]
+    @record_form = admin_form_class.new model_class.active.find params[:id]
   end
 
   def update
-    @record_form = form_class.new model_class.active.find params[:id]
+    @record_form = admin_form_class.new model_class.active.find params[:id]
     if @record_form.submit params[:record]
       redirect_to params[:redirect] || record_path(@record_form.model)
     else
@@ -25,11 +25,11 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   end
 
   def new
-    @record_form = form_class.new model_class.new
+    @record_form = admin_form_class.new model_class.new
   end
 
   def create
-    @record_form = form_class.new model_class.new
+    @record_form = admin_form_class.new model_class.new
     if @record_form.submit params[:record]
       redirect_to params[:redirect] || record_path(@record_form.model)
     else
