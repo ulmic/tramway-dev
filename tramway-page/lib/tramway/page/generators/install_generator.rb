@@ -15,7 +15,13 @@ module Tramway::Page::Generators
     end
 
     def copy_migrations
-      migration_template 'create_tramway_page_pages.rb', 'db/migrate/create_tramway_page_pages.rb'
+      migrations = [
+        :create_tramway_page_pages,
+        :add_view_to_tramway_page_pages
+      ]
+      migrations.each do |migration|
+        migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
+      end
     end
   end
 end
