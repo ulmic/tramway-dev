@@ -89,7 +89,7 @@ Create file `config/initializers/tramway.rb`
 
 ```ruby
 ::Tramway::Api.auth_config = { user_model: User, auth_attributes: %i[email username] }
-::Tramway::Api.set_available_models user: %i[create update]
+::Tramway::Api.set_available_models user: { open: %i[create], closed: %i[update] }
 ```
 
 Run `rails g tramway:core:install`
@@ -271,7 +271,10 @@ this model must have field `password_digest`, because we use `bcrypt` gem for au
 
 Sets ActiveRecord models which will be used in API
 
-Argument is a hash. Keys are underscored models names, values are arrays of available methods for every model.
+Argument is a hash. Keys are underscored models names, values are hashes with actions of available methods for every model.
+* `open` key means that this action will be used without authentication
+* `closed` key means that this action will be used with authentication
+
 
 Enabled methods:
 
