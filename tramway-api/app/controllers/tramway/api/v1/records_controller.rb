@@ -2,6 +2,7 @@ module Tramway::Api::V1
   class RecordsController < ::Tramway::Api::V1::ApplicationController
     before_action :check_available_model_class
     before_action :check_available_model_action
+    before_action :authenticate_user_if_needed
 
     def index
       records = model_class.active.order(id: :desc).send params[:scope] || :all
@@ -54,7 +55,14 @@ module Tramway::Api::V1
     end
 
     def check_available_model_action
-      head :unprocessable_entity and return unless action_name.in? Tramway::Api.available_models[model_class.to_s].map(&:to_s)
+      actions = Tramway::Api.available_models[model_class.to_s][:open]&.map(&:to_s) || [] + Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
+      head :unprocessable_entity and return unless action_name.in? actions
+    end
+
+    def authenticate_user_if_needed
+      if action_name.in? Tramway::Api::available_models[model_class.to_s][:closed]&.map(&:to_s) || []
+        authenticate_user
+      end
     end
 
     def model_class
