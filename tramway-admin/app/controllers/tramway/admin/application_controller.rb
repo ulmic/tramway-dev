@@ -57,7 +57,11 @@ module Tramway
       end
 
       def admin_form_class
-        "Admin::#{model_class}Form".constantize
+        if model_class.to_s.include? "Tramway"
+          form_class_name
+        else
+          "::Admin::#{model_class}Form".constantize
+        end
       end
 
       def model_given?
