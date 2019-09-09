@@ -2,7 +2,6 @@ module Tramway::Api::V1
   class RecordsController < ::Tramway::Api::V1::ApplicationController
     before_action :check_available_model_class
     before_action :check_available_model_action
-    before_action :authenticate_user
 
     def index
       records = model_class.active.order(id: :desc).send params[:scope] || :all
