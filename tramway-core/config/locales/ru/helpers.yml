@@ -17,3 +17,8 @@ ru:
       found: Найденные
     "yes": Да
     "no": Нет
+  tramway:
+    admin:
+      welcome:
+        index:
+          title: Админка

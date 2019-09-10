@@ -16,6 +16,7 @@ ru:
         link_object_id: ID объекта, на который делается ссылка
         button_title: Наименование кнопки
         button_link: Ссылка кнопки
+        view_name: Название вьюхи
   cases:
     tramway/landing/block:
       plural: Блоки
@@ -33,6 +34,7 @@ ru:
         news: Блок новостей
         link: Ссылка на объект
         just_text_with_button: Просто текст
+        view: Вьюха (программируется)
       navbar_link:
         exist: Присутствует
         not_exist: Отсутствует

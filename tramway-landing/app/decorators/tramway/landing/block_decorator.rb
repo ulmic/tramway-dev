@@ -17,6 +17,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   delegate :anchor, to: :object
   delegate :description, to: :object
   delegate :anchor, to: :object
+  delegate :view_name, to: :object
   
   def block_type
     object.block_type_text
