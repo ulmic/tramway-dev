@@ -55,8 +55,9 @@ module Tramway::Api::V1
     end
 
     def check_available_model_action
-      actions = Tramway::Api.available_models[model_class.to_s][:open]&.map(&:to_s) || [] + Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
-      head :unprocessable_entity and return unless action_name.in? actions
+      open_actions = Tramway::Api.available_models[model_class.to_s][:open]&.map(&:to_s) || []
+      closed_actions =  Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
+      head :unprocessable_entity and return unless action_name.in? open_actions + closed_actions
     end
 
     def authenticate_user_if_needed
