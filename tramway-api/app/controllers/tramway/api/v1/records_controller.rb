@@ -37,6 +37,7 @@ module Tramway::Api::V1
       record = model_class.active.find params[:id]
       render json: record,
         serializer: serializer_class,
+        include: '*',
         status: :ok
     end
 
