@@ -8,6 +8,7 @@ module Tramway::Api::V1
       records = model_class.active.order(id: :desc).send params[:scope] || :all
       render json: records,
         each_serializer: serializer_class,
+        include: '*',
         status: :ok
     end
 
@@ -16,6 +17,7 @@ module Tramway::Api::V1
       if record_form.submit params[:data][:attributes]
         render json: record_form.model,
           serializer: serializer_class,
+          include: '*',
           status: :created
       else
         render_errors_for record_form
@@ -27,6 +29,7 @@ module Tramway::Api::V1
       if record_form.submit params[:data][:attributes]
         render json: record_form.model,
           serializer: serializer_class,
+          include: '*',
           status: :ok
       else
         render_errors_for record_form
@@ -46,6 +49,7 @@ module Tramway::Api::V1
       record.remove
       render json: record,
         serializer: serializer_class,
+        include: '*',
         status: :no_content
     end
 
