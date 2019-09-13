@@ -4,4 +4,5 @@
                                       ::Tramway::Event::Section,
                                       ::Tramway::Event::Person,
                                       ::Tramway::Event::Partaking,
+                                      ::Tramway::Event::Place,
                                       project: :event)

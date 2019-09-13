@@ -41,7 +41,10 @@ module Tramway::Event::Generators
         :rebuild_association_between_participant_and_partakings_to_polymorphic,
 
         :add_request_period_to_tramway_event_events,
-        :add_description_to_tramway_event_people
+        :add_description_to_tramway_event_people,
+
+        :create_tramway_event_places,
+        :create_tramway_event_events_places
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

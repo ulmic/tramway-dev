@@ -7,6 +7,7 @@ ru:
       tramway/event/section: Секция
       tramway/event/person: Член команды
       tramway/event/partaking: Должность
+      tramway/event/place: Место
     attributes:
       tramway/event/event:
         title: Название
@@ -63,6 +64,9 @@ ru:
     tramway/event/partaking:
       genitive: должность
       plural: должности
+    tramway/event/place:
+      genitive: место
+      plural: места
   collections:
     tramway/event/participant:
       requested: Необработанные
