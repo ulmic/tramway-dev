@@ -73,7 +73,11 @@ module Tramway::Api::V1
 
     def model_class
       if params[:model].to_s.in? ::Tramway::Api.available_models.keys.map(&:to_s)
-        params[:model].constantize
+        begin
+          params[:model].constantize
+        rescue ActiveSupport::Concern::MultipleIncludedBlocks => e
+          raise "#{e}. Maybe #{params[:model]} model doesn't exists or there is naming conflicts with it"
+        end
       end
     end
 
