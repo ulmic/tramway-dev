@@ -294,6 +294,16 @@ Just update your initializer:
 ::Tramway::Api.set_available_models user: { open: %i[create], closed: %i[update index] } # we've added index method
 ```
 
+Create serializer
+
+*app/serializers/user_serializer.rb*
+
+```ruby
+class UserSerializer < Tramway::Core::ApplicationSerializer
+  attributes :username, :email
+end
+```
+
 Then write test:
 
 ```ruby
