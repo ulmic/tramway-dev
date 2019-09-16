@@ -325,21 +325,25 @@ You have your records in JSON API spec.
 ### Create
 
 Production ready
+
 Docs coming soon
 
 ### Update
 
 Production ready
+
 Docs coming soon
 
 ### Show
 
 Production ready
+
 Docs coming soon
 
 ### Destroy
 
 Production ready
+
 Docs coming soon
 
 ## Contributing
