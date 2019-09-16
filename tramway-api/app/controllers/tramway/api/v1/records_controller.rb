@@ -6,6 +6,7 @@ module Tramway::Api::V1
 
     def index
       records = model_class.active.order(id: :desc).send params[:scope] || :all
+      records = records.full_text_search params[:search] if params[:search]
       render json: records,
         each_serializer: serializer_class,
         include: '*',
