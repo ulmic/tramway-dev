@@ -284,6 +284,53 @@ Enabled methods:
 * index
 * destroy
 
+### Index
+
+Every model you've added in initializer will be able by URL `api/v1/records?model=#{model_class}`.
+
+Just update your initializer:
+
+```ruby
+::Tramway::Api.set_available_models user: { open: %i[create], closed: %i[update index] } # we've added index method
+```
+
+Then write test:
+
+```ruby
+it 'returns status' do
+  get '/api/v1/records', params: { model: 'User' }, headers: headers
+
+  expect(response.status).to eq 200
+end
+
+it 'returns needed count' do
+  get '/api/v1/records', params: { model: 'User' }, headers: headers
+
+  expect(json_response[:data].size).to eq User.active.count
+end
+```
+
+You have your records in JSON API spec.
+
+### Create
+
+Production ready
+Docs coming soon
+
+### Update
+
+Production ready
+Docs coming soon
+
+### Show
+
+Production ready
+Docs coming soon
+
+### Destroy
+
+Production ready
+Docs coming soon
 
 ## Contributing
 Contribution directions go here.
