@@ -11,7 +11,11 @@ module Tramway::Core
           if class_name.is_a? Array
             self.class.send(:define_method, "#{association}=") do |value|
               association_class = send("#{association}_type")
-              super association_class.constantize.find value
+              if association_class.nil?
+                raise Tramway::Error.new(plugin: :core, method: :initialize, message: 'Polymorphic association class is nil. Maybe, you should write `assocation #{association_name}` after `properties #{association_name}_id, #{association_name}_type`')
+              else
+                super association_class.constantize.find value
+              end
             end
           else
             self.class.send(:define_method, "#{association}=") do |value|
