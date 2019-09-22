@@ -185,7 +185,9 @@ require 'rails_helper'
 
 RSpec.describe 'Post creating user', type: :feature do
   describe 'POST /api/v1/user with model User' do
-    let(:attributes) { attributes_for :user }
+    let(:attributes) do
+      kebab_case_converter attributes_for :user
+    end
 
     it 'returns created status' do
       post '/api/v1/user', params: { user: attributes }
