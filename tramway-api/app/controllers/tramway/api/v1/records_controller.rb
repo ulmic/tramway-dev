@@ -15,7 +15,7 @@ module Tramway::Api::V1
 
     def create
       record_form = form_class.new model_class.new
-      if record_form.submit params[:data][:attributes]
+      if record_form.submit snake_case params[:data][:attributes]
         render json: record_form.model,
           serializer: serializer_class,
           include: '*',
@@ -27,7 +27,7 @@ module Tramway::Api::V1
 
     def update
       record_form = form_class.new model_class.active.find params[:id]
-      if record_form.submit params[:data][:attributes]
+      if record_form.submit snake_case params[:data][:attributes]
         render json: record_form.model,
           serializer: serializer_class,
           include: '*',
