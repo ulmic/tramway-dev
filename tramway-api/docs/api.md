@@ -1,4 +1,4 @@
-### Documentation for frontend
+# Documentation for frontend
 
 ## Sign Up
 
