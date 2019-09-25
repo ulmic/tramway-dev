@@ -82,6 +82,10 @@ t.uuid :uid, default: 'uuid_generate_v4()'
 ```ruby
 class User < Tramway::Core::ApplicationRecord
   has_secure_password
+  
+  def self.from_token_payload(payload)
+    find_by uid: payload['sub']
+  end
 end
 ```
 
