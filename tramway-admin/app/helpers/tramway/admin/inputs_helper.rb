@@ -23,7 +23,7 @@ module Tramway
           class_name.active.map do |obj|
             decorator_class(class_name).decorate obj
           end
-        end.flatten.sort_by { |obj| obj.name }
+        end.flatten.sort_by { |obj| obj.name.to_s }
         {
           as: :select,
           label: false,
