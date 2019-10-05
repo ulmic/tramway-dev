@@ -32,14 +32,14 @@ $ bundle
 DatePicker provides `ru`, `en` locales. To set needed locale, just add
 
 ```javascript
-window.i18n_locale('en');
+window.current_locale = window.i18n_locale('en');
 ```
 to the `app/assets/javascripts/admin/application.js` file
 
 **OR**
 
 ```coffeescript
-window.i18n_locale 'en'
+window.current_locale = window.i18n_locale 'en'
 ```
 to the `app/assets/javascripts/admin/application.js.coffee` file
 
