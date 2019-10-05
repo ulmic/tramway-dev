@@ -27,6 +27,22 @@ $ bundle
 ::Tramway::Admin.set_available_models 
 ```
 
+## Date Picker locale
+
+DatePicker provides `ru`, `en` locales. To set needed locale, just add
+
+```javascript
+window.i18n_locale('en');
+```
+to the `app/assets/javascripts/admin/application.js` file
+
+**OR**
+
+```coffeescript
+window.i18n_locale 'en'
+```
+to the `app/assets/javascripts/admin/application.js.coffee` file
+
 ## Contributing
 Contribution directions go here.
 
