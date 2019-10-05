@@ -5,11 +5,16 @@
 #= require font_awesome5
 #= require_tree .
 
+window.i18n_locale = (locale) ->
+  switch locale
+    when 'en' then { date_format: 'yyyy-mm-dd', locale: locale }
+    when 'ru' then { date_format: 'dd.mm.yyyy', locale: locale }
+
 $(document).ready ->
   unless $('.date_picker').length == 0
     $('.date_picker').datepicker({
-      format: 'dd.mm.yyyy',
-      language: 'ru'
+      format: window.current_locale.date_format,
+      language: window.current_locale.locale
     })
 
   $('.link').click ->
@@ -18,6 +23,6 @@ $(document).ready ->
       location.href = href
     else
       anchor = $(this).data('anchor')
-      console.log(anchor)
-      $(window).scrollTop $(anchor).offset().top
+      unless $(anchor).offset() == undefined
+        $(window).scrollTop $(anchor).offset().top
 
