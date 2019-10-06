@@ -1,4 +1,4 @@
-- value = params.dig(model_class.to_s.underscore, property.to_s)
+- value = value_from_params(model_class: model_class, property: property, type: type)
 - form_object = instance_variable_get "@#{object}_form"
 - if type.is_a? Symbol
   = form.label form_object.model.class.human_attribute_name property
@@ -8,8 +8,8 @@
   - when :association
     = form.association property, **association_params(form_object: form_object, property: property, value: value, object: object)
   - when :polymorphic_association
-    = form.input property, **polymorphic_association_params(object: object, form_object: form_object, property: property, value: value)
-    = form.input "#{property}_type", input_html: { name: "#{object}[#{property}_type]", id: "#{object}_#{property}_type", value: (form_object.send(property) || form_object.model.send("#{property}_type") || value) }, selected: (form_object.model.send("#{property}_type") || value)
+    = form.input property, **polymorphic_association_params(object: object, form_object: form_object, property: property, value: value[:id])
+    = form.input "#{property}_type", input_html: { name: "#{object}[#{property}_type]", id: "#{object}_#{property}_type", value: (form_object.send(property) || form_object.model.send("#{property}_type") || value[:type]) }, selected: (form_object.model.send("#{property}_type") || value[:type])
   - else
     = form.input property, as: type, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) } 
 - else

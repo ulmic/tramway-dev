@@ -71,5 +71,14 @@ module Tramway::Admin
       return :active if params[:scope].nil? && index == 0
       return :active if params[:search].nil? && params[:scope].to_s == tab.to_s
     end
+
+    def new_associated_record_path(object:, association:)
+      new_record_path model: association.class_name,
+        redirect: current_model_record_path(object),
+        association.options[:class_name].underscore => {
+          association.options[:as] => object.id,
+          association.type => object.class.model_name
+        }
+    end
   end
 end
