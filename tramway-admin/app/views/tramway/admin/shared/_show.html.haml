@@ -22,8 +22,10 @@
       - object.class.show_attributes.each do |attribute_name|
         - value = object.send attribute_name
         = render 'tramway/admin/shared/show/attribute_tr', attribute_name: attribute_name, value: value, object: object
-      = render 'tramway/admin/shared/show/associations', object: object
     - else
       - object.attributes.each do |attribute_name, value|
         = render 'tramway/admin/shared/show/attribute_tr', attribute_name: attribute_name, value: value, object: object
-      = render 'tramway/admin/shared/show/associations', object: object
+    - object.associations(:has_one).each do |association|
+      = render 'tramway/admin/shared/show/associations', object: object, association: association
+    - object.associations(:has_many).each do |association|
+      = render 'tramway/admin/shared/show/associations', object: object, association: association
