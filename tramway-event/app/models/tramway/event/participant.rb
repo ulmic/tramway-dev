@@ -35,7 +35,7 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     end
 
     event :return_to_requested do
-      transition rejected: :requested
+      transition [ :prev_approved, :rejected ] => :requested
     end
   end
 
