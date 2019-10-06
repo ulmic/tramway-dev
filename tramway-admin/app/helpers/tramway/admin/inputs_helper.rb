@@ -3,6 +3,9 @@ module Tramway
     module InputsHelper
       def association_params(form_object:, property:, value:, object:)
         full_class_name_association = form_object.class.full_class_name_association(property)
+        unless full_class_name_association
+          raise "It seems you\'ve defined association attributes with `property` method. Please, use `association` method. `association :#{property}`" 
+        end
         {
           label: false,
           input_html: {
