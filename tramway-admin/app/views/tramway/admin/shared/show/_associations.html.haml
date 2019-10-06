@@ -10,4 +10,4 @@
             %td
               = association_object.id
             %td
-              = link_to association_object.name, record_path(association_object.id, model: 'Project')
+              = link_to association_object.name, record_path(association_object.id, model: association.options[:class_name])
