@@ -11,19 +11,6 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     @record = decorator_class.decorate model_class.active.find params[:id]
   end
 
-  def edit
-    @record_form = admin_form_class.new model_class.active.find params[:id]
-  end
-
-  def update
-    @record_form = admin_form_class.new model_class.active.find params[:id]
-    if @record_form.submit params[:record]
-      redirect_to params[:redirect] || record_path(@record_form.model)
-    else
-      render :edit
-    end
-  end
-
   def new
     @record_form = admin_form_class.new model_class.new
   end
@@ -34,6 +21,19 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
       redirect_to params[:redirect] || record_path(@record_form.model)
     else
       render :new
+    end
+  end
+
+  def edit
+    @record_form = admin_form_class.new model_class.active.find params[:id]
+  end
+
+  def update
+    @record_form = admin_form_class.new model_class.active.find params[:id]
+    if @record_form.submit params[:record]
+      redirect_to params[:redirect] || record_path(@record_form.model)
+    else
+      render :edit
     end
   end
 

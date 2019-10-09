@@ -111,8 +111,17 @@ class Tramway::Core::ApplicationDecorator
 
   include Tramway::Core::Concerns::AttributesDecoratorHelper
 
+  RESERVED_WORDS = [ 'fields' ]
+
   def attributes
     object.attributes.reduce({}) do |hash, attribute|
+      if attribute[0].in? RESERVED_WORDS
+        error = Tramway::Error.new(
+          plugin: :core,
+          method: :attributes,
+          message: ("Method `#{attribute[0]}` is reserved word. Please, create or delegate method in #{self.class.name} with another name."))
+        raise error.message
+      end
       value = try(attribute[0]) ? send(attribute[0]) : object.send(attribute[0])
       if attribute[0].to_s.in? object.class.state_machines.keys.map(&:to_s)
         hash.merge! attribute[0] => state_machine_view(object, attribute[0])
