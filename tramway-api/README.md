@@ -43,6 +43,7 @@ coming soon...
   gem 'tramway-core'
   gem 'state_machine', github: 'seuros/state_machine'
   gem 'knock'
+  gem 'audited'
   ```
 
 ## Usage
