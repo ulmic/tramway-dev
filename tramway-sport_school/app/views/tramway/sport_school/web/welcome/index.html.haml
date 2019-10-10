@@ -19,7 +19,7 @@
 
 = content_for :footer_links do
   %h5.title
-    = plural Tramway::SportSchool::Document.model_name
+    = russian_plural Tramway::SportSchool::Document.model_name
   %ul
     - @documents.each do |document|
       %li
