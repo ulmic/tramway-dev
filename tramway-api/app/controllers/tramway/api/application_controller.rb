@@ -51,6 +51,12 @@ module Tramway
       def auth_params
         params[:auth]&.permit(:login, :password)
       end
+
+      def current_user
+        Tramway::Api.user_based_models.map do |user_based_model|
+          send("current_#{user_based_model.name.underscore}")
+        end.compact.first
+      end
     end
   end
 end
