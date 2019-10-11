@@ -18,7 +18,7 @@ module Tramway
       protected
 
       def authenticate
-        return unauthorized unless current_user
+        return unauthorized if current_user.nil? || !params[:user_based_model].in?(Tramway::Api.user_based_models)
       end
 
       def auth_token
@@ -30,17 +30,19 @@ module Tramway
       end
 
       def entity
+        user_based_model = params[:user_based_model].constantize
         @entity ||=
-          if Tramway::Api.user_based_model.respond_to? :from_token_request
-            Tramway::Api.user_based_model.active.from_token_request request
+          if user_based_model.respond_to? :from_token_request
+            user_based_model.active.from_token_request request
           else
             params[:auth] && find_user_by_auth_attributes
           end
       end
 
       def find_user_by_auth_attributes
-        Tramway::Api.auth_attributes.each do |attribute|
-          object = Tramway::Api.user_based_model.active.where.not(attribute => nil).find_by(attribute => auth_params[:login])
+        user_based_model = params[:user_based_model].constantize
+        Tramway::Api.auth_attributes[user_based_model].each do |attribute|
+          object = user_based_model.active.where.not(attribute => nil).find_by(attribute => auth_params[:login])
           return object if object
         end
         nil

@@ -4,19 +4,27 @@ module Tramway
   module Api
     class << self
       def auth_config
-        @@auth_config ||= { user_model: ::Tramway::User::User, auth_attributes: :email }
+        @@auth_config ||= [{ user_model: ::Tramway::User::User, auth_attributes: :email }]
       end
 
-      def auth_config=(**params)
-        @@auth_config = params
+      def auth_config=(params)
+        if params.is_a? Hash
+          @@auth_config = [params]
+        elsif params.is_a? Array
+          @@auth_config = params
+        end
       end
 
-      def user_based_model
-        @@auth_config[:user_model]
+      def user_based_models
+        @@auth_config.map do |conf|
+          conf[:user_model]
+        end
       end
 
       def auth_attributes
-        @@auth_config[:auth_attributes]
+        @@auth_config.reduce({}) do |hash, conf|
+          hash.merge! conf[:user_model] => conf[:auth_attributes]
+        end
       end
 
       def set_available_models(**models)

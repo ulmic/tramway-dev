@@ -68,7 +68,9 @@ module Tramway::Api::V1
 
     def authenticate_user_if_needed
       if action_name.in? Tramway::Api::available_models[model_class.to_s][:closed]&.map(&:to_s) || []
-        authenticate_user
+        Tramway::Api.user_based_models.map do |user_based_model|
+          send("current_#{user_based_model.name.underscore}").present?
+        end.include? true
       end
     end
 
