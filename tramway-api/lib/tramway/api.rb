@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/api/engine'
 
 module Tramway

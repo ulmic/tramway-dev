@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::SportSchool::DocumentForm < ::Tramway::Core::ApplicationForm
   properties :title, :file, :view_state, :document_type
 

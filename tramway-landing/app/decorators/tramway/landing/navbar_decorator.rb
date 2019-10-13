@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Landing::NavbarDecorator < ::Tramway::Core::ApplicationDecoratedCollection
   def initialize(array)
     original = if array.any? { |obj| obj.is_a? Hash }

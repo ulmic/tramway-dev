@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'securerandom'
 
 class Tramway::Notify::RemindPasswordsController < Tramway::Notify::ApplicationController
@@ -7,10 +9,10 @@ class Tramway::Notify::RemindPasswordsController < Tramway::Notify::ApplicationC
       notification_form = ::Tramway::Notify::NotificationForm.new
       token = Token.create! uid: SecureRandom.hex, user_id: user.id, token_type: :remind_password
       if notification_form.submit title: I18n.t('notifications.remind_password.title'),
-          body: I18n.t('notifications.remind_password.body', token: token.uid),
-          receiver: params[:data][:attributes][:email],
-          sender: 'PekloTool',
-          notification_type: :unisender
+                                  body: I18n.t('notifications.remind_password.body', token: token.uid),
+                                  receiver: params[:data][:attributes][:email],
+                                  sender: 'PekloTool',
+                                  notification_type: :unisender
 
         # Remove after testing
         UnisenderService.send_notification ::Tramway::Notify::Notification.create(
@@ -22,8 +24,8 @@ class Tramway::Notify::RemindPasswordsController < Tramway::Notify::ApplicationC
         )
 
         render json: user,
-          serializer: UserSerializer,
-          status: :created 
+               serializer: UserSerializer,
+               status: :created
       else
         render_errors_for notification_form
       end
@@ -36,8 +38,8 @@ class Tramway::Notify::RemindPasswordsController < Tramway::Notify::ApplicationC
     user_form = UserForm.new Token.find_by(uid: params[:data][:attributes][:uid]).user
     if user_form.submit password: params[:data][:attributes][:password]
       render json: user_form.model,
-        serializer: UserSerializer,
-        status: :ok
+             serializer: UserSerializer,
+             status: :ok
     else
       render_errors_for user_form
     end

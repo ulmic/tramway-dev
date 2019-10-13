@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ::Tramway::Event::PartakingFeatureDecorator < ::Tramway::Landing::BlockTypes::FeaturesDecorator
   def text
     object.position&.html_safe

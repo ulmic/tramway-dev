@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwayProfilesSocialNetworks < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_profiles_social_networks do |t|

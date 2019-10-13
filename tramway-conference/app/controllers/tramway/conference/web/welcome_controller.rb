@@ -1,4 +1,6 @@
-require_dependency "tramway/conference/application_controller"
+# frozen_string_literal: true
+
+require_dependency 'tramway/conference/application_controller'
 
 class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::ApplicationController
   def index

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwaySportSchoolInstitutions < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_sport_school_institutions do |t|

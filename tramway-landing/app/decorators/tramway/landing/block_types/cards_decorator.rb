@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Landing::BlockTypes::CardsDecorator < ::Tramway::Core::ApplicationDecorator
   def image; end
 

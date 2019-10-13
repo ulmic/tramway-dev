@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/helpers/class_name_helpers'
 
 class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationController
@@ -9,7 +11,7 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
     # Implement JSON API spec here
     if user_form.submit snake_case params[user_based_model.name.underscore]
       token = ::Knock::AuthToken.new(payload: { sub: user_form.model.uid }).token
-      # FIXME refactor this bullshit
+      # FIXME: refactor this bullshit
       serialized_user = OpenStruct.new(
         user_form.model.attributes.merge(
           authentication_token: token,

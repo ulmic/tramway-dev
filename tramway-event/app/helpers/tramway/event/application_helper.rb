@@ -1,4 +1,6 @@
-require "tramway/collections/helper"
+# frozen_string_literal: true
+
+require 'tramway/collections/helper'
 
 module Tramway
   module Event

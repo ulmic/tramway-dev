@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Notify::NotificationsController < Tramway::Notify::ApplicationController
   def create
     notification_form = Tramway::Notify::NotificationForm.new Tramway::Notify::Notification.new

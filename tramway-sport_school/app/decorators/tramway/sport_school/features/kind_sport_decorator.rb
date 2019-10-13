@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::SportSchool::Features::KindSportDecorator < ::Tramway::Landing::BlockTypes::FeaturesDecorator
   def image
     object.image.small.url

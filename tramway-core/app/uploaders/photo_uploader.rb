@@ -1,37 +1,39 @@
+# frozen_string_literal: true
+
 class PhotoUploader < ApplicationUploader
   include ImageDefaults
 
   def default_url
-    ActionController::Base.helpers.asset_path("images/default_photo.png")
+    ActionController::Base.helpers.asset_path('images/default_photo.png')
   end
 
   def url
     if file.present? && File.exist?(file.file)
-      file.file.match(/\/system\/uploads\/.*/).to_s
+      file.file.match(%r{/system/uploads/.*}).to_s
     else
-      "/assets/tramway/core/mona_lisa_from_prado_square.jpg"
+      '/assets/tramway/core/mona_lisa_from_prado_square.jpg'
     end
   end
 
   version :medium do
-    process :resize_to_fill => [400, 400]
+    process resize_to_fill: [400, 400]
   end
 
   version :small do
-    process :resize_to_fill => [100, 100]
+    process resize_to_fill: [100, 100]
   end
 
-  # FIXME move to tramway-landing uploader
+  # FIXME: move to tramway-landing uploader
   version :card do
     process resize_to_fill: [400, 400, 'North']
   end
 
-  # FIXME move to tramway-landing uploader
+  # FIXME: move to tramway-landing uploader
   version :horizontal do
     process resize_to_fill: [800, 350, 'North']
   end
 
-  # FIXME move to tramway-landing uploader
+  # FIXME: move to tramway-landing uploader
   version :mini do
     process resize_to_limit: [300, nil]
   end
@@ -43,7 +45,7 @@ class PhotoUploader < ApplicationUploader
   def capture_size(file)
     if version_name.blank?
       if file.path.nil?
-        img = ::MiniMagick::Image::read(file.file)
+        img = ::MiniMagick::Image.read(file.file)
         @width = img[:width]
         @height = img[:height]
       else

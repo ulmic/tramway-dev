@@ -26,21 +26,19 @@ class Tramway::Api::V1::ErrorSerializer < ActiveModel::Serializer
       end
     end
 
-    if object.model
-      object.model.attributes.each do |attribute_key, attribute_value|
-        if attribute_value.is_a?(Reform::Form)
-          error_messages.merge!(error_messages(attribute_value, path + [attribute_key]))
-        elsif attribute_value.is_a?(Array)
-          attribute_value.each_with_index do |array_attribute_value, array_attribute_key|
-            next unless array_attribute_value.is_a?(Reform::Form)
+    object.model&.attributes&.each do |attribute_key, attribute_value|
+      if attribute_value.is_a?(Reform::Form)
+        error_messages.merge!(error_messages(attribute_value, path + [attribute_key]))
+      elsif attribute_value.is_a?(Array)
+        attribute_value.each_with_index do |array_attribute_value, array_attribute_key|
+          next unless array_attribute_value.is_a?(Reform::Form)
 
-            error_messages.merge!(
-              error_messages(
-                array_attribute_value,
-                path + [attribute_key] + [array_attribute_key]
-              )
+          error_messages.merge!(
+            error_messages(
+              array_attribute_value,
+              path + [attribute_key] + [array_attribute_key]
             )
-          end
+          )
         end
       end
     end

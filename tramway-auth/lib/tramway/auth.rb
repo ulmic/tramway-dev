@@ -1,4 +1,6 @@
-require "tramway/auth/engine"
+# frozen_string_literal: true
+
+require 'tramway/auth/engine'
 
 module Tramway
   module Auth
@@ -15,22 +17,18 @@ module Tramway
           @authenticable_classes << value
         end
       end
-      
+
       def root
         File.dirname __dir__
       end
 
-      def layout_path=(path)
-        @layout_path = path
-      end
+      attr_writer :layout_path
 
       def layout_path
         @layout_path ||= 'tramway/user/application'
       end
 
-      def root_path=(path)
-        @root_path = path
-      end
+      attr_writer :root_path
 
       def root_path
         @root_path || '/'

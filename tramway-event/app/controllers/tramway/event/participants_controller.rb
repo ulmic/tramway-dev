@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::ParticipantsController < Tramway::Event::ApplicationController
   def create
     event = ::Tramway::Event::Event.find params[:tramway_event_participant][:event_id]

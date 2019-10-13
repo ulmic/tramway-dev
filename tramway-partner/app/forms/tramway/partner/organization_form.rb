@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Partner::OrganizationForm < ::Tramway::Core::ApplicationForm
   properties :title, :logo, :url
 

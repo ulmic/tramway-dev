@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAnother2AssociationModels < ActiveRecord::Migration[5.1]
   def change
     create_table :another2_association_models do |t|

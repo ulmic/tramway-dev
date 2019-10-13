@@ -1,40 +1,42 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 gemspec
 
-gem 'pg', '0.21.0'
-gem 'tramway-user', github: 'ulmic/tramway-user', branch: :develop
-gem 'tramway-core', github: 'ulmic/tramway-core', branch: :develop
-gem 'tramway-admin', github: 'ulmic/tramway-admin', branch: :develop
-gem 'tramway-landing', github: 'ulmic/tramway-landing', branch: :develop
-gem 'haml-rails'
-gem 'sass-rails'
-gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'audited'
-gem 'simple_form'
-gem 'font-awesome-rails'
-gem 'coffee-rails'
-gem 'jquery-rails'
 gem 'bcrypt'
-gem 'reform-rails'
-gem 'trap', '~> 2.1'
-gem 'copyright_mafa'
-gem 'enumerize'
-gem 'kaminari'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'bootstrap-kaminari-views', github: 'kalashnikovisme/bootstrap-kaminari-views', branch: :master
+gem 'carrierwave'
+gem 'coffee-rails'
+gem 'copyright_mafa'
+gem 'disposable', github: 'apotonick/disposable'
+gem 'enumerize'
+gem 'font-awesome-rails'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'loofah', '~> 2.2.1'
+gem 'mini_magick'
+gem 'pg', '0.21.0'
+gem 'rails-html-sanitizer', '~> 1.0.4'
+gem 'reform-rails'
+gem 'rmagick'
+gem 'sass-rails'
+gem 'simple_form'
+gem 'sprockets', '~> 3.7.2'
 gem 'state_machine', github: 'seuros/state_machine'
 gem 'state_machine_buttons', '>= 0.4.1'
-gem 'disposable', github: 'apotonick/disposable'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'rmagick'
-gem 'loofah', '~> 2.2.1'
-gem 'rails-html-sanitizer', '~> 1.0.4'
-gem 'sprockets', '~> 3.7.2'
+gem 'tramway-admin', github: 'ulmic/tramway-admin', branch: :develop
+gem 'tramway-core', github: 'ulmic/tramway-core', branch: :develop
+gem 'tramway-landing', github: 'ulmic/tramway-landing', branch: :develop
+gem 'tramway-user', github: 'ulmic/tramway-user', branch: :develop
+gem 'trap', '~> 2.1'
 
 group :development do
   gem 'pry'
- # gem 'tramway-user', path: '../tramway-user'
- # gem 'tramway-core', path: '../tramway-core'
- # gem 'tramway-admin', path: '../tramway-admin'
- # gem 'tramway-landing', path: ../tramway-landing'
+  # gem 'tramway-user', path: '../tramway-user'
+  # gem 'tramway-core', path: '../tramway-core'
+  # gem 'tramway-admin', path: '../tramway-admin'
+  # gem 'tramway-landing', path: ../tramway-landing'
 end

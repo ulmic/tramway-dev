@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class Tramway::Site::PersonForm < Tramway::Core::ExtendedApplicationForm
   properties :full_name, :photo, :short_bio, :bio
 
   def initialize(object)
     super(object).tap do
       form_properties full_name: :string,
-        photo: :file,
-        short_bio: :string,
-        bio: :ckeditor
+                      photo: :file,
+                      short_bio: :string,
+                      bio: :ckeditor
     end
   end
 

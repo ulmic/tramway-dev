@@ -1,4 +1,6 @@
-class Tramway::Error < Exception
+# frozen_string_literal: true
+
+class Tramway::Error < RuntimeError
   def initialize(*args, plugin: nil, method: nil, message: nil)
     @properties ||= {}
     @properties[:plugin] = plugin

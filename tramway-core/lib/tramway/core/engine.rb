@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/core/generators/install_generator'
 require 'tramway/core/application'
 require 'simple_form'

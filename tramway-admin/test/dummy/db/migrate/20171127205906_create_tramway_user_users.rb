@@ -1,4 +1,6 @@
-# FIXME specify rails version
+# frozen_string_literal: true
+
+# FIXME: specify rails version
 # default is 5.1
 class CreateTramwayUserUsers < ActiveRecord::Migration[5.1]
   def change

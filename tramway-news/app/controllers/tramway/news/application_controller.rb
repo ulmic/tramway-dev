@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway
   module News
     class ApplicationController < ActionController::Base

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Landing::Cards::NewsDecorator < ::Tramway::Landing::BlockTypes::CardsDecorator
   def image
     object.photo.card.url

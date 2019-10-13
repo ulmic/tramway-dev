@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'securerandom'
 
 class Tramway::Event::ParticipantForm < ::Tramway::Core::ApplicationForm

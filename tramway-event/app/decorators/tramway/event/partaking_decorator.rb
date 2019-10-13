@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Tramway::Event::PartakingDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
 
     def show_attributes
-      [ :part_name, :event_duration, :part_description ]
+      %i[part_name event_duration part_description]
     end
   end
 
@@ -14,7 +16,7 @@ class Tramway::Event::PartakingDecorator < ::Tramway::Core::ApplicationDecorator
   def name
     "#{object.person.first_name} #{object.person.last_name} - #{object.position}"
   end
-  
+
   def part_name
     part.name
   end

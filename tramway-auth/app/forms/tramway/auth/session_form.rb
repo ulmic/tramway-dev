@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Tramway::Auth
   class SessionForm < ::Tramway::Core::ApplicationForm
     properties :email
-    attr_accessor :password 
+    attr_accessor :password
 
     def model_name
       User

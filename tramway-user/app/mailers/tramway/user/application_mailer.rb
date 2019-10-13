@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway
   module User
     class ApplicationMailer < ActionMailer::Base

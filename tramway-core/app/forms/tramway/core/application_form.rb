@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Tramway::Core
   class ApplicationForm < ::Reform::Form
     def initialize(object = nil)
-      object = self.class.model_class.new unless object
+      object ||= self.class.model_class.new
       super(object).tap do
         @@model_class = object.class
         @@enumerized_attributes = object.class.try :enumerized_attributes
@@ -27,12 +29,12 @@ module Tramway::Core
         delegating object
       end
     end
-    
+
     def submit(params)
       if params
         save if validate params
       else
-        error = Tramway::Error.new(plugin: :core, method: :submit, message: ('ApplicationForm::Params should not be nil'))
+        error = Tramway::Error.new(plugin: :core, method: :submit, message: 'ApplicationForm::Params should not be nil')
         raise error.message
       end
     end
@@ -52,7 +54,7 @@ module Tramway::Core
     def build_errors; end
 
     def delegating(object)
-      methods = [:to_key, :errors]
+      methods = %i[to_key errors]
       methods.each do |method|
         self.class.send(:define_method, method) do
           object.send method
@@ -96,7 +98,7 @@ module Tramway::Core
       def full_class_name_association(association_name)
         full_class_name_associations[association_name]
       end
-      
+
       def enumerized_attributes
         @@enumerized_attributes
       end
@@ -109,11 +111,11 @@ module Tramway::Core
         if defined?(@@model_class) && @@model_class
           @@model_class
         else
-          model_class_name ||= self.name.to_s.sub(/Form$/, '')
+          model_class_name ||= name.to_s.sub(/Form$/, '')
           begin
             @@model_class = model_class_name.constantize
-          rescue
-            error = Tramway::Error.new(plugin: :core, method: :model_class, message: ("There is not model class name for #{self.name}. Should be #{model_class_name} or you can use another class to initialize form object or just initialize form with object."))
+          rescue StandardError
+            error = Tramway::Error.new(plugin: :core, method: :model_class, message: "There is not model class name for #{name}. Should be #{model_class_name} or you can use another class to initialize form object or just initialize form with object.")
             raise error.message
           end
         end

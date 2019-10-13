@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Tramway::Admin
   module RecordsHelper
-    # FIXME replace to module
+    # FIXME: replace to module
     def current_model_record_path(*args, **options)
       record_path args, options.merge(model: params[:model])
     end
@@ -29,7 +31,7 @@ module Tramway::Admin
       "#{model_name || model_class}Decorator".constantize
     end
 
-    def get_collection(model_class)
+    def get_collection(_model_class)
       decorator_class.collections
     end
 
@@ -38,7 +40,7 @@ module Tramway::Admin
     end
 
     def search_tab_title(count)
-      "#{t("helpers.scope.found")} / #{count}"
+      "#{t('helpers.scope.found')} / #{count}"
     end
 
     def searchable_model?(model_class)
@@ -56,12 +58,12 @@ module Tramway::Admin
     def collection_human_name(model_name:, collection_name:)
       if t("default.collections.#{collection_name}").include?('<span')
         t("collections.#{model_name}.#{collection_name}").pluralize(:ru)
-      else 
+      else
         t("default.collections.#{collection_name}")
       end
     end
 
-    def tab_title(model_class, tab, count, state_method = :state)
+    def tab_title(model_class, tab, count, _state_method = :state)
       model = model_class.name.underscore
       name = collection_human_name model_name: model, collection_name: tab
       params[:filter].present? ? name : "#{name} / #{count}"
@@ -74,11 +76,11 @@ module Tramway::Admin
 
     def new_associated_record_path(object:, association:)
       new_record_path model: association.class_name,
-        redirect: current_model_record_path(object),
-        association.options[:class_name].underscore => {
-          association.options[:as] => object.id,
-          association.type => object.class.model_name
-        }
+                      redirect: current_model_record_path(object),
+                      association.options[:class_name].underscore => {
+                        association.options[:as] => object.id,
+                        association.type => object.class.model_name
+                      }
     end
   end
 end

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Tramway::SportSchool::KindSportDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all, :published, :hidden ]
+      %i[all published hidden]
     end
 
     def list_attributes
-      [ :view_state ]
+      [:view_state]
     end
   end
 

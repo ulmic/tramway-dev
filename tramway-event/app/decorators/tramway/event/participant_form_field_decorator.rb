@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Tramway::Event::ParticipantFormFieldDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
 
     def list_attributes

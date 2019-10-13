@@ -1,6 +1,6 @@
-if defined?(CarrierWave::Mount)
-  require 'carrierwave/orm/activerecord'
-end
+# frozen_string_literal: true
+
+require 'carrierwave/orm/activerecord' if defined?(CarrierWave::Mount)
 
 module Tramway
   module Core
@@ -22,10 +22,10 @@ module Tramway
 
       include ::PgSearch
 
-      # FIXME detect inhertited locales
+      # FIXME: detect inhertited locales
       class << self
-        def human_attribute_name(attribute_name, *args)
-          excepted_attributes = %w( created_at updated_at state )
+        def human_attribute_name(attribute_name, *_args)
+          excepted_attributes = %w[created_at updated_at state]
           if attribute_name.to_s.in? excepted_attributes
             I18n.t "activerecord.attributes.tramway/core/application_record.#{attribute_name}"
           else
@@ -38,7 +38,7 @@ module Tramway
         end
       end
 
-      # FIXME detect inhertited locales
+      # FIXME: detect inhertited locales
       def human_state_name
         I18n.t "activerecord.state_machines.tramway/core/application_record.state.states.#{state}"
       end

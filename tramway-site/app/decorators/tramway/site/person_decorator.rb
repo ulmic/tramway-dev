@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Tramway::Site::PersonDecorator < Tramway::Core::ApplicationDecorator
   class << self
     def show_attributes
-      [:full_name, :short_bio, :bio, :photo]
+      %i[full_name short_bio bio photo]
     end
   end
 

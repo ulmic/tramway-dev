@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwayConferenceUnities < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_conference_unities do |t|

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Tramway::User::UserDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
 
     def list_attributes
-      [ :email ]
+      [:email]
     end
   end
 

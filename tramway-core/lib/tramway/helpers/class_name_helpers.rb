@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::ClassNameHelpers
   def model_class_name(class_name)
     class_name.constantize

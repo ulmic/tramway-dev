@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationController
   def index
     scope = params[:scope].present? ? params[:scope] : :all

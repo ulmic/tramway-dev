@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Core::Concerns::AttributesDecoratorHelper
   def date_view(value)
     I18n.l value.to_date if value

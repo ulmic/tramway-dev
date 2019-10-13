@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Admin
   class SingletonsController < ApplicationController
     def show
@@ -6,7 +8,7 @@ module Tramway::Admin
       else
         @singleton_form = form_class.new model_class.new
         render :new
-        return
+        nil
       end
     end
 
@@ -35,7 +37,7 @@ module Tramway::Admin
 
   private
 
-  # FIXME replace to module
+  # FIXME: replace to module
   def singleton_path(*args, **options)
     super args, options.merge(model: params[:model])
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/admin/record_routes_helper'
 require 'tramway/auth'
 require 'font-awesome-rails'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwayEventEventsPlaces < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_event_events_places do |t|

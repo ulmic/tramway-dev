@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/conference/engine'
 require 'tramway/conference/generates/install_generator'
 require 'font-awesome-rails'
@@ -6,7 +8,7 @@ module Tramway
   module Conference
     class << self
       def dependencies
-        [ :landing, :event, :profiles, :page, :partner ]
+        %i[landing event profiles page partner]
       end
 
       def application

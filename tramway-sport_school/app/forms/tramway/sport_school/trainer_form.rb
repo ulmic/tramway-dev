@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::SportSchool::TrainerForm < ::Tramway::Core::ApplicationForm
   properties :first_name, :last_name, :patronymic, :photo, :degree, :view_state, :description
 

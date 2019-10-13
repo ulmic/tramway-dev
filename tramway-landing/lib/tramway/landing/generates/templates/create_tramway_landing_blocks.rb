@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwayLandingBlocks < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_landing_blocks do |t|

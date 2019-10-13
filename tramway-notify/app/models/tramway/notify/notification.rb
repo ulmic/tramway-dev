@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Notify::Notification < Tramway::Notify::ApplicationRecord
   has_many :deliveries
 

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
   end
 
@@ -22,7 +24,7 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
 
   def duration
     if object.begin_date.to_date == object.end_date.to_date
-      "#{I18n.l(object.begin_date, format: '%d %B %Y')}"
+      I18n.l(object.begin_date, format: '%d %B %Y').to_s
     elsif object.begin_date.month == object.end_date.month
       "#{I18n.t('date.from')} #{I18n.l(object.begin_date, format: '%d')} #{I18n.t('date.to')} #{I18n.l(object.end_date, format: '%d %B %Y')}"
     else

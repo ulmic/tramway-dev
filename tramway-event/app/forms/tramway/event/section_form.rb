@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::SectionForm < ::Tramway::Core::ApplicationForm
   properties :event, :title, :description, :photo, :icon, :position
   association :event
@@ -10,6 +12,6 @@ class Tramway::Event::SectionForm < ::Tramway::Core::ApplicationForm
                       photo: :file,
                       icon: :string,
                       position: :numeric
-    end       
+    end
   end
 end

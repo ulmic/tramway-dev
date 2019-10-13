@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Tramway::Conference::Engine.routes.draw do
   mount Tramway::Auth::Engine, at: '/auth'
   mount Tramway::Admin::Engine, at: '/admin'
@@ -8,6 +10,6 @@ Tramway::Conference::Engine.routes.draw do
   root to: 'web/welcome#index'
 
   scope module: :web do
-    resource :session, only: [ :new, :create, :destroy ]
+    resource :session, only: %i[new create destroy]
   end
 end

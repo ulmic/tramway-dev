@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/core/engine'
 require 'tramway/collection'
 require 'tramway/collections/helper'
@@ -17,18 +19,15 @@ module Tramway
         end
       end
 
-      def application
-        @application
-      end
+      attr_reader :application
     end
   end
 end
 
-# HACK FIXME
+# HACK: FIXME
 
 module ActiveModel
   class Errors
-    def merge!(*args)
-    end
+    def merge!(*args); end
   end
 end

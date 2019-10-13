@@ -1,4 +1,6 @@
-require_dependency "tramway/sport_school/application_controller"
+# frozen_string_literal: true
+
+require_dependency 'tramway/sport_school/application_controller'
 
 class Tramway::SportSchool::Web::WelcomeController < ::Tramway::SportSchool::ApplicationController
   def index

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway
   module Partner
     class Organization < ::Tramway::Partner::ApplicationRecord

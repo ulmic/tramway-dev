@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorator
   include HTMLTagsHelpers
   class << self
     def collections
-      [ :requested, :waiting, :prev_approved, :without_answer, :approved, :rejected, :reserved, :all ]
+      %i[requested waiting prev_approved without_answer approved rejected reserved all]
     end
 
     def list_attributes
@@ -34,11 +36,11 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
       end)
       object.event.participant_form_fields.map do |field|
         hash = if field.options.is_a?(Hash)
-                 field.options 
+                 field.options
                else
                  begin
                    JSON.parse(field.options.present? ? field.options : '{}')
-                 rescue => e
+                 rescue StandardError => e
                    I18n.t('.invalid_field_with_error', e)
                  end
                end
@@ -49,7 +51,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
                 field.title
               end)
               concat(content_tag(:td) do
-                value = object.values&.dig( field.title )
+                value = object.values&.dig(field.title)
                 if russian_phone_number?(value)
                   tel_tag value
                 else
@@ -74,7 +76,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
           end)
           concat(content_tag(:td) do
             concat(if russian_phone_number?(value)
-                    tel_tag value
+                     tel_tag value
                    else
                      value
                    end)

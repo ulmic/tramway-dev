@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Auth
   module Web
     class SessionsController < ::Tramway::Auth::Web::ApplicationController

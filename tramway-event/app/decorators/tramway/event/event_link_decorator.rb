@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::EventLinkDecorator < ::Tramway::Landing::LinkDecorator
   delegate :title, to: :object
 

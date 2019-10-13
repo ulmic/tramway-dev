@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Landing::BlockTypes::FeaturesDecorator < ::Tramway::Core::ApplicationDecorator
   def icon; end
 
@@ -18,7 +20,7 @@ class Tramway::Landing::BlockTypes::FeaturesDecorator < ::Tramway::Core::Applica
       "##{anchor}"
     else
       if external_link.present?
-        if external_link.match?(/^https?:\/\//)
+        if external_link.match?(%r{^https?://})
           external_link
         else
           "http://#{external_link}"

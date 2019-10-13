@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwayPartnerPartnerships < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_partner_partnerships do |t|

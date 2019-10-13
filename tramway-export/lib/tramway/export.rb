@@ -1,4 +1,6 @@
-require "tramway/export/engine"
+# frozen_string_literal: true
+
+require 'tramway/export/engine'
 
 module Tramway
   module Export

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Tramway::Core::ApplicationDecorator do
@@ -7,27 +9,27 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
 
   it 'should initialize new decorated object' do
     obj = 'it can be any object'
-    expect{ described_class.new obj }.not_to raise_error(StandardError)
+    expect { described_class.new obj }.not_to raise_error(StandardError)
   end
 
   context 'Class check' do
-    let(:class_methods) {
+    let(:class_methods) do
       described_class.methods -
-      described_class.superclass.methods -
-      bad_ass_monkey_patching_methods(source: :active_support) -
-      bad_ass_monkey_patching_methods(source: [:action_view, :helpers])
-    }
+        described_class.superclass.methods -
+        bad_ass_monkey_patching_methods(source: :active_support) -
+        bad_ass_monkey_patching_methods(source: %i[action_view helpers])
+    end
 
     it 'class should have only this methods list' do
-      expect(class_methods.should =~ [
-        :decorate_association,
-        :list_attributes,
-        :decorate,
-        :model_class,
-        :model_name,
-        :show_attributes,
-        :show_associations,
-        :collections
+      expect(class_methods.should =~ %i[
+        decorate_association
+        list_attributes
+        decorate
+        model_class
+        model_name
+        show_attributes
+        show_associations
+        collections
       ]).to be_truthy
     end
 
@@ -84,7 +86,7 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         test_model = create :test_model
         create_list :another_association_model, 10, test_model_id: test_model.id
         decorated_test_model = TestModelDecorator.decorate test_model
-        expect{ decorated_test_model.another_association_models }.to raise_error("Plugin: core; Method: decorate_association; Message: Please, specify `another_association_models` association class_name in TestModel model. For example: `has_many :another_association_models, class_name: 'AnotherAssociationModel'`") 
+        expect { decorated_test_model.another_association_models }.to raise_error("Plugin: core; Method: decorate_association; Message: Please, specify `another_association_models` association class_name in TestModel model. For example: `has_many :another_association_models, class_name: 'AnotherAssociationModel'`")
       end
     end
   end
@@ -110,14 +112,14 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       let(:decorated_test_model) { described_class.decorate test_model }
 
       it 'returns name' do
-        expect{ decorated_test_model.name }.to raise_error(
+        expect { decorated_test_model.name }.to raise_error(
           RuntimeError,
-          "Plugin: core; Method: title; Message: Please, implement `title` method in a Tramway::Core::ApplicationDecorator or TestModel"
+          'Plugin: core; Method: title; Message: Please, implement `title` method in a Tramway::Core::ApplicationDecorator or TestModel'
         )
       end
 
       it 'returns link' do
-        expect{ decorated_test_model.link }.to raise_error("Plugin: core; Method: link; Message: Method `link` uses `file` attribute of the decorated object. If decorated object doesn't contain `file`, you shouldn't use `link` method.")
+        expect { decorated_test_model.link }.to raise_error("Plugin: core; Method: link; Message: Method `link` uses `file` attribute of the decorated object. If decorated object doesn't contain `file`, you shouldn't use `link` method.")
       end
 
       it 'returns model' do
@@ -125,7 +127,7 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       end
 
       it 'returns associations' do
-        expect(decorated_test_model.associations(:has_many).map(&:name).should =~ [:association_models, :another_association_models]).to be_truthy
+        expect(decorated_test_model.associations(:has_many).map(&:name).should =~ %i[association_models another_association_models]).to be_truthy
         expect(decorated_test_model.associations(:belongs_to).map(&:name).should =~ []).to be_truthy
         expect(decorated_test_model.associations(:has_and_belongs_to_many).map(&:name).should =~ []).to be_truthy
         expect(decorated_test_model.associations(:has_one).map(&:name).should =~ []).to be_truthy
@@ -134,9 +136,9 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       it 'returns attributes' do
         date_format = case ENV['LOCALE']
                       when 'ru'
-                        "%d.%m.%Y %H:%M"
+                        '%d.%m.%Y %H:%M'
                       when 'en'
-                        "%m/%d/%Y %H:%M"
+                        '%m/%d/%Y %H:%M'
                       end
         expect(decorated_test_model.attributes).to eq({
           text: test_model.text,

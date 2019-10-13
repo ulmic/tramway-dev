@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Partner::PartnershipForm < ::Tramway::Core::ApplicationForm
   properties :partner_id, :organization_id, :partnership_type, :partner_type
 

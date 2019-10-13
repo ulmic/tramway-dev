@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::SportSchool::KindSportForm < ::Tramway::Core::ApplicationForm
   properties :title, :view_state, :image, :description
 

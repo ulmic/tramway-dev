@@ -1,4 +1,6 @@
-require "tramway/mailout/engine"
+# frozen_string_literal: true
+
+require 'tramway/mailout/engine'
 require 'tramway/mailout/generates/install_generator'
 require 'tramway/mailout/job_proxy'
 

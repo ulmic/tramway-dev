@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway
   class Collection
     class << self

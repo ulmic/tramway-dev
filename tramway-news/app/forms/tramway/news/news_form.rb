@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::News::NewsForm < ::Tramway::Core::ApplicationForm
   properties :title, :body, :published_at, :photo
 

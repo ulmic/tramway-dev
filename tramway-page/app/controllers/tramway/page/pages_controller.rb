@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
   layout 'tramway/landing/application'
 

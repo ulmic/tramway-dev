@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails/generators'
 require 'tramway/core/generators/install_generator'
 
 module Tramway::Conference::Generators
   class InstallGenerator < ::Tramway::Core::Generators::InstallGenerator
     include Rails::Generators::Migration
-    source_root File.expand_path('../templates', __FILE__)
+    source_root File.expand_path('templates', __dir__)
 
     def run_other_generators
       generate 'tramway:user:install'
@@ -20,10 +22,10 @@ module Tramway::Conference::Generators
     end
 
     def copy_migrations
-      migrations = [
-        :create_tramway_conference_unities,
-        :add_url_to_tramway_conference_unities,
-        :add_found_date_to_tramway_conference_unities
+      migrations = %i[
+        create_tramway_conference_unities
+        add_url_to_tramway_conference_unities
+        add_found_date_to_tramway_conference_unities
       ]
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"

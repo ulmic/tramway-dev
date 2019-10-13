@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::User::UserForm < ::Tramway::Core::ApplicationForm
   properties :email, :password, :first_name, :last_name, :role
 

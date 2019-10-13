@@ -1,25 +1,27 @@
+# frozen_string_literal: true
+
 class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
 
     def show_attributes
-      [ 
-        :title,
-        :duration,
-        :state,
-        :created_at,
-        :photo,
-        :status,
-        :request_collecting_duration,
-        :description,
-        :participants_list
+      %i[
+        title
+        duration
+        state
+        created_at
+        photo
+        status
+        request_collecting_duration
+        description
+        participants_list
       ]
     end
 
     def list_attributes
-      [ :requested_participants, :approved_participants ]
+      %i[requested_participants approved_participants]
     end
   end
 
@@ -56,7 +58,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
 
   def duration(begin_date: object.begin_date, end_date: object.end_date)
     if begin_date.to_date == end_date.to_date
-      "#{I18n.l(begin_date, format: '%d %B %Y')}"
+      I18n.l(begin_date, format: '%d %B %Y').to_s
     elsif begin_date.month == end_date.month
       "#{I18n.t('date.from')} #{I18n.l(begin_date, format: '%d')} #{I18n.t('date.to')} #{I18n.l(end_date, format: '%d %B %Y')}"
     else

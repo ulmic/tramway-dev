@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Export::ApplicationDecorator
   def initialize(object)
     @object = object
@@ -21,7 +23,5 @@ class Tramway::Export::ApplicationDecorator
 
   private
 
-  def object
-    @object
-  end
+  attr_reader :object
 end

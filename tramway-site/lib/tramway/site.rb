@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/site/engine'
 require 'tramway/site/generates/install_generator'
 
@@ -5,7 +7,7 @@ module Tramway
   module Site
     class << self
       def dependencies
-        [ :landing, :profiles ]
+        %i[landing profiles]
       end
 
       def application

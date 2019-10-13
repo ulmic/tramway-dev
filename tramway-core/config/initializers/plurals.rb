@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 {
-  ru: { 
+  ru: {
     i18n: {
       plural: {
-        keys: [:zero, :one, :few, :many],
-        rule: lambda do |n| 
+        keys: %i[zero one few many],
+        rule: lambda do |n|
           if n == 0
             :zero
           elsif n % 10 == 1 && n % 100 != 11
@@ -16,8 +18,8 @@
             # 0, 5-20, 25-30, 35-40...
             :many
           end
-        end 
-      } 
-    } 
-  } 
+        end
+      }
+    }
+  }
 }

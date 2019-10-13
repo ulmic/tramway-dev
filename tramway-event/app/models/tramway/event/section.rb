@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::Section < ::Tramway::Event::ApplicationRecord
   mount_uploader :photo, PhotoUploader
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMoreFieldsToTramwayEventParticipants < ActiveRecord::Migration[5.1]
   def change
     add_column :tramway_event_participants, :participation_state, :text, default: :requested

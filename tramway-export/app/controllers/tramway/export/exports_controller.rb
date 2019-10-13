@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'xls_exporter'
 
 class Tramway::Export::ExportsController < Tramway::Export::ApplicationController
@@ -13,12 +15,12 @@ class Tramway::Export::ExportsController < Tramway::Export::ApplicationControlle
       export_models records, *xlsx_decorator_class.columns
     end
     stream = StringIO.new
-    book.write stream 
+    book.write stream
     send_data stream.string, content_type: 'application/xlsx', filename: xlsx_decorator_class.filename
   end
 
   private
-  
+
   def xlsx_decorator_class_name(model_name)
     "#{model_name}XlsxDecorator".constantize
   end

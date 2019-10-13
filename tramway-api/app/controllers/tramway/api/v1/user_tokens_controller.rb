@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Tramway::Api::V1::UserTokensController < ::Tramway::Api::V1::ApplicationController
   def create
     if entity.present? && entity.authenticate(auth_params[:password])

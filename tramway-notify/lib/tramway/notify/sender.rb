@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Notify::Sender
   class << self
     def send_now

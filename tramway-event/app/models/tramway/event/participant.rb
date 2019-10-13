@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
   belongs_to :event, class_name: 'Tramway::Event::Event'
-  
+
   state_machine :participation_state, initial: :requested do
     state :requested
     state :prev_approved
@@ -11,23 +13,23 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     state :reserved
 
     event :previous_approve do
-      transition [ :requested, :without_answer, :waiting ] => :prev_approved
+      transition %i[requested without_answer waiting] => :prev_approved
     end
 
     event :wait_for_decision do
-      transition [ :requested, :without_answer ] => :waiting
+      transition %i[requested without_answer] => :waiting
     end
 
     event :reserve do
-      transition [ :requested, :without_answer, :waiting ] => :reserved
+      transition %i[requested without_answer waiting] => :reserved
     end
 
     event :reject do
-      transition [ :requested, :without_answer, :waiting, :prev_approved, :reserved ] => :rejected
+      transition %i[requested without_answer waiting prev_approved reserved] => :rejected
     end
 
     event :approve do
-      transition [ :prev_approved, :reserved, :requested ] => :approved
+      transition %i[prev_approved reserved requested] => :approved
     end
 
     event :not_got_answer do
@@ -35,7 +37,7 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     end
 
     event :return_to_requested do
-      transition [ :prev_approved, :rejected ] => :requested
+      transition %i[prev_approved rejected] => :requested
     end
   end
 

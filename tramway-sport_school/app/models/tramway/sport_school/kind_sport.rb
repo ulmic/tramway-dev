@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::SportSchool
   class KindSport < ::Tramway::Core::ApplicationRecord
     mount_uploader :image, PhotoUploader

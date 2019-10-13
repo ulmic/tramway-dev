@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ::Tramway::News::NewsController < ::Tramway::News::ApplicationController
   layout 'tramway/landing/application'
 

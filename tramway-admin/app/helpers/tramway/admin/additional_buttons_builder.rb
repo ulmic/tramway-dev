@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Tramway::Admin::AdditionalButtonsBuilder
   def build_buttons(additional_buttons)
     if additional_buttons
-      additional_buttons = additional_buttons.is_a?(Hash) ? [ additional_buttons ] : additional_buttons
+      additional_buttons = additional_buttons.is_a?(Hash) ? [additional_buttons] : additional_buttons
       additional_buttons.each do |button|
         concat(
           link_to(
@@ -16,7 +18,7 @@ module Tramway::Admin::AdditionalButtonsBuilder
         )
       end
     end
-    return
+    nil
   end
 
   private
@@ -27,7 +29,7 @@ module Tramway::Admin::AdditionalButtonsBuilder
     edit: { color: :warning, icon: :pencil },
     update: { color: :warning, icon: :pencil },
     delete: { color: :danger, icon: :remove }
-  }
+  }.freeze
 
   def button_color(action)
     BUTTON_STYLES[action][:color]
@@ -43,9 +45,7 @@ module Tramway::Admin::AdditionalButtonsBuilder
     params.each do |model_name, model_attributes|
       attributes = {}
       model_attributes.each do |name, value|
-        if value.is_a? Proc
-          value = record.model.instance_exec(&value)
-        end
+        value = record.model.instance_exec(&value) if value.is_a? Proc
         attributes.merge! name => value
       end
       param.merge! model_name => attributes

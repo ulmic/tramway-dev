@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::ParticipantExtendedFormCreator < Tramway::Core::FormCreator
   def self.create_form_class(uuid, event, **simple_properties)
     class_name = "ParticipantExtendedForm#{uuid.gsub('-', '')}"

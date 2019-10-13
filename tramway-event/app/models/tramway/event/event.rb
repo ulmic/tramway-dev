@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
@@ -9,12 +11,12 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   has_many :organizations, as: :partners, through: :partnerships, class_name: 'Tramway::Partner::Organization'
   has_and_belongs_to_many :places
 
-  enumerize :status, default: :common, in: [ :common, :main ]
+  enumerize :status, default: :common, in: %i[common main]
 
   scope :main_event, -> { where(status: :main) }
   scope :actual, -> { where 'end_date > ?', DateTime.now }
   scope :past, -> { where 'end_date < ?', DateTime.now }
-  
+
   def request_collecting_state
     return :not_initialized unless request_collecting_begin_date.present? || request_collecting_end_date.present?
     return :will_begin_soon if request_collecting_begin_date > DateTime.now

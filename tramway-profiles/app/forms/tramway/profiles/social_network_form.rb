@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Profiles::SocialNetworkForm < ::Tramway::Core::ApplicationForm
   properties :title, :network_name, :record_id, :record_type, :uid
 

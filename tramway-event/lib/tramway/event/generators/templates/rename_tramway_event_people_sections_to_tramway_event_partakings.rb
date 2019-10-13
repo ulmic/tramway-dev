@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # NOTE must be removed until tramway-event 2.0
 
 class RenameTramwayEventPeopleSectionsToTramwayEventPartakings < ActiveRecord::Migration[5.1]

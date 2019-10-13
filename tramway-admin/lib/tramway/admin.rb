@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/admin/engine'
 require 'tramway/error'
 
@@ -35,7 +37,7 @@ module Tramway
         if @available_models
           @available_models.values.flatten
         else
-          error = Tramway::Error.new(plugin: :admin, method: :available_models, message: ('List of available_models is empty. You should add some of them using `::Tramway::Admin.set_available_models(*list_of_classes, project: :your_project_name)` in `config/initializers/tramway.rb`'))
+          error = Tramway::Error.new(plugin: :admin, method: :available_models, message: 'List of available_models is empty. You should add some of them using `::Tramway::Admin.set_available_models(*list_of_classes, project: :your_project_name)` in `config/initializers/tramway.rb`')
           raise error.message
         end
       end
@@ -70,9 +72,7 @@ module Tramway
         @additional_buttons&.dig record, view
       end
 
-      def customized_admin_navbar
-        @customized_admin_navbar
-      end
+      attr_reader :customized_admin_navbar
 
       def engine_class(project)
         class_name = "::Tramway::#{project.to_s.camelize}"

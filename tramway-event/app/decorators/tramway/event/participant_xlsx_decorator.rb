@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Tramway::Event::ParticipantXlsxDecorator < Tramway::Export::Xlsx::ApplicationDecorator
   class << self
     def columns
-      [ :full_name, :email, :phone, :organization, :event ].map do |attribute|
+      %i[full_name email phone organization event].map do |attribute|
         { Tramway::Event::Participant.human_attribute_name(attribute).to_sym => attribute }
       end
     end

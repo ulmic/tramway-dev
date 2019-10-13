@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Tramway::SportSchool::DocumentDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
 
     def list_attributes
-      [ :view_state ]
+      [:view_state]
     end
   end
 

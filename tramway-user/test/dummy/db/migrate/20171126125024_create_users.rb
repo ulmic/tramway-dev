@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
@@ -14,5 +16,5 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     end
   end
 end
-# FIXME specify rails version
+# FIXME: specify rails version
 # default is 5.1

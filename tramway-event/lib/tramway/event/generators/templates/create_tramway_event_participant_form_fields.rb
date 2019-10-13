@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwayEventParticipantFormFields < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_event_participant_form_fields do |t|

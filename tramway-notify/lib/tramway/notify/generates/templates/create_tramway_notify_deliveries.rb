@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTramwayNotifyDeliveries < ActiveRecord::Migration[5.1]
   def change
     create_table :tramway_notify_deliveries do |t|

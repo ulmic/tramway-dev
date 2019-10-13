@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/helpers/class_name_helpers'
 
 module Tramway
@@ -57,7 +59,7 @@ module Tramway
       end
 
       def admin_form_class
-        if model_class.to_s.include? "Tramway"
+        if model_class.to_s.include? 'Tramway'
           form_class_name
         else
           "::Admin::#{model_class}Form".constantize

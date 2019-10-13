@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Profiles::LinksHelper
   def profile_link(profile)
     send profile.network_name, profile.uid, profile.title
@@ -33,7 +35,7 @@ module Tramway::Profiles::LinksHelper
     link_to link, target: '_blank' do
       concat fab_icon icon
       concat ' '
-      concat title 
+      concat title
     end
   end
 end

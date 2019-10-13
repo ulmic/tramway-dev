@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails/generators'
 require 'tramway/core/generators/install_generator'
 
 module Tramway::User::Generators
   class InstallGenerator < ::Tramway::Core::Generators::InstallGenerator
     include Rails::Generators::Migration
-    source_root File.expand_path('../templates', __FILE__)
+    source_root File.expand_path('templates', __dir__)
 
     desc 'Add the migrations for User'
 

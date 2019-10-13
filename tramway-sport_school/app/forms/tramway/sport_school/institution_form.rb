@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::SportSchool::InstitutionForm < ::Tramway::Core::ApplicationForm
   properties :title, :tagline, :logo, :state, :phone, :address, :longtitude, :latitude, :url, :found_date
 

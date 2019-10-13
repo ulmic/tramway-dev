@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Api::V1
   class RecordsController < ::Tramway::Api::V1::ApplicationController
     before_action :check_available_model_class
@@ -8,18 +10,18 @@ module Tramway::Api::V1
       records = model_class.active.order(id: :desc).send params[:scope] || :all
       records = records.full_text_search params[:search] if params[:search]
       render json: records,
-        each_serializer: serializer_class,
-        include: '*',
-        status: :ok
+             each_serializer: serializer_class,
+             include: '*',
+             status: :ok
     end
 
     def create
       record_form = form_class.new model_class.new
       if record_form.submit snake_case params[:data][:attributes]
         render json: record_form.model,
-          serializer: serializer_class,
-          include: '*',
-          status: :created
+               serializer: serializer_class,
+               include: '*',
+               status: :created
       else
         render_errors_for record_form
       end
@@ -29,9 +31,9 @@ module Tramway::Api::V1
       record_form = form_class.new model_class.active.find params[:id]
       if record_form.submit snake_case params[:data][:attributes]
         render json: record_form.model,
-          serializer: serializer_class,
-          include: '*',
-          status: :ok
+               serializer: serializer_class,
+               include: '*',
+               status: :ok
       else
         render_errors_for record_form
       end
@@ -40,34 +42,34 @@ module Tramway::Api::V1
     def show
       record = model_class.active.find params[:id]
       render json: record,
-        serializer: serializer_class,
-        include: '*',
-        status: :ok
+             serializer: serializer_class,
+             include: '*',
+             status: :ok
     end
 
     def destroy
       record = model_class.active.find params[:id]
       record.remove
       render json: record,
-        serializer: serializer_class,
-        include: '*',
-        status: :no_content
+             serializer: serializer_class,
+             include: '*',
+             status: :no_content
     end
 
     private
 
     def check_available_model_class
-      head :unprocessable_entity and return unless model_class
+      head(:unprocessable_entity) && return unless model_class
     end
 
     def check_available_model_action
       open_actions = Tramway::Api.available_models[model_class.to_s][:open]&.map(&:to_s) || []
-      closed_actions =  Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
-      head :unprocessable_entity and return unless action_name.in? open_actions + closed_actions
+      closed_actions = Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
+      head(:unprocessable_entity) && return unless action_name.in? open_actions + closed_actions
     end
 
     def authenticate_user_if_needed
-      if action_name.in? Tramway::Api::available_models[model_class.to_s][:closed]&.map(&:to_s) || []
+      if action_name.in? Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
         current_user
       end
     end

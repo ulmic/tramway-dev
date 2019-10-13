@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Partner::Scopes
   extend ActiveSupport::Concern
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Tramway::Core::ApplicationForm do
@@ -12,18 +14,18 @@ RSpec.describe Tramway::Core::ApplicationForm do
   end
 
   context 'Submit' do
-#    it 'submit form with new object' do
-#      test_model = create :test_model
-#      test_model_form = Tramway::Core::ApplicationForm.new test_model
-#      params = ActionController::Parameters.new test_model: { uid: 123, text: 'sometext' }
-#      expect(test_model_form.submit(params[:test_model])).not_to raise_error
-#    end
+    #    it 'submit form with new object' do
+    #      test_model = create :test_model
+    #      test_model_form = Tramway::Core::ApplicationForm.new test_model
+    #      params = ActionController::Parameters.new test_model: { uid: 123, text: 'sometext' }
+    #      expect(test_model_form.submit(params[:test_model])).not_to raise_error
+    #    end
 
     it 'returns error if params is nil' do
       test_model = create :test_model
       test_model_form = described_class.new test_model
       params = ActionController::Parameters.new test_model: nil
-      expect{ test_model_form.submit(params[:test_model]) }.to raise_error(RuntimeError, 'Plugin: core; Method: submit; Message: ApplicationForm::Params should not be nil')
+      expect { test_model_form.submit(params[:test_model]) }.to raise_error(RuntimeError, 'Plugin: core; Method: submit; Message: ApplicationForm::Params should not be nil')
     end
   end
 
@@ -44,7 +46,7 @@ RSpec.describe Tramway::Core::ApplicationForm do
         class_name.constantize.associations :test_model
         association_model = create :association_model
         association_model_form = class_name.constantize.new association_model
-        expect(association_model_form).to respond_to("test_model=").with(1).argument
+        expect(association_model_form).to respond_to('test_model=').with(1).argument
       end
     end
 
@@ -55,7 +57,7 @@ RSpec.describe Tramway::Core::ApplicationForm do
         class_name.constantize.associations :test_model
         association_model = create :another2_association_model
         association_model_form = class_name.constantize.new association_model
-        expect(association_model_form).to respond_to("test_model=").with(1).argument
+        expect(association_model_form).to respond_to('test_model=').with(1).argument
       end
     end
 
@@ -112,7 +114,7 @@ RSpec.describe Tramway::Core::ApplicationForm do
         class_name = 'NotExistedForm'
         Object.const_set(class_name, Class.new(described_class))
         class_name.constantize.class_variable_set :@@model_class, nil
-        expect{ class_name.constantize.model_class }.to raise_error
+        expect { class_name.constantize.model_class }.to raise_error
       end
     end
   end

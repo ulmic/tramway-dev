@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tramway/error'
 
 class Tramway::Core::ApplicationDecorator
@@ -14,7 +16,7 @@ class Tramway::Core::ApplicationDecorator
   end
 
   def title
-    error = Tramway::Error.new(plugin: :core, method: :title, message: ("Please, implement `title` method in a #{self.class} or #{object.class}"))
+    error = Tramway::Error.new(plugin: :core, method: :title, message: "Please, implement `title` method in a #{self.class} or #{object.class}")
     raise error.message
   end
 
@@ -56,7 +58,7 @@ class Tramway::Core::ApplicationDecorator
                        object.send(association_name).class
                      else
                        unless association.options[:class_name]
-                         error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: ("Please, specify `#{association_name}` association class_name in #{object.class} model. For example: `has_many :#{association_name}, class_name: '#{association_name.to_s.singularize.camelize}'`"))
+                         error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: "Please, specify `#{association_name}` association class_name in #{object.class} model. For example: `has_many :#{association_name}, class_name: '#{association_name.to_s.singularize.camelize}'`")
                          raise error.message
                        end
                        association.options[:class_name]
@@ -74,7 +76,7 @@ class Tramway::Core::ApplicationDecorator
     end
 
     def model_class
-      self.to_s.sub(/Decorator$/, '').constantize
+      to_s.sub(/Decorator$/, '').constantize
     end
 
     def model_name
@@ -92,7 +94,8 @@ class Tramway::Core::ApplicationDecorator
       error = Tramway::Error.new(
         plugin: :core,
         method: :link,
-        message: ("Method `link` uses `file` attribute of the decorated object. If decorated object doesn't contain `file`, you shouldn't use `link` method."))
+        message: "Method `link` uses `file` attribute of the decorated object. If decorated object doesn't contain `file`, you shouldn't use `link` method."
+      )
       raise error.message
     end
   end
@@ -111,7 +114,7 @@ class Tramway::Core::ApplicationDecorator
 
   include Tramway::Core::Concerns::AttributesDecoratorHelper
 
-  RESERVED_WORDS = [ 'fields' ]
+  RESERVED_WORDS = ['fields'].freeze
 
   def attributes
     object.attributes.reduce({}) do |hash, attribute|
@@ -119,13 +122,14 @@ class Tramway::Core::ApplicationDecorator
         error = Tramway::Error.new(
           plugin: :core,
           method: :attributes,
-          message: ("Method `#{attribute[0]}` is reserved word. Please, create or delegate method in #{self.class.name} with another name."))
+          message: "Method `#{attribute[0]}` is reserved word. Please, create or delegate method in #{self.class.name} with another name."
+        )
         raise error.message
       end
       value = try(attribute[0]) ? send(attribute[0]) : object.send(attribute[0])
       if attribute[0].to_s.in? object.class.state_machines.keys.map(&:to_s)
         hash.merge! attribute[0] => state_machine_view(object, attribute[0])
-      elsif value.class.in? [ ActiveSupport::TimeWithZone, DateTime, Time ]
+      elsif value.class.in? [ActiveSupport::TimeWithZone, DateTime, Time]
         hash.merge! attribute[0] => datetime_view(attribute[1])
       elsif value.class.superclass == ApplicationUploader
         hash.merge! attribute[0] => image_view(object.send(attribute[0]))
@@ -142,11 +146,8 @@ class Tramway::Core::ApplicationDecorator
   end
 
   protected
-  
-  def object
-    @object
-  end
 
-  def association_class_name
-  end
-end 
+  attr_reader :object
+
+  def association_class_name; end
+end

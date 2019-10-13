@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
 
     def list_attributes
-      [ :position, :view_state, :block_type ]
+      %i[position view_state block_type]
     end
 
     delegate :human_view_state_event_name, to: :model_class
@@ -18,7 +20,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   delegate :description, to: :object
   delegate :anchor, to: :object
   delegate :view_name, to: :object
-  
+
   def block_type
     object.block_type_text
   end

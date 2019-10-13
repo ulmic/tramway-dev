@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::EventsController < Tramway::Event::ApplicationController
   layout 'tramway/landing/application'
 

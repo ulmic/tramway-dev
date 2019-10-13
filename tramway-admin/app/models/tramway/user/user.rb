@@ -1,7 +1,9 @@
-class Tramway::User::User < ::Tramway::Core::ApplicationRecord
-  has_secure_password #FIXME remove repeating from tramway-user
+# frozen_string_literal: true
 
-  enumerize :role, in: [ :user, :admin ], default: :user
+class Tramway::User::User < ::Tramway::Core::ApplicationRecord
+  has_secure_password # FIXME: remove repeating from tramway-user
+
+  enumerize :role, in: %i[user admin], default: :user
 
   def admin?
     role.admin?

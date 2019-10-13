@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 module Tramway
   module Admin
     module InputsHelper
       def association_params(form_object:, property:, value:, object:)
         full_class_name_association = form_object.class.full_class_name_association(property)
         unless full_class_name_association
-          raise "It seems you\'ve defined association attributes with `property` method. Please, use `association` method. `association :#{property}`" 
+          raise "It seems you\'ve defined association attributes with `property` method. Please, use `association` method. `association :#{property}`"
         end
+
         {
           label: false,
           input_html: {
@@ -16,7 +19,7 @@ module Tramway
           selected: (form_object.model.send("#{property}_id") || value),
           collection: full_class_name_association.active.map do |obj|
             decorator_class(full_class_name_association).decorate obj
-          end.sort_by { |obj| obj.name }
+          end.sort_by(&:name)
         }
       end
 
@@ -49,7 +52,7 @@ module Tramway
           when :polymorphic_association
             {
               id: params.dig(model_class.to_s.underscore, property.to_s),
-              type: params.dig(model_class.to_s.underscore, "#{property}_type"),
+              type: params.dig(model_class.to_s.underscore, "#{property}_type")
             }
           else
             params.dig(model_class.to_s.underscore, property.to_s)

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::FeaturesDecorator
   class << self
     def collections
-      [ :all ]
+      [:all]
     end
   end
 

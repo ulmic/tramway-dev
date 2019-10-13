@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Mailout::JobProxy
   class << self
     def perform_job(job_class, mode, *args)

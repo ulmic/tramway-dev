@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
-  enumerize :block_type, in: [
-    :header,
-    :footer,
-    :page,
-    :cards,
-    :features,
-    :contacts,
-    :news,
-    :link,
-    :page_with_button,
-    :just_text,
-    :view
+  enumerize :block_type, in: %i[
+    header
+    footer
+    page
+    cards
+    features
+    contacts
+    news
+    link
+    page_with_button
+    just_text
+    view
   ]
-  enumerize :navbar_link, in: [ :exist, :not_exist ], default: :not_exist
-  enumerize :link_object_type, in: [ 'Tramway::SportSchool::Document', 'Tramway::Page::Page' ]
+  enumerize :navbar_link, in: %i[exist not_exist], default: :not_exist
+  enumerize :link_object_type, in: ['Tramway::SportSchool::Document', 'Tramway::Page::Page']
 
   mount_uploader :background, PhotoUploader
 
