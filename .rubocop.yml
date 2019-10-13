@@ -1,0 +1,26 @@
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 120
+Metrics/BlockLength:
+  Enabled: false
+  Include:
+    - spec/
+Metrics/AbcSize:
+  Max: 18
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - config/application.rb
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - bin/stage
+Layout/AlignArguments:
+  EnforcedStyle: with_fixed_indentation
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*.rb
+    - bin/*
+  TargetRubyVersion: 2.5
+

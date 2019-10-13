@@ -69,9 +69,7 @@ module Tramway::Api::V1
     end
 
     def authenticate_user_if_needed
-      if action_name.in? Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
-        current_user
-      end
+      current_user if action_name.in? Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
     end
 
     def model_class
