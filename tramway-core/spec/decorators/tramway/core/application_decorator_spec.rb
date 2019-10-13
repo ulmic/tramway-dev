@@ -132,13 +132,19 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
       end
 
       it 'returns attributes' do
+        date_format = case ENV['LOCALE']
+                      when 'ru'
+                        "%d.%m.%Y %H:%M"
+                      when 'en'
+                        "%m/%d/%Y %H:%M"
+                      end
         expect(decorated_test_model.attributes).to eq({
           text: test_model.text,
-          created_at: test_model.created_at.strftime("%d.%m.%Y %H:%M"),
+          created_at: test_model.created_at.strftime(date_format),
           id: test_model.id,
           state: test_model.human_state_name,
           uid: test_model.uid,
-          updated_at: test_model.updated_at.strftime("%d.%m.%Y %H:%M"),
+          updated_at: test_model.updated_at.strftime(date_format),
           enumerized: test_model.enumerized.text
         }.with_indifferent_access)
       end

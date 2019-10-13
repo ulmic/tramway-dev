@@ -13,4 +13,5 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   ActiveRecord::Base.logger.level = 1
+  I18n.locale = ENV['LOCALE']
 end
