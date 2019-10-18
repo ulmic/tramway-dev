@@ -1,22 +1,14 @@
 - value = defined?(value).present? ? value : ''
 - case field.field_type
-- when 'text', 'string', 'numeric', 'date_picker'
-  - if value.present?
-    = f.input field.title.to_sym, as: field.field_type, input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]", value: value }
-  - else
-    = f.input field.title.to_sym, as: field.field_type, input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }
+- when 'text', 'string', 'numeric', 'date_picker', 'file'
+  = render 'tramway/core/shared/input_extended_types/simple', value: value, field: field, class_name: class_name, f: f
 - when 'select'
-  - parsed_json = field.options.is_a?(Hash) ? field.options : (JSON.parse(field.options) unless field.options == '')
-  - if parsed_json&.dig('collection', 'name')
-    - if value.present?
-      = f.input field.title.to_sym, as: :select, collection: collection_list_by(name: parsed_json['collection']['name']), input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }, selected: value
-    - else
-      = f.input field.title.to_sym, as: :select, collection: collection_list_by(name: parsed_json['collection']['name']), input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }
-  - else
-    - if value.present?
-      = f.input field.title.to_sym, as: :select, input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }, selected: value
-    - else
-      = f.input field.title.to_sym, as: :select, input_html: { class: class_name, id: "#{class_name}_#{field.title}", name: "#{class_name}[#{field.title}]" }
+  = render 'tramway/core/shared/input_extended_types/select', value: value, field: field, class_name: class_name, f: f
+- when 'yes_no'
+  = render 'tramway/core/shared/input_extended_types/yes_no', value: value, field: field, class_name: class_name, f: f
+- when 'checkbox'
+  = render 'tramway/core/shared/input_extended_types/checkbox', value: value, field: field, class_name: class_name, f: f
+
 - if params[:errors].present? && params[:errors][field.title]&.first
   .alert.alert-danger
     = params[:errors][field.title]&.first

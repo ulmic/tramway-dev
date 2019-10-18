@@ -11,7 +11,7 @@ class Tramway::Core::ExtendableForm
 
           define_method 'submit' do |params|
             model.values ||= {}
-            extended_params = params.except(*simple_properties.keys)
+            extended_params = params.except(*simple_properties.keys).except(*jsonb_ignored_properties(more_properties))
             params.each do |key, value|
               method_name = "#{key}="
               send method_name, value if respond_to?(method_name)
@@ -38,17 +38,35 @@ class Tramway::Core::ExtendableForm
               model.values[property[0]] if model.values
             end
 
-            next unless property[1][:validates].present?
+            case property[1][:object].field_type
+            when 'file'
+              field = property[1][:object] 
+              define_method "#{property[0]}=" do |value|
+                file_instance = property[1][:association_model].find_or_create_by "#{model.class.name.underscore}_id" => model.id, "#{field.class.name.underscore}_id" => field.id
+                file_instance.file = value
+                file_instance.save!
+              end
+            else
+              next unless property[1][:validates].present?
 
-            define_method "#{property[0]}=" do |value|
-              property[1][:validates].each do |pair|
-                validator_object = "#{pair[0].camelize}Validator".constantize.new(attributes: :not_blank)
-                if pair[1] == 'true' && !validator_object.send(:valid?, value)
-                  model.errors.add property[0],
-                    I18n.t("activerecord.errors.models.#{model.class.name.underscore}.attributes.#{property[0]}.#{pair[0]}", value: value)
+              define_method "#{property[0]}=" do |value|
+                property[1][:validates].each do |pair|
+                  validator_object = "#{pair[0].camelize}Validator".constantize.new(attributes: :not_blank)
+                  if pair[1] == 'true' && !validator_object.send(:valid?, value)
+                    model.errors.add property[0],
+                      I18n.t("activerecord.errors.models.#{model.class.name.underscore}.attributes.#{property[0]}.#{pair[0]}", value: value)
+                  end
                 end
               end
             end
+          end
+
+          define_method :jsonb_ignored_properties do |properties|
+            properties.map do |property|
+              if property[1][:object].field_type == 'file'
+                property[0].to_s
+              end
+            end.compact
           end
         end)
       end
