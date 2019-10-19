@@ -78,7 +78,7 @@ module Tramway::Admin
       unless association.options[:class_name].present?
         raise "You should set `class_name` for #{association.name} association"
       end
-      if association.polymorphic?
+      if association.options[:as].present?
         new_record_path model: association.class_name,
           redirect: current_model_record_path(object),
           association.options[:class_name].underscore => {
