@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'reform-rails', '0.1.7'
   s.add_dependency 'rmagick', '~> 2.16', '>= 2.16.0'
   s.add_dependency 'sass-rails', '~> 5.0', '>= 5.0.7'
-  s.add_dependency 'simple_form', '~> 3.5', '>= 3.5.0'
+  s.add_dependency 'simple_form', '>= 5.0.0'
 
   s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'pg'
