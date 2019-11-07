@@ -48,7 +48,8 @@ module Tramway::Core
     end
 
     def properties
-      @form_properties || []
+      return @form_properties if @form_properties
+      @form_properties = YAML.load_file(Rails.root.join('app', 'forms', "#{self.class.name.underscore}.yml")).deep_symbolize_keys
     end
 
     def build_errors; end
