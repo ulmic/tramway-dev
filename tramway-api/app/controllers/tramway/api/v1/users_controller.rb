@@ -15,7 +15,8 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
       serialized_user = OpenStruct.new(
         user_form.model.attributes.merge(
           authentication_token: token,
-          id: user_form.model.uid
+          uid: user_form.model.uid,
+          id: user_form.model.id
         )
       )
       render json: serialized_user, status: :created
