@@ -17,11 +17,12 @@ module Tramway
         head :unauthorized
       end
 
-      protected
-
       def authenticate
-        return unauthorized if current_user.nil? || !params[:user_based_model].in?(Tramway::Api.user_based_models)
+        return if current_user || params[:user_based_model].in?(Tramway::Api.user_based_models)
+        unauthorized
       end
+
+      protected
 
       def auth_token
         if entity.respond_to? :to_token_payload
