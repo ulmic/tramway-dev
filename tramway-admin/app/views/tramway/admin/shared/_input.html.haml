@@ -6,8 +6,6 @@
   - case type
   - when :default
     = form.input property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: (form_object.send(property) || form_object.model.send(property) || value) }, selected: (form_object.model.send(property) || value)
-  - when :select
-    = form.input property, label: false, input_html: { name: "#{object}[#{property}]", id: "#{object}_#{property}", value: form_object.send(property) }, selected: (form_object.send(property) || value), collection: form_object.send("#{property}_collection")
   - when :association
     = form.association property, **association_params(form_object: form_object, property: property, value: value, object: object)
   - when :polymorphic_association
