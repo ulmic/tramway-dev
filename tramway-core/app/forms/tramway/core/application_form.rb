@@ -49,7 +49,12 @@ module Tramway::Core
 
     def properties
       return @form_properties if @form_properties
-      @form_properties = YAML.load_file(Rails.root.join('app', 'forms', "#{self.class.name.underscore}.yml")).deep_symbolize_keys
+      yaml_config_file_path = Rails.root.join('app', 'forms', "#{self.class.name.underscore}.yml")
+      if File.exist? yaml_config_file_path
+        @form_properties = YAML.load_file(yaml_config_file_path).deep_symbolize_keys
+      else
+        []
+      end
     end
 
     def build_errors; end
