@@ -32,7 +32,18 @@ module Tramway::Core
 
     def submit(params)
       if params
-        save if validate params
+        if validate params
+          save 
+        else
+          association_error = false
+          @@associations.each do |association|
+            if errors.details[association] == [{ error: :blank }]
+              model.send("#{association}=", send(association))
+              association_error = true
+            end
+          end
+          association_error && save
+        end
       else
         error = Tramway::Error.new(plugin: :core, method: :submit, message: 'ApplicationForm::Params should not be nil')
         raise error.message
