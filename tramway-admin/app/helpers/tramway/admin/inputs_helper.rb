@@ -47,16 +47,12 @@ module Tramway
       end
 
       def value_from_params(model_class:, property:, type:)
-        if type.is_a? Symbol
-          case type
-          when :polymorphic_association
-            {
-              id: params.dig(model_class.to_s.underscore, property.to_s),
-              type: params.dig(model_class.to_s.underscore, "#{property}_type")
-            }
-          else
-            params.dig(model_class.to_s.underscore, property.to_s)
-          end
+        case type
+        when :polymorphic_association, 'polymorphic_association'
+          {
+            id: params.dig(model_class.to_s.underscore, property.to_s),
+            type: params.dig(model_class.to_s.underscore, "#{property}_type")
+          }
         else
           params.dig(model_class.to_s.underscore, property.to_s)
         end
