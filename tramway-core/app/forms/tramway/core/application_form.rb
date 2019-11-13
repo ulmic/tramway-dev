@@ -33,7 +33,12 @@ module Tramway::Core
     def submit(params)
       if params
         if validate params
-          save 
+          begin
+            save 
+          rescue StandardError => e
+            error = Tramway::Error.new(plugin: :core, method: :submit, message: "Looks like you have method `#{e.name.to_s.gsub('=', '')}` in #{@@model_class}. You should rename it or rename property in #{self.class}")
+            raise error.message
+          end
         else
           association_error = false
           @@associations.each do |association|
