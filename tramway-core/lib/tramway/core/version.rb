@@ -2,6 +2,6 @@
 
 module Tramway
   module Core
-    VERSION = '1.14.2.2'
+    VERSION = '1.14.2.3'
   end
 end
