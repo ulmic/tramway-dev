@@ -20,7 +20,7 @@ module Tramway
 
       scope :active, -> { where state: :active }
 
-      include ::PgSearch
+      include ::PgSearch::Model
 
       # FIXME: detect inhertited locales
       class << self
