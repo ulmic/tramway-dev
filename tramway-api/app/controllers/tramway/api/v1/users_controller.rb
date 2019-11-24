@@ -9,7 +9,7 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
   def create
     user_form = sign_up_form_class_name(user_based_model).new user_based_model.new
     # Implement JSON API spec here
-    if user_form.submit snake_case params[user_based_model.name.underscore]
+    if user_form.submit snake_case params[:data][:attributes]
       token = ::Knock::AuthToken.new(payload: { sub: user_form.model.uid }).token
       # FIXME: refactor this bullshit
       serialized_user = OpenStruct.new(
