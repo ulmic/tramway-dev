@@ -54,6 +54,10 @@ class Tramway::Core::ApplicationDecorator
 
       define_method association_name do
         association = object.class.reflect_on_association(association_name)
+        if association.nil?
+          error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: "Model #{object.class} does not have association named `#{association_name}`")
+          raise error.message
+        end
         class_name = if association.polymorphic?
                        object.send(association_name).class
                      else
