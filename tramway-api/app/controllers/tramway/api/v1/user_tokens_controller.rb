@@ -13,7 +13,7 @@ class Tramway::Api::V1::UserTokensController < ::Tramway::Api::V1::ApplicationCo
         }
       }, status: :created
     else
-      not_found
+      unauthorized
     end
   end
 end
