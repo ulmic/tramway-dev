@@ -11,6 +11,8 @@ window.i18n_locale = (locale) ->
     when 'ru' then { date_format: 'dd.mm.yyyy', locale: locale }
 
 $(document).ready ->
+  unless window.current_locale
+    console.log 'You should set `window.current_locale` before all Javascript code'
   unless $('.date_picker').length == 0
     $('.date_picker').datepicker({
       format: window.current_locale.date_format,
