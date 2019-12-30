@@ -10,6 +10,7 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'tramway-event'
 gem 'carrierwave'
+gem 'more_html_tags'
 ```
 
 And then execute:
