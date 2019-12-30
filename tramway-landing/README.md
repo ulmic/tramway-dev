@@ -18,6 +18,11 @@ rails g tramway:landing:install
 rails db:migrate
 ```
 
+*config/initializers/tramway.rb*
+```ruby
+Tramway::Admin.set_available_models ::Tramway::Landing::Block, project: #{project_name_which_you_use_in_the_application}
+```
+
 ## Contributing
 Contribution directions go here.
 
