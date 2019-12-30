@@ -13,6 +13,7 @@ coming soon...
 How to use my plugin.
 
 ```ruby
+gem 'tramway-core'
 gem 'tramway-admin'
 ```
 
