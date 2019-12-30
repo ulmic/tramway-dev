@@ -15,10 +15,9 @@ And then execute:
 ```bash
 $ bundle
 ```
-
-Or install it yourself as:
-```bash
-$ gem install tramway-event
+*Gemfile*
+```ruby
+gem 'tramway-event'
 ```
 
 ## Contributing
