@@ -37,6 +37,8 @@ def bad_ass_monkey_patching_methods(source:)
         sanitized_allowed_attributes
         sanitized_allowed_tags=
         sanitized_allowed_attributes=
+        safe_list_sanitizer
+        safe_list_sanitizer=
         _url_for_modules
       ]
     }
