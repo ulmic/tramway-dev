@@ -46,6 +46,38 @@ root to: 'web/welcome#index'
 # ...
 ```
 
+*app/views/web/welcome/index.html.haml*
+```haml
+= content_for :head_content do
+  -# your content for <head>
+  
+= content_for :title do
+  -# your content for <title>
+  
+= content_for :application_tagline do
+  -# tagline in the header type block
+  
+= content_for :address do
+  -# main address info
+
+= content_for :phone do
+  -# main phone info
+  
+= content_for :footer_links do
+  -# list of footer links
+  
+= content_for :footer_logo do
+  -# list of footer logos
+  
+= content_for :latitude do
+  -# latitude for contacts block type map
+  
+= content_for :longtitude do
+  -# longtitude for contacts block type map
+  
+-# everything you want on the main page
+```
+
 Then all your showing blocks will be on the main page.
 
 ## Contributing
