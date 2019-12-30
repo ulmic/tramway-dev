@@ -21,7 +21,13 @@ gem 'tramway-user'
 gem 'state_machine', github: 'seuros/state_machine'
 gem 'bcrypt'
 gem 'haml-rails'
+gem 'selectize-rails'
+gem 'bootstrap'
+gem 'jquery-rails'
+gem 'copyright-mafa'
 ```
+
+You should remove gem `turbolinks` from your application
 
 *config/routes.rb*
 
