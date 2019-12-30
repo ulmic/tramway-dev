@@ -9,6 +9,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'tramway-event'
+gem 'carrierwave'
 ```
 
 And then execute:
@@ -18,6 +19,11 @@ $ bundle
 *Gemfile*
 ```ruby
 gem 'tramway-event'
+```
+
+Then run:
+```shell
+rails g tramway:event:install
 ```
 
 ## Contributing
