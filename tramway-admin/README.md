@@ -28,6 +28,7 @@ gem 'copyright-mafa'
 gem 'trap'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', github: 'kalashnikovisme/bootstrap-kaminari-views', branch: :master
+gem 'state_machine_buttons'
 ```
 
 You should remove gem `turbolinks` from your application
