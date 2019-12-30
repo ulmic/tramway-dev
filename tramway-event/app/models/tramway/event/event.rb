@@ -24,5 +24,7 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
     return :are_being_right_now if request_collecting_begin_date&.past? && request_collecting_end_date&.future?
   end
 
-  include ::Tramway::Partner::Scopes
+  if defined? ::Tramway::Partner
+    include ::Tramway::Partner::Scopes
+  end
 end
