@@ -11,14 +11,11 @@ Add this line to your application's Gemfile:
 gem 'tramway-landing'
 ```
 
-And then execute:
-```bash
-$ bundle
-```
+Then run:
 
-Or install it yourself as:
-```bash
-$ gem install tramway-landing
+```shell
+rails g tramway:landing:install
+rails db:migrate
 ```
 
 ## Contributing
