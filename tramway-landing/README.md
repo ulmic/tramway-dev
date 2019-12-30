@@ -26,6 +26,7 @@ Tramway::Admin.set_available_models ::Tramway::Landing::Block, project: #{projec
 Run server `rails s`
 Open `localhost:3000/admin`
 Click on `Block`, add new block with type `Header`
+Click `Show` in the block menu
 
 Then create your main page controller `rails g controller web/welcome`
 
@@ -37,6 +38,15 @@ class Web::WelcomeController < ApplicationController
   end
 end
 ```
+
+*config/routes.rb*
+```ruby
+# ...
+root to: 'web/welcome#index'
+# ...
+```
+
+Then all your showing blocks will be on the main page.
 
 ## Contributing
 Contribution directions go here.
