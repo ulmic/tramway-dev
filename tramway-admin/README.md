@@ -12,7 +12,7 @@ coming soon...
 ## Usage
 How to use my plugin.
 
-*Gemfile
+*Gemfile*
 ```ruby
 gem 'tramway-admin'
 gem 'tramway-auth'
@@ -22,7 +22,7 @@ gem 'state_machine', github: 'seuros/state_machine'
 gem 'bcrypt'
 ```
 
-*config/routes.rb
+*config/routes.rb*
 
 ```ruby
 Rails.application.routes.draw do
