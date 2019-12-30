@@ -24,11 +24,8 @@ class Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationForm
                       navbar_link: :default,
                       anchor: :string,
                       description: :ckeditor,
-                      link_object_type: :default,
-                      link_object_id: :numeric,
                       button_title: :string,
-                      button_link: :string,
-                      view_name: :string
+                      button_link: :string
     end
   end
 

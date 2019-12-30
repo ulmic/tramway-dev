@@ -5,7 +5,7 @@ ru:
     attributes:
       tramway/landing/block:
         title: Название
-        background: Изображение на фоне
+        background: Изображение
         position: Позиция на странице
         block_type: Тип блока
         view_state: Видимость на сайте
@@ -14,8 +14,8 @@ ru:
         description: Описание
         link_object_type: Тип объекта, на который делается ссылка
         link_object_id: ID объекта, на который делается ссылка
-        button_title: Наименование кнопки
-        button_link: Ссылка кнопки
+        button_title: Наименование кнопки (только для Типа блока "Свободный блок с кнопкой")
+        button_link: Ссылка кнопки (только для Типа блока "Свободный блок с кнопкой")
         view_name: Название вьюхи
   cases:
     tramway/landing/block:
@@ -35,6 +35,7 @@ ru:
         link: Ссылка на объект
         just_text_with_button: Просто текст
         view: Вьюха (программируется)
+        just_text: Просто текст
       navbar_link:
         exist: Присутствует
         not_exist: Отсутствует
