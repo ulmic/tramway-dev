@@ -8,8 +8,13 @@ tramway-core - это ядро проекта [tramway](https://github.com/ulmic
 
 # Installation
 
+*Gemfile*
+```ruby
+gem 'tramway-core'
+gem 'audited'
+```
+
 ```shell
-gem install tramway-core
 rails g tramway:core:install
 ```
 
