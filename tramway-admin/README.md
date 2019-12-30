@@ -16,6 +16,7 @@ How to use my plugin.
 gem 'tramway-admin'
 gem 'tramway-auth'
 gem 'tramway-core'
+gem 'state_machine', github: 'seuros/state_machine'
 ```
 
 And then execute:
