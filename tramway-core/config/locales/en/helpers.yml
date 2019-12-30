@@ -17,3 +17,9 @@ en:
       found: Found
     "yes": yes
     "no": no
+  tramway:
+    auth:
+      web:
+        sessions:
+          new:
+            title: Sign In

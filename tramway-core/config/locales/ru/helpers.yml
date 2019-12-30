@@ -22,3 +22,8 @@ ru:
       welcome:
         index:
           title: Админка
+    auth:
+      web:
+        sessions:
+          new:
+            title: Авторизация
