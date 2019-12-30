@@ -7,7 +7,7 @@ coming soon...
 
 ## Russian readme
 
-coming soon...
+Готовая админка для проекта. Она подготовлена для работы со всеми tramway плагинами, а также поддерживает и ваши модели тоже.
 
 ## Usage
 How to use my plugin.
