@@ -25,6 +25,7 @@ ru:
         approved_participants: Количество пришедших
         not_yet_held: мероприятие ещё не проведено
         participants_list: Список участников
+        does_not_have_end_date: мероприятие не имеет даты окончания
       tramway/event/participant:
         comment: Примечание
         event: Мероприятие

@@ -76,10 +76,14 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def approved_participants
-    if DateTime.now < object.end_date
-      I18n.t('activerecord.attributes.tramway/event/event.not_yet_held')
+    if object.end_date.present?
+      if DateTime.now < object.end_date
+        I18n.t('activerecord.attributes.tramway/event/event.not_yet_held')
+      else
+        object.participants.approved.count
+      end
     else
-      object.participants.approved.count
+      I18n.t('activerecord.attributes.tramway/event/event.does_not_have_end_date')
     end
   end
 
