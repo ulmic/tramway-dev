@@ -20,6 +20,7 @@ gem 'tramway-core'
 gem 'tramway-user'
 gem 'state_machine', github: 'seuros/state_machine'
 gem 'bcrypt'
+gem 'haml-rails'
 ```
 
 *config/routes.rb*
