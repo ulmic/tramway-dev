@@ -1,8 +1,25 @@
 # Tramway::Landing
 Short description and motivation.
 
-## Usage
-How to use my plugin.
+## Description
+
+Tramway-landing provides several types of blocks for main page.
+
+List of blocks:
+
+* Header
+* Footer
+* Block with text and image
+* Block with text, image and button
+* Cards
+* Features list
+* Contacts
+* News
+* Block with text and button
+* View
+* Just text
+
+All block's previews you can see at the bottom of this Readme
 
 ## Installation
 Add this line to your application's Gemfile:
