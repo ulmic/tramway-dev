@@ -30,6 +30,11 @@ rails db:migrate
 
 Then make `tramway-landing` installation. [How-to](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/README.md#installation)
 
+*config/initializers/tramway.rb*
+```ruby
+Tramway::Admin.set_available_models ::Tramway::Event::Event, ::Tramway::Event::ParticipantFormField, ::Tramway::Event::Participant, project: #{project_which_you_used_in_the_application}
+```
+
 ## Contributing
 Contribution directions go here.
 
