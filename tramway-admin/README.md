@@ -50,7 +50,7 @@ $ rails db:migrate
 # Creating your first admin user
 
 $ rails c
-$> 
+$> Tramway::User::User.create! email: 'your@email.com', password: '123456789', role: :admin
 
 $ rails s
 ```
