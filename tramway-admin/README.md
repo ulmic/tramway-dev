@@ -58,7 +58,8 @@ $ rails s
 *app/config/initializers/tramway.rb*
 
 ```ruby
-::Tramway::Admin.set_available_models 
+# set available models for your admin
+::Tramway::Admin.set_available_models list_of_models
 ```
 
 ## Date Picker locale
