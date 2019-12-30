@@ -51,8 +51,6 @@ $ rails db:migrate
 
 $ rails c
 $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', role: :admin
-
-$ rails s
 ```
 
 *app/config/initializers/tramway.rb*
@@ -61,6 +59,9 @@ $ rails s
 # set available models for your admin
 ::Tramway::Admin.set_available_models list_of_models
 ```
+
+Run server `rails s`
+Launch `localhost:3000/admin`
 
 ## Date Picker locale
 
