@@ -25,6 +25,7 @@ gem 'selectize-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'copyright-mafa'
+gem 'trap'
 ```
 
 You should remove gem `turbolinks` from your application
