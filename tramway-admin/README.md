@@ -26,6 +26,8 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'copyright-mafa'
 gem 'trap'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views', github: 'kalashnikovisme/bootstrap-kaminari-views', branch: :master
 ```
 
 You should remove gem `turbolinks` from your application
