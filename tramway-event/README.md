@@ -24,6 +24,7 @@ gem 'tramway-event'
 Then run:
 ```shell
 rails g tramway:event:install
+rails db:migrate
 ```
 
 ## Contributing
