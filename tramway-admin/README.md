@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 end
 ```
 
+Make tramway-core installation. [https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/README.md#installation](How-to)
 And then execute:
 ```bash
 $ bundle
