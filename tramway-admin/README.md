@@ -3,7 +3,7 @@ Short description and motivation.
 
 ## English readme
 
-coming soon...
+*If you need translation of this Readme, please message us kalashnikov@ulmic.ru. We'll translate for you and post to this page*
 
 ## Russian readme
 
@@ -46,6 +46,12 @@ And then execute:
 $ bundle
 $ rails g tramway:user:install
 $ rails db:migrate
+
+# Creating your first admin user
+
+$ rails c
+$> 
+
 $ rails s
 ```
 
