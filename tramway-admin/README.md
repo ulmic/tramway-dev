@@ -12,16 +12,31 @@ coming soon...
 ## Usage
 How to use my plugin.
 
+*Gemfile
 ```ruby
 gem 'tramway-admin'
 gem 'tramway-auth'
 gem 'tramway-core'
+gem 'tramway-user'
 gem 'state_machine', github: 'seuros/state_machine'
+gem 'bcrypt'
+```
+
+*config/routes.rb
+
+```ruby
+Rails.application.routes.draw do
+  mount Tramway::Auth::Engine, at: '/auth'
+  mount Tramway::Admin::Engine, at: '/admin'
+end
 ```
 
 And then execute:
 ```bash
 $ bundle
+$ rails g tramway:user:install
+$ rails db:migrate
+$ rails s
 ```
 
 *app/config/initializers/tramway.rb*
