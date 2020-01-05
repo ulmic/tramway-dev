@@ -8,7 +8,7 @@ module Tramway
       before_action :application
 
       def application
-        @application = ::Tramway::Core.application.model_class.first
+        @application = ::Tramway::Core.application_object
       end
     end
   end

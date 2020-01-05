@@ -19,6 +19,10 @@ module Tramway
         end
       end
 
+      def application_object
+        @application.model_class.present? ? @application.model_class.first : @application 
+      end
+
       attr_reader :application
     end
   end

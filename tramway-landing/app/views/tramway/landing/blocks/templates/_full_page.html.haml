@@ -9,7 +9,7 @@
           %hr.hr-light
           %h4.white-text.my-4
             = block.tagline
-          - if defined?(buttons)
+          - if defined?(buttons) && buttons&.any?
             - buttons.each do |button|
               - data_obj = {}
               - data_obj = data_obj.merge(href: button.link) if button.try :link
