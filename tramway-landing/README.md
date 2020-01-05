@@ -50,11 +50,18 @@ Then create your main page controller `rails g controller web/welcome`
 *app/controllers/web/welcome_controller.rb*
 ```ruby
 class Web::WelcomeController < ApplicationController
+  before_action :application
   
   layout 'tramway/landing/application'
 
   def index
     @blocks = ::Tramway::Landing::BlockDecorator.decorate ::Tramway::Landing::Block.on_main_page
+  end
+  
+  private
+  
+  def application
+    @application = ::Tramway::Core.application_object
   end
 end
 ```
