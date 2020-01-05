@@ -109,26 +109,9 @@ Then all your showing blocks will be on the main page.
 
 ## Blocks
 
-Preview of block types
+How create blocks you can find here
 
-### Header
-
-#### Code Example
-
-*app/views/web/welcome/index.html.haml*
-
-```haml
-= content_for :application_name do
-  = "This is `application_name` content"
-
-= content_for :application_tagline do
-  = "This is `application_tagline` content"
-```
-
-#### Result
-
-![header-example](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/example.png)
-
+* [Header](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/header/main.md)
 * Footer
 * Block with text and image
 * Block with text, image and button
