@@ -125,6 +125,10 @@ Preview of block types
   = "This is `application_tagline` content"
 ```
 
+Result
+
+![header-example](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/example.png)
+
 * Footer
 * Block with text and image
 * Block with text, image and button
