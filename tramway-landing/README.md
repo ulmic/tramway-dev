@@ -50,6 +50,9 @@ Then create your main page controller `rails g controller web/welcome`
 *app/controllers/web/welcome_controller.rb*
 ```ruby
 class Web::WelcomeController < ApplicationController
+  
+  layout 'tramway/landing/application'
+
   def index
     @blocks = ::Tramway::Landing::BlockDecorator.decorate ::Tramway::Landing::Block.on_main_page
   end
@@ -96,6 +99,25 @@ root to: 'web/welcome#index'
 ```
 
 Then all your showing blocks will be on the main page.
+
+## Blocks
+
+Preview of block types
+
+### Header
+
+
+
+* Footer
+* Block with text and image
+* Block with text, image and button
+* Cards
+* Features list
+* Contacts
+* News
+* Block with text and button
+* View
+* Just text
 
 ## Contributing
 Contribution directions go here.
