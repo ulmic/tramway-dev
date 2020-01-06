@@ -1,4 +1,6 @@
-### Header
+# Header Block Type
+
+## English
 
 #### Code Example
 
@@ -15,3 +17,8 @@
 #### Result
 
 ![header-example](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/example.png)
+
+## Русский
+
+#### 1. Создайте Блок типа "Начальный" в админке вашего приложения
+![admin-1](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/admin-1.png)
