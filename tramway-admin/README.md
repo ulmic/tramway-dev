@@ -62,6 +62,7 @@ $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', r
 ```ruby
 # set available models for your admin
 ::Tramway::Admin.set_available_models list_of_models, project: #{project_name_which_you_used_in_application_name}
+::Tramway::Auth.root_path = '/admin' # you need it to redirect in the admin panel after admin signed_in
 ```
 
 Run server `rails s`
