@@ -25,7 +25,8 @@ class Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationForm
                       anchor: :string,
                       description: :ckeditor,
                       button_title: :string,
-                      button_link: :string
+                      button_link: :string,
+                      view_name: :string
     end
   end
 
