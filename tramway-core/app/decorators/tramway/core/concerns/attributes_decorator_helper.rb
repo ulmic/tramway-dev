@@ -13,7 +13,7 @@ module Tramway::Core::Concerns::AttributesDecoratorHelper
     object.send "human_#{attribute_name}_name"
   end
 
-  def image_view(original:, thumb: nil, filename: nil)
+  def image_view(original, thumb: nil, filename: nil)
     thumb ||= original.small
     filename ||= original.path.split('/').last
     src_thumb = if thumb.is_a?(CarrierWave::Uploader::Base)
