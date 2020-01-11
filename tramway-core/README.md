@@ -27,6 +27,11 @@ Tramway::Core.initialize_application name: "Your application's name"
 Tramway::Core.initialize_application model_class: ::Tramway::Conference::Unity # example was taken from tramway-conference gem
 ```
 
+*config/initializers/assets.rb*
+```ruby
+Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
+```
+
 # Базовые классы
 
 * ApplicationDecorator - Базовый класс декоратора. В него по умолчанию включены `ActionView::Helpers` и `ActionView::Context` и `FontAwesome5` (версия гема FontAwesome, которая поддерживает 5 версию шрифта). `FontAwesome` считается в `Tramway` основным шрифтом для иконок.
