@@ -20,7 +20,7 @@ module Tramway
       end
 
       def application_object
-        @application.model_class.present? ? @application.model_class.first : @application 
+        @application&.model_class.present? ? @application.model_class.first : @application 
       end
 
       attr_reader :application

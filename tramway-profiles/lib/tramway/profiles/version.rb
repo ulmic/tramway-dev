@@ -2,6 +2,6 @@
 
 module Tramway
   module Profiles
-    VERSION = '1.3.2'
+    VERSION = '1.3.2.1'
   end
 end
