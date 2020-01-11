@@ -12,6 +12,7 @@ module Tramway
       end
 
       def exportable_model?(model_class, project:)
+        return false unless project.present?
         @exportable_models[project.to_sym]&.include? model_class
       end
     end
