@@ -117,7 +117,7 @@ How create blocks you can find here
 * [Block with text, image and button](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/block_with_text_image_and_button/main.md)
 * [Cards](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/cards/main.md)
 * [Features list](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/features/main.md)
-* Contacts
+* [Contacts](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/contacts/main.md)
 * News
 * Block with text and button
 * View
