@@ -14,8 +14,10 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   delegate :partakings, to: :object
   delegate :request_collecting_state, to: :object
 
-  ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
-    decorate_association partnership_type.to_s.pluralize
+  if defined?(::Tramway::Partner)
+    ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
+      decorate_association partnership_type.to_s.pluralize
+    end
   end
 
   def background
@@ -33,10 +35,12 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   end
 
   def partners
-    @partners ||= ::Tramway::Partner::Partnership.partnership_type.values.reduce({}) do |hash, partnership_type|
-      hash.merge! partnership_type => (object.send(partnership_type.to_s.pluralize).active.map do |partner|
-        Tramway::Partner::OrganizationFeatureDecorator.decorate partner
-      end)
+    if defined?(::Tramway::Partner)
+      @partners ||= ::Tramway::Partner::Partnership.partnership_type.values.reduce({}) do |hash, partnership_type|
+        hash.merge! partnership_type => (object.send(partnership_type.to_s.pluralize).active.map do |partner|
+          Tramway::Partner::OrganizationFeatureDecorator.decorate partner
+        end)
+      end
     end
   end
 
