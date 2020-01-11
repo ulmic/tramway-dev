@@ -20,7 +20,10 @@ coming soon...
 
 #### 5. Теперь, зайдите на главную страницу вашего сайта и проверяйте результат
 
-![admin-5](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/admin-5.png)
+На эту страницу уже добавлен блок типа Начальный (Header). [Инструкция по добавлению](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/header/main.md)
+
+![admin-5](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/footer/example.png)
+
 
 #### 6. Вы можете запрограммировать контент на главной странице
 
