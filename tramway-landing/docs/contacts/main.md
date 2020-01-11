@@ -46,3 +46,9 @@ coming soon...
 
 #### 6. Теперь, зайдите на главную страницу вашего сайта и проверяйте результат
 ![admin-4](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/contacts/example.png)
+
+#### 7. Вы можете добавить ссылки на социальные сети в Блок Контактов с помощью гема tramway-profiles
+
+[Инструкция](https://github.com/ulmic/tramway-dev/blob/develop/tramway-profiles/docs/main.md)
+
+#### 8. Теперь, зайдите на главную страницу вашего сайта и проверяйте результат
