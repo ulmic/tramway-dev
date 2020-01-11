@@ -118,7 +118,7 @@ How create blocks you can find here
 * [Cards](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/cards/main.md)
 * [Features list](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/features/main.md)
 * [Contacts](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/contacts/main.md)
-* View
+* [View](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/view/main.md)
 * [Just text](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/just_text/main.md)
 
 ## Contributing
