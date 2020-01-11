@@ -1,15 +1,39 @@
 # Tramway::Profiles
-Short description and motivation.
 
-## Usage
-How to use my plugin.
+This gem provides easy way to add info about social profiles of your organization
 
 ## Installation
-Add this line to your application's Gemfile:
+
+#### 1. Add this line to your application's Gemfile:
 
 ```ruby
 gem 'tramway-profiles'
 ```
+
+#### 2. Generations
+
+```shell
+rails g tramway:profiles:install
+rails db:migrate
+```
+
+#### 3. Install tramway-admin gem. [How-to](https://github.com/ulmic/tramway-dev/tree/develop/tramway-admin)
+
+#### 4. Add social network to the admin panel
+
+*app/initializers/tramway.rb*
+
+```ruby
+::Tramway::Admin.set_available_models(::Tramway::Profiles::SocialNetwork, project: :your_project_name)
+```
+
+## Usage. English
+
+...coming soon
+
+## Использование
+
+
 
 And then execute:
 ```bash
