@@ -9,6 +9,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'tramway-user'
+gem 'validates'
 ```
 
 And then execute:
