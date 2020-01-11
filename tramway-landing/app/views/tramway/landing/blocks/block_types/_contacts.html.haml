@@ -24,7 +24,8 @@
   .row
     - if defined?(::Tramway::Profiles)
       .col-lg-5.col-md-12
-        - @application.social_networks.active.each do |profile|
+        - social_networks = @application.respond_to?(:social_networks) ? @application.social_networks : Tramway::Profiles::SocialNetwork.active
+        - social_networks.each do |profile|
           %ul.list-group
             %li.list-group-item
               = profile_link profile
