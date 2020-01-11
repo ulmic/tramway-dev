@@ -52,3 +52,4 @@ coming soon...
 [Инструкция](https://github.com/ulmic/tramway-dev/blob/develop/tramway-profiles/docs/main.md)
 
 #### 8. Теперь, зайдите на главную страницу вашего сайта и проверяйте результат
+![admin-4](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/contacts/example-2.png)
