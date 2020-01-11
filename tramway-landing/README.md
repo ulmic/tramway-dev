@@ -112,7 +112,7 @@ Then all your showing blocks will be on the main page.
 How create blocks you can find here
 
 * [Header](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/header/main.md)
-* Footer
+* [Footer](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/footer/main.md)
 * Block with text and image
 * Block with text, image and button
 * Cards
