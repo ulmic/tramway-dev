@@ -1,4 +1,4 @@
-# Footer Block Type
+# Block with text and image
 
 ## English
 
@@ -12,32 +12,20 @@ coming soon...
 #### 2. Нажмите на "+" - это создание нового Блока
 ![admin-2](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/admin-2.png)
 
-#### 3. Заполните форму созданя блока, как показано на скриншоте. Название, описание и изображение блока можете выбирать самостоятельно. Позиция на странице предпочтительна для такого типа блока последняя.
-![admin-3](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/footer/admin-1.png)
+#### 3. Заполните форму созданя блока, как показано на скриншоте.
+
+* Название блока будет отображаться как h2 в самом блоке на странице.
+* Описание блока будет текстом в самом блоке
+* Изображение будет показано в блоке
+* Позицию блока выбираете по своему усмотрению
+* Ссылка в навигационной панели появится также и в блоке Начальный (header)
+* Якорь - это дополнительное слово в адресной строке после символа `#`, которое появится после нажатия на ссылку блока
+
+![admin-3](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/block_with_text_and_image/admin-1.png)
 
 #### 4. Проверьте все данные, которые внесли и нажмите "Показать на сайте"
-![admin-4](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/footer/admin-2.png)
+![admin-4](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/block_with_text_and_image/admin-2.png)
 
 #### 5. Теперь, зайдите на главную страницу вашего сайта и проверяйте результат
 
-![admin-5](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/admin-5.png)
-
-#### 6. Вы можете запрограммировать контент на главной странице
-
-#### Пример кода
-
-*app/views/web/welcome/index.html.haml*
-
-```haml
-= content_for :footer_links do
-  %h5
-    Важные ссылки здесь
-  %ul
-    = link_to 'Ссылка 1', 'http://it-way.pro'
-    %br
-    = link_to 'Ссылка 2', 'http://molodoy.online'
-
-= content_for :footer_logos do
-  = link_to 'http://it-way.pro' do
-    = image_tag 'logos/it_way_conf.png'
-```
+![admin-5](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/block_with_text_and_image/example.png)
