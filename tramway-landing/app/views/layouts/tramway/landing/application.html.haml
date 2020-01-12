@@ -35,5 +35,5 @@
         = yield
     - if @blocks&.any?
       - footers = @blocks.select { |block| block.model.block_type.footer? }
-      - if footers.first.any?
+      - if footers.first.present?
         = render "tramway/landing/blocks/block_types/footer", block: footers.first
