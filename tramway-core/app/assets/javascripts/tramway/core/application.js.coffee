@@ -27,4 +27,3 @@ $(document).ready ->
       anchor = $(this).data('anchor')
       unless $(anchor).offset() == undefined
         $(window).scrollTop $(anchor).offset().top
-
