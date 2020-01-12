@@ -12,10 +12,12 @@ class Tramway::Event::EventsController < Tramway::Event::ApplicationController
     @footer = ::Tramway::Landing::BlockDecorator.decorate ::Tramway::Landing::Block.footer
     @events = ::Tramway::Event::Event.active.actual.map { |e| ::Tramway::Event::Events::Show::EventDecorator.decorate e }
     @people_as_features = @event.partakings.active.map { |p| ::Tramway::Event::PartakingFeatureDecorator.decorate p }
-    @partners = ::Tramway::Partner::Partnership.partnership_type.values.reduce({}) do |hash, partnership_type|
-      hash.merge! partnership_type => (event.send(partnership_type.to_s.pluralize).active.map do |partner|
-        Tramway::Partner::OrganizationFeatureDecorator.decorate partner
-      end)
+    if defined?(::Tramway::Partner)
+      @partners = ::Tramway::Partner::Partnership.partnership_type.values.reduce({}) do |hash, partnership_type|
+        hash.merge! partnership_type => (event.send(partnership_type.to_s.pluralize).active.map do |partner|
+          Tramway::Partner::OrganizationFeatureDecorator.decorate partner
+        end)
+      end
     end
   end
 end
