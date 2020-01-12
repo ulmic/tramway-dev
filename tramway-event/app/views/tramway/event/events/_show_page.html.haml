@@ -7,9 +7,9 @@
     %hr/
     %p.mb-0
       По всем вопросам обращайтесь по телефону
-      = tel_tag '+79603727276'
+      = tel_tag @application.phone
       или пишите на email
-      = mail_to 'kalashnikov@ulmic.ru'
+      = mail_to @application.email
 - if params[:flash] == 'error'
   .alert.alert-danger{ role: "alert" }
     %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
@@ -19,9 +19,9 @@
     %hr/
     %p.mb-0
       Если ошибка повторяется или не отображается, обращайтесь по телефону
-      = tel_tag '+79603727276'
+      = tel_tag @application.phone
       или пишите на email
-      = mail_to 'kalashnikov@ulmic.ru'
+      = mail_to @application.email
 - if request.path == ::Tramway::Event::Engine.routes.url_helpers.event_path(event.id)
   = render 'tramway/landing/blocks/templates/full_page', block: event, buttons: [OpenStruct.new(title: t('.registration'), anchor: '#registration')]
   - content_for :main_image do
