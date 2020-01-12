@@ -20,7 +20,8 @@
       - footers = @blocks.select { |block| block.model.block_type.footer? }
       - other_blocks = @blocks - headers - footers
       -# FIXME
-      = render "tramway/landing/blocks/block_types/header", block: headers.first
+      - if headers.first.present?
+        = render "tramway/landing/blocks/block_types/header", block: headers.first
       %main.mt-5
         .container
           - other_blocks.each_with_index do |block, index|
@@ -34,4 +35,5 @@
         = yield
     - if @blocks&.any?
       - footers = @blocks.select { |block| block.model.block_type.footer? }
-      = render "tramway/landing/blocks/block_types/footer", block: footers.first
+      - if footers.first.any?
+        = render "tramway/landing/blocks/block_types/footer", block: footers.first
