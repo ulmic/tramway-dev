@@ -4,6 +4,7 @@ ru:
       tramway/landing/block: Блок
     attributes:
       tramway/landing/block:
+        name: Название
         title: Название
         background: Изображение
         position: Позиция на странице
@@ -17,6 +18,7 @@ ru:
         button_title: Наименование кнопки (только для Типа блока "Свободный блок с кнопкой")
         button_link: Ссылка кнопки (только для Типа блока "Свободный блок с кнопкой")
         view_name: Название вьюхи
+        button: Наименование кнопки 
   cases:
     tramway/landing/block:
       plural: Блоки
