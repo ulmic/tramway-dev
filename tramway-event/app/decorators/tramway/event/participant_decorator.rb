@@ -11,6 +11,10 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
       [:list_fields]
     end
     delegate :human_participation_state_event_name, to: :model_class
+
+    def show_attributes
+      [:id, :event, :values, :state, :created_at, :updated_at, :participation_state, :comment ]
+    end
   end
 
   decorate_association :event
@@ -22,6 +26,10 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
       patronymic = object.values['Отчество']
       "#{first_name} #{last_name} #{patronymic}"
     end
+  end
+
+  def event
+    object.event.title
   end
 
   def list_fields
@@ -84,6 +92,26 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
         end)
       end
     end
+  end
+
+  def state
+    object.state
+  end
+
+  def created_at
+    object.created_at
+  end
+
+  def updated_at
+    object.updated_at
+  end
+
+  def participation_state
+    object.participation_state
+  end
+
+  def comment
+    object.comment
   end
 
   def participation_state_button_color(event)
