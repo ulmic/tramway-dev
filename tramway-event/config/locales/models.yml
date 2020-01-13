@@ -1,4 +1,7 @@
 ru:
+  default:
+    collections:
+      all: Все
   activerecord:
     models:
       tramway/event/event: Мероприятие
@@ -27,12 +30,17 @@ ru:
         participants_list: Список участников
         does_not_have_end_date: мероприятие не имеет даты окончания
       tramway/event/participant:
+        name: Имя
+        list_fields: Данные
         comment: Примечание
         event: Мероприятие
         full_name: Полное имя
         email: Email
         phone: Телефон
         organization: Организация
+        participation_state: Статус участника
+        event: Мероприятие
+        values: Данные
       tramway/event/section:
         title: Название
         description: Описание
@@ -41,6 +49,13 @@ ru:
         icon: Иконка
         position: Позиция на странице мероприятия
       tramway/event/participant_form_field:
+        event_title: Мероприятие
+        name: Название
+        event: Мероприятие
+        description: Описание
+        field_type: Тип поля
+        position: Позиция в анкете
+        options: Параметры
         title: Название (в Tramway название Поля анкеты - это ключ для выборки пользователей. Если вы измените ключ к выборке пользователей, то все пользователи, получившие данные по предыдущему ключу по этой выборке показываться не будут)
       tramway/event/partaking:
         part_name: Мероприятие
@@ -82,3 +97,10 @@ ru:
       status:
         main: На главной странице
         common: Не на главной странице
+    tramway/event/participant_form_field:
+      field_type:
+        text: Многострочный текст
+        string: Текст
+        numeric: Число
+        date_picker: Дата
+        select: Выпадающий список

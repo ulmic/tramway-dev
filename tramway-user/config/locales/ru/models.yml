@@ -2,12 +2,6 @@ ru:
   activerecord:
     models:
       tramway/user/user: Пользователь
-    attributes:
-      tramway/user/user:
-        password: Пароль
-        first_name: Имя
-        last_name: Фамилия
-        role: Роль
     errors:
       models:
         tramway/user/user:
