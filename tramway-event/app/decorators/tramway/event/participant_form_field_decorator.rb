@@ -28,19 +28,19 @@ class Tramway::Event::ParticipantFormFieldDecorator < ::Tramway::Core::Applicati
   end
 
   def field_type
-    object.field_type
+    enumerize_view object.field_type
   end
 
   def state
-    object.state
+    state_machine_view object, :state
   end
 
   def created_at
-    object.created_at
+    date_view object.created_at
   end
 
   def updated_at
-    object.updated_at
+    date_view object.updated_at
   end
 
   def options

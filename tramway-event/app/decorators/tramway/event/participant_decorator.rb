@@ -95,19 +95,18 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
   end
 
   def state
-    object.state
+    state_machine_view object, :state
   end
-
   def created_at
-    object.created_at
+    date_view object.created_at
   end
 
   def updated_at
-    object.updated_at
+    date_view object.updated_at
   end
 
   def participation_state
-    object.participation_state
+    state_machine_view object, :participation_state
   end
 
   def comment
