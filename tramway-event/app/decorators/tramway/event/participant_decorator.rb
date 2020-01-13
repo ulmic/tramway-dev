@@ -13,7 +13,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
     delegate :human_participation_state_event_name, to: :model_class
 
     def show_attributes
-      [:id, :event, :values, :state, :created_at, :updated_at, :participation_state, :comment ]
+      %i[id event values state created_at updated_at participation_state comment]
     end
   end
 
@@ -97,6 +97,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
   def state
     state_machine_view object, :state
   end
+
   def created_at
     date_view object.created_at
   end

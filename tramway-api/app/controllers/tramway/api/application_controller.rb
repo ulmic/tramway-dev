@@ -19,6 +19,7 @@ module Tramway
 
       def authenticate
         return if current_user || params[:user_based_model].in?(Tramway::Api.user_based_models)
+
         unauthorized
       end
 
