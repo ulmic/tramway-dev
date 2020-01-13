@@ -12,7 +12,7 @@ class Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationForm
                         type: :numeric,
                         input_options: {
                           hint: I18n.t('hints.tramway.landing.block.position', array: ::Tramway::Landing::Block.active.on_main_page.map(&:position).join(','))
-                        },
+                        }
                       },
                       block_type: :default,
                       navbar_link: :default,

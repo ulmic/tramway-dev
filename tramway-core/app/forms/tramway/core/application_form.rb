@@ -35,10 +35,10 @@ module Tramway::Core
         if validate params
           begin
             save.tap do
-              #self.class.remove_validations_from_model!
+              # self.class.remove_validations_from_model!
             end
           rescue StandardError => e
-            #self.class.remove_validations_from_model!
+            # self.class.remove_validations_from_model!
             error = Tramway::Error.new(plugin: :core, method: :submit, message: "Looks like you have method `#{e.name.to_s.gsub('=', '')}` in #{@@model_class}. You should rename it or rename property in #{self.class}")
             raise error.message
           end
@@ -51,11 +51,11 @@ module Tramway::Core
             end
           end
           (association_error && save).tap do
-            #self.class.remove_validations_from_model!
+            # self.class.remove_validations_from_model!
           end
         end
       else
-        #self.class.remove_validations_from_model!
+        # self.class.remove_validations_from_model!
         error = Tramway::Error.new(plugin: :core, method: :submit, message: 'ApplicationForm::Params should not be nil')
         raise error.message
       end
@@ -75,6 +75,7 @@ module Tramway::Core
 
     def properties
       return @form_properties if @form_properties
+
       yaml_config_file_path = Rails.root.join('app', 'forms', "#{self.class.name.underscore}.yml")
       if File.exist? yaml_config_file_path
         @form_properties = YAML.load_file(yaml_config_file_path).deep_symbolize_keys
@@ -165,17 +166,17 @@ module Tramway::Core
 
       def validates(attribute, **options)
         if !defined?(@@model_class) || @@model_class.nil?
-          error = Tramway::Error.new(plugin: :core, method: :validates, message: "You need to set `model_class` name while using validations. Just write `self.model_class = YOUR_MODEL_NAME` in the class area.")
+          error = Tramway::Error.new(plugin: :core, method: :validates, message: 'You need to set `model_class` name while using validations. Just write `self.model_class = YOUR_MODEL_NAME` in the class area.')
           raise error.message
         end
         @@model_class.validates attribute, **options
-      #  @@validations ||= {}
-      #  @@validations.deep_merge! attribute => options
+        #  @@validations ||= {}
+        #  @@validations.deep_merge! attribute => options
       end
-      
+
       # FIXME: Removes all validations in a field. We must implement own validations
-      
-      #def remove_validations_from_model!
+
+      # def remove_validations_from_model!
       #  return unless defined? @@validations
       #  @@validations&.each do |validation|
       #    @@model_class.class_eval do
@@ -187,7 +188,7 @@ module Tramway::Core
       #      end
       #    end
       #  end
-      #end
+      # end
     end
   end
 end

@@ -78,19 +78,20 @@ module Tramway::Admin
       unless association.options[:class_name].present?
         raise "You should set `class_name` for #{association.name} association"
       end
+
       if association.options[:as].present?
         new_record_path model: association.class_name,
-          redirect: current_model_record_path(object),
-          association.options[:class_name].underscore => {
-            association.options[:as] => object.id,
-            association.type => object.class.model_name
-          }
+                        redirect: current_model_record_path(object),
+                        association.options[:class_name].underscore => {
+                          association.options[:as] => object.id,
+                          association.type => object.class.model_name
+                        }
       else
         new_record_path model: association.class_name,
-          redirect: current_model_record_path(object),
-          association.options[:class_name].underscore => {
-            object.model.class.name.underscore => object.id
-          }
+                        redirect: current_model_record_path(object),
+                        association.options[:class_name].underscore => {
+                          object.model.class.name.underscore => object.id
+                        }
       end
     end
   end

@@ -68,6 +68,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
 
   def request_collecting_duration
     return if object.request_collecting_begin_date.nil? || object.request_collecting_end_date.nil?
+
     duration begin_date: object.request_collecting_begin_date, end_date: object.request_collecting_end_date
   end
 

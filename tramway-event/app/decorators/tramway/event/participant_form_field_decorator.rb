@@ -11,7 +11,7 @@ class Tramway::Event::ParticipantFormFieldDecorator < ::Tramway::Core::Applicati
     end
 
     def show_attributes
-      [:id,:title, :description, :field_type,:event_title,:state, :created_at, :updated_at, :options, :position ]
+      %i[id title description field_type event_title state created_at updated_at options position]
     end
   end
 
