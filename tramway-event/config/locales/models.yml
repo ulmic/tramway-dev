@@ -1,4 +1,11 @@
 ru:
+  simple_form:
+    tramway/event/participant_form_field:
+      input:
+        field_type:
+          Yes: Да
+          no: Нет
+
   default:
     collections:
       all: Все
@@ -103,4 +110,4 @@ ru:
         string: Текст
         numeric: Число
         date_picker: Дата
-        select: Выпадающий список
+        select: Выпадающий список (да/нет)
