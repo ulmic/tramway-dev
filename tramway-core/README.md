@@ -33,7 +33,7 @@ Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ```
 # Usage
 ## decorators
-Helper methods
+### Helper methods
 
 # Базовые классы
 
