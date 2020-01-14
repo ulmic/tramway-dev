@@ -35,6 +35,12 @@ Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ## decorators
 ### Helper methods
 
+#### date_view
+#### datetime_view
+#### state_machine_view
+#### image_view
+#### enumerize_view
+
 # Базовые классы
 
 * ApplicationDecorator - Базовый класс декоратора. В него по умолчанию включены `ActionView::Helpers` и `ActionView::Context` и `FontAwesome5` (версия гема FontAwesome, которая поддерживает 5 версию шрифта). `FontAwesome` считается в `Tramway` основным шрифтом для иконок.
