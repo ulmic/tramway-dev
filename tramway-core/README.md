@@ -32,12 +32,11 @@ Tramway::Core.initialize_application model_class: ::Tramway::Conference::Unity #
 Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ```
 # Usage
-## decorators
+## Decorators
 ### Helper methods
 
 #### date_view
 Returns a date in the format depending on localization
-usage example:
 
 *decorator.rb*
 ```ruby
@@ -47,7 +46,6 @@ end
 ```
 #### datetime_view
 Returns a date and time in the format depending on localization
-usage example:
 
 *decorator.rb*
 ```ruby
@@ -56,8 +54,32 @@ def created_at
 end
 ```
 #### state_machine_view
+Returns the state of an object according to a state machine
+
+*decorator.rb
+```ruby
+def state
+  state_machine_view object, :state
+end
+```
 #### image_view
+Returns an image in a particular format depending on the parameters of the original image file
+
+*decorator.rb
+```ruby
+def avatar
+  image_view object.avatar
+end
+```
 #### enumerize_view
+Returns object enumerations as text
+
+*decorator.rb
+```ruby
+def field_type
+  enumerize_view object.field_type
+end
+```
 
 # Базовые классы
 
