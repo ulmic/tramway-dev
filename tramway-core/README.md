@@ -49,6 +49,7 @@ end
 Returns a date and time in the format depending on localization
 usage example:
 
+*decorator.rb*
 ```ruby
 def created_at
   datetime_view object.created_at
