@@ -38,7 +38,7 @@ Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 #### date_view
 Returns a date in the format depending on localization
 
-*decorator.rb*
+*app/decorators/*_decorator.rb*
 ```ruby
 def created_at
   date_view object.created_at
@@ -47,7 +47,7 @@ end
 #### datetime_view
 Returns a date and time in the format depending on localization
 
-*decorator.rb*
+*app/decorators/*_decorator.rb*
 ```ruby
 def created_at
   datetime_view object.created_at
@@ -56,7 +56,7 @@ end
 #### state_machine_view
 Returns the state of an object according to a state machine
 
-*decorator.rb
+*app/decorators/*_decorator.rb*
 ```ruby
 def state
   state_machine_view object, :state
@@ -65,7 +65,7 @@ end
 #### image_view
 Returns an image in a particular format depending on the parameters of the original image file
 
-*decorator.rb
+*app/decorators/*_decorator.rb*
 ```ruby
 def avatar
   image_view object.avatar
@@ -74,7 +74,7 @@ end
 #### enumerize_view
 Returns object enumerations as text
 
-*decorator.rb
+*app/decorators/*_decorator.rb*
 ```ruby
 def field_type
   enumerize_view object.field_type
