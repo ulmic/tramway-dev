@@ -14,17 +14,17 @@ class Tramway::Event::ParticipantFormFieldDecorator < ::Tramway::Core::Applicati
       %i[id title description field_type event_title state created_at updated_at options position]
     end
   end
-
+  
+  delegate :description, to: :object
+  delegate :options, to: :object
+  delegate :position, to: :object
+  
   def title
     "#{object.title} #{object.event.title}"
   end
 
   def event_title
     object.event.title
-  end
-
-  def description
-    object.description
   end
 
   def field_type
@@ -41,13 +41,5 @@ class Tramway::Event::ParticipantFormFieldDecorator < ::Tramway::Core::Applicati
 
   def updated_at
     date_view object.updated_at
-  end
-
-  def options
-    object.options
-  end
-
-  def position
-    object.position
   end
 end
