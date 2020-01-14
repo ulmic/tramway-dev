@@ -31,6 +31,7 @@ Tramway::Core.initialize_application model_class: ::Tramway::Conference::Unity #
 ```ruby
 Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ```
+## Usage
 
 # Базовые классы
 
