@@ -43,6 +43,7 @@ usage example:
 def created_at
   date_view object.created_at
 end
+```
 
 #### datetime_view
 #### state_machine_view
