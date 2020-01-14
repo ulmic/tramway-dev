@@ -36,6 +36,14 @@ Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ### Helper methods
 
 #### date_view
+Returns a date in the format depending on localization
+usage example:
+*decorator.rb*
+```ruby
+def created_at
+  date_view object.created_at
+end
+
 #### datetime_view
 #### state_machine_view
 #### image_view
