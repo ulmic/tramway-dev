@@ -27,7 +27,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
       "#{first_name} #{last_name} #{patronymic}"
     end
   end
-  
+
   def event
     object.event.title
   end
@@ -109,7 +109,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
   def participation_state
     state_machine_view object, :participation_state
   end
-  
+
   delegate :comment, to: :object
 
   def participation_state_button_color(event)
