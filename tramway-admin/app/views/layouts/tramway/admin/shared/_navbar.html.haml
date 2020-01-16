@@ -15,10 +15,12 @@
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first)
       %ul.nav.navbar-nav.ml-auto
         - if signed_in?
-          %li.nav-item.notifications
-            = link_to '#', class: 'nav-link icon-in-navbar' do
+          %li.nav-item.dropdown.notifications
+            = link_to '#', class: 'nav-link icon-in-navbar dropdown-toggle', id: :notifications_dropdown, role: :button, aria: { haspopup: true, expanded: false }, data: { toggle: :dropdown } do
               %span.badge.badge-light
                 = @notifications_count
+            .dropdown-menu{ aria: { labelledby: :notifications_dropdown } }
+              = link_to :hui, '#', class: 'dropdow-item'
           %li.nav-item
             = link_to Tramway::Auth::Engine.routes.url_helpers.session_path, method: :delete, class: 'nav-link' do
               = fa_icon 'sign-out-alt'
