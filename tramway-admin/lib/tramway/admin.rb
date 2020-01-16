@@ -86,6 +86,17 @@ module Tramway
       def get_models_by_key(checked_models, project)
         checked_models && checked_models != [] && checked_models[project.to_sym] || []
       end
+
+      def set_notificable_queries(**queries)
+        @notificable_queries ||= {}
+        @notificable_queries.merge! queries
+      end
+
+      def notifications
+        @notificable_queries.reduce({}) do |hash, notification|
+          hash.merge! notification[0] => notification[1].call
+        end
+      end
     end
   end
 end
