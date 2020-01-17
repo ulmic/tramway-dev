@@ -93,7 +93,7 @@ module Tramway
       end
 
       def notifications
-        @notificable_queries.reduce({}) do |hash, notification|
+        @notificable_queries&.reduce({}) do |hash, notification|
           hash.merge! notification[0] => notification[1].call
         end
       end
