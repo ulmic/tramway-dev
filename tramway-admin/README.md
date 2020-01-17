@@ -29,6 +29,7 @@ gem 'trap'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', github: 'kalashnikovisme/bootstrap-kaminari-views', branch: :master
 gem 'state_machine_buttons'
+gem 'ckeditor', '4.2.4'
 ```
 
 You should remove gem `turbolinks` from your application
