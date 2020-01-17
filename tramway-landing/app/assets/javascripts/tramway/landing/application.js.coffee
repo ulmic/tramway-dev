@@ -1,5 +1,3 @@
-#= require jquery
-#= require jquery_ujs
 #= require tramway/core/application
 #= require_tree .
 

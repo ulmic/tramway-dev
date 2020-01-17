@@ -1,5 +1,7 @@
 - content_for :title do
   = @event.title
+- content_for :head_content do
+  = javascript_include_tag 'tramway/event/application'
 - content_for :footer_links do
   %ul
     - @events.each do |event|

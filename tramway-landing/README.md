@@ -14,10 +14,9 @@ List of blocks:
 * Cards
 * Features list
 * Contacts
-* News
-* Block with text and button
 * View
 * Just text
+* Link to the object
 
 All block's previews you can see at the bottom of this Readme
 
@@ -117,11 +116,10 @@ How create blocks you can find here
 * [Block with text, image and button](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/block_with_text_image_and_button/main.md)
 * [Cards](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/cards/main.md)
 * [Features list](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/features/main.md)
-* Contacts
-* News
-* Block with text and button
-* View
-* Just text
+* [Contacts](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/contacts/main.md)
+* [View](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/view/main.md)
+* [Just text](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/just_text/main.md)
+* Link to object
 
 ## Contributing
 Contribution directions go here.

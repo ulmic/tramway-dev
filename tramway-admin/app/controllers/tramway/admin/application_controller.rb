@@ -12,6 +12,8 @@ module Tramway
       before_action :collections_counts, if: :model_given?
       before_action :check_available_scope!, if: :model_given?, only: :index
       before_action :application
+      before_action :notifications
+      before_action :notifications_count
 
       protect_from_forgery with: :exception
 
@@ -36,6 +38,17 @@ module Tramway
       def application
         if ::Tramway::Core.application
           @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
+        end
+      end
+
+      def notifications
+        @notifications ||= Tramway::Admin.notifications
+        @notifications
+      end
+
+      def notifications_count
+        @notifications_count = notifications.reduce(0) do |count, notification|
+          count += notification[1].count
         end
       end
 
