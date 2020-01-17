@@ -85,6 +85,21 @@ window.current_locale = window.i18n_locale 'en'
 ```
 to the `app/assets/javascripts/admin/application.js.coffee` file
 
+## Notifications
+
+You can add notification to your admin panel to the navbar.
+
+To add notification to application, you need just set queries in initializers.
+
+*config/initializers/tramway.rb*
+```ruby
+::Tramway::Admin.set_notificable_queries :"#{your_title}"  => -> { your_query }
+
+# Example from tramway-event gem
+
+::Tramway::Admin.set_notificable_queries new_participants: -> { ::Tramway::Event::Participant.active.where(participation_state: :requested) }
+```
+
 ## Contributing
 Contribution directions go here.
 
