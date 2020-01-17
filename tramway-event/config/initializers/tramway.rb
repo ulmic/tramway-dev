@@ -8,4 +8,4 @@
   ::Tramway::Event::Partaking,
   ::Tramway::Event::Place,
   project: :event)
-::Tramway::Admin.set_notificable_queries new_participants: -> { ::Tramway::Event::Participant.where(participation_state: :requested) }
+::Tramway::Admin.set_notificable_queries new_participants: -> { ::Tramway::Event::Participant.active.where(participation_state: :requested) }
