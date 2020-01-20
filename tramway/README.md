@@ -18,7 +18,11 @@ end
 
 *config/initializers/tramway_extensions.rb*
 ```ruby
-Tramway::User::User.include Tramway::User::UserConcern
+module ::Tramway::Extensions
+  def self.load
+    Tramway::User::User.include Tramway::User::UserConcern
+  end
+end
 ```
 
 #### 3. Reload your server
