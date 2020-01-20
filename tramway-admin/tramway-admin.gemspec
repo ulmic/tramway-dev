@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
   s.add_dependency 'bootstrap-kaminari-views', '0.0.5'
-  s.add_dependency 'ckeditor', '4.2.4'
   s.add_dependency 'copyright_mafa', '~> 0.1.2', '>= 0.1.2'
   s.add_dependency 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
   s.add_dependency 'kaminari', '~> 1.1.1', '>= 1.1.1'

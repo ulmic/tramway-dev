@@ -5,6 +5,7 @@
   ::Tramway::SportSchool::Trainer,
   ::Tramway::SportSchool::Document,
   ::Tramway::SportSchool::Organization,
+  ::Tramway::User::User,
   project: :sport_school)
 ::Tramway::Admin.set_singleton_models(::Tramway::SportSchool::Institution, project: :sport_school)
 ::Tramway::Core.initialize_application model_class: ::Tramway::SportSchool::Institution

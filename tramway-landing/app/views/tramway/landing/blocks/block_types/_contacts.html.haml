@@ -22,11 +22,13 @@
   %h2.mb-5.font-weight-bold.text-center
     = block.title
   .row
-    .col-lg-5.col-md-12
-      - @application.social_networks.active.each do |profile|
-        %ul.list-group
-          %li.list-group-item
-            = profile_link profile
+    - if defined?(::Tramway::Profiles)
+      .col-lg-5.col-md-12
+        - social_networks = @application.respond_to?(:social_networks) ? @application.social_networks : Tramway::Profiles::SocialNetwork.active
+        - social_networks.each do |profile|
+          %ul.list-group
+            %li.list-group-item
+              = profile_link profile
     .col-lg-7.col-md-12
       .row.text-center
         - if yield(:address).present?
@@ -45,4 +47,5 @@
               = tel_tag yield(:phone) do
                 = fa_icon :phone, class: 'grey-text'
                 = yield :phone
-      #map-container.z-depth-1-half.map-container{ style: 'height: 400px' }
+      - if yield(:longtitude).present? && yield(:latitude).present?
+        #map-container.z-depth-1-half.map-container{ style: 'height: 400px' }
