@@ -32,7 +32,7 @@ module Tramway
       def collections_counts
         @counts = decorator_class.collections.reduce({}) do |hash, collection|
           records = model_class.active.send(collection)
-          records = records.send "#{current_user.role}_scope", current_user.id unless current_user.role.admin?
+          records = records.send "#{current_user.role}_scope", current_user.id
           hash.merge! collection => records.count
         end
       end
@@ -44,7 +44,9 @@ module Tramway
       end
 
       def notifications
-        @notifications ||= Tramway::Admin.notifications
+        @notifications ||= Tramway::Admin.notificable_queries&.reduce({}) do |hash, notification|
+          hash.merge! notification[0] => notification[1].call(current_user)
+        end
         @notifications
       end
 
