@@ -31,7 +31,9 @@ module Tramway
 
       def collections_counts
         @counts = decorator_class.collections.reduce({}) do |hash, collection|
-          hash.merge! collection => model_class.active.send(collection).count
+          records = model_class.active.send(collection)
+          records = records.send "#{current_user.role}_scope", current_user.id unless current_user.role.admin?
+          hash.merge! collection => records.count
         end
       end
 
@@ -88,7 +90,8 @@ module Tramway
       end
 
       def available_models_given?
-        ::Tramway::Admin.available_models.any? && params[:model].in?(::Tramway::Admin.available_models.map(&:to_s))
+        models = ::Tramway::Admin.available_models(role: current_user.role)
+        models.any? && params[:model].in?(models.map(&:to_s))
       end
 
       def singleton_models_given?

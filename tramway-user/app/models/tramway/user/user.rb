@@ -4,7 +4,7 @@ class Tramway::User::User < ::Tramway::Core::ApplicationRecord
   has_secure_password
 
   # FIXME: replace to tramway-admin
-  enumerize :role, in: %i[user admin], default: :user
+  enumerize :role, in: %i[user admin], default: :admin
 
   def admin?
     role.admin?
