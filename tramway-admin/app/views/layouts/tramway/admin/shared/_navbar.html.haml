@@ -9,9 +9,9 @@
     .navbar-collapse.collapse#navbar
       - if signed_in?
         %ul.navbar-nav
-          - ::Tramway::Admin.singleton_models_for(@application_engine || @application.name)&.each do |model|
+          - ::Tramway::Admin.singleton_models_for(@application_engine || @application.name, role: current_user.role)&.each do |model|
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
-          - ::Tramway::Admin.available_models_for(@application_engine || @application.name)&.each do |model|
+          - ::Tramway::Admin.available_models_for(@application_engine || @application.name, role: current_user.role)&.each do |model|
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first)
       %ul.nav.navbar-nav.ml-auto
         - if signed_in?
