@@ -6,7 +6,7 @@ $(document).ready ->
     anchor = $(this).data('anchor')
     $(window).scrollTop $(anchor).offset().top
 
-  iframe_selectors_for_video = ['iframe[src*="vk.com"]', 'iframe[src*="youtu.be"]']
+  iframe_selectors_for_video = ['iframe[src*="vk.com"]', 'iframe[src*="youtu.be"]', 'iframe[src*="youtube.com"]']
   for selector in iframe_selectors_for_video
     $(selector).each ->
       width = $(this).parents('div').first().width()
