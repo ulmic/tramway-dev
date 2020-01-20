@@ -25,11 +25,13 @@ Gem name | Version and Link | Test coverage | Docs
 
 ## Docs English
 
-... coming soon
+[Extending Tramway functions](https://github.com/ulmic/tramway-dev/blob/develop/tramway/README.md)
 
 ## Docs Russian
 
 Tramway - набор Rails гемов. Каждый гем является mountable библиотекой, которая предоставляет по сути готовый функционал или абстракции для быстрого создания **простых и маленьких** сайтов.
+
+[Расширение функциональности Tramway](https://github.com/ulmic/tramway-dev/blob/develop/tramway/README.md)
 
 # Мотивация
 
