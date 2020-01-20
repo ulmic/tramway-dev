@@ -13,7 +13,7 @@ module Tramway::User::User
     enumerize :role, in: [ :admin, :supervisor ], default: :admin
     
     # method which will help you configurate admin access (by default is `:admin` role)
-    def self.admin?
+    def admin?
       role.in? [ 'admin', 'supervisor' ]
     end
   end
