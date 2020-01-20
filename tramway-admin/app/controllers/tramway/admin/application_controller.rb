@@ -12,6 +12,8 @@ module Tramway
       before_action :collections_counts, if: :model_given?
       before_action :check_available_scope!, if: :model_given?, only: :index
       before_action :application
+      before_action :notifications
+      before_action :notifications_count
 
       protect_from_forgery with: :exception
 
@@ -29,13 +31,28 @@ module Tramway
 
       def collections_counts
         @counts = decorator_class.collections.reduce({}) do |hash, collection|
-          hash.merge! collection => model_class.active.send(collection).count
+          records = model_class.active.send(collection)
+          records = records.send "#{current_user.role}_scope", current_user.id
+          hash.merge! collection => records.count
         end
       end
 
       def application
         if ::Tramway::Core.application
           @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
+        end
+      end
+
+      def notifications
+        @notifications ||= Tramway::Admin.notificable_queries&.reduce({}) do |hash, notification|
+          hash.merge! notification[0] => notification[1].call(current_user)
+        end
+        @notifications
+      end
+
+      def notifications_count
+        @notifications_count = notifications.reduce(0) do |count, notification|
+          count += notification[1].count
         end
       end
 
@@ -75,7 +92,8 @@ module Tramway
       end
 
       def available_models_given?
-        ::Tramway::Admin.available_models.any? && params[:model].in?(::Tramway::Admin.available_models.map(&:to_s))
+        models = ::Tramway::Admin.available_models(role: current_user.role)
+        models.any? && params[:model].in?(models.map(&:to_s))
       end
 
       def singleton_models_given?

@@ -29,6 +29,7 @@ gem 'trap'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', github: 'kalashnikovisme/bootstrap-kaminari-views', branch: :master
 gem 'state_machine_buttons'
+gem 'ckeditor', '4.2.4'
 ```
 
 You should remove gem `turbolinks` from your application
@@ -65,6 +66,19 @@ $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', r
 ::Tramway::Auth.root_path = '/admin' # you need it to redirect in the admin panel after admin signed_in
 ```
 
+By default users with role `admin` have access to all models used as arguments in method `::Tramway::Admin.set_available_models`. If you want specify models by roles, use them as keys
+
+```ruby
+::Tramway::Admin.set_available_models ::Tramway::Event::Event, ::Tramway::Event::ParticipantFormField,
+  ::Tramway::Event::Participant, ::Tramway::Landing::Block, ::Tramway::User::User,
+  ::Tramway::Profiles::SocialNetwork, project: #{project_name_which_you_used_in_application_name}, role: :admin
+
+::Tramway::Admin.set_available_models ::Tramway::Event::Event, ::Tramway::Event::ParticipantFormField,
+  ::Tramway::Event::Participant, project: #{project_name_which_you_used_in_application_name}, role: :another_role
+```
+
+Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
+
 Run server `rails s`
 Launch `localhost:3000/admin`
 
@@ -83,6 +97,23 @@ to the `app/assets/javascripts/admin/application.js` file
 window.current_locale = window.i18n_locale 'en'
 ```
 to the `app/assets/javascripts/admin/application.js.coffee` file
+
+## Notifications
+
+You can add notification to your admin panel to the navbar.
+
+To add notification to application, you need just set queries in initializers.
+
+*config/initializers/tramway.rb*
+```ruby
+::Tramway::Admin.set_notificable_queries :"#{your_title}"  => -> { your_query }
+
+# Example from tramway-event gem (you also can push context variables here)
+
+::Tramway::Admin.set_notificable_queries new_participants: -> (current_user) do
+  ::Tramway::Event::Participant.active.where(participation_state: :requested).send "#{current_user}_scope", current_user.id
+end
+```
 
 ## Contributing
 Contribution directions go here.

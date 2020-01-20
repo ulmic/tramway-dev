@@ -8,7 +8,7 @@ module Tramway
   module SportSchool
     class << self
       def dependencies
-        %i[landing profiles news user]
+        %i[landing profiles news]
       end
 
       def application

@@ -9,12 +9,28 @@
     .navbar-collapse.collapse#navbar
       - if signed_in?
         %ul.navbar-nav
-          - ::Tramway::Admin.singleton_models_for(@application_engine || @application.name)&.each do |model|
+          - ::Tramway::Admin.singleton_models_for(@application_engine || @application.name, role: current_user.role)&.each do |model|
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
-          - ::Tramway::Admin.available_models_for(@application_engine || @application.name)&.each do |model|
+          - ::Tramway::Admin.available_models_for(@application_engine || @application.name, role: current_user.role)&.each do |model|
             = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first)
       %ul.nav.navbar-nav.ml-auto
         - if signed_in?
+          - if @notifications_count > 0
+            %li.nav-item.dropdown.notifications
+              = link_to '#', class: 'nav-link icon-in-navbar dropdown-toggle', id: :notifications_dropdown, role: :button, aria: { haspopup: true, expanded: false }, data: { toggle: :dropdown } do
+                %span.badge.badge-light
+                  = @notifications_count
+              .dropdown-menu.dropdown-menu-right{ aria: { labelledby: :notifications_dropdown } }
+                - @notifications.each_with_index do |collection, index|
+                  - collection[1].each do |item|
+                    = link_to decorator_class(item.class).decorate(item).title, record_path(item, model: item.class), class: 'dropdown-item'
+                  - if index < @notifications.count - 1
+                    .dropdown-divider
+          - else
+            %li.nav-item.notifications
+              = link_to '#', class: 'nav-link icon-in-navbar' do
+                %span.badge.badge-light
+                  = @notifications_count
           %li.nav-item
             = link_to Tramway::Auth::Engine.routes.url_helpers.session_path, method: :delete, class: 'nav-link' do
               = fa_icon 'sign-out-alt'

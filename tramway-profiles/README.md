@@ -32,18 +32,11 @@ rails db:migrate
 ...coming soon
 
 ## Использование
+[Прочитайте нашу инструкцию по использованию гема](https://github.com/ulmic/tramway-dev/blob/develop/tramway-profiles/docs/main.md)
 
+## Troubleshooting
 
-
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install tramway-profiles
-```
+1. `undefined method 'profile_link'` just add `include ::Tramway::Profiles::ApplicationHelper` to your main helper
 
 ## Contributing
 Contribution directions go here.

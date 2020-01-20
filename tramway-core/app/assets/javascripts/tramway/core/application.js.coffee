@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery_ujs
+#= require popper
 #= require bootstrap-datepicker-1.8.0
 #= require bootstrap-datepicker-1.8.0.ru.min
 #= require font_awesome5
@@ -27,4 +28,3 @@ $(document).ready ->
       anchor = $(this).data('anchor')
       unless $(anchor).offset() == undefined
         $(window).scrollTop $(anchor).offset().top
-

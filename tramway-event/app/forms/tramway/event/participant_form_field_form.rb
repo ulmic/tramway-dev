@@ -5,14 +5,14 @@ class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ApplicationFor
   association :event
 
   def initialize(object)
-    form_object = super object
-    form_properties event: :association,
-                    title: :string,
-                    description: :string,
-                    field_type: :default,
-                    options: :text,
-                    position: :numeric
-    form_object
+    super(object).tap do
+      form_properties event: :association,
+        title: :string,
+        description: :string,
+        field_type: :default,
+        options: :text,
+        position: :numeric
+    end
   end
 
   def options
