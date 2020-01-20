@@ -29,3 +29,4 @@ Tramway::User::User.include Tramway::User::UserConcern
 #### 3. Reload your server
 
 **NOTE: BE CAREFUL**. You shouldn't remove roles after creating one or more records in Tramway::User::User table.
+**NOTE: BE CAREFUL 2**. All new roles instead of `user` will be have access to the admin panel
