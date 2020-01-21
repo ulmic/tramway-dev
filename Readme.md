@@ -74,4 +74,4 @@ Tramway решает две проблемы:
 ## Contributors
 
 * [Pavel Kalashnikov](https://github.com/kalashnikovisme) [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/kalashnikovisme)
-* [moshinaan](https://github.com/moshinaan)(https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/moshinaan)
+* [moshinaan](https://github.com/moshinaan) [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/moshinaan)
