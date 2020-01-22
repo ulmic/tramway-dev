@@ -4,6 +4,7 @@ ru:
       tramway/profiles/social_network: Социальная сеть
     attributes:
       tramway/profiles/social_network:
+        name:  Название ссылки
         title: Название ссылки
         network_name: Социальная сеть
         record_id: ID записи
