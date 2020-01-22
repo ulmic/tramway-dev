@@ -4,6 +4,7 @@ module Tramway::Admin::SingletonModels
     @singleton_models[project] ||= {}
     @singleton_models[project][role] ||= []
     @singleton_models[project][role] += models
+    @singleton_models = @singleton_models.with_indifferent_access
   end
 
   def singleton_models_for(project, role: :admin)
@@ -16,7 +17,7 @@ module Tramway::Admin::SingletonModels
     models
   end
 
-  def singleton_models
-    @singleton_models&.values&.flatten || []
+  def singleton_models(role:)
+    models_array models_type: :singleton, role: role
   end
 end

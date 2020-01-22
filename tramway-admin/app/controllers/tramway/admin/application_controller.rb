@@ -8,24 +8,26 @@ module Tramway
       include Tramway::AuthManagement
       include RecordRoutesHelper
       before_action :authenticate_admin!
-      before_action :check_available!
-      before_action :collections_counts, if: :model_given?
-      before_action :check_available_scope!, if: :model_given?, only: :index
       before_action :application
       before_action :notifications
       before_action :notifications_count
+      before_action :collections_counts, if: :model_given?
+      before_action :check_available!
+      before_action :check_available_scope!, if: :model_given?, only: :index
 
       protect_from_forgery with: :exception
 
       protected
 
       def check_available!
-        render '/404' unless model_given?
+        unless model_given?
+          raise 'Model is not available'
+        end
       end
 
       def check_available_scope!
-        if params[:scope].present?
-          render '/404' unless available_scope_given?
+        if params[:scope].present? && !available_scope_given?
+          raise 'Scope is not available'
         end
       end
 
@@ -92,12 +94,18 @@ module Tramway
       end
 
       def available_models_given?
-        models = ::Tramway::Admin.available_models(role: current_user.role)
-        models.any? && params[:model].in?(models.map(&:to_s))
+        check_models_given? :available
       end
 
       def singleton_models_given?
-        ::Tramway::Admin.singleton_models.any? && params[:model].in?(::Tramway::Admin.singleton_models.map(&:to_s))
+        check_models_given? :singleton
+      end
+
+      private
+
+      def check_models_given?(model_type)
+        models = ::Tramway::Admin.send("#{model_type}_models", role: current_user.role)
+        models.any? && params[:model].in?(models.map(&:to_s))
       end
     end
   end

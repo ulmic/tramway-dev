@@ -22,6 +22,10 @@ Or install it yourself as:
 $ gem install tramway-user
 ```
 
+## Methods
+
+`Tramway::User::User` has scope `admins` which returns all admins from the app.
+
 ## Contributing
 Contribution directions go here.
 

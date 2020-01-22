@@ -16,5 +16,3 @@
               - data_obj = data_obj.merge(anchor: button.anchor) if button.try :anchor
               %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons.link{ type: :button, data: data_obj }
                 = button.title
-          - else
-            = yield
