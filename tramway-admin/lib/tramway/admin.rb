@@ -31,6 +31,10 @@ module Tramway
       def get_models_by_key(checked_models, project, role)
         checked_models && checked_models != [] && checked_models[project][role] || []
       end
+
+      def models_array(models_type:, role:)
+        instance_variable_get("@#{models_type}_models")&.map { |projects| projects[1][role] }&.flatten || []
+      end
     end
   end
 end

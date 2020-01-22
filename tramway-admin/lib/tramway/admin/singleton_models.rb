@@ -18,13 +18,6 @@ module Tramway::Admin::SingletonModels
   end
 
   def singleton_models(role:)
-    if @singleton_models
-      @singleton_models.map do |projects|
-        projects[1][role]
-      end.flatten
-    else
-      error = Tramway::Error.new(plugin: :admin, method: :singleton_models, message: 'List of singleton_models is empty. You should add some of them using `::Tramway::Admin.set_singleton_models(*list_of_classes, project: :your_project_name)` in `config/initializers/tramway.rb`')
-      raise error.message
-    end
+    models_array models_type: :singleton, role: role
   end
 end

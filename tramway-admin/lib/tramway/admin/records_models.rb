@@ -27,13 +27,6 @@ module Tramway::Admin::RecordsModels
   end
 
   def available_models(role:)
-    if @available_models
-      @available_models.map do |projects|
-        projects[1][role]
-      end.flatten
-    else
-      error = Tramway::Error.new(plugin: :admin, method: :available_models, message: 'List of available_models is empty. You should add some of them using `::Tramway::Admin.set_available_models(*list_of_classes, project: :your_project_name)` in `config/initializers/tramway.rb`')
-      raise error.message
-    end
+    models_array models_type: :available, role: role
   end
 end
