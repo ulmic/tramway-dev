@@ -11,8 +11,8 @@ module Tramway::Admin::RecordsModels
     models = get_models_by_key(@available_models, project, role)
     if project_is_engine?(project)
       models += engine_class(project).dependencies.map do |dependency|
-        if @available_models[dependency].present?
-          @available_models[dependency]
+        if @available_models[dependency][role].present?
+          @available_models[dependency][role]
         else
           error = Tramway::Error.new(
             plugin: :admin,
