@@ -106,8 +106,8 @@ ru:
         common: Не на главной странице
     tramway/event/participant_form_field:
       field_type:
-        text: Многострочный текст
-        string: Текст
+        text: Многострочное поле ввода
+        string: Однострочное поле ввода
         numeric: Число
         date_picker: Дата
         select: Выпадающий список (да/нет)
