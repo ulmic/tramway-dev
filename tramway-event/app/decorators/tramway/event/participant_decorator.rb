@@ -25,6 +25,8 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
       last_name = object.values['Имя']
       patronymic = object.values['Отчество']
       "#{first_name} #{last_name} #{patronymic}"
+    else
+      '(участник не ввёл ФИО)'
     end
   end
 

@@ -16,7 +16,6 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
         status
         request_collecting_duration
         description
-        participants_list
       ]
     end
 
