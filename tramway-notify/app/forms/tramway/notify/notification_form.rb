@@ -8,6 +8,6 @@ class Tramway::Notify::NotificationForm < Tramway::Core::ApplicationForm
     :notification_type,
     :departure_date,
     :state,
-    :departure_state,
+    :departure_state_event,
     :action
 end
