@@ -20,15 +20,11 @@ module Tramway
       protected
 
       def check_available!
-        unless model_given?
-          raise 'Model is not available'
-        end
+        raise 'Model is not available' unless model_given?
       end
 
       def check_available_scope!
-        if params[:scope].present? && !available_scope_given?
-          raise 'Scope is not available'
-        end
+        raise 'Scope is not available' if params[:scope].present? && !available_scope_given?
       end
 
       def collections_counts

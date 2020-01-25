@@ -4,7 +4,7 @@ module Tramway
   module Collections
     module Helper
       def collection_list_by(name:)
-        begin 
+        begin
           require name # needed to load class name with collection
         rescue LoadError
           raise "No such file #{name}. You should create file in the `lib/#{name}.rb` or elsewhere you want"

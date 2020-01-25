@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Admin::RecordsModels
   def set_available_models(*models, project:, role: :admin)
     @available_models ||= {}

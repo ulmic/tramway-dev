@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Admin::SingletonModels
   def set_singleton_models(*models, project:, role: :admin)
     @singleton_models ||= {}

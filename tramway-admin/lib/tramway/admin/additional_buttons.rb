@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Admin::AdditionalButtons
   def set_additional_buttons(buttons, project:)
     @additional_buttons ||= {}

@@ -19,8 +19,8 @@ module Tramway
       end
 
       scope :active, -> { where state: :active }
-      scope :created_by_user, -> (user_id) { joins(:audits).where('audits.action = \'create\' AND audits.user_id = ?', user_id) }
-      scope :admin_scope, -> (_arg) { all }
+      scope :created_by_user, ->(user_id) { joins(:audits).where('audits.action = \'create\' AND audits.user_id = ?', user_id) }
+      scope :admin_scope, ->(_arg) { all }
 
       include ::PgSearch::Model
 

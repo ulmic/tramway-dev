@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Admin::Notifications
   def set_notificable_queries(**queries)
     @notificable_queries ||= {}
