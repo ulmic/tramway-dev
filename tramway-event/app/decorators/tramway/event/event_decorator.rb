@@ -67,12 +67,12 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def events_link
-    fa_icon 'link'
-    events_link = Tramway::Event::Engine.routes.url_helpers.event_path object
-    link_to 'ссылка на мероприятие', ['http://molodoy.online', events_link].join
+    event_link = Tramway::Event::Engine.routes.url_helpers.event_path object
+    event_url = ['http://molodoy.online', event_link].join
     content_tag(:div) do
-      concat link_to ['http://molodoy.online', events_link].join, ['http://molodoy.online', events_link].join
-      concat fa_icon 'copy'
+      concat link_to event_url, event_url, id: "event#{object.id}"
+      concat ' '
+      concat fa_icon 'copy', class: 'clipboard-btn', data: { clipboard_action: 'copy', clipboard_target: "#event#{object.id}" }, style: 'font-size: 28px'
     end
   end
 
