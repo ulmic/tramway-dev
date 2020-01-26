@@ -19,6 +19,10 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
       ]
     end
 
+    def show_associations
+      %i[participant_form_fields]
+    end
+
     def list_attributes
       %i[requested_participants approved_participants]
     end
@@ -27,7 +31,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   delegate :title, to: :object
   delegate :status, to: :object
   decorate_association :participants
-  decorate_association :participant_form_fields
+  decorate_association :participant_form_fields, as: :event
   decorate_association :sections
   decorate_association :partakings
   decorate_association :partnerships

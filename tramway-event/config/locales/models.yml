@@ -36,6 +36,7 @@ ru:
         not_yet_held: мероприятие ещё не проведено
         participants_list: Список участников
         does_not_have_end_date: мероприятие не имеет даты окончания
+        participant_form_fields: Поле анкеты
       tramway/event/participant:
         name: Имя
         list_fields: Данные
