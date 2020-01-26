@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ApplicationForm
-  properties :title, :description, :field_type, :options, :position
+class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ExtendedApplicationForm
+  properties :title, :description, :field_type, :options, :position, :list_field
   association :event
 
   def initialize(object)
@@ -11,8 +11,20 @@ class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ApplicationFor
         description: :string,
         field_type: :default,
         options: :text,
+        list_field: :boolean,
         position: :numeric
     end
+  end
+
+  def submit(params)
+    super(params).tap do
+      model.options&.merge! list_field: (params[:list_field] == '1').to_s
+      model.save
+    end
+  end
+
+  def list_field
+    model.options&.dig('list_field') == 'true'
   end
 
   def options
