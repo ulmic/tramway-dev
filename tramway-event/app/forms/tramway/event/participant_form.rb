@@ -3,7 +3,7 @@
 require 'securerandom'
 
 class Tramway::Event::ParticipantForm < ::Tramway::Core::ApplicationForm
-  properties :participation_state, :comment
+  properties :participation_state_event, :comment
   association :event
 
   def self.new(object)
@@ -12,7 +12,7 @@ class Tramway::Event::ParticipantForm < ::Tramway::Core::ApplicationForm
         SecureRandom.hex,
         object.event,
         comment: :string,
-        participation_state: :string
+        participation_state_event: :string
       ).new object
     else
       super(object).tap do |obj|

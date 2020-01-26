@@ -25,6 +25,8 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   end
 
   def duration
+    return unless object.begin_date.present? || object.end_date.present?
+
     if object.begin_date.to_date == object.end_date.to_date
       I18n.l(object.begin_date, format: '%d %B %Y').to_s
     elsif object.begin_date.month == object.end_date.month

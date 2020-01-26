@@ -82,6 +82,13 @@ RSpec.describe Tramway::Core::ApplicationDecorator do
         expect(decorated_test_model.association_models).to all be_a(AssociationModelDecorator)
       end
 
+      it 'should create `association_as` method after decorating association' do
+        test_model = create :test_model
+        create_list :association_model, 10, test_model_id: test_model.id
+        decorated_test_model = TestModelDecorator.decorate test_model
+        expect(decorated_test_model.association_models_as).to eq :record
+      end
+
       it 'should raise error about specify class_name of association' do
         test_model = create :test_model
         create_list :another_association_model, 10, test_model_id: test_model.id

@@ -6,6 +6,7 @@ module Tramway
       include ::FontAwesome5::Rails::IconHelper
       include AuthManagement
       include AdditionalButtonsBuilder
+      include ::SmartButtons
       include CasesHelper
       include RussianCasesHelper
       include ::Tramway::Admin::RecordsHelper

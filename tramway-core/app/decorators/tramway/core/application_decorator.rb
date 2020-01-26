@@ -48,7 +48,7 @@ class Tramway::Core::ApplicationDecorator
       end
     end
 
-    def decorate_association(association_name, decorator: nil)
+    def decorate_association(association_name, decorator: nil, as: nil)
       @@decorated_associations ||= []
       @@decorated_associations << association_name
 
@@ -76,6 +76,10 @@ class Tramway::Core::ApplicationDecorator
         if association.class == ActiveRecord::Reflection::BelongsToReflection
           return decorator_class_name.decorate object.send association_name
         end
+      end
+
+      define_method "#{association_name}_as" do
+        as
       end
     end
 

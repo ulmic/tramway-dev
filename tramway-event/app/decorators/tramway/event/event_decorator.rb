@@ -20,6 +20,10 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
       ]
     end
 
+    def show_associations
+      %i[participant_form_fields]
+    end
+
     def list_attributes
       %i[requested_participants approved_participants events_link]
     end
@@ -28,7 +32,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   delegate :title, to: :object
   delegate :status, to: :object
   decorate_association :participants
-  decorate_association :participant_form_fields
+  decorate_association :participant_form_fields, as: :event
   decorate_association :sections
   decorate_association :partakings
   decorate_association :partnerships
@@ -57,6 +61,8 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def duration(begin_date: object.begin_date, end_date: object.end_date)
+    return unless begin_date.present? || end_date.present?
+
     if begin_date.to_date == end_date.to_date
       I18n.l(begin_date, format: '%d %B %Y').to_s
     elsif begin_date.month == end_date.month

@@ -36,6 +36,7 @@ ru:
         not_yet_held: мероприятие ещё не проведено
         participants_list: Список участников
         does_not_have_end_date: мероприятие не имеет даты окончания
+        participant_form_fields: Поле анкеты
       tramway/event/participant:
         name: Имя
         list_fields: Данные
@@ -62,8 +63,9 @@ ru:
         description: Описание
         field_type: Тип поля
         position: Позиция в анкете
-        options: Параметры
+        options: Параметры (не редактировать без надобности)
         title: Название (в Tramway название Поля анкеты - это ключ для выборки пользователей. Если вы измените ключ к выборке пользователей, то все пользователи, получившие данные по предыдущему ключу по этой выборке показываться не будут)
+        list_field: Показывать это поле в общем списке участников?
       tramway/event/partaking:
         part_name: Мероприятие
         event_duration: Дата мероприятия
