@@ -4,8 +4,5 @@
 
 $(document).ready(function(){  
   
-  var clipboard = new Clipboard('.clipboard-btn');
-  console.log(clipboard);
-  console.log("Yeah we did it!")
-	
+  var clipboard = new Clipboard('.clipboard-btn');	
 });
