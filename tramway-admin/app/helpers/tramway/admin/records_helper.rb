@@ -88,10 +88,10 @@ module Tramway::Admin
                         }
       else
         new_record_path model: association.class_name,
-          redirect: current_model_record_path(object.model),
-          association.options[:class_name].underscore => {
-            as || object.model.class.name.underscore => object.id
-          }
+                        redirect: current_model_record_path(object.model),
+                        association.options[:class_name].underscore => {
+                          as || object.model.class.name.underscore => object.id
+                        }
       end
     end
   end
