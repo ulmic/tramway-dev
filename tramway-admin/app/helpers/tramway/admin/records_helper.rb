@@ -74,12 +74,12 @@ module Tramway::Admin
       return :active if params[:search].nil? && params[:scope].to_s == tab.to_s
     end
 
-    def new_associated_record_path(object:, association:)
+    def new_associated_record_path(object:, association:, as:)
       unless association.options[:class_name].present?
         raise "You should set `class_name` for #{association.name} association"
       end
 
-      if association.options[:as].present?
+      if association.options[:as].present? # polymorphic? conditiion
         new_record_path model: association.class_name,
                         redirect: current_model_record_path(object),
                         association.options[:class_name].underscore => {
@@ -88,10 +88,10 @@ module Tramway::Admin
                         }
       else
         new_record_path model: association.class_name,
-                        redirect: current_model_record_path(object),
-                        association.options[:class_name].underscore => {
-                          object.model.class.name.underscore => object.id
-                        }
+          redirect: current_model_record_path(object.model),
+          association.options[:class_name].underscore => {
+            as || object.model.class.name.underscore => object.id
+          }
       end
     end
   end

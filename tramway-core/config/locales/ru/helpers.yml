@@ -13,6 +13,7 @@ ru:
       search: Искать
       reset: Сбросить
       download: Скачать
+      add: Добавить
     scope:
       found: Найденные
     "yes": Да

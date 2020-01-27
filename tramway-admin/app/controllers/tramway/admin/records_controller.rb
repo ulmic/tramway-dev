@@ -21,7 +21,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   def create
     @record_form = admin_form_class.new model_class.new
     if @record_form.submit params[:record]
-      redirect_to params[:redirect] || record_path(@record_form.model)
+      redirect_to params[:redirect].present? ? params[:redirect] : record_path(@record_form.model)
     else
       render :new
     end
@@ -34,7 +34,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   def update
     @record_form = admin_form_class.new model_class.active.find params[:id]
     if @record_form.submit params[:record]
-      redirect_to params[:redirect] || record_path(@record_form.model)
+      redirect_to params[:redirect].present? ? params[:redirect] : record_path(@record_form.model)
     else
       render :edit
     end
@@ -43,6 +43,6 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   def destroy
     record = model_class.active.find params[:id]
     record.remove
-    redirect_to records_path
+    redirect_to params[:redirect].present? ? params[:redirect] : records_path
   end
 end
