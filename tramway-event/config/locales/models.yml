@@ -20,6 +20,7 @@ ru:
       tramway/event/place: Место
     attributes:
       tramway/event/event:
+        events_link: Ссылка на мероприятие
         title: Название
         name: Название
         description: Описание
@@ -49,6 +50,7 @@ ru:
         participation_state: Статус участника
         event: Мероприятие
         values: Данные
+        participation_state_event: Статус участия в мероприятии
       tramway/event/section:
         title: Название
         description: Описание
