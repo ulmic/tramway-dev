@@ -11,9 +11,7 @@ module Tramway
       end
 
       def load_extensions
-        if defined? ::Tramway::Extensions
-          ::Tramway::Extensions.load
-        end
+        ::Tramway::Extensions.load if defined? ::Tramway::Extensions
       end
     end
   end

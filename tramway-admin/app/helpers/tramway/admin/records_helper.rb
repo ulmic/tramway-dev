@@ -81,11 +81,11 @@ module Tramway::Admin
 
       if association.options[:as].present? # polymorphic? conditiion
         new_record_path model: association.class_name,
-          redirect: current_model_record_path(object),
-          association.options[:class_name].underscore => {
-          association.options[:as] => object.id,
-            association.type => object.class.model_name
-          }
+                        redirect: current_model_record_path(object),
+                        association.options[:class_name].underscore => {
+                          association.options[:as] => object.id,
+                          association.type => object.class.model_name
+                        }
       else
         new_record_path model: association.class_name,
           redirect: current_model_record_path(object.model),

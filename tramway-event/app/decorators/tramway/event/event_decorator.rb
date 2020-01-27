@@ -10,6 +10,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
       %i[
         title
         duration
+        events_link
         state
         created_at
         photo
@@ -24,7 +25,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def list_attributes
-      %i[requested_participants approved_participants]
+      %i[requested_participants approved_participants events_link]
     end
   end
 
@@ -68,6 +69,16 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
       "#{I18n.t('date.from')} #{I18n.l(begin_date, format: '%d')} #{I18n.t('date.to')} #{I18n.l(end_date, format: '%d %B %Y')}"
     else
       "#{I18n.t('date.from')} #{I18n.l(begin_date, format: '%d %B %Y')} #{I18n.t('date.to')} #{I18n.l(end_date, format: '%d %B %Y')}"
+    end
+  end
+
+  def events_link
+    event_link = Tramway::Event::Engine.routes.url_helpers.event_path object
+    event_url = ['http://molodoy.online', event_link].join
+    content_tag(:div) do
+      concat link_to event_url, event_url, id: "event#{object.id}"
+      concat ' '
+      concat fa_icon 'copy', class: 'clipboard-btn', data: { clipboard_action: 'copy', clipboard_target: "#event#{object.id}" }, style: 'font-size: 28px'
     end
   end
 

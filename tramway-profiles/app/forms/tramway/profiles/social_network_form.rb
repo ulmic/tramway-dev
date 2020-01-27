@@ -6,10 +6,10 @@ class Tramway::Profiles::SocialNetworkForm < ::Tramway::Core::ApplicationForm
   def initialize(object)
     super(object).tap do
       form_properties title: :string,
-        network_name: :default,
-        uid: :string,
-        record_type: :default,
-        record_id: :integer
+                      network_name: :default,
+                      uid: :string,
+                      record_type: :default,
+                      record_id: :integer
     end
   end
 end

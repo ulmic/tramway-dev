@@ -23,11 +23,11 @@ module Tramway
         if @application&.model_class.present?
           begin
             @application.model_class.first
-          rescue
+          rescue StandardError
             nil
           end
         else
-          @application 
+          @application
         end
       end
 

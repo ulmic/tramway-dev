@@ -8,6 +8,6 @@
   ::Tramway::Event::Partaking,
   ::Tramway::Event::Place,
   project: :event)
-::Tramway::Admin.set_notificable_queries new_participants: -> (current_user) do
+::Tramway::Admin.set_notificable_queries new_participants: lambda { |current_user|
   ::Tramway::Event::Participant.active.where(participation_state: :requested).send "#{current_user.role}_scope", current_user.id
-end
+}
