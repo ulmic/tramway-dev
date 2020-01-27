@@ -6,11 +6,11 @@ class Tramway::SportSchool::TrainerForm < ::Tramway::Core::ApplicationForm
   def initialize(object)
     super(object).tap do
       form_properties first_name: :string,
-        last_name: :string,
-        patronymic: :string,
-        photo: :file,
-        degree: :default,
-        description: :text
+                      last_name: :string,
+                      patronymic: :string,
+                      photo: :file,
+                      degree: :default,
+                      description: :text
     end
   end
 end

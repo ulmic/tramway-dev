@@ -6,13 +6,13 @@ class Tramway::SportSchool::InstitutionForm < ::Tramway::Core::ApplicationForm
   def initialize(object)
     super(object).tap do
       form_properties title: :string,
-        tagline: :string,
-        phone: :string,
-        address: :string,
-        latitude: :string,
-        longtitude: :string,
-        url: :string,
-        found_date: :date_picker
+                      tagline: :string,
+                      phone: :string,
+                      address: :string,
+                      latitude: :string,
+                      longtitude: :string,
+                      url: :string,
+                      found_date: :date_picker
     end
   end
 end

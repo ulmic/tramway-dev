@@ -6,10 +6,10 @@ class Tramway::SportSchool::OrganizationForm < ::Tramway::Core::ApplicationForm
   def initialize(object)
     super(object).tap do
       form_properties title: :string,
-        description: :default,
-        organization_type: :default,
-        logo: :file,
-        link: :string
+                      description: :default,
+                      organization_type: :default,
+                      logo: :file,
+                      link: :string
     end
   end
 end
