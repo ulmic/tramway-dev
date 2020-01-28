@@ -100,7 +100,7 @@ It will show you in the view in bootstrap styles with font-awesome `copy` icon.
 
 Something like this:
 
-*here should be the image*
+![copy_to_clipboard_button](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-core/docs/copy_to_clipboard_button.png)
 
 ```ruby
 copy_to_clipboard "some_id" # some_id is HTML id of element. Content of this element will be copied to the clipboard after pressing the button
