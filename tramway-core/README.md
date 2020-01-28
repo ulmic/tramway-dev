@@ -12,6 +12,7 @@ tramway-core - это ядро проекта [tramway](https://github.com/ulmic
 ```ruby
 gem 'tramway-core'
 gem 'audited'
+gem 'clipboard-rails'
 ```
 
 ```shell
@@ -80,6 +81,31 @@ def field_type
   enumerize_view object.field_type
 end
 ```
+
+# Other helpers
+
+## CopyToClipboardHelper
+
+[app/helpers/tramway/core/copy_to_clipboard_helper.rb](https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/app/helpers/tramway/core/copy_to_clipboard_helper.rb)
+
+### Install
+
+```ruby
+include ::Tramway::Core::CopyToClipboardHelper
+```
+
+### Usage
+
+It will show you in the view in bootstrap styles with font-awesome `copy` icon.
+
+Something like this:
+
+*here should be the image*
+
+```ruby
+copy_to_clipboard "some_id" # some_id is HTML id of element. Content of this element will be copied to the clipboard after pressing the button
+```
+
 
 # Базовые классы
 
