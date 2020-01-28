@@ -7,12 +7,12 @@ class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ExtendedApplic
   def initialize(object)
     super(object).tap do
       form_properties event: :association,
-        title: :string,
-        description: :string,
-        field_type: :default,
-        options: :text,
-        list_field: :boolean,
-        position: :numeric
+                      title: :string,
+                      description: :string,
+                      field_type: :default,
+                      options: :text,
+                      list_field: :boolean,
+                      position: :numeric
     end
   end
 
