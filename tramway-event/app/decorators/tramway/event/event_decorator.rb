@@ -77,9 +77,10 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
     event_url = ['molodoy.online', event_link].join
     content_tag(:div) do
       concat link_to event_url, event_url, id: "event#{object.id}"
-      concat(button_tag(class: 'btn btn-info clipboard-btn', data: { clipboard_action: 'copy', clipboard_target: "#event#{object.id}" }, style: 'margin-left: 15px') do
-        fa_icon 'copy'
-      end)
+      concat(button_tag(class: 'btn btn-info clipboard-btn', data: { clipboard_action: 'copy', clipboard_target: "#event#{object.id}" },
+                        style: 'margin-left: 15px') do
+               fa_icon 'copy'
+             end)
     end
   end
 
