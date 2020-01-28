@@ -4,6 +4,7 @@
 #= require bootstrap-datepicker-1.8.0
 #= require bootstrap-datepicker-1.8.0.ru.min
 #= require font_awesome5
+#= require clipboard
 #= require_tree .
 
 window.i18n_locale = (locale) ->
@@ -28,3 +29,5 @@ $(document).ready ->
       anchor = $(this).data('anchor')
       unless $(anchor).offset() == undefined
         $(window).scrollTop $(anchor).offset().top
+
+  clipboard = new Clipboard '.clipboard-btn'

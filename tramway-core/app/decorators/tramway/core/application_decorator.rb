@@ -6,6 +6,7 @@ class Tramway::Core::ApplicationDecorator
   include ActionView::Helpers
   include ActionView::Context
   include ::FontAwesome5::Rails::IconHelper
+  include ::Tramway::Core::CopyToClipboardHelper
 
   def initialize(object)
     @object = object
