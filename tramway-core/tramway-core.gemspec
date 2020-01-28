@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap', '>= 4.1.2'
   s.add_dependency 'carrierwave'
   s.add_dependency 'ckeditor', '4.2.4'
+  s.add_dependency 'clipboard-rails'
   s.add_dependency 'enumerize', '~> 2.1', '>= 2.1.2'
   s.add_dependency 'font_awesome5_rails'
   s.add_dependency 'haml-rails', '~> 1.0', '>= 1.0.0'
