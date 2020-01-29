@@ -48,6 +48,13 @@ Tramway::Admin.set_available_models ::Tramway::Event::Event, ::Tramway::Event::P
 mount Tramway::Event::Engine, at: '/'
 ```
 
+## How-to
+
+### Create event
+
+English docs coming soon...
+[На русском](https://github.com/ulmic/tramway-dev/tree/develop/tramway-event/docs/russian)
+
 ## Contributing
 Contribution directions go here.
 
