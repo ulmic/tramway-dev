@@ -18,6 +18,7 @@ class Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ExtendedApplic
 
   def submit(params)
     super(params).tap do
+      model.options = {} if model.options == ''
       model.options&.merge! list_field: (params[:list_field] == '1').to_s
       model.save
     end
