@@ -6,7 +6,14 @@ require 'tramway/landing/generates/install_generator'
 module Tramway
   module Landing
     class << self
-      attr_accessor :head_content
+      def head_content=(content)
+        @@head_content ||= []
+        @@head_content += [content]
+      end
+
+      def head_content
+        @@head_content || []
+      end
     end
   end
 end
