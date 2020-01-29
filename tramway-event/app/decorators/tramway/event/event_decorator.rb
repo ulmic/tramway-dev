@@ -74,8 +74,8 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
 
   def events_link
     event_link = Tramway::Event::Engine.routes.url_helpers.event_path object
-    event_url = ['molodoy.online', event_link].join
-    content_tag(:div) do
+    event_url = ['http://molodoy.online', event_link].join
+    content_tag(:pre) do
       id = "event#{object.id}"
       concat link_to event_url, event_url, id: id
       concat copy_to_clipboard id
