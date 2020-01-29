@@ -117,6 +117,19 @@ To add notification to application, you need just set queries in initializers.
 end
 ```
 
+## Admin Main Page management
+
+Start page of admin panel contains only `application.name` by default. To manage it just set `Tramway::Admin.welcome_page_actions` with some lambda and set `@content` variable with HTML.
+
+Example:
+
+```ruby
+::Tramway::Admin.welcome_page_actions = lambda do
+  @content = '<a href="http://it-way.pro">IT Way</a>'
+end
+```
+
+
 ## Contributing
 Contribution directions go here.
 
