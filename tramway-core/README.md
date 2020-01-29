@@ -82,19 +82,19 @@ def field_type
 end
 ```
 
-# Other helpers
+## Other helpers
 
-## CopyToClipboardHelper
+### CopyToClipboardHelper
 
 [app/helpers/tramway/core/copy_to_clipboard_helper.rb](https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/app/helpers/tramway/core/copy_to_clipboard_helper.rb)
 
-### Install
+#### Install
 
 ```ruby
 include ::Tramway::Core::CopyToClipboardHelper
 ```
 
-### Usage
+#### How to use it
 
 It will show you in the view in bootstrap styles with font-awesome `copy` icon.
 
