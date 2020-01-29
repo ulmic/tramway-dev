@@ -27,6 +27,13 @@ rails db:migrate
 
 #### 4. Then make `tramway-landing` installation. [How-to](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/README.md#installation)
 
+Versions table
+
+| tramway-event | tramway-landing |
+| ------------- | --------------- |
+| < 1.9.27.1 | 1.x |
+| >= 1.9.27.2 | 2.x | 
+
 #### 5. Add events to admin panel
 
 *config/initializers/tramway.rb*

@@ -21,6 +21,13 @@ Or install it yourself as:
 $ gem install tramway-sport_school
 ```
 
+#### Versions table
+
+| tramway-sport_school | tramway-landing |
+| ------------------ |  --------------- |
+| < 1.2.10.2 | 1.x |
+| >= 1.2.10.2 | 2.x |
+
 ## Contributing
 Contribution directions go here.
 

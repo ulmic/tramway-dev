@@ -26,3 +26,8 @@
                                             }
                                           end
                                         } }, project: :sport_school)
+
+::Tramway::Landing.head_content = lambda do
+  concat stylesheet_link_tag    'tramway/sport_school/application', media: 'all'
+  concat javascript_include_tag 'tramway/sport_school/application'
+end

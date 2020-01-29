@@ -22,6 +22,16 @@ $ rails db:create db:migrate
 $ rails tramway:conference:prepare
 ```
 
+#### Versions table
+
+Versions table
+
+| tramway-conference | tramway-event | tramway-landing |
+| ------------------ | ------------- | --------------- |
+| < 1.8.14.1 | < 1.9.27.2 | 1.x |
+| >= 1.8.14.1 | >= 1.9.27.2 | 2.x | 
+
+
 ## Contributing
 Contribution directions go here.
 

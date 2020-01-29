@@ -21,6 +21,13 @@ Or install it yourself as:
 $ gem install tramway-news
 ```
 
+### Versions table
+
+| tramway-news | tramway-landing |
+| ------------- | --------------- |
+| < 1.0.4.2 | 1.x |
+| >= 1.0.4.2 | 2.x | 
+
 ## Contributing
 Contribution directions go here.
 
