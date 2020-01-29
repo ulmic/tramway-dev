@@ -50,6 +50,7 @@ ru:
         participation_state: Статус участника
         event: Мероприятие
         values: Данные
+        participation_state_event: Статус участия в мероприятии
       tramway/event/section:
         title: Название
         description: Описание

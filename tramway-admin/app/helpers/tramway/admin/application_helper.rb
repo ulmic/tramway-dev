@@ -15,6 +15,7 @@ module Tramway
       include ::Tramway::Admin::InputsHelper
       include ::Tramway::Admin::FocusGeneratorHelper
       include ::Tramway::Collections::Helper
+      include ::Tramway::Core::CopyToClipboardHelper
 
       def object_type(object)
         object_class_name = if object.class.ancestors.include? ::Tramway::Core::ApplicationDecorator
