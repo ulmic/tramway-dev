@@ -74,9 +74,6 @@ root to: 'web/welcome#index'
 
 *app/views/web/welcome/index.html.haml*
 ```haml
-= content_for :head_content do
-  -# your content for <head>
-  
 = content_for :title do
   -# your content for <title>
   
@@ -102,6 +99,33 @@ root to: 'web/welcome#index'
   -# longtitude for contacts block type map
   
 -# everything you want on the main page
+```
+
+## Head Content
+
+### Tramway::Landing 2.x
+
+It will push this content to `<head>` tag in every landing page. Including public page in `tramway-event`, `tramway-sport_school`, `tramway-conference`, `tramway-news`, `tramway-page` gems. 
+
+*config/initializers/tramway.rb*
+
+```ruby
+::Tramway::Landing.head_content = lambda do
+  concat javascript_include_tag :application
+  concat stylesheet_link_tag :application
+  # don't forget to use `concat` method here
+end
+```
+
+### Tramway::Landing 1.x
+
+It will push this content to `<head>` tag only on main page. You aren't able to manage head tag in other gems and pages.
+
+*app/views/web/welcome/index.html.haml*
+
+```haml
+= content_for :head_content do
+  -# your content for <head>
 ```
 
 Then all your showing blocks will be on the main page.
