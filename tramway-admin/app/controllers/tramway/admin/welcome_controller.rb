@@ -3,5 +3,7 @@
 class Tramway::Admin::WelcomeController < Tramway::Admin::ApplicationController
   skip_before_action :check_available!
 
-  def index; end
+  def index
+    self.instance_exec(&::Tramway::Admin.welcome_page_actions)
+  end
 end

@@ -5,6 +5,7 @@ require 'tramway/admin/singleton_models'
 require 'tramway/admin/records_models'
 require 'tramway/admin/additional_buttons'
 require 'tramway/admin/notifications'
+require 'tramway/admin/welcome_page_actions'
 require 'tramway/error'
 
 module Tramway
@@ -16,6 +17,7 @@ module Tramway
       include ::Tramway::Admin::SingletonModels
       include ::Tramway::Admin::AdditionalButtons
       include ::Tramway::Admin::Notifications
+      include ::Tramway::Admin::WelcomePageActions
 
       attr_reader :customized_admin_navbar
 
