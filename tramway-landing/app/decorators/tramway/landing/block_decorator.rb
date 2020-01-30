@@ -29,6 +29,10 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     object.human_view_state_name
   end
 
+  def link
+    "##{object.anchor}"
+  end
+
   def view_state_button_color(event)
     case event
     when :publish
