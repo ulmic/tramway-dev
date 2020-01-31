@@ -11,6 +11,7 @@ class Tramway::Event::ParticipantForm < ::Tramway::Core::ApplicationForm
       ::Tramway::Event::ParticipantExtendedFormCreator.create_form_class(
         SecureRandom.hex,
         object.event,
+        participation_state_event: :default,
         comment: :string,
       ).new object
     else
