@@ -15,11 +15,11 @@ module Tramway::Core::Concerns::AttributesDecoratorHelper
 
   def image_view(original, thumb: nil, filename: nil)
     if original.present?
-      thumb ||= original.small
-      filename ||= original.path.split('/').last
-      src_thumb = if thumb.is_a?(CarrierWave::Uploader::Base)
+      thumb ||= original.is_a?(CarrierWave::Uploader::Base) ? original.small : nil
+      filename ||= original.is_a?(CarrierWave::Uploader::Base) ? original.path.split('/').last : nil
+      src_thumb = if thumb&.is_a?(CarrierWave::Uploader::Base)
                     thumb.url
-                  elsif thumb.match(%r{^(?:[a-zA-Z0-9+/]{4})*(?:|(?:[a-zA-Z0-9+/]{3}=)|(?:[a-zA-Z0-9+/]{2}==)|(?:[a-zA-Z0-9+/]{1}===))$})
+                  elsif thumb&.match(%r{^(?:[a-zA-Z0-9+/]{4})*(?:|(?:[a-zA-Z0-9+/]{3}=)|(?:[a-zA-Z0-9+/]{2}==)|(?:[a-zA-Z0-9+/]{1}===))$})
                     "data:image/jpeg;base64,#{thumb}"
                   else
                     thumb
@@ -33,12 +33,12 @@ module Tramway::Core::Concerns::AttributesDecoratorHelper
                      end
       content_tag(:div) do
         begin
-          concat image_tag src_thumb
+          concat image_tag src_thumb || src_original
         rescue NoMethodError => e
           error = Tramway::Error.new plugin: :core, method: :image_view, message: "You should mount PhotoUploader to your model. Just add `mount_uploader \#{attribute_name}, PhotoUploader` to your model. #{e.message}"
           raise error.message
         end
-        concat link_to(fa_icon(:download), src_original, class: 'btn btn-success', download: filename)
+        concat link_to(fa_icon(:download), src_original, class: 'btn btn-success', download: filename) if filename
       end
     end
   end
