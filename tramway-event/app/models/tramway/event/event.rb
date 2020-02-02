@@ -13,7 +13,7 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
 
   enumerize :status, default: :common, in: %i[common main]
 
-  scope :main_event, -> { where(status: :main) }
+  scope :main_event, -> { active.where(status: :main) }
   scope :actual, -> { where 'end_date > ?', DateTime.now }
   scope :past, -> { where 'end_date < ?', DateTime.now }
 
