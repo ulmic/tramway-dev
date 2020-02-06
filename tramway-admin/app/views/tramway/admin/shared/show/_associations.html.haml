@@ -7,7 +7,7 @@
     %td{ colspan: 2 }
       %table.table.table-striped.table-bordered
         - object.send(association.name)&.each do |association_object|
-          %tr
+          %tr{ id: "#{association.name}_#{association_object.id}" }
             %td
               = association_object.id
             %td
