@@ -4,7 +4,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
   include HTMLTagsHelpers
   class << self
     def collections
-      %i[requested waiting prev_approved without_answer approved rejected reserved all]
+      %i[all requested waiting prev_approved without_answer approved rejected reserved]
     end
 
     def list_attributes

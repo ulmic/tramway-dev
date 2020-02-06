@@ -38,6 +38,7 @@ ru:
         participants_list: Список участников
         does_not_have_end_date: мероприятие не имеет даты окончания
         participant_form_fields: Поле анкеты
+        short_description: Краткое описание
       tramway/event/participant:
         name: Имя
         list_fields: Данные
