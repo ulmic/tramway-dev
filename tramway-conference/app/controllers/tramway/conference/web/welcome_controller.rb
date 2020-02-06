@@ -12,6 +12,9 @@ class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::Appli
     actual_events = ::Tramway::Event::EventLinkDecorator.decorate ::Tramway::Event::Event.active.actual.order :begin_date
     @links = actual_events + past_events_links
     main_event = ::Tramway::Event::Event.main_event&.last
+    @close_events = ::Tramway::Event::Event.actual.map do |event|
+      ::Tramway::Event::EventAsPageWithButtonDecorator.decorate event 
+    end
     if main_event.present?
       @main_event = ::Tramway::Event::Events::Show::EventDecorator.decorate main_event
       @sections_as_features = main_event.sections.active.order(position: :asc).map { |s| ::Tramway::Event::SectionFeatureDecorator.decorate s }

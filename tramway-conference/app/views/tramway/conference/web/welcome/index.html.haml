@@ -27,6 +27,16 @@
 
 - @collection_news = @news
 
+%br
+.container
+  .row-fluid
+    %h1.text-center
+      Ближайшие мероприятия
+- @close_events.each do |event|
+  .container
+    .row-fluid
+      = render 'tramway/landing/blocks/templates/section_with_image_and_text', block: event
+
 - if @main_event.present?
   - content_for :main_image do
     = request.protocol + request.host_with_port + @main_event.background.url
