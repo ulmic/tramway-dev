@@ -31,7 +31,7 @@ module Tramway::Admin
       "#{model_name || model_class}Decorator".constantize
     end
 
-    def get_collection(_model_class)
+    def get_collection
       decorator_class.collections
     end
 
