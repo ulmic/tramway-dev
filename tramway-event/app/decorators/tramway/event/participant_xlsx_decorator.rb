@@ -14,18 +14,26 @@ class Tramway::Event::ParticipantXlsxDecorator < Tramway::Export::Xlsx::Applicat
   end
 
   def full_name
+    return unless object.values
+
     "#{object.values['Фамилия'] || object.values['Фамилия ']} #{object.values['Имя'] || object.values['Имя ']}"
   end
 
   def email
+    return unless object.values
+
     object.values['Email']
   end
 
   def phone
+    return unless object.values
+
     object.values['Телефон']
   end
 
   def organization
+    return unless object.values
+
     object.values['Место работы/ Учебное заведение']
   end
 

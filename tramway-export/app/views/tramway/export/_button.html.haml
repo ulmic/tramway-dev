@@ -1,4 +1,4 @@
-- if Tramway::Export.exportable_model? model_class, project: @application_engine
+- if Tramway::Export.exportable_model? model_class, project: (@application_engine || @application.name)
   - model_name = model_class.name.underscore
   - id = "export-#{model_name}"
   .btn-group{ role: :group }
