@@ -24,6 +24,10 @@ module Tramway
 
       include ::PgSearch::Model
 
+      def creator
+        audits.where(action: :create).first.user
+      end
+
       # FIXME: detect inhertited locales
       class << self
         def human_attribute_name(attribute_name, *_args)
