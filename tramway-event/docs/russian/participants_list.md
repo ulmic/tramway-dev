@@ -4,9 +4,15 @@
 
 ![screen-9](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-event/docs/russian/screens/9.png)
 
-### 2. Вы можете увидеть этого участников в общем списке участников в панели администратора
+### 2. Вы можете увидеть этого участников двумя способами
+
+##### 1) в общем списке участников в панели администратора
 
 ![screen-10](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-event/docs/russian/screens/10.png)
+
+##### 2) открыв список участников конкретного мероприятия (ссылка Открыть на странице мероприятия в админке)
+
+![screen-15](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-event/docs/russian/screens/15.png)
 
 Перед вами список участников ваших мероприятий. Список разбит по статусам участия, которым каждый создатель мероприятия управляет самостоятельно.
 
