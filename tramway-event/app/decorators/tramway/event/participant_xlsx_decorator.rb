@@ -9,7 +9,7 @@ class Tramway::Event::ParticipantXlsxDecorator < Tramway::Export::Xlsx::Applicat
     end
 
     def filename
-      'participants.xlsx'
+      'participants.xls'
     end
   end
 
