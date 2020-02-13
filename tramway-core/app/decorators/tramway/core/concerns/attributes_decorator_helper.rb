@@ -16,7 +16,7 @@ module Tramway::Core::Concerns::AttributesDecoratorHelper
   def image_view(original, thumb: nil, filename: nil)
     if original.present?
       thumb ||= original.is_a?(CarrierWave::Uploader::Base) ? original.small : nil
-      filename ||= original.is_a?(CarrierWave::Uploader::Base) ? original.path.split('/').last : nil
+      filename ||= original.is_a?(CarrierWave::Uploader::Base) ? original.path&.split('/')&.last : nil
       src_thumb = if thumb&.is_a?(CarrierWave::Uploader::Base)
                     thumb.url
                   elsif thumb&.match(%r{^(?:[a-zA-Z0-9+/]{4})*(?:|(?:[a-zA-Z0-9+/]{3}=)|(?:[a-zA-Z0-9+/]{2}==)|(?:[a-zA-Z0-9+/]{1}===))$})
