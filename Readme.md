@@ -71,6 +71,8 @@ Tramway решает две проблемы:
 * [kalashnikovisme.ru](http://kalashnikovisme.ru)
 * [МБУ ДО ДЮСШ Ленинского района](http://sportschool-ulsk.ru/) (не поддерживается)
 
+And a lot of private projects 🥰
+
 ## Contributors
 
 * [Pavel Kalashnikov](https://github.com/kalashnikovisme)
