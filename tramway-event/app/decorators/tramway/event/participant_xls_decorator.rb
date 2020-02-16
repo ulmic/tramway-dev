@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Event::ParticipantXlsxDecorator < Tramway::Export::Xlsx::ApplicationDecorator
+class Tramway::Event::ParticipantXlsDecorator < Tramway::Export::Xls::ApplicationDecorator
   class << self
     def columns
       %i[full_name email phone organization event].map do |attribute|
