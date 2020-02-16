@@ -57,6 +57,11 @@ end
 
 #### 5. Restart your server and visit index page of models in your admin panel
 
+### User instructions
+
+English coming soon
+
+На русском
 
 ## Contributing
 Contribution directions go here.
