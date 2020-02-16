@@ -5,7 +5,14 @@ module Tramway::Admin::SingletonModels
     @singleton_models ||= {}
     @singleton_models[project] ||= {}
     @singleton_models[project][role] ||= []
-    @singleton_models[project][role] += models
+    models.each do |model|
+      case model.class
+      when Class
+        @available_models[project][role] << { model => [ :index, :show, :update, :create, :destroy ] }
+      when Hash
+        @available_models[project][role] << model
+      end
+    end
     @singleton_models = @singleton_models.with_indifferent_access
   end
 

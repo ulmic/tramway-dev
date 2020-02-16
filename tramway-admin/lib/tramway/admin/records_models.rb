@@ -4,8 +4,15 @@ module Tramway::Admin::RecordsModels
   def set_available_models(*models, project:, role: :admin)
     @available_models ||= {}
     @available_models[project] ||= {}
-    @available_models[project][role] ||= []
-    @available_models[project][role] += models
+    @available_models[project][role] ||= {}
+    models.each do |model|
+      case model.class
+      when Class
+        @available_models[project][role].merge! model => [ :index, :show, :update, :create, :destroy ]
+      when Hash
+        @available_models[project][role].merge! model
+      end
+    end
     @available_models = @available_models.with_indifferent_access
   end
 

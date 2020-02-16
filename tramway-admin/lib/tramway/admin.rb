@@ -31,11 +31,16 @@ module Tramway
       end
 
       def get_models_by_key(checked_models, project, role)
-        checked_models && checked_models != [] && checked_models[project][role] || []
+        checked_models && checked_models != [] && checked_models[project][role]&.keys || []
       end
 
       def models_array(models_type:, role:)
-        instance_variable_get("@#{models_type}_models")&.map { |projects| projects[1][role] }&.flatten || []
+        # FIXME projects[1] WHAT DA FUCK?!!!!
+        instance_variable_get("@#{models_type}_models")&.map { |projects| projects[1][role]&.keys }&.flatten || []
+      end
+
+      def action_is_available?(project:, role:, model:, action:)
+        @singleton_models[project][role][model][action]
       end
     end
   end
