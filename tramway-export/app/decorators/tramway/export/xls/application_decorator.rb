@@ -2,7 +2,7 @@
 
 module Tramway
   module Export
-    module Xlsx
+    module Xls
       class ApplicationDecorator < Tramway::Export::ApplicationDecorator
       end
     end
