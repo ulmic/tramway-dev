@@ -61,7 +61,7 @@ end
 
 English coming soon
 
-На русском
+[На русском](https://github.com/ulmic/tramway-dev/blob/develop/tramway-export/docs/russian/README.md)
 
 ## Contributing
 Contribution directions go here.
