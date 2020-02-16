@@ -16,6 +16,10 @@ module Tramway
 
         @exportable_models[project.to_sym]&.include? model_class
       end
+
+      def exportable_models
+        @exportable_models
+      end
     end
   end
 end

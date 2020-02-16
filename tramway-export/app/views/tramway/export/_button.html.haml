@@ -1,6 +1,6 @@
 - if Tramway::Export.exportable_model? model_class, project: (@application_engine || @application.name)
   - model_name = model_class.name.underscore
-  - id = "export-#{model_name}"
+  - id = "export-#{model_name.gsub('/', '_')}"
   .btn-group{ role: :group }
     %button{ id: id, type: :button, class: 'btn btn-primary dropdown-toggle', data: { toggle: :dropdown, aria: { haspopup: :true, expanded: :false } } }
       = fa_icon(:download)
