@@ -20,7 +20,14 @@ module Tramway::User::Generators
     end
 
     def copy_migrations
-      migration_template 'create_tramway_user_users.rb', 'db/migrate/create_tramway_user_users.rb'
+      migrations = %i[
+        create_tramway_user_users
+        add_phone_to_tramway_user_users
+      ]
+
+      migrations.each do |migration|
+        migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
+      end
     end
   end
 end

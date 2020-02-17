@@ -3,7 +3,7 @@
 class Admin::Tramway::User::UserForm < ::Tramway::Core::ApplicationForm
   self.model_class = Tramway::User::User
 
-  properties :email, :password, :first_name, :last_name, :role
+  properties :email, :password, :first_name, :last_name, :role, :phone
 
   validates :email, email: true
 
@@ -13,6 +13,7 @@ class Admin::Tramway::User::UserForm < ::Tramway::Core::ApplicationForm
                       password: :string,
                       first_name: :string,
                       last_name: :string,
+                      phone: :string,
                       role: :default
     end
   end
