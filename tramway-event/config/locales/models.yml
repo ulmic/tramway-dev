@@ -69,10 +69,17 @@ ru:
         options: Параметры (не редактировать без надобности)
         title: Название (в Tramway название Поля анкеты - это ключ для выборки пользователей. Если вы измените ключ к выборке пользователей, то все пользователи, получившие данные по предыдущему ключу по этой выборке показываться не будут)
         list_field: Показывать это поле в общем списке участников?
+        presence_field: Обязательное поле
       tramway/event/partaking:
         part_name: Мероприятие
         event_duration: Дата мероприятия
         part_description: Описание
+    errors:
+      models:
+        tramway/event/participant:
+          attributes:
+            default:
+              presence: не может быть пустым
   cases:
     tramway/event/event:
       plural: мероприятия
