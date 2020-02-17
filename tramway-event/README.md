@@ -12,6 +12,7 @@ How to use my plugin.
 gem 'tramway-event'
 gem 'carrierwave'
 gem 'more_html_tags'
+gem 'configus'
 ```
 
 #### 2. And then execute:
@@ -46,6 +47,21 @@ Tramway::Admin.set_available_models ::Tramway::Event::Event, ::Tramway::Event::P
 *config/routes.rb*
 ```ruby
 mount Tramway::Event::Engine, at: '/'
+```
+
+#### 7. Add hosts in your environments via gem `configus`. [What is configus?](https://github.com/kaize/configus)
+
+*config/configus.rb*
+```ruby
+Configus.build Rails.env do
+  env :production do
+    host 'https://your-site-domain.com'
+  end
+  env :development do
+    host 'http://localhost:3000'
+  end
+  env :test, parent: :development
+end
 ```
 
 ## How-to
