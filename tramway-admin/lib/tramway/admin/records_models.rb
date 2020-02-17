@@ -6,10 +6,9 @@ module Tramway::Admin::RecordsModels
     @available_models[project] ||= {}
     @available_models[project][role] ||= {}
     models.each do |model|
-      case model.class
-      when Class
+      if model.class == Class
         @available_models[project][role].merge! model => [ :index, :show, :update, :create, :destroy ]
-      when Hash
+      elsif model.class == Hash
         @available_models[project][role].merge! model
       end
     end

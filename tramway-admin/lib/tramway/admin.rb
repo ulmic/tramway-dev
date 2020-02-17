@@ -39,8 +39,24 @@ module Tramway
         instance_variable_get("@#{models_type}_models")&.map { |projects| projects[1][role]&.keys }&.flatten || []
       end
 
-      def action_is_available?(project:, role:, model:, action:)
-        @singleton_models[project][role][model][action]
+      def action_is_available?(record, project:, role:, model:, action:)
+        actions = select_actions(project: project, role: role, model: model)
+        availability = actions&.select do |a|
+          if a.is_a? Symbol
+            a == action.to_sym
+          elsif a.is_a? Hash
+            a.keys.first.to_sym == action.to_sym
+          end
+        end.first
+
+        return false unless availability.present?
+        return true if availability.is_a? Symbol
+
+        return availability.values.first.call record
+      end
+
+      def select_actions(project:, role:, model:)
+        @singleton_models&.dig(project, role, model) || @available_models&.dig(project, role, model)
       end
     end
   end
