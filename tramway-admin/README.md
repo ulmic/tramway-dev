@@ -79,6 +79,25 @@ By default users with role `admin` have access to all models used as arguments i
   ::Tramway::Event::Participant, project: #{project_name_which_you_used_in_application_name}, role: :another_role
 ```
 
+You can set functions which are available by default some CRUD functions for any role:
+
+```ruby
+# this line gives access only index page to YourModel for partner role
+::Tramway::Admin.set_available_models YourModel => [ :index ], role: :partner
+```
+
+You can set conditions for functions which are available for any role:
+
+```ruby
+# this line gives access to destroy only record with name `Elon Musk`
+
+::Tramway::Admin.set_available_models YourModel => [
+  destroy => lambda do |record|
+    record.name == 'Elon Musk'
+  end
+ ], role: :partner
+```
+
 Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
 
 Run server `rails s`
