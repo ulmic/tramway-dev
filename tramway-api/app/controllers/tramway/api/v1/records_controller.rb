@@ -18,6 +18,7 @@ module Tramway::Api::V1
     def create
       record_form = form_class.new model_class.new
       if record_form.submit snake_case params[:data][:attributes]
+        record_form.model.reload
         render json: record_form.model,
                serializer: serializer_class,
                include: '*',
