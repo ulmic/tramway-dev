@@ -66,9 +66,9 @@ Tramway решает две проблемы:
 ## Products
 
 * [IT Way](http://it-way.pro)
-* [Molodoy.online](http://molodoy.online)
 * [Peklo Tool](https://tool.peklo.studio/)
-* [kalashnikovisme.ru](http://kalashnikovisme.ru)
+* [Sorted House](https://sortedhouse.com)
+* [Molodoy.online](http://molodoy.online) 
 * [МБУ ДО ДЮСШ Ленинского района](http://sportschool-ulsk.ru/) (не поддерживается)
 
 And a lot of private projects 🥰
