@@ -29,7 +29,7 @@ module Tramway
         if entity.respond_to? :to_token_payload
           ::Knock::AuthToken.new payload: entity.to_token_payload
         else
-          ::Knock::AuthToken.new payload: { sub: entity.uid }
+          ::Knock::AuthToken.new payload: { sub: entity.uuid }
         end
       end
 
