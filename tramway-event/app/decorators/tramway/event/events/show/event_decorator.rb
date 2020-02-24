@@ -47,4 +47,11 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   end
 
   alias tagline duration
+
+  def responsible_person
+    {
+      phone: (object.creator.phone if object.creator&.phone&.present?),
+      email: (object.creator.email if object.creator&.email&.present?)
+    }
+  end
 end
