@@ -6,4 +6,8 @@ class Tramway::Event::ParticipantFormField < ::Tramway::Event::ApplicationRecord
   enumerize :field_type, in: %i[text string numeric date_picker select], default: :text
 
   scope :inputs_list, -> { active.order(position: :asc) }
+
+  def required
+    options&.dig('validations', 'presence') == 'true'
+  end
 end
