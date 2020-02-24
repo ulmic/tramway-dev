@@ -32,6 +32,7 @@ module Tramway
         @counts = decorator_class.collections.reduce({}) do |hash, collection|
           records = model_class.active.send(collection)
           records = records.send "#{current_user.role}_scope", current_user.id
+          records = records.ransack(params[:filter]).result if params[:filter].present?
           hash.merge! collection => records.count
         end
       end

@@ -66,7 +66,7 @@ module Tramway::Admin
     def tab_title(model_class, tab, count, _state_method = :state)
       model = model_class.name.underscore
       name = collection_human_name model_name: model, collection_name: tab
-      params[:filter].present? ? name : "#{name} / #{count}"
+      "#{name} / #{count}"
     end
 
     def active_tab(tab, index)
