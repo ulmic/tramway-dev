@@ -47,7 +47,7 @@ module Tramway
           elsif a.is_a? Hash
             a.keys.first.to_sym == action.to_sym
           end
-        end.first
+        end&.first
 
         return false unless availability.present?
         return true if availability.is_a? Symbol
