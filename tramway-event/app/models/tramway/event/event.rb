@@ -3,6 +3,14 @@
 class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
+  validate :check_dimensions
+
+  def check_dimensions
+    if photo.width < 1920 || photo.height < 1080
+      errors.add :photo, 'слишком маленькое. Размер изображение должен быть не меньше 1920*1080.'
+    end
+  end
+
   has_many :participants, class_name: 'Tramway::Event::Participant'
   has_many :participant_form_fields, class_name: 'Tramway::Event::ParticipantFormField'
   has_many :sections, class_name: 'Tramway::Event::Section'
