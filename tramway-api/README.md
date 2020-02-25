@@ -70,12 +70,12 @@ Then generate User (you use another name, it's just an example) model
 rails g model user email:text password_digest:text username:text state:text uid:text
 ```
 
-Add generating uid by default
+Add generating uid by default to every model, that is accessible by API
 
-*db/migrate/create_users_*.rb
+*db/migrate/add_uuid_to_some_model.rb*
 
 ```ruby
-t.uuid :uid, default: 'uuid_generate_v4()'
+t.uuid :uuid, default: 'uuid_generate_v4()'
 ```
 
 *app/models/user.rb*
@@ -227,7 +227,7 @@ RSpec.describe 'Post generate token', type: :feature do
       post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
 
       expect(json_response[:auth_token].present?).to be_truthy
-      expect(json_response[:user]).to include_json({ email: user.email, uid: user.uid })
+      expect(json_response[:user]).to include_json({ email: user.email, uuid: user.uuid })
     end
 
   end
