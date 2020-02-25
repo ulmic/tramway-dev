@@ -6,11 +6,13 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   validate :check_dimensions
 
   def check_dimensions
-    if photo.width < 1920 || photo.height < 1080
-      errors.add :photo, 'слишком маленькое. Размер изображение должен быть не меньше 1920*1080.'
-    end
-    if photo.height / photo.width == 16/9
-      errors.add :photo, ' не соответсвует формату. Соотношение сторон изображения должно быть 16 на 9.'
+    if photo.present?
+      if (photo.width < 1920 || photo.height < 1080)
+        errors.add :photo, 'слишком маленькое. Размер изображение должен быть не меньше 1920*1080.'
+      end
+      if photo.height / photo.width == 16/9
+        errors.add :photo, ' не соответсвует формату. Соотношение сторон изображения должно быть 16 на 9.'
+      end
     end
   end
 
