@@ -85,7 +85,7 @@ class User < Tramway::Core::ApplicationRecord
   has_secure_password
   
   def self.from_token_payload(payload)
-    find_by uid: payload['sub']
+    find_by uuid: payload['sub']
   end
 end
 ```
