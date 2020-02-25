@@ -70,7 +70,17 @@ Then generate User (you use another name, it's just an example) model
 rails g model user email:text password_digest:text username:text state:text uid:text
 ```
 
-Add generating uid by default to every model, that is accessible by API
+Enable extension in your database:
+
+*db/migrate/enable_extension.rb*
+```
+def change
+  enable_extension 'uuid-ossp'
+end
+```
+
+
+Add generating uuid by default to every model, that is accessible by API
 
 *db/migrate/add_uuid_to_some_model.rb*
 
