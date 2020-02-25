@@ -18,12 +18,14 @@ module Tramway
       end
 
       def user_based_models
+        @@auth_config ||= []
         @@auth_config.map do |conf|
           conf[:user_model]
         end
       end
 
       def auth_attributes
+        @@auth_config ||= []
         @@auth_config.reduce({}) do |hash, conf|
           hash.merge! conf[:user_model] => conf[:auth_attributes]
         end
