@@ -8,6 +8,6 @@ class Tramway::Event::ParticipantFormField < ::Tramway::Event::ApplicationRecord
   scope :inputs_list, -> { active.order(position: :asc) }
 
   def required
-    options&.dig('validations', 'presence') == 'true'
+    options.present? && options.dig('validations', 'presence') == 'true'
   end
 end
