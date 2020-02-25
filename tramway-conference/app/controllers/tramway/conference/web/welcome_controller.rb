@@ -13,7 +13,7 @@ class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::Appli
     @links = actual_events + past_events_links
     main_event = ::Tramway::Event::Event.main_event&.last
     @close_events = ::Tramway::Event::Event.actual.map do |event|
-      ::Tramway::Event::EventAsPageWithButtonDecorator.decorate event 
+      ::Tramway::Event::EventAsPageWithButtonDecorator.decorate event
     end
     if main_event.present?
       @main_event = ::Tramway::Event::Events::Show::EventDecorator.decorate main_event

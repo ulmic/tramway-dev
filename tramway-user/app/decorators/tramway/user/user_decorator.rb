@@ -11,7 +11,7 @@ class Tramway::User::UserDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def show_attributes
-      [:email, :first_name, :last_name, :phone, :role, :created_at, :updated_at]
+      %i[email first_name last_name phone role created_at updated_at]
     end
   end
 

@@ -35,7 +35,7 @@ module Tramway
       end
 
       def models_array(models_type:, role:)
-        # FIXME projects[1] WHAT DA FUCK?!!!!
+        # FIXME: projects[1] WHAT DA FUCK?!!!!
         instance_variable_get("@#{models_type}_models")&.map { |projects| projects[1][role]&.keys }&.flatten || []
       end
 
@@ -52,7 +52,7 @@ module Tramway
         return false unless availability.present?
         return true if availability.is_a? Symbol
 
-        return availability.values.first.call record
+        availability.values.first.call record
       end
 
       def select_actions(project:, role:, model:)

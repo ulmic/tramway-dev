@@ -7,7 +7,7 @@ module Tramway::Admin::SingletonModels
     @singleton_models[project][role] ||= []
     models.each do |model|
       if model.class == Class
-        @singleton_models[project][role] << { model => [ :index, :show, :update, :create, :destroy ] }
+        @singleton_models[project][role] << { model => %i[index show update create destroy] }
       elsif model.class == Hash
         @singleton_models[project][role] << model
       end
