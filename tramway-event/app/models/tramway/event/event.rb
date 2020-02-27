@@ -9,7 +9,7 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   has_many :partakings, as: :part, class_name: 'Tramway::Event::Partaking'
   has_many :partnerships, class_name: 'Tramway::Partner::Partnership', as: :partner
   has_many :organizations, as: :partners, through: :partnerships, class_name: 'Tramway::Partner::Organization'
-  has_many :actions, class_name: 'Tramway::Event::Action'
+  has_many :actions, -> { order(id: :asc) }, class_name: 'Tramway::Event::Action'
   has_and_belongs_to_many :places
 
   enumerize :status, default: :common, in: %i[common main]
