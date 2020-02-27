@@ -19,14 +19,16 @@
               - when :record
                 = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
             - when Symbol
-              = dropdown item.keys.first do
+              = dropdown t("admin.navbar.links.#{item.keys.first}") do
                 - item.values.first.each do |sub_item|
-                  - model = sub_item.keys.first
-                  - case item.values.first
-                  - when :singleton
-                    = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
-                  - when :record
-                    = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
+                  - if sub_item == :divider
+                    = dropdown_divider
+                  - else
+                    - model = sub_item.keys.first
+                    - if sub_item.values.first == :singleton
+                      = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
+                    - if sub_item.values.first == :record
+                      = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
 
       %ul.nav.navbar-nav.ml-auto
         - if signed_in?

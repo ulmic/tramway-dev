@@ -26,6 +26,8 @@ module Tramway::Admin::Navbar
       { item => :singleton }
     elsif @available_models_for.include?(item)
       { item => :record }
+    elsif item.is_a? Symbol
+      :divider
     end
   end
 end
