@@ -35,8 +35,9 @@ module Tramway
       end
 
       def models_array(models_type:, role:)
-        # FIXME projects[1] WHAT DA FUCK?!!!!
-        instance_variable_get("@#{models_type}_models")&.map { |projects| projects[1][role]&.keys }&.flatten || []
+        instance_variable_get("@#{models_type}_models")&.map do |projects|
+          projects.last[role]&.keys
+        end&.flatten || []
       end
 
       def action_is_available?(record, project:, role:, model:, action:)

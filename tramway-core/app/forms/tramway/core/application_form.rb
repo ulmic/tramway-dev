@@ -97,6 +97,12 @@ module Tramway::Core
       end
     end
 
+    def attributes
+      properties.reduce({}) do |hash, property|
+        hash.merge! property => send(property.first)
+      end
+    end
+
     class << self
       delegate :defined_enums, to: :model_class
 

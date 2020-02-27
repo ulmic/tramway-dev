@@ -49,7 +49,7 @@ class Tramway::Core::ApplicationDecorator
       end
     end
 
-    def decorate_association(association_name, decorator: nil, as: nil)
+    def decorate_association(association_name, decorator: nil, as: nil, state_machines: [])
       @@decorated_associations ||= []
       @@decorated_associations << association_name
 
@@ -81,6 +81,10 @@ class Tramway::Core::ApplicationDecorator
 
       define_method "#{association_name}_as" do
         as
+      end
+
+      define_method "#{association_name}_state_machines" do
+        state_machines
       end
     end
 
