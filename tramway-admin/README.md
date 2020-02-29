@@ -164,6 +164,8 @@ Tramway::Admin.navbar_structure(
 )
 ```
 
+**NOTE:** navbar structure is the same for all roles, but users will see only available models for them
+
 ## Contributing
 Contribution directions go here.
 
