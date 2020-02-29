@@ -148,6 +148,21 @@ Example:
 end
 ```
 
+## Navbar management
+
+You can manage your navbar easy
+
+```ruby
+Tramway::Admin.navbar_structure(
+  YourModel, # this line will create first-level link in your navbar, which will send you to the YourModel management
+  {
+    my_dropdown: [ # this line contains dropdown link name
+      AnotherYourModel # this line will create 2nd-level link in your navbar, which will send you to the YourModel management,
+      :divider # this line adds bootstrap divider to the dropdown list
+    ]
+  }
+)
+```
 
 ## Contributing
 Contribution directions go here.
