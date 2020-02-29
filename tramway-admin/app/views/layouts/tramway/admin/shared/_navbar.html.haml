@@ -9,10 +9,27 @@
     .navbar-collapse.collapse#navbar
       - if signed_in?
         %ul.navbar-nav
-          - ::Tramway::Admin.singleton_models_for(@application_engine || @application.name, role: current_user.role)&.each do |model|
-            = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model), pluralize: plural(model.model_name).capitalize
-          - ::Tramway::Admin.available_models_for(@application_engine || @application.name, role: current_user.role)&.each do |model|
-            = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
+          - ::Tramway::Admin.navbar_items_for(@application_engine || @application.name, role: current_user.role)&.each do |item|
+            - case item.keys.first
+            - when Class
+              - model = item.keys.first
+              - case item.values.first
+              - when :singleton
+                = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
+              - when :record
+                = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
+            - when Symbol
+              = dropdown t("admin.navbar.links.#{item.keys.first}") do
+                - item.values.first.each do |sub_item|
+                  - if sub_item == :divider
+                    = dropdown_divider
+                  - else
+                    - model = sub_item.keys.first
+                    - if sub_item.values.first == :singleton
+                      = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
+                    - if sub_item.values.first == :record
+                      = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
+
       %ul.nav.navbar-nav.ml-auto
         - if signed_in?
           - if @notifications_count > 0

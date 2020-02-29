@@ -4,12 +4,12 @@ module Tramway::Admin::SingletonModels
   def set_singleton_models(*models, project:, role: :admin)
     @singleton_models ||= {}
     @singleton_models[project] ||= {}
-    @singleton_models[project][role] ||= []
+    @singleton_models[project][role] ||= {}
     models.each do |model|
       if model.class == Class
-        @singleton_models[project][role] << { model => %i[index show update create destroy] }
+        @singleton_models[project][role].merge! model => [ :index, :show, :update, :create, :destroy ]
       elsif model.class == Hash
-        @singleton_models[project][role] << model
+        @singleton_models[project][role].merge! model
       end
     end
     @singleton_models = @singleton_models.with_indifferent_access
@@ -19,7 +19,7 @@ module Tramway::Admin::SingletonModels
     models = get_models_by_key(@singleton_models, project, role)
     if project_is_engine?(project)
       models += engine_class(project).dependencies.map do |dependency|
-        @singleton_models[dependency]
+        @singleton_models&.dig(dependency, role)&.keys
       end.flatten.compact
     end
     models

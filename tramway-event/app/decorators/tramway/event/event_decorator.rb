@@ -22,7 +22,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def show_associations
-      %i[participant_form_fields]
+      %i[participant_form_fields actions]
     end
 
     def list_attributes
@@ -38,6 +38,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   decorate_association :partakings
   decorate_association :partnerships
   decorate_association :organizations
+  decorate_association :actions, as: :event, state_machines: [ :action_state ]
 
   def background
     object.photo
@@ -75,7 +76,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
 
   def events_link
     event_link = Tramway::Event::Engine.routes.url_helpers.event_path object
-    event_url = [configus.host, event_link].join
+    event_url = [(ENV['PROJECT_URL'] || configus.host), event_link].join
     content_tag(:pre) do
       id = "event#{object.id}"
       concat link_to event_url, event_url, id: id

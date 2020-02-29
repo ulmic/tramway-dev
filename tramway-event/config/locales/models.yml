@@ -39,6 +39,7 @@ ru:
         does_not_have_end_date: мероприятие не имеет даты окончания
         participant_form_fields: Поле анкеты
         short_description: Краткое описание
+        actions: Действие
       tramway/event/participant:
         name: Имя
         list_fields: Данные
@@ -74,6 +75,10 @@ ru:
         part_name: Мероприятие
         event_duration: Дата мероприятия
         part_description: Описание
+      tramway/event/action:
+        event: Мероприятие
+        title: Название
+        deadline: Дедлайн
     errors:
       models:
         tramway/event/participant:
@@ -102,6 +107,9 @@ ru:
     tramway/event/place:
       genitive: место
       plural: места
+    tramway/event/action:
+      genitive: действие
+      plural: действия
   collections:
     tramway/event/participant:
       requested: Необработанные

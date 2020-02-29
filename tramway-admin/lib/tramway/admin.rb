@@ -6,6 +6,7 @@ require 'tramway/admin/records_models'
 require 'tramway/admin/additional_buttons'
 require 'tramway/admin/notifications'
 require 'tramway/admin/welcome_page_actions'
+require 'tramway/admin/navbar'
 require 'tramway/error'
 
 module Tramway
@@ -18,6 +19,7 @@ module Tramway
       include ::Tramway::Admin::AdditionalButtons
       include ::Tramway::Admin::Notifications
       include ::Tramway::Admin::WelcomePageActions
+      include ::Tramway::Admin::Navbar
 
       attr_reader :customized_admin_navbar
 
@@ -35,8 +37,9 @@ module Tramway
       end
 
       def models_array(models_type:, role:)
-        # FIXME: projects[1] WHAT DA FUCK?!!!!
-        instance_variable_get("@#{models_type}_models")&.map { |projects| projects[1][role]&.keys }&.flatten || []
+        instance_variable_get("@#{models_type}_models")&.map do |projects|
+          projects.last[role]&.keys
+        end&.flatten || []
       end
 
       def action_is_available?(record, project:, role:, model:, action:)

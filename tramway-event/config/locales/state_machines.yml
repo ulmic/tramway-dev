@@ -23,3 +23,13 @@ ru:
             not_got_answer: Связаться не удалось
             reserve: Отправить в резерв
             return_to_requested: Вернуть в необработанные
+      tramway/event/action:
+        action_state:
+          states:
+            done: Сделано
+            must_be_done: Запланировано
+            declined: Отклонено
+          events:
+            do: Выполнено
+            decline: Отклонить
+            return: Вернуть статус
