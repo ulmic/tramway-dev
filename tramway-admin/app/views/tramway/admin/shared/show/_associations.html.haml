@@ -18,5 +18,5 @@
                 = state_events_buttons association_object, state_method: state_method, model_param_name: :record, controller: 'tramway/admin/records', action: :update, parameters: { redirect: current_model_record_path(object.id), model: association_object.class.model_name }, button_options: { class: :smart_button }
             %td
               - if ::Tramway::Admin.action_is_available?(association_object, project: (@application_engine || @application.name), model: association_object.model.class, role: current_user.role, action: :destroy)
-                = delete_button url: record_path(association_object.id, model: association.options[:class_name], redirect: current_model_record_path(object.id)), button_options: { class: 'btn btn-xs btn-danger' } do
+                = delete_button url: record_path(association_object.id, model: association.options[:class_name], redirect: current_model_record_path(object.id)), button_options: { class: 'btn btn-xs btn-danger delete' } do
                   = fa_icon 'trash-alt'
