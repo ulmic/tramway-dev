@@ -150,8 +150,11 @@ end
 
 ## Navbar management
 
+### Navbar structure
+
 You can manage your navbar easy
 
+*config/initializers/tramway.rb*
 ```ruby
 Tramway::Admin.navbar_structure(
   YourModel, # this line will create first-level link in your navbar, which will send you to the YourModel management
@@ -165,6 +168,20 @@ Tramway::Admin.navbar_structure(
 ```
 
 **NOTE:** navbar structure is the same for all roles, but users will see only available models for them
+
+### Dropdown localization
+
+To set human-read name for dropdown link you can use i18n:
+
+*config/locales/admin.yml*
+
+```yaml
+en:
+  admin:
+    navbar:
+      links:
+        my_dropdown: Very important dropdown
+```
 
 ## Contributing
 Contribution directions go here.
