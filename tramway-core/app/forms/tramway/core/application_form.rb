@@ -99,7 +99,7 @@ module Tramway::Core
 
     def attributes
       properties.reduce({}) do |hash, property|
-        hash.merge! property => send(property.first)
+        hash.merge! property.first => model.values[property.first.to_s]
       end
     end
 
