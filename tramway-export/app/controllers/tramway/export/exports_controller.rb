@@ -8,6 +8,7 @@ class Tramway::Export::ExportsController < Tramway::Admin::ApplicationController
     model_class = model_class_name(params[:model])
     xls_decorator_class = xls_decorator_class_name(params[:model])
     records = model_class.active.order(id: :desc).send scope
+    records = records.ransack(params[:filter]).result if params[:filter]
     records = records.send "#{current_user.role}_scope", current_user.id
     records = xls_decorator_class.decorate records
 
