@@ -2,6 +2,6 @@
 
 module Tramway
   module Api
-    VERSION = '1.7.0.4'
+    VERSION = '1.7.1'
   end
 end

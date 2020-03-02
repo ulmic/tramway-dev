@@ -29,7 +29,7 @@ module Tramway::Api::V1
     end
 
     def update
-      record_form = form_class.new model_class.active.find_by uuid: params[:id]
+      record_form = form_class.new model_class.active.find_by! uuid: params[:id]
       if record_form.submit snake_case params[:data][:attributes]
         render json: record_form.model,
                serializer: serializer_class,
@@ -41,7 +41,7 @@ module Tramway::Api::V1
     end
 
     def show
-      record = model_class.active.find_by uuid: params[:id]
+      record = model_class.active.find_by! uuid: params[:id]
       render json: record,
              serializer: serializer_class,
              include: '*',
@@ -49,7 +49,7 @@ module Tramway::Api::V1
     end
 
     def destroy
-      record = model_class.active.find_by uuid: params[:id]
+      record = model_class.active.find_by! uuid: params[:id]
       record.remove
       render json: record,
              serializer: serializer_class,
