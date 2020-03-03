@@ -6,5 +6,4 @@
       = fa_icon(:download)
     .dropdown-menu{ aria: { labelledby: id } }
       - decorator_class.collections.each do |collection|
-        = link_to collection_human_name(model_name: model_name, collection_name: collection), Tramway::Export::Engine.routes.url_helpers.exports_path(model: model_class, scope: collection, filter: params[:filter].permit!), class: 'dropdown-item'
-
+        = link_to collection_human_name(model_name: model_name, collection_name: collection), Tramway::Export::Engine.routes.url_helpers.exports_path(model: model_class, scope: collection, filter: params[:filter]&.permit!), class: 'dropdown-item'
