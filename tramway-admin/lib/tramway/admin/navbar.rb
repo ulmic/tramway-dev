@@ -4,10 +4,9 @@ module Tramway::Admin::Navbar
   end
 
   def navbar_items_for(project, role:)
-    @singleton_models_for ||= singleton_models_for(project, role: role)
-    @available_models_for ||= available_models_for(project, role: role)
-    @navbar_structure ||= {}
-    @navbar_structure.map do |item|
+    @singleton_models_for = singleton_models_for(project, role: role)
+    @available_models_for = available_models_for(project, role: role)
+    navbar_structure.map do |item|
       if item.is_a? Class
         should_be_in_navbar_as item
       elsif item.is_a? Hash
