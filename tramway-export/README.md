@@ -55,7 +55,22 @@ class YourModelXlsDecorator < Tramway::Export::Xls::ApplicationDecorator
 end
 ```
 
-#### 5. Restart your server and visit index page of models in your admin panel
+#### 5. You can set flexible columns for each record. Just use `flexible_columns` method in object area
+
+Just imagine: our model contains method `values` and we want to have columns according to `values` keys. You shouldn't create methods for every column. Just use `Proc`. It's provided by gem `xls_exporter`. You can read more about [here](https://github.com/kalashnikovisme/xls-exporter).
+
+*app/decorators/your_model_xls_decorator.rb*
+```ruby
+class YourModelXlsDecorator < Tramway::Export::Xls::ApplicationDecorator
+  def flexible_columns
+    object.values.keys.map do |key|
+      { key.to_sym => -> { values.dig(key) } }
+    end
+  end
+end
+```
+
+#### 6. Restart your server and visit index page of models in your admin panel
 
 ### User instructions
 
