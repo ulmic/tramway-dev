@@ -3,7 +3,7 @@
 class Tramway::Event::ParticipantXlsDecorator < Tramway::Export::Xls::ApplicationDecorator
   class << self
     def columns
-      %i[full_name email phone organization event].map do |attribute|
+      %i[event].map do |attribute|
         { Tramway::Event::Participant.human_attribute_name(attribute).to_sym => attribute }
       end
     end
@@ -13,31 +13,15 @@ class Tramway::Event::ParticipantXlsDecorator < Tramway::Export::Xls::Applicatio
     end
   end
 
-  def full_name
-    return unless object.values
-
-    "#{object.values['Фамилия'] || object.values['Фамилия ']} #{object.values['Имя'] || object.values['Имя ']}"
-  end
-
-  def email
-    return unless object.values
-
-    object.values['Email']
-  end
-
-  def phone
-    return unless object.values
-
-    object.values['Телефон']
-  end
-
-  def organization
-    return unless object.values
-
-    object.values['Место работы/ Учебное заведение']
-  end
+  delegate :values, to: :object
 
   def event
     object.event.title
+  end
+
+  def flexible_columns
+    object.values&.keys&.map do |key|
+      { Tramway::Event::Participant.human_attribute_name(key).to_sym => -> { values&.dig(key) } }
+    end
   end
 end
