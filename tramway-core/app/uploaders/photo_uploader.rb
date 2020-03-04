@@ -11,7 +11,8 @@ class PhotoUploader < ApplicationUploader
     if file.present? && File.exist?(file.file)
       file.file.match(%r{/system/uploads/.*}).to_s
     else
-      '/assets/tramway/core/mona_lisa_from_prado_square.jpg'
+      default_url = '/assets/tramway/core/mona_lisa_from_prado_square.jpg'
+      File.exists?(default_url) ? default_url : ''
     end
   end
 

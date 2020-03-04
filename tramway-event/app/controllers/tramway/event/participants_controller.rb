@@ -7,7 +7,7 @@ class Tramway::Event::ParticipantsController < Tramway::Event::ApplicationContro
     if @participant_form.submit params[:tramway_event_participant].except :event_id
       redirect_to event_path event, flash: :success
     else
-      redirect_to event_path event, flash: :error, errors: @participant_form.errors.messages # , participant: @participant_form.attributes
+      redirect_to event_path event, flash: :error, errors: @participant_form.errors.messages, participant: @participant_form.attributes
     end
   end
 end

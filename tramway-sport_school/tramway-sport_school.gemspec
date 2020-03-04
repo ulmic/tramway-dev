@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.version     = Tramway::SportSchool::VERSION
   s.authors     = ['Pavel Kalashnikov']
   s.email       = ['kalashnikovisme@gmail.com']
-  s.homepage    = 'https://github.com/kalashnikovisme/tramway-sport_school'
+  s.homepage    = 'https://github.com/ulmic/tramway-dev'
   s.summary     = 'Engine for Sport School web sites'
   s.description = 'Engine for Sport School web sites'
   s.license     = 'MIT'
