@@ -22,10 +22,9 @@
       = tel_tag @event.responsible_person[:phone] || @application.phone
       или пишите на email
       = mail_to @event.responsible_person[:email] || @application.email
-- if request.path == ::Tramway::Event::Engine.routes.url_helpers.event_path(event.id)
-  = render 'tramway/landing/blocks/templates/full_page', block: event, buttons: [OpenStruct.new(title: t('.registration'), anchor: '#registration')]
-  - content_for :main_image do
-    = request.protocol + request.host_with_port + event.background.url
+= render 'tramway/landing/blocks/templates/full_page', block: event, buttons: [OpenStruct.new(title: t('.registration'), anchor: '#registration')]
+- content_for :main_image do
+  = request.protocol + request.host_with_port + event.background.url
 %main.event.show
   .container
     - if defined? sections_as_features
