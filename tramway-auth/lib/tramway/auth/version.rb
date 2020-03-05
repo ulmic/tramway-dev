@@ -2,6 +2,6 @@
 
 module Tramway
   module Auth
-    VERSION = '1.1.0.2'
+    VERSION = '1.1.0.3'
   end
 end
