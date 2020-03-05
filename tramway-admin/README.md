@@ -79,6 +79,15 @@ $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', r
 ::Tramway::Auth.root_path = '/admin' # you need it to redirect in the admin panel after admin signed_in
 ```
 
+#### 8. Configurate navbar
+
+*config/initializers/tramway.rb*
+```ruby
+Tramway::Admin.navbar_structure YourModel, AnotherYourModel
+```
+
+### CRUDs for models
+
 By default users with role `admin` have access to all models used as arguments in method `::Tramway::Admin.set_available_models`. If you want specify models by roles, use them as keys
 
 ```ruby
