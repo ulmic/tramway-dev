@@ -48,7 +48,11 @@ module Tramway::Event::Generators
         :create_tramway_event_places,
         :create_tramway_event_events_places,
         :add_short_description_to_tramway_event_events,
-        :create_tramway_event_actions
+        :create_tramway_event_actions,
+        :add_reach_to_tramway_event_events,
+
+        # NOTE must be removed until tramway-event 2.0
+        :remove_status_from_tramway_event_events
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

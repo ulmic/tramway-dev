@@ -5,7 +5,6 @@ ru:
         field_type:
           Yes: Да
           no: Нет
-
   default:
     collections:
       all: Все
@@ -40,6 +39,7 @@ ru:
         participant_form_fields: Поле анкеты
         short_description: Краткое описание
         actions: Действие
+        reach: Доступность мероприятия
       tramway/event/participant:
         name: Имя
         list_fields: Данные
@@ -126,9 +126,9 @@ ru:
       reserved: В резерве
   enumerize:
     tramway/event/event:
-      status:
-        main: На главной странице
-        common: Не на главной странице
+      reach:
+        open: Открытое
+        closed: Закрытое
     tramway/event/participant_form_field:
       field_type:
         text: Многострочное поле ввода

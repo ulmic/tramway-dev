@@ -12,6 +12,8 @@ Short description and motivation.
 ## Usage
 How to use my plugin.
 
+#### 1. Add this gems to Gemfile
+
 *Gemfile*
 ```ruby
 gem 'tramway-admin'
@@ -24,7 +26,7 @@ gem 'haml-rails'
 gem 'selectize-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
-gem 'copyright-mafa'
+gem 'copyright_mafa'
 gem 'trap'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', github: 'kalashnikovisme/bootstrap-kaminari-views', branch: :master
@@ -32,9 +34,13 @@ gem 'state_machine_buttons'
 gem 'ckeditor', '4.2.4'
 gem 'ransack'
 gem 'smart_buttons'
+gem 'carrierwave'
+gem 'validates'
 ```
 
-You should remove gem `turbolinks` from your application
+#### 2. You should remove gem `turbolinks` from your application and from app/assets/javascripts/application.js
+
+#### 3. Update your routes
 
 *config/routes.rb*
 
@@ -45,28 +51,89 @@ Rails.application.routes.draw do
 end
 ```
 
-Then make `tramway-core` installation. [How-to](https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/README.md#installation)
+#### 4. Then make `tramway-core` installation. [How-to](https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/README.md#installation)
 
 
-And then execute:
+#### 5. And then execute:
+
 ```bash
 $ bundle
 $ rails g tramway:user:install
 $ rails db:migrate
+```
 
-# Creating your first admin user
+#### 6. Create your first admin user
 
+```bash
 $ rails c
 $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', role: :admin
 ```
+
+#### 7. Add models to your admin
 
 *app/config/initializers/tramway.rb*
 
 ```ruby
 # set available models for your admin
-::Tramway::Admin.set_available_models list_of_models, project: #{project_name_which_you_used_in_application_name}
+::Tramway::Admin.set_available_models YourModel, AnotherYourModel, project: #{project_name_which_you_used_in_application_name}
+# set singleton models for your admin
+::Tramway::Admin.set_singleton_models YourSingletonModel, AnotherYourSingletonModel, project: #{project_name_which_you_used_in_application_name}
 ::Tramway::Auth.root_path = '/admin' # you need it to redirect in the admin panel after admin signed_in
 ```
+
+#### 8. Configurate navbar
+
+*config/initializers/tramway.rb*
+```ruby
+Tramway::Admin.navbar_structure YourModel, AnotherYourModel
+```
+
+#### 9. Create decorator for models
+
+*app/decorators/your_model_decorator.rb
+```ruby
+class YourModelDecorator < Tramway::Core::ApplicationDecorator
+  class << self
+    def collections
+      [ :all ]
+    end
+  end
+  
+  delegate :title, to: :object
+end
+```
+
+#### 10. Add inheritance to YourModel
+
+*app/models/your_model.rb*
+```ruby
+class YourModel < Tramway::Core::ApplicationRecord
+end
+```
+
+#### 11. Create `Admin::YourModelForm`
+
+*app/forms/admin/your_model_form.rb
+```ruby
+class Admin::YourModelForm < Tramway::Core::ApplicationForm
+  properties :title, :description, :text, :date, :logo
+
+  def initialize(object)
+    super(object).tap do
+      form_properties title: :string,
+        logo: :file,
+        description: :ckeditor,
+        date: :date_picker,
+        text: :text
+    end
+  end
+end
+```
+#### 12. Run server `rails s`
+#### 13. Launch `localhost:3000/admin`
+
+
+### CRUDs for models
 
 By default users with role `admin` have access to all models used as arguments in method `::Tramway::Admin.set_available_models`. If you want specify models by roles, use them as keys
 
@@ -100,8 +167,7 @@ You can set conditions for functions which are available for any role:
 
 Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
 
-Run server `rails s`
-Launch `localhost:3000/admin`
+
 
 ## Date Picker locale
 

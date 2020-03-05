@@ -14,7 +14,6 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
         state
         created_at
         photo
-        status
         request_collecting_duration
         description
         participants_list
@@ -31,7 +30,6 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   delegate :title, to: :object
-  delegate :status, to: :object
   decorate_association :participants
   decorate_association :participant_form_fields, as: :event
   decorate_association :sections
@@ -108,10 +106,6 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
 
   def state
     state_machine_view object, :state
-  end
-
-  def status
-    enumerize_view object.status
   end
 
   alias tagline duration
