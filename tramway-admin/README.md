@@ -86,6 +86,27 @@ $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', r
 Tramway::Admin.navbar_structure YourModel, AnotherYourModel
 ```
 
+#### 9. Create decorator for models
+
+*app/decorators/your_model_decorator.rb
+```ruby
+class YourModelDecorator < Tramway::Core::ApplicationDecorator
+  class << self
+    def collections
+      [ :all ]
+    end
+  end
+end
+```
+
+#### 10. Add inheritance to YourModel
+
+*app/models/your_model.rb*
+```ruby
+class Game < Tramway::Core::ApplicationRecord
+end
+```
+
 ### CRUDs for models
 
 By default users with role `admin` have access to all models used as arguments in method `::Tramway::Admin.set_available_models`. If you want specify models by roles, use them as keys
