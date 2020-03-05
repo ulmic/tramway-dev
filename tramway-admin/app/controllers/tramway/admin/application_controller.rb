@@ -51,7 +51,7 @@ module Tramway
       end
 
       def notifications_count
-        @notifications_count = notifications.reduce(0) do |count, notification|
+        @notifications_count = notifications&.reduce(0) do |count, notification|
           count += notification[1].count
         end
       end
