@@ -35,6 +35,7 @@ gem 'ckeditor', '4.2.4'
 gem 'ransack'
 gem 'smart_buttons'
 gem 'carrierwave'
+gem 'validates'
 ```
 
 #### 2. You should remove gem `turbolinks` from your application and from app/assets/javascripts/application.js
