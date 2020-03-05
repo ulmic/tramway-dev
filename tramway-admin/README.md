@@ -36,7 +36,7 @@ gem 'ransack'
 gem 'smart_buttons'
 ```
 
-#### 2. You should remove gem `turbolinks` from your application
+#### 2. You should remove gem `turbolinks` from your application and from app/assets/javascripts/application.js
 
 #### 3. Update your routes
 
