@@ -12,6 +12,8 @@ Short description and motivation.
 ## Usage
 How to use my plugin.
 
+#### 1. Add this gems to Gemfile
+
 *Gemfile*
 ```ruby
 gem 'tramway-admin'
@@ -34,7 +36,9 @@ gem 'ransack'
 gem 'smart_buttons'
 ```
 
-You should remove gem `turbolinks` from your application
+#### 2. You should remove gem `turbolinks` from your application
+
+#### 3. Update your routes
 
 *config/routes.rb*
 
@@ -45,20 +49,25 @@ Rails.application.routes.draw do
 end
 ```
 
-Then make `tramway-core` installation. [How-to](https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/README.md#installation)
+#### 4. Then make `tramway-core` installation. [How-to](https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/README.md#installation)
 
 
-And then execute:
+#### 5. And then execute:
+
 ```bash
 $ bundle
 $ rails g tramway:user:install
 $ rails db:migrate
+```
 
-# Creating your first admin user
+#### 6. Create your first admin user
 
+```bash
 $ rails c
 $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', role: :admin
 ```
+
+#### 7. Add models to your admin
 
 *app/config/initializers/tramway.rb*
 
@@ -102,8 +111,8 @@ You can set conditions for functions which are available for any role:
 
 Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
 
-Run server `rails s`
-Launch `localhost:3000/admin`
+#### 8. Run server `rails s`
+#### 9. Launch `localhost:3000/admin`
 
 ## Date Picker locale
 
