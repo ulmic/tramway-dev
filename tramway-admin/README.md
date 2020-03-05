@@ -24,7 +24,7 @@ gem 'haml-rails'
 gem 'selectize-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
-gem 'copyright-mafa'
+gem 'copyright_mafa'
 gem 'trap'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', github: 'kalashnikovisme/bootstrap-kaminari-views', branch: :master
