@@ -96,6 +96,8 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
       [ :all ]
     end
   end
+  
+  delegate :title, to: :object
 end
 ```
 
