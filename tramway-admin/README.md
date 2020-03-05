@@ -103,7 +103,26 @@ end
 
 *app/models/your_model.rb*
 ```ruby
-class Game < Tramway::Core::ApplicationRecord
+class YourModel < Tramway::Core::ApplicationRecord
+end
+```
+
+#### 11. Create `Admin::YourModelForm`
+
+*app/forms/admin/your_model_form.rb
+```ruby
+class Admin::YourModelForm < Tramway::Core::ApplicationForm
+  properties :title, :description, :text, :date, :logo
+
+  def initialize(object)
+    super(object).tap do
+      form_properties title: :string,
+        logo: :file,
+        description: :ckeditor,
+        date: :date_picker,
+        text: :text
+    end
+  end
 end
 ```
 
