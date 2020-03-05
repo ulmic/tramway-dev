@@ -38,7 +38,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   decorate_association :partakings
   decorate_association :partnerships
   decorate_association :organizations
-  decorate_association :actions, as: :event, state_machines: [ :action_state ]
+  decorate_association :actions, as: :event, state_machines: [:action_state]
 
   def background
     object.photo

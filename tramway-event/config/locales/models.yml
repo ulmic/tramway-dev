@@ -81,6 +81,11 @@ ru:
         deadline: Дедлайн
     errors:
       models:
+        tramway/event/event:
+          attributes:
+            photo:
+              too_small_image: слишком маленькое (минимальный размер изображения 1920*1080)
+              image_aspect_ratio: не соответствует формату (соотношение сторон должно быть 16 на 9)
         tramway/event/participant:
           attributes:
             default:

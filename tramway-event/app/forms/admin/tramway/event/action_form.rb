@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::Tramway::Event::ActionForm < Tramway::Core::ApplicationForm
   properties :title, :action_state_event, :deadline
 
@@ -6,8 +8,8 @@ class Admin::Tramway::Event::ActionForm < Tramway::Core::ApplicationForm
   def initialize(object)
     super(object).tap do
       form_properties event: :association,
-        title: :string,
-        deadline: :date_picker
+                      title: :string,
+                      deadline: :date_picker
     end
   end
 end
