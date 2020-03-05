@@ -125,6 +125,9 @@ class Admin::YourModelForm < Tramway::Core::ApplicationForm
   end
 end
 ```
+#### 12. Run server `rails s`
+#### 13. Launch `localhost:3000/admin`
+
 
 ### CRUDs for models
 
@@ -160,8 +163,7 @@ You can set conditions for functions which are available for any role:
 
 Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
 
-#### 8. Run server `rails s`
-#### 9. Launch `localhost:3000/admin`
+
 
 ## Date Picker locale
 
