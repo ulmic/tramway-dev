@@ -202,6 +202,14 @@ To add notification to application, you need just set queries in initializers.
 end
 ```
 
+**NOTE:** Proc with `current_user` argument is expecting. If you don't need `current_user`, just name do something like that:
+
+```ruby
+::Tramway::Admin.set_notificable_queries new_participants: -> (_current_user) do
+  # some code which does not need current_user
+end
+```
+
 ## Admin Main Page management
 
 Start page of admin panel contains only `application.name` by default. To manage it just set `Tramway::Admin.welcome_page_actions` with some lambda and set `@content` variable with HTML.
