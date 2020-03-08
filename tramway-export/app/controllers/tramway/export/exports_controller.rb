@@ -17,7 +17,7 @@ class Tramway::Export::ExportsController < Tramway::Admin::ApplicationController
     end
 
     book = ::XlsExporter.export do
-      set_default_style horizontal_align: :center, vertical_align: :center, text_wrap: true
+      default_style horizontal_align: :center, vertical_align: :center, text_wrap: true
 
       add_sheet 'List'
 
