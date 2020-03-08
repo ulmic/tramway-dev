@@ -12,6 +12,7 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
     if user_form.submit snake_case params[:data][:attributes]
       token = ::Knock::AuthToken.new(payload: { sub: user_form.model.uuid }).token
       # FIXME: refactor this bullshit
+      user_form.model.reload
       serialized_user = OpenStruct.new(
         user_form.model.attributes.merge(
           authentication_token: token,
