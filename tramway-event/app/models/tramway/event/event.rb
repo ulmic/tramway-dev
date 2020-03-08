@@ -3,6 +3,15 @@
 class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
+  validate :check_dimensions
+
+  def check_dimensions
+    if photo.present?
+      errors.add :photo, :too_small_image if photo.width < 1920 || photo.height < 1080
+      errors.add :photo, :image_aspect_ratio if photo.height / photo.width == 16 / 9
+    end
+  end
+
   has_many :participants, class_name: 'Tramway::Event::Participant'
   has_many :participant_form_fields, class_name: 'Tramway::Event::ParticipantFormField'
   has_many :sections, class_name: 'Tramway::Event::Section'

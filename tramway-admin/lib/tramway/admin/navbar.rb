@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Admin::Navbar
   def navbar_structure(*links)
     @navbar_structure ||= links

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::Action < Tramway::Core::ApplicationRecord
   belongs_to :event, class_name: 'Tramway::Event::Event'
 
@@ -15,7 +17,7 @@ class Tramway::Event::Action < Tramway::Core::ApplicationRecord
     end
 
     event :return do
-      transition [ :declined, :done ] => :must_be_done
+      transition %i[declined done] => :must_be_done
     end
   end
 end

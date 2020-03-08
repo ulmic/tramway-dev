@@ -12,7 +12,7 @@ class Admin::Tramway::Event::ParticipantForm < ::Tramway::Core::ApplicationForm
         SecureRandom.hex,
         object.event,
         participation_state_event: :default,
-        comment: :string,
+        comment: :string
       ).new object
     else
       super(object).tap do |obj|

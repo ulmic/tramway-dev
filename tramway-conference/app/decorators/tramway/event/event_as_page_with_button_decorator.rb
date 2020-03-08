@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Event::EventAsPageWithButtonDecorator < Tramway::Event::EventDecorator
   def anchor
     "event_#{object.id}"

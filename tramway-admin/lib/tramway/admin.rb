@@ -55,7 +55,7 @@ module Tramway
         return false unless availability.present?
         return true if availability.is_a? Symbol
 
-        return availability.values.first.call record
+        availability.values.first.call record
       end
 
       def select_actions(project:, role:, model:)
