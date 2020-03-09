@@ -65,6 +65,10 @@ module Tramway::Core
       @@model_class.model_name
     end
 
+    def associations
+      @@associations
+    end
+
     def form_properties(**args)
       @form_properties = args
     end

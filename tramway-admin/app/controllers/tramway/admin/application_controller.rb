@@ -21,7 +21,7 @@ module Tramway
       protected
 
       def check_available!
-        raise 'Model is not available' unless model_given?
+        raise 'Model or Form is not available' if !model_given? && !form_given?
       end
 
       def check_available_scope!
@@ -68,7 +68,7 @@ module Tramway
       include Tramway::ClassNameHelpers
 
       def model_class
-        model_class_name(params[:model])
+        model_class_name(params[:model] || params[:form])
       end
 
       def decorator_class
@@ -81,6 +81,10 @@ module Tramway
 
       def model_given?
         available_models_given? || singleton_models_given?
+      end
+
+      def form_given?
+        Tramway::Admin.forms.include? params[:form].underscore.sub(/^admin\//, '').sub(/_form$/, '')
       end
 
       def available_scope_given?

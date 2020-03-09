@@ -13,6 +13,7 @@ en:
       search: Search
       reset: Reset
       download: Download
+      add: Add
     scope:
       found: Found
     "yes": yes

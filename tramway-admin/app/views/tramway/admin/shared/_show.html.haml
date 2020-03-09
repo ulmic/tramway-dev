@@ -26,6 +26,8 @@
       - object.attributes.each do |attribute_name, value|
         = render 'tramway/admin/shared/show/attribute_tr', attribute_name: attribute_name, value: value, object: object
     - object.associations(:has_one).each do |association|
-      = render 'tramway/admin/shared/show/associations', object: object, association: association
+      = render 'tramway/admin/shared/show/associations/row', object: object, association: association
     - object.associations(:has_many).each do |association|
-      = render 'tramway/admin/shared/show/associations', object: object, association: association
+      = render 'tramway/admin/shared/show/associations/row', object: object, association: association
+    - object.associations(:has_and_belongs_to_many).each do |association|
+      = render 'tramway/admin/shared/show/associations/habtm_row', object: object, association: association

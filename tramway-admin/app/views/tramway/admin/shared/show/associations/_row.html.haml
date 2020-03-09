@@ -1,0 +1,8 @@
+- if object.class.show_associations.map(&:to_s).include? association.name.to_s
+  %tr
+    %td
+      = model_class.human_attribute_name association.name
+      %hr
+      = link_to "#{I18n.t('helpers.actions.add')} #{model_class.human_attribute_name(association.name).singularize.downcase}", new_associated_record_path(association: association, object: object, as: object.send("#{association.name}_as")), class: 'btn btn-primary'
+    %td{ colspan: 2 }
+      = render 'tramway/admin/shared/show/associations/list', object: object, association: association

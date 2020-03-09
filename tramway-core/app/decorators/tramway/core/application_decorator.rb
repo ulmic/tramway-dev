@@ -7,6 +7,7 @@ class Tramway::Core::ApplicationDecorator
   include ActionView::Context
   include ::FontAwesome5::Rails::IconHelper
   include ::Tramway::Core::CopyToClipboardHelper
+  include ::Tramway::Core::Associations::ObjectHelper
 
   def initialize(object)
     @object = object
@@ -22,6 +23,8 @@ class Tramway::Core::ApplicationDecorator
   end
 
   class << self
+    include ::Tramway::Core::Associations::ClassHelper
+
     def collections
       [:all]
     end
@@ -46,45 +49,6 @@ class Tramway::Core::ApplicationDecorator
         Tramway::Core::ApplicationDecoratedCollection.new decorated_array, object_or_array
       else
         new object_or_array
-      end
-    end
-
-    def decorate_association(association_name, decorator: nil, as: nil, state_machines: [])
-      @@decorated_associations ||= []
-      @@decorated_associations << association_name
-
-      define_method association_name do
-        association = object.class.reflect_on_association(association_name)
-        if association.nil?
-          error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: "Model #{object.class} does not have association named `#{association_name}`")
-          raise error.message
-        end
-        class_name = if association.polymorphic?
-                       object.send(association_name).class
-                     else
-                       unless association.options[:class_name]
-                         error = Tramway::Error.new(plugin: :core, method: :decorate_association, message: "Please, specify `#{association_name}` association class_name in #{object.class} model. For example: `has_many :#{association_name}, class_name: '#{association_name.to_s.singularize.camelize}'`")
-                         raise error.message
-                       end
-                       association.options[:class_name]
-                     end
-        decorator_class_name = decorator || "#{class_name.to_s.singularize}Decorator".constantize
-        if association.class == ActiveRecord::Reflection::HasManyReflection
-          return object.send(association_name).active.map do |association_object|
-            decorator_class_name.decorate association_object
-          end
-        end
-        if association.class == ActiveRecord::Reflection::BelongsToReflection
-          return decorator_class_name.decorate object.send association_name
-        end
-      end
-
-      define_method "#{association_name}_as" do
-        as
-      end
-
-      define_method "#{association_name}_state_machines" do
-        state_machines
       end
     end
 

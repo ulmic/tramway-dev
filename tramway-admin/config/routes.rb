@@ -8,4 +8,5 @@ Tramway::Admin::Engine.routes.draw do
 
   resources :records
   resource :singleton, only: %i[new create show edit update]
+  resources :has_and_belongs_to_many_records, only: :create
 end
