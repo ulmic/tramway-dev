@@ -10,6 +10,6 @@ module Tramway::Admin::ActionsHelper
   end
 
   def habtm_destroy_is_available?(association_object, main_object)
-    ::Tramway::Admin.forms.include?("#{main_object.model.class.to_s.underscore.pluralize}/remove_#{association_object.model.class.to_s.underscore}")
+    ::Tramway::Admin.forms&.include?("#{main_object.model.class.to_s.underscore.pluralize}/remove_#{association_object.model.class.to_s.underscore}")
   end
 end
