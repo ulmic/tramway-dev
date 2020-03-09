@@ -90,6 +90,7 @@ ru:
           attributes:
             default:
               presence: не может быть пустым
+              inclusion: этот пункт должен быть отмечен
   cases:
     tramway/event/event:
       plural: мероприятия
@@ -136,3 +137,4 @@ ru:
         numeric: Число
         date_picker: Дата
         select: Выпадающий список (да/нет)
+        checkbox: Галочка
