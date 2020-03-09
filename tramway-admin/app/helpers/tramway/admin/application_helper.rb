@@ -14,6 +14,7 @@ module Tramway
       include ::Tramway::Admin::NavbarHelper
       include ::Tramway::Admin::InputsHelper
       include ::Tramway::Admin::FocusGeneratorHelper
+      include ::Tramway::Admin::ActionsHelper
       include ::Tramway::Collections::Helper
       include ::Tramway::Core::CopyToClipboardHelper
 
