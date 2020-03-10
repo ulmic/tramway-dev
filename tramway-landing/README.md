@@ -21,18 +21,21 @@ List of blocks:
 All block's previews you can see at the bottom of this Readme
 
 ## Installation
-Add this line to your application's Gemfile:
+
+#### 1. Add this line to your application's Gemfile:
 
 ```ruby
 gem 'tramway-landing'
 ```
 
-Then run:
+#### 2. Then run:
 
 ```shell
 rails g tramway:landing:install
 rails db:migrate
 ```
+
+#### 3. Add landing blocks to the initializer
 
 *config/initializers/tramway.rb*
 ```ruby
@@ -40,12 +43,12 @@ Tramway::Admin.set_available_models ::Tramway::Landing::Block, project: #{projec
 Tramway::Admin.navbar_structure ::Tramway::Landing::Block
 ```
 
-Run server `rails s`
-Open `localhost:3000/admin`
-Click on `Block`, add new block with type `Header`
-Click `Show` in the block menu
+#### 4. Run server `rails s`
+#### 5. Open `localhost:3000/admin`
+#### 6. Click on `Blocks`, add new block with type `Header`
+#### 7. Click `Show` in the block menu
 
-Then create your main page controller `rails g controller web/welcome`
+#### 8. Then create your main page controller `rails g controller web/welcome`
 
 *app/controllers/web/welcome_controller.rb*
 ```ruby
@@ -66,12 +69,16 @@ class Web::WelcomeController < ApplicationController
 end
 ```
 
+#### 9. Add new controller to the routes
+
 *config/routes.rb*
 ```ruby
 # ...
 root to: 'web/welcome#index'
 # ...
 ```
+
+#### 10. Add view for the new landing
 
 *app/views/web/welcome/index.html.haml*
 ```haml
