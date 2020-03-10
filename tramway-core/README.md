@@ -134,11 +134,9 @@ Organization.create! public_name: 'Tramway', name: :organization, tagline: 'Tram
 Tramway::Admin.set_singleton_models Organization, project: :organization # now you should use organization.name here
 ```
 
-#### 5. Add model to the admin navbar
+#### 5. Then continue configuration of your model in admin panel with tramway-admin gem [instruction, starting from point 8](https://github.com/ulmic/tramway-dev/tree/develop/tramway-admin#8-configurate-navbar)
 
-```ruby
-Tramway::Admin.navbar_structure Organization
-```
+#### 6. Now you are able to change your application main info in admin panel
 
 ## In Russian
 
