@@ -82,8 +82,11 @@ root to: 'web/welcome#index'
 
 *app/views/web/welcome/index.html.haml*
 ```haml
-= content_for :application_name do
+= content_for :title do
   -# your content for <title>
+  
+= content_for :application_name do
+  -# your content for h1
   
 = content_for :application_tagline do
   -# tagline in the header type block
