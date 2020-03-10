@@ -111,7 +111,7 @@ copy_to_clipboard "some_id" # some_id is HTML id of element. Content of this ele
 #### 1. Generate model that you to use. We create Organization, for example
 
 ```shell
-rails g model organization name:text tagline:text address:text phone:text coordinates:point, state: text # remember! State field is required, if you use tramway-admin
+rails g model organization name:text public_name:text tagline:text address:text phone:text coordinates:point, state: text # remember! State field is required, if you use tramway-admin
 rails db:migrate
 ```
 
@@ -121,17 +121,17 @@ rails db:migrate
 Tramway::Core.initialize_application model_class: Organization
 ```
 
-#### 3. Add model to singleton to the `tramway-admin` admin panel to be able to change its data
-
-```ruby
-Tramway::Admin.set_singleton_models Organization, project: :organization # now you should use underscored model_class name as project name
-```
-
-#### 4. Create 1 instance of Organization model
+#### 3. Create 1 instance of Organization model
 
 ```ruby
 rails c
-Organization.create! name: 'Tramway', tagline: 'Tramway is not buggy, LOL!'
+Organization.create! public_name: 'Tramway', name: :organization, tagline: 'Tramway is not buggy, LOL!'
+```
+
+#### 4. Add model to singleton to the `tramway-admin` admin panel to be able to change its data
+
+```ruby
+Tramway::Admin.set_singleton_models Organization, project: :organization # now you should use organization.name here
 ```
 
 ## In Russian
