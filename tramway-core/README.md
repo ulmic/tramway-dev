@@ -121,6 +121,12 @@ rails db:migrate
 Tramway::Core.initialize_application model_class: Organization
 ```
 
+#### 3. Add model to singleton to the `tramway-admin` admin panel to be able to change its data
+
+```ruby
+Tramway::Admin.set_singleton_models Organization, project: :organization # now you should use underscored model_class name as project name
+```
+
 ## In Russian
 
 # Базовые классы
