@@ -134,6 +134,12 @@ Organization.create! public_name: 'Tramway', name: :organization, tagline: 'Tram
 Tramway::Admin.set_singleton_models Organization, project: :organization # now you should use organization.name here
 ```
 
+#### 5. Add model to the admin navbar
+
+```ruby
+Tramway::Admin.navbar_structure Organization
+```
+
 ## In Russian
 
 # Базовые классы
