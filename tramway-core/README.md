@@ -106,6 +106,22 @@ Something like this:
 copy_to_clipboard "some_id" # some_id is HTML id of element. Content of this element will be copied to the clipboard after pressing the button
 ```
 
+## How to create model that will be an Application Model for the Tramway
+
+#### 1. Generate model that you to use. We create Organization, for example
+
+```shell
+rails g model organization title:text tagline:text address:text phone:text coordinates:point
+rails db:migrate
+```
+
+#### 2. Add model_class to Initializer
+
+```ruby
+Tramway::Core.initialize_application model_class: Organization
+```
+
+## In Russian
 
 # Базовые классы
 
