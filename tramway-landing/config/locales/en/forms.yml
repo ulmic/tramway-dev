@@ -1,0 +1,6 @@
+en:
+  hints:
+    tramway:
+      landing:
+        block:
+          position: "Busy positions. Block type 'Header' should be always the first. Block type 'Footer' should be always the last"

@@ -12,7 +12,7 @@ module Tramway
       end
 
       def head_content
-        @@head_content || []
+        (defined?(@@head_content) && @@head_content) || []
       end
     end
   end
