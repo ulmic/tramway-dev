@@ -37,6 +37,7 @@ rails db:migrate
 *config/initializers/tramway.rb*
 ```ruby
 Tramway::Admin.set_available_models ::Tramway::Landing::Block, project: #{project_name_which_you_use_in_the_application}
+Tramway::Admin.navbar_structure ::Tramway::Landing::Block
 ```
 
 Run server `rails s`
