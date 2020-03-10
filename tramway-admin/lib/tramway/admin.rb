@@ -35,6 +35,14 @@ module Tramway
       end
 
       def get_models_by_key(checked_models, project, role)
+        unless project.present?
+          error = Tramway::Error.new(
+            plugin: :admin,
+            method: :get_models_by_key,
+            message: "Looks like you have not create at lease one instance of #{Tramway::Core.application.model_class} model"
+          )
+          raise error.message
+        end
         checked_models && checked_models != [] && checked_models[project][role]&.keys || []
       end
 
