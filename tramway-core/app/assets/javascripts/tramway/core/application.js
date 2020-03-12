@@ -28,7 +28,7 @@ $(document).ready(function() {
     console.log('You should set `window.current_locale` before all Javascript code');
   }
 
-  if ($('.date_picker').length == 0) {
+  if ($('.date_picker').length != 0) {
     $('.date_picker').datepicker({
       format: window.current_locale.date_format,
       language: window.current_locale.locale
