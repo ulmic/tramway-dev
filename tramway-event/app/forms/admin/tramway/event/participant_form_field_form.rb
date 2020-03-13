@@ -27,11 +27,11 @@ class Admin::Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::Extende
   end
 
   def list_field
-    model.options&.dig('list_field') == 'true'
+    model.options.present? && model.options.dig('list_field') == 'true'
   end
 
   def presence_field
-    model.options&.dig('validations', 'presence') == 'true'
+    model.options.present? && model.options.dig('validations', 'presence') == 'true'
   end
 
   def options
