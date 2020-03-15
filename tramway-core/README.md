@@ -36,6 +36,8 @@ Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ## Decorators
 ### Associations
 
+Your can decorate association models. Supporting all types of association
+
 *app/decorators/your_model_decorator.rb*
 ```ruby
 class YourModelDecorator < Tramway::Core::ApplicationDecorator
@@ -43,6 +45,16 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
   decorate_association :another_model, decorator: SpecificDecoratorForThisCase
   decorate_association :another_one_model, as: :repeat_here_as_parameter_from_model
   decorate_association :something_else_model, state_machines: [ :here_array_of_state_machines_you_want_to_see_in_YourModel_show_page ] # support from tramway-admin gem
+end
+```
+
+You can decorate a lot of models in one line
+
+
+*app/decorators/your_model_decorator.rb*
+```ruby
+class YourModelDecorator < Tramway::Core::ApplicationDecorator
+  decorate_associations :some_model, :another_model, :another_one_model, :something_else_model
 end
 ```
 
