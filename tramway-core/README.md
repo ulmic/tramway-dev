@@ -33,6 +33,7 @@ Tramway::Core.initialize_application model_class: ::Tramway::Conference::Unity #
 Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ```
 # Usage
+
 ## Decorators
 ### Associations
 
@@ -50,11 +51,23 @@ end
 
 You can decorate a lot of models in one line
 
-
 *app/decorators/your_model_decorator.rb*
 ```ruby
 class YourModelDecorator < Tramway::Core::ApplicationDecorator
   decorate_associations :some_model, :another_model, :another_one_model, :something_else_model
+end
+```
+
+Also, you can configurate what associations you want to see in YourModel page in admin panel *support only for [tramway-admin](https://rubygems.org/gems/tramway-admin) gem*
+
+*app/decorators/your_model_decorator.rb*
+```ruby
+class YourModelDecorator < Tramway::Core::ApplicationDecorator
+  class << self
+    def show_associations
+      [ :some_model, :another_model, :another_one_model ]
+    end
+  end
 end
 ```
 
