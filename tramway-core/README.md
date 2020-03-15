@@ -34,6 +34,15 @@ Rails.application.config.assets.precompile += %w( *.jpg *.png *.js )
 ```
 # Usage
 ## Decorators
+### Delegating attributes
+
+*app/decorators/\*_decorator.rb*
+```ruby
+class *Decorator < Tramway::Core::ApplicationDecorator
+  delegate_attributes :title, :something_else, :another_atttribute
+end
+```
+
 ### Helper methods
 
 #### date_view
