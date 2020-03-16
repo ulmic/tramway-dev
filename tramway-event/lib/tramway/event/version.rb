@@ -2,6 +2,6 @@
 
 module Tramway
   module Event
-    VERSION = '1.11.4'
+    VERSION = '1.11.4.1'
   end
 end
