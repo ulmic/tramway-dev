@@ -9,6 +9,7 @@ ru:
         logo: Логотип
         address: Адрес
         phone: Телефон
+        social_networks: Социальные сети
   cases:
     tramway/conference/unity:
       genitive: проект

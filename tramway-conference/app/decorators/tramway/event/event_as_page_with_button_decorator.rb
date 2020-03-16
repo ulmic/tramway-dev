@@ -5,8 +5,8 @@ class Tramway::Event::EventAsPageWithButtonDecorator < Tramway::Event::EventDeco
     "event_#{object.id}"
   end
 
-  delegate :photo, to: :object
-  delegate :title, to: :object
+  delegate_attributes :photo, :title
+
   alias background photo
 
   def description
