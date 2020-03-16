@@ -2,6 +2,6 @@
 
 module Tramway
   module Conference
-    VERSION = '1.9.2.1'
+    VERSION = '1.9.2.2'
   end
 end
