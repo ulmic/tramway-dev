@@ -3,7 +3,7 @@ module Tramway::Admin::ActionsHelper
     ::Tramway::Admin.action_is_available?(
       association_object,
       project: (@application_engine || @application.name),
-      model: association_object.model.class,
+      model_name: association_object.model.class.name,
       role: current_user.role,
       action: :destroy
     ) 
