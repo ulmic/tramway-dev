@@ -21,9 +21,7 @@ class Tramway::SportSchool::TrainerDecorator < ::Tramway::Core::ApplicationDecor
 
   alias title full_name
 
-  delegate :photo, to: :object
-  delegate :degree, to: :object
-  delegate :description, to: :object
+  delegate_attributes :photo, :degree, :description 
 
   def view_state
     object.human_view_state_name

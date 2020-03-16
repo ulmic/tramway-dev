@@ -9,7 +9,6 @@
   project: :sport_school)
 ::Tramway::Admin.set_singleton_models(::Tramway::SportSchool::Institution, project: :sport_school)
 ::Tramway::Core.initialize_application model_class: ::Tramway::SportSchool::Institution
-::Tramway::Profiles.records = [::Tramway::SportSchool::Institution]
 ::Tramway::Admin.set_additional_buttons({ Tramway::SportSchool::Institution.to_s => {
                                           show: ::Tramway::Profiles::SocialNetwork.network_name.values.map do |network|
                                             {
