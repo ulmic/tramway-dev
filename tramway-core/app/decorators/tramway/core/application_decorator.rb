@@ -22,8 +22,12 @@ class Tramway::Core::ApplicationDecorator
     raise error.message
   end
 
+  delegate :id, to: :object
+  delegate :human_state_name, to: :object
+
   class << self
     include ::Tramway::Core::Associations::ClassHelper
+    include ::Tramway::Core::Delegating::ClassHelper
 
     def collections
       [:all]
@@ -61,8 +65,6 @@ class Tramway::Core::ApplicationDecorator
     end
   end
 
-  delegate :id, to: :object
-  delegate :human_state_name, to: :object
 
   def link
     if object.try :file
