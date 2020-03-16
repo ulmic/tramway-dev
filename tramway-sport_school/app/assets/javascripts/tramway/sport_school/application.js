@@ -10,6 +10,6 @@ $.extend($.scrollTo.defaults, {
 $(document).ready(function() {
   $('.scroll').click(function() {
     e.preventDefault();
-    $.scrollTo(`#${$(@).data('id')}`);
+    $.scrollTo("#" + $(@).data('id'));
   });
 });
