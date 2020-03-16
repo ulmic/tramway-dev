@@ -84,7 +84,7 @@ module Tramway
       end
 
       def form_given?
-        Tramway::Admin.forms.include? params[:form].underscore.sub(/^admin\//, '').sub(/_form$/, '')
+        Tramway::Admin.forms.include? params[:form].underscore.sub(%r{^admin/}, '').sub(/_form$/, '')
       end
 
       def available_scope_given?

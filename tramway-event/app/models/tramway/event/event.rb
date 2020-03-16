@@ -32,7 +32,9 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
     return :not_initialized unless request_collecting_begin_date.present? || request_collecting_end_date.present?
     return :will_begin_soon if request_collecting_begin_date > DateTime.now
     return :is_over if request_collecting_end_date.present? && request_collecting_end_date.to_date < Date.today
-    return :are_being_right_now if request_collecting_begin_date&.past? && (request_collecting_end_date&.future? || request_collecting_end_date&.today?)
+    if request_collecting_begin_date&.past? && (request_collecting_end_date&.future? || request_collecting_end_date&.today?)
+      return :are_being_right_now
+    end
     return :are_being_right_now if request_collecting_begin_date < DateTime.now && !request_collecting_end_date.present?
   end
 

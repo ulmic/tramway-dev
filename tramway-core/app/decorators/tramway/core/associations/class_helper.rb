@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Core::Associations::ClassHelper
   def decorate_association(association_name, decorator: nil, as: nil, state_machines: [])
     @@decorated_associations ||= []
@@ -18,7 +20,6 @@ module Tramway::Core::Associations::ClassHelper
     end
   end
 
-
   def define_main_association_method(association_name, decorator)
     define_method association_name do
       association = object.class.reflect_on_association(association_name)
@@ -27,7 +28,7 @@ module Tramway::Core::Associations::ClassHelper
         raise error.message
       end
       decorator_class_name = decorator || "#{class_name(association).to_s.singularize}Decorator".constantize
-      if association.class.in? [ ActiveRecord::Reflection::HasManyReflection, ActiveRecord::Reflection::HasAndBelongsToManyReflection ]
+      if association.class.in? [ActiveRecord::Reflection::HasManyReflection, ActiveRecord::Reflection::HasAndBelongsToManyReflection]
         return object.send(association_name).active.map do |association_object|
           decorator_class_name.decorate association_object
         end

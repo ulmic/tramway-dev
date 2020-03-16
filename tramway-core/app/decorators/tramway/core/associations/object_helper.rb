@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tramway::Core::Associations::ObjectHelper
   def class_name(association)
     if association.polymorphic?
