@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 class Admin::Tramway::Profiles::SocialNetworkForm < ::Tramway::Core::ApplicationForm
-  properties :title, :network_name, :record_id, :record_type, :uid
+  properties :title, :network_name, :uid, :record_id, :record_type
+
+  association :record
 
   def initialize(object)
     super(object).tap do
       form_properties title: :string,
                       network_name: :default,
                       uid: :string,
-                      record_type: :default,
-                      record_id: :integer
+                      record: :polymorphic_association
     end
   end
 end

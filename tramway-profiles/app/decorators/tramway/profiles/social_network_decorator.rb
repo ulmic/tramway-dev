@@ -8,4 +8,8 @@ class ::Tramway::Profiles::SocialNetworkDecorator < ::Tramway::Core::Application
   end
 
   delegate :title, to: :object
+
+  def name
+    "#{object.network_name} | #{object.title}"
+  end
 end
