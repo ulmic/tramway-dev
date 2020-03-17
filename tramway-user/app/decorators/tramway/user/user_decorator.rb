@@ -15,13 +15,7 @@ class Tramway::User::UserDecorator < ::Tramway::Core::ApplicationDecorator
     end
   end
 
-  delegate :first_name, to: :object
-  delegate :last_name, to: :object
-  delegate :email, to: :object
-  delegate :phone, to: :object
-  delegate :role, to: :object
-  delegate :created_at, to: :object
-  delegate :updated_at, to: :object
+  delegate_attributes :first_name, :last_name, :email, :phone, :role, :created_at, :updated_at
 
   def name
     "#{object.first_name} #{object.last_name}"

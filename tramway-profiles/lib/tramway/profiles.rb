@@ -6,9 +6,16 @@ require 'tramway/profiles/generates/install_generator'
 module Tramway
   module Profiles
     class << self
-      attr_writer :records
+      def records=(*models)
+        @@records ||= []
+        @@records += (models.map do |model|
+          model.to_s.sub(/^\:\:/, '')
+        end)
+      end
 
-      attr_reader :records
+      def records
+        defined?(@@records) ? @@records.uniq : []
+      end
     end
   end
 end

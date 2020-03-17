@@ -15,9 +15,7 @@ class Tramway::Event::ParticipantFormFieldDecorator < ::Tramway::Core::Applicati
     end
   end
 
-  delegate :description, to: :object
-  delegate :options, to: :object
-  delegate :position, to: :object
+  delegate_attributes :description, :options, :position
 
   def title
     "#{object.title} #{object.event.title}"

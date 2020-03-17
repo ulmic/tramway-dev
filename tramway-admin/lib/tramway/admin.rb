@@ -52,8 +52,8 @@ module Tramway
         end&.flatten || []
       end
 
-      def action_is_available?(record, project:, role:, model:, action:)
-        actions = select_actions(project: project, role: role, model: model)
+      def action_is_available?(record, project:, role:, model_name:, action:)
+        actions = select_actions(project: project, role: role, model_name: model_name)
         availability = actions&.select do |a|
           if a.is_a? Symbol
             a == action.to_sym
@@ -68,8 +68,14 @@ module Tramway
         availability.values.first.call record
       end
 
-      def select_actions(project:, role:, model:)
-        @singleton_models&.dig(project, role, model) || @available_models&.dig(project, role, model)
+      def select_actions(project:, role:, model_name:)
+        stringify_keys(@singleton_models&.dig(project, role))&.dig(model_name) || stringify_keys(@available_models&.dig(project, role))&.dig(model_name)
+      end
+
+      def stringify_keys(hash)
+        hash&.reduce({}) do |new_hash, pair|
+          new_hash.merge! pair[0].to_s => pair[1]
+        end
       end
     end
   end

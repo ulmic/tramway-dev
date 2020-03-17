@@ -12,11 +12,13 @@ module Tramway::Core
         self.class.full_class_name_associations.each do |association, class_name|
           if class_name.is_a? Array
             self.class.send(:define_method, "#{association}=") do |value|
-              association_class = send("#{association}_type")
+              association_class = value.split('_')[0..-2].join('_').camelize
+              association_class = association_class.constantize if association_class.is_a? String
               if association_class.nil?
                 raise Tramway::Error.new(plugin: :core, method: :initialize, message: 'Polymorphic association class is nil. Maybe, you should write `assocation #{association_name}` after `properties #{association_name}_id, #{association_name}_type`')
               else
-                super association_class.constantize.find value
+                super association_class.find value.split('_')[-1]
+                send "#{association}_type=", association_class.to_s
               end
             end
           else
@@ -34,28 +36,19 @@ module Tramway::Core
       if params
         if validate params
           begin
-            save.tap do
-              # self.class.remove_validations_from_model!
-            end
+            save
           rescue StandardError => e
-            # self.class.remove_validations_from_model!
             error = Tramway::Error.new(plugin: :core, method: :submit, message: "Looks like you have method `#{e.name.to_s.gsub('=', '')}` in #{@@model_class}. You should rename it or rename property in #{self.class}")
             raise error.message
           end
         else
-          association_error = false
           @@associations.each do |association|
             if errors.details[association] == [{ error: :blank }]
               model.send("#{association}=", send(association))
-              association_error = true
             end
-          end
-          (association_error && save).tap do
-            # self.class.remove_validations_from_model!
           end
         end
       else
-        # self.class.remove_validations_from_model!
         error = Tramway::Error.new(plugin: :core, method: :submit, message: 'ApplicationForm::Params should not be nil')
         raise error.message
       end
@@ -180,25 +173,7 @@ module Tramway::Core
           raise error.message
         end
         @@model_class.validates attribute, **options
-        #  @@validations ||= {}
-        #  @@validations.deep_merge! attribute => options
       end
-
-      # FIXME: Removes all validations in a field. We must implement own validations
-
-      # def remove_validations_from_model!
-      #  return unless defined? @@validations
-      #  @@validations&.each do |validation|
-      #    @@model_class.class_eval do
-      #      _validators.except validation[0]
-      #
-      #      binding.pry
-      #      _validate_callbacks.each do |callback|
-      #        callback.raw_filter.attributes.delete validation[0]
-      #      end
-      #    end
-      #  end
-      # end
     end
   end
 end

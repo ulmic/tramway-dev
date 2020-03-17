@@ -7,12 +7,7 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
     end
   end
 
-  delegate :title, to: :object
-  delegate :description, to: :object
-  delegate :participant_form_fields, to: :object
-  delegate :sections, to: :object
-  delegate :partakings, to: :object
-  delegate :request_collecting_state, to: :object
+  delegate_attributes :title, :description, :participant_form_fields, :sections, :partakings, :request_collecting_state
 
   if defined?(::Tramway::Partner)
     ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|

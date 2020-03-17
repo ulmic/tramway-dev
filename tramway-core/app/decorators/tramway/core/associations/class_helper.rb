@@ -20,6 +20,11 @@ module Tramway::Core::Associations::ClassHelper
     end
   end
 
+  def decorate_associations(*association_names)
+    association_names.each do |association_name|
+      decorate_association association_name
+    end
+  end
   def define_main_association_method(association_name, decorator)
     define_method association_name do
       association = object.class.reflect_on_association(association_name)

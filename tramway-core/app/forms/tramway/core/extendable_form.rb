@@ -19,7 +19,7 @@ class Tramway::Core::ExtendableForm
             model.values = extended_params.permit!.to_h.reduce(model.values) do |hash, pair|
               hash.merge! pair[0] => pair[1]
             end
-            super params
+            super(params) && model.errors.empty?
           end
 
           define_method 'properties' do

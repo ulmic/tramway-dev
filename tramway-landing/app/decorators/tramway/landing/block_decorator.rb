@@ -13,13 +13,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     delegate :human_view_state_event_name, to: :model_class
   end
 
-  delegate :position, to: :object
-  delegate :title, to: :object
-  delegate :background, to: :object
-  delegate :anchor, to: :object
-  delegate :description, to: :object
-  delegate :anchor, to: :object
-  delegate :view_name, to: :object
+  delegate_attributes :position, :title, :background, :anchor, :description, :view_name
 
   def block_type
     object.block_type_text

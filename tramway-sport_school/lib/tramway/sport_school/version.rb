@@ -2,6 +2,6 @@
 
 module Tramway
   module SportSchool
-    VERSION = '1.2.10.6'
+    VERSION = '1.2.11.2'
   end
 end

@@ -30,12 +30,8 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   delegate :title, to: :object
-  decorate_association :participants
+  decorate_associations :participants, :sections, :partakings, :partnerships, :organizations
   decorate_association :participant_form_fields, as: :event
-  decorate_association :sections
-  decorate_association :partakings
-  decorate_association :partnerships
-  decorate_association :organizations
   decorate_association :actions, as: :event, state_machines: [:action_state]
 
   def background
