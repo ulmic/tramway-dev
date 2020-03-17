@@ -29,7 +29,7 @@ module Tramway::Api::V1
     end
 
     def update
-      record_form = form_class.new model_class.active.find_by! uuid: params[:id]
+      record_form = form_class.new record
       if record_form.submit snake_case params[:data][:attributes]
         render json: record_form.model,
                serializer: serializer_class,
@@ -41,7 +41,6 @@ module Tramway::Api::V1
     end
 
     def show
-      record = model_class.active.find_by! uuid: params[:id]
       render json: record,
              serializer: serializer_class,
              include: '*',
@@ -49,7 +48,6 @@ module Tramway::Api::V1
     end
 
     def destroy
-      record = model_class.active.find_by! uuid: params[:id]
       record.remove
       render json: record,
              serializer: serializer_class,
@@ -58,31 +56,62 @@ module Tramway::Api::V1
     end
 
     private
-
-    def check_available_model_class
-      head(:unprocessable_entity) && return unless model_class
-    end
-
-    def check_available_model_action
-      open_actions = Tramway::Api.available_models[model_class.to_s][:open]&.map(&:to_s) || []
-      closed_actions = Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []
-      head(:unprocessable_entity) && return unless action_name.in? open_actions + closed_actions
-    end
-
-    def authenticate_user_if_needed
-      if action_name.in?(Tramway::Api.available_models[model_class.to_s][:closed]&.map(&:to_s) || []) && !current_user
-        head(:unauthorized) && return
+    
+    def record
+      if params[:id].present?
+        @record = model_class.find_by! uuid: params[:id]
       end
     end
 
+    def check_available_model_class
+      unless model_class
+        head(:unauthorized) && return unless current_user
+        head(:unprocessable_entity) && return
+      end
+    end
+
+    def check_available_model_action
+      action_is_available = checking_roles.map do |role|
+        Tramway::Api.action_is_available?(
+          record: record,
+          action: action_name.to_sym,
+          project: (@application_engine || @application.name),
+          role: role,
+          model_name: params[:model],
+          current_user: current_user
+        )
+      end.include? true
+
+      head(:unprocessable_entity) && return unless action_is_available
+    end
+
+    def authenticate_user_if_needed
+      action_is_open = Tramway::Api.action_is_available?(
+        action: action_name.to_sym,
+        project: (@application_engine || @application.name),
+        model_name: params[:model]
+      )
+      head(:unauthorized) && return if !current_user && !action_is_open
+    end
+
     def model_class
-      if params[:model].to_s.in? ::Tramway::Api.available_models.keys.map(&:to_s)
+      if params[:model].to_s.in? available_models_for_current_user
         begin
           params[:model].constantize
         rescue ActiveSupport::Concern::MultipleIncludedBlocks => e
           raise "#{e}. Maybe #{params[:model]} model doesn't exists or there is naming conflicts with it"
         end
       end
+    end
+
+    def available_models_for_current_user
+      checking_roles.reduce([]) do |models, role|
+        models += ::Tramway::Api.available_models(role: role).map(&:to_s) 
+      end
+    end
+
+    def checking_roles
+      [ :open, current_user&.role ].compact
     end
 
     def decorator_class(model_name = nil)

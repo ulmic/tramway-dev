@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 require 'tramway/api/engine'
+require 'tramway/api/records_models'
+require 'tramway/api/singleton_models'
 
 module Tramway
   module Api
     class << self
+      include ::Tramway::Api::RecordsModels
+      include ::Tramway::Api::SingletonModels
+
       def auth_config
         @@auth_config ||= [{ user_model: ::Tramway::User::User, auth_attributes: :email }]
       end
@@ -31,16 +36,48 @@ module Tramway
         end
       end
 
-      def set_available_models(**models)
-        @@available_models ||= {}
-        models = models.reduce({}) do |hash, pair|
-          hash.merge! pair[0].to_s.camelize => pair[1]
+      def get_models_by_key(checked_models, project, role)
+        unless project.present?
+          error = Tramway::Error.new(
+            plugin: :admin,
+            method: :get_models_by_key,
+            message: "Looks like you have not create at lease one instance of #{Tramway::Core.application.model_class} model"
+          )
+          raise error.message
         end
-        @@available_models.merge! models
+        checked_models && checked_models != [] && checked_models[project][role]&.keys || []
       end
 
-      def available_models
-        @@available_models ||= {}
+      def models_array(models_type:, role:)
+        instance_variable_get("@#{models_type}_models")&.map do |projects|
+          projects.last[role]&.keys
+        end&.flatten || []
+      end
+
+      def action_is_available?(record: nil, project:, role: :open, model_name:, action:, current_user: nil)
+        actions = select_actions(project: project, role: role, model_name: model_name)
+        availability = actions&.select do |a|
+          if a.is_a? Symbol
+            a == action.to_sym
+          elsif a.is_a? Hash
+            a.keys.first.to_sym == action.to_sym
+          end
+        end&.first
+
+        return false unless availability.present?
+        return true if availability.is_a? Symbol
+
+        availability.values.first.call record, current_user
+      end
+
+      def select_actions(project:, role:, model_name:)
+        stringify_keys(@singleton_models&.dig(project, role))&.dig(model_name) || stringify_keys(@available_models&.dig(project, role))&.dig(model_name)
+      end
+
+      def stringify_keys(hash)
+        hash&.reduce({}) do |new_hash, pair|
+          new_hash.merge! pair[0].to_s => pair[1]
+        end
       end
     end
   end
