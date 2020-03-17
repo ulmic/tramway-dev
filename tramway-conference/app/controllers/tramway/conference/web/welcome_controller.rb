@@ -12,7 +12,7 @@ class Tramway::Conference::Web::WelcomeController < ::Tramway::Conference::Appli
     actual_events = ::Tramway::Event::EventLinkDecorator.decorate ::Tramway::Event::Event.active.actual.open.order :begin_date
     @links = actual_events + past_events_links
     @close_events = ::Tramway::Event::Event.actual.open.map do |event|
-      ::Tramway::Event::EventAsPageWithButtonDecorator.decorate event 
+      ::Tramway::Event::EventAsPageWithButtonDecorator.decorate event
     end
     @partners = ::Tramway::Partner::Partnership.partnership_type.values.reduce({}) do |hash, partnership_type|
       hash.merge! partnership_type => (@unity.send(partnership_type.to_s.pluralize).active.map do |partner|

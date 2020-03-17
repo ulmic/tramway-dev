@@ -19,7 +19,7 @@ class Tramway::Event::ParticipantExtendedFormCreator < Tramway::Core::FormCreato
   def self.build_validations(field)
     case field.field_type
     when 'checkbox'
-      field.validations.except('presence').deep_merge! inclusion: { in: [ 'true' ] }
+      field.validations.except('presence').deep_merge! inclusion: { in: ['true'] }
     else
       field.validations
     end

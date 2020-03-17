@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Admin::HasAndBelongsToManyRecordsController < ::Tramway::Admin::ApplicationController
   def create
     base_object = params[:model_class].constantize.find params[:object_id]
