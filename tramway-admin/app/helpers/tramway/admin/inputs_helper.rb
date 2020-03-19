@@ -6,7 +6,7 @@ module Tramway
       def association_params(form_object:, property:, value:, object:, options: {})
         full_class_name_association = form_object.class.full_class_name_association(property)
         unless full_class_name_association
-          raise "It seems you\'ve defined association attributes with `property` method. Please, use `association` method. `association :#{property}`"
+          raise "It seems you've defined association attributes with `property` method. Please, use `association` method. `association :#{property}`"
         end
         if full_class_name_association.is_a? Array
           raise "It seems you've used `association` input type in the Form. Please, use `polymorphic_association` type. `#{property}: :polymorphic_association`"
