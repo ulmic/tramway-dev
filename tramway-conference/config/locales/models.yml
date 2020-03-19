@@ -10,6 +10,8 @@ ru:
         address: Адрес
         phone: Телефон
         social_networks: Социальные сети
+      tramway/user/user:
+        social_networks: Социальные сети
   cases:
     tramway/conference/unity:
       genitive: проект
