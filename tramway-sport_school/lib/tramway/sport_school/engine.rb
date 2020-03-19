@@ -7,7 +7,7 @@ module Tramway
   module SportSchool
     class Engine < ::Rails::Engine
       isolate_namespace Tramway::SportSchool
-      ::Tramway::Profiles.records = '::Tramway::SportSchool::Institution'
+      ::Tramway::Profiles.records = ['::Tramway::SportSchool::Institution']
     end
   end
 end
