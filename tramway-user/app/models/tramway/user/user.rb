@@ -2,6 +2,8 @@
 
 class Tramway::User::User < ::Tramway::Core::ApplicationRecord
   has_secure_password
+  
+  has_many :social_networks, as: :record, class_name: 'Tramway::Profiles::SocialNetwork' if defined? Tramway::Conference
 
   # FIXME: replace to tramway-admin
   enumerize :role, in: %i[user admin], default: :admin
