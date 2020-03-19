@@ -6,7 +6,7 @@ require 'tramway/profiles/generates/install_generator'
 module Tramway
   module Profiles
     class << self
-      def records=(*models)
+      def records=(models)
         @@records ||= []
         @@records += (models.map do |model|
           model.to_s.sub(/^\:\:/, '')
