@@ -46,7 +46,8 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   def responsible_person
     {
       phone: (object.creator.phone if object.creator&.phone&.present?),
-      email: (object.creator.email if object.creator&.email&.present?)
+      email: (object.creator.email if object.creator&.email&.present?),
+      social_networks: (object.creator.social_networks.active if object.creator.respond_to?(:social_networks))
     }
   end
 end
