@@ -1,5 +1,5 @@
 # Tramway::Landing
-Short description and motivation.
+It uses [Material Design Bootstrap](https://mdbootstrap.com/) by default
 
 ## Description
 
