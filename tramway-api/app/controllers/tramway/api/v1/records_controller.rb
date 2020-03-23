@@ -3,13 +3,13 @@
 module Tramway::Api::V1
   class RecordsController < ::Tramway::Api::V1::ApplicationController
     before_action :check_available_model_class
-    before_action :check_available_model_action
+    before_action :check_available_model_action_for_record, only: [ :show, :update, :destroy ]
     before_action :authenticate_user_if_needed
 
     def index
-      records = model_class.active.order(id: :desc).send params[:scope] || :all
-      records = records.full_text_search params[:search] if params[:search]
-      render json: records,
+      collection = available_action_for_collection
+
+      render json: collection,
              each_serializer: serializer_class,
              include: '*',
              status: :ok
@@ -63,6 +63,12 @@ module Tramway::Api::V1
       end
     end
 
+    def records
+      collection = model_class.active.order(id: :desc).send params[:scope] || :all
+      collection = collection.full_text_search params[:search] if params[:search]
+      collection
+    end
+
     def check_available_model_class
       unless model_class
         head(:unauthorized) && return unless current_user
@@ -70,23 +76,43 @@ module Tramway::Api::V1
       end
     end
 
-    def check_available_model_action
+    def check_available_model_action_for_record
+      action_is_available = check_action
+      action_is_available.tap do
+        head(:unprocessable_entity) && return if action_is_available.is_a?(Proc) && !action_is_available.call(record, current_user)
+      end
+    end
+
+    def available_action_for_collection
+      action_is_available = check_action
+      return records if action_is_available == true
+      action_is_available.call records, current_user if action_is_available.is_a?(Proc)
+    end
+
+    def check_action
       action_is_available = checking_roles.map do |role|
-        Tramway::Api.action_is_available?(
-          record: record,
+        Tramway::Api.action_is_available(
           action: action_name.to_sym,
           project: (@application_engine || @application.name),
           role: role,
           model_name: params[:model],
           current_user: current_user
         )
-      end.include? true
+      end.compact.uniq - [false]
 
-      head(:unprocessable_entity) && return unless action_is_available
+      if action_is_available.count > 1
+        Tramway::Error.raise_error(:tramway, :api, :api, :v1, :records_controller, :available_action_for_collection, :duplicate_actions)
+      end
+
+      action_is_available = action_is_available.first
+
+      action_is_available.tap do
+        head(:unprocessable_entity) && return unless action_is_available
+      end
     end
 
     def authenticate_user_if_needed
-      action_is_open = Tramway::Api.action_is_available?(
+      action_is_open = Tramway::Api.action_is_available(
         action: action_name.to_sym,
         project: (@application_engine || @application.name),
         model_name: params[:model]

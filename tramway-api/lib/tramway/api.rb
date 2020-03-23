@@ -54,7 +54,7 @@ module Tramway
         end&.flatten || []
       end
 
-      def action_is_available?(record: nil, project:, role: :open, model_name:, action:, current_user: nil)
+      def action_is_available(project:, role: :open, model_name:, action:, current_user: nil)
         actions = select_actions(project: project, role: role, model_name: model_name)
         availability = actions&.select do |a|
           if a.is_a? Symbol
@@ -67,7 +67,7 @@ module Tramway
         return false unless availability.present?
         return true if availability.is_a? Symbol
 
-        availability.values.first.call record, current_user
+        availability.values.first
       end
 
       def select_actions(project:, role:, model_name:)
