@@ -12,7 +12,7 @@ module Tramway
       include ::Tramway::Admin::RecordsHelper
       include ::Tramway::Admin::SingletonHelper
       include ::Tramway::Admin::NavbarHelper
-      include ::Tramway::Admin::InputsHelper
+      include ::Tramway::Core::InputsHelper
       include ::Tramway::Admin::FocusGeneratorHelper
       include ::Tramway::Admin::ActionsHelper
       include ::Tramway::Collections::Helper
