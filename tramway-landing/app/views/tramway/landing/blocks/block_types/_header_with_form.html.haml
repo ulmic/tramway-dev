@@ -1,0 +1,33 @@
+.view.full-page-intro{ style: "background-image: url('#{block.background.url}'); background-repeat: no-repeat; background-size: cover;" }
+  .mask.rgba-black-light.d-flex.justify-content-center.align-items-center
+    .container
+      .row.wow.fadeIn
+        .col-md-6.mb-4.white-text.text-center.text-md-left
+          %h1.display-4.font-weight-bold
+            = @application.public_name
+          %hr.hr-light
+            %p
+              %strong
+                = @application.tagline
+            %p.mb-4.d-none.d-md-block
+              %strong
+                = @application.short_description
+        .col-md-6.col-xl-5.mb-4
+          - if params[:flash] == 'success'
+            = render 'tramway/landing/templates/alert', alert_type: :success do
+              Sign up successful!
+          - if params[:flash] == 'error'
+            = render 'tramway/landing/templates/alert', alert_type: :danger do
+              There is some errors
+          .card
+            .card-body
+              = simple_form_for @header_with_form, url: block.form_url, method: :post, input_html: { class: 'form-vertical' } do |f|
+                %h3.dark-grey-text.text-center
+                  %strong
+                    = block.title
+                %hr
+                = hidden_field_tag :model, 'User'
+                = hidden_field_tag :redirect, request.path
+                - @header_with_form.properties.each do |property|
+                  = render 'tramway/core/shared/input', property: property[0], object: :record, type: property[1], form: f, destination: :landing, record: @header_with_form, value: (params[:record].present? ? params[:record][property[0]] : '')
+                = f.button :submit, @header_with_form.submit_message

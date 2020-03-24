@@ -16,21 +16,24 @@
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
+    = render 'layouts/tramway/landing/navbar'
     - if @blocks&.any?
-      - headers = @blocks.select { |block| block.model.block_type&.header? }
-      - footers = @blocks.select { |block| block.model.block_type&.footer? }
+      - headers = @blocks.select { |block| block.model.header? }
+      - footers = @blocks.select { |block| block.model.footer? }
       - other_blocks = @blocks - headers - footers
-      - if headers.first.present?
-        = render "tramway/landing/blocks/block_types/header", block: headers.first
-
+      - header_block = headers.first
+      - if header_block.present?
+        = render "tramway/landing/blocks/block_types/#{header_block.model.block_type.underscore}", block: header_block
       %main.mt-5
-        .container
-          - other_blocks.each_with_index do |block, index|
-            = render "tramway/landing/blocks/block_types/#{block.model.block_type}", block: block
-            - if index < other_blocks.count - 1 
-              %hr
-        .container-fluid
-          = yield
+        - if other_blocks.any?
+          .container
+            - other_blocks.each_with_index do |block, index|
+              = render "tramway/landing/blocks/block_types/#{block.model.block_type}", block: block
+              - if index < other_blocks.count - 1 
+                %hr
+        - if block_given?
+          .container-fluid
+            = yield
 
       - footers = @blocks.select { |block| block.model.block_type&.footer? }
       - if footers.first.present?

@@ -23,6 +23,7 @@ module Tramway::Landing::Generators
         add_link_object_type_to_tramway_landing_blocks
         add_button_to_tramway_landing_blocks
         add_view_name_to_tramway_landing_blocks
+        add_values_to_tramway_landing_blocks
       ]
 
       migrations.each do |migration|

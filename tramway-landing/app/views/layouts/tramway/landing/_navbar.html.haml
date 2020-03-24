@@ -1,0 +1,17 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.indigo.scrolling-navbar.fixed-top
+  = link_to yield(:application_name), '#', class: 'navbar-brand'
+  %button.navbar-toggler{ type: :button, data: { toggle: :collapse, target: '#navbarSupportedContent' }, aria: { controls: 'navbarSupportedContent', expanded: 'false', label: 'Toggle navigation' } }
+    = fa_icon :bars
+  .collapse.navbar-collapse#navbarSupportedContent
+    - if @links&.any?
+      %ul.navbar-nav.mr-auto
+        - @links.each do |link|
+          - if link.is_a? Hash
+            .nav-item.dropdown
+              %a.nav-link.dropdown-toggle{ id: "dropdown_menu_button_#{link.keys.first}", aria: { expanded: :false, haspopup: :true }, data: { toggle: :dropdown } }
+                = t(".#{link.keys.first}")
+              .dropdown-menu.dropdown-primary{ aria: { labelledby: "dropdown_menu_button_#{link.keys.first}" } }
+                - link.values.first.each do |menu_item|
+                  = link_to menu_item.title, menu_item.link, class: 'dropdown-item'
+          - else
+            = menu_item link.title, link.link
