@@ -5,16 +5,16 @@ require 'tramway/auth/engine'
 module Tramway
   module Auth
     class << self
-      def authenticable_classes
-        @authenticable_classes ||= []
+      def authenticable_models
+        @authenticable_models ||= []
       end
 
-      def authenticable_classes=(value)
-        @authenticable_classes ||= []
+      def authenticable_models=(value)
+        @authenticable_models ||= []
         if value.is_a? Array
-          @authenticable_classes += value
+          @authenticable_models += value
         else
-          @authenticable_classes << value
+          @authenticable_models << value
         end
       end
 
