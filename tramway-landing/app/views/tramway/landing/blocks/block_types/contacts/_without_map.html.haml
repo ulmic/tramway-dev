@@ -17,7 +17,7 @@
           .col-10.mb-2.pl-3
             %h5.feature-title.font-bold.mb-1
               = email 
-- social_networks.each_slice(records_in_the_row) do |slice|
+- social_networks&.each_slice(records_in_the_row) do |slice|
   .row.features-small.mt-5.wow.fadeIn
     - slice.each do |social_network, index|
       .col-xl-3.col-lg-6
