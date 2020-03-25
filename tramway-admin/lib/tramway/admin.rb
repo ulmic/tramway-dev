@@ -39,7 +39,7 @@ module Tramway
           error = Tramway::Error.new(
             plugin: :admin,
             method: :get_models_by_key,
-            message: "Looks like you have not create at lease one instance of #{Tramway::Core.application.model_class} model"
+            message: "Looks like you have not create at least one instance of #{Tramway::Core.application.model_class} model"
           )
           raise error.message
         end
