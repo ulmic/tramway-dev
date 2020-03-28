@@ -1,6 +1,9 @@
 # Tramway::Landing
 It uses [Material Design Bootstrap](https://mdbootstrap.com/) by default
 
+Want to upgrade gem version?
+Don't forget to look at [migration doc](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/migrations_to_version.md)
+
 ## Description
 
 Tramway-landing provides several types of blocks for main page.
