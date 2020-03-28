@@ -1,4 +1,4 @@
 = javascript_include_tag 'tramway/landing/smooth-scroll'
-= render 'tramway/landing/blocks/templates/full_page', block: OpenStruct.new(title: yield(:application_name), tagline: yield(:application_tagline), background: block.background), buttons: @links&.select { |link| !link.is_a? Hash }
+= render 'tramway/landing/templates/full_page', block: OpenStruct.new(title: yield(:application_name), tagline: yield(:application_tagline), background: block.background), buttons: @links&.select { |link| !link.is_a? Hash }
 %script
   var scroll = new SmoothScroll('a[href*="#"]');

@@ -1,5 +1,4 @@
 %header
-  = yield :navbar
   #intro.view.hm-black-strong{ style: "background-image: url('#{block.background.url}')" }
     .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
       .row.d-flex.justify-content-center
@@ -9,7 +8,7 @@
           %hr.hr-light
           %h4.white-text.my-4
             = block.tagline
-          - if defined?(buttons) && buttons&.any?
+          - if defined?(buttons) && buttons&.compact&.any?
             - buttons.each do |button|
               - data_obj = {}
               - data_obj = data_obj.merge(href: button.link) if button.try :link
