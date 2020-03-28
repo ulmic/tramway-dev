@@ -50,4 +50,16 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
       social_networks: (object.creator.social_networks.active if object.creator.respond_to?(:social_networks))
     }
   end
+
+  def is_past?
+    object.end_date < DateTime.now
+  end
+
+  def is_future?
+    object.begin_date > DateTime.now
+  end
+
+  def is_during?
+    object.begin_date < DateTime.now && object.end_date > DateTime.now
+  end
 end

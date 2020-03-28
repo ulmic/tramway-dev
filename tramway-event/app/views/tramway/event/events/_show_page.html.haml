@@ -12,7 +12,7 @@
     или пишите на email
     = mail_to @event.responsible_person[:email] || @application.email
 
-= render 'tramway/landing/blocks/templates/full_page', block: event, buttons: [OpenStruct.new(title: t('.registration'), anchor: '#registration')]
+= render 'tramway/landing/templates/full_page', block: event, buttons: [(OpenStruct.new(title: t('.registration'), anchor: '#registration') if @event.request_collecting_state == :are_being_right_now)]
 - content_for :main_image do
   = request.protocol + request.host_with_port + event.background.url
 %main.event.show
@@ -20,19 +20,20 @@
     - if @event.responsible_person[:social_networks]&.any? || @event.responsible_person[:phone].present? || @event.responsible_person[:email].present?
       = render 'tramway/landing/blocks/block_types/contacts', block: OpenStruct.new(title: 'Контакты'), social_networks: @event.responsible_person[:social_networks], email: @event.responsible_person[:email], phone: @event.responsible_person[:phone]
     - if defined? sections_as_features
-      = render 'tramway/landing/blocks/templates/features_list', collection: sections_as_features
+      = render 'tramway/landing/templates/features_list', collection: sections_as_features
     .row.description
       .col
         != event.description
-    #registration
-      = render 'tramway/event/participants/form', event: event
+    - unless @event.is_past?
+      #registration
+        = render 'tramway/event/participants/form', event: event
     - if defined? sections
       - sections.each_with_index do |section, index|
         = render 'tramway/event/sections/show_page', section: section
         - if index < sections.count - 1
           %br
     - if defined? people_as_features
-      = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: "Оргкомитет", description: "", anchor: :organizers), collection: people_as_features, options: { image: { css: { class_name: 'circle' } } }
+      = render 'tramway/landing/templates/features_list', block: OpenStruct.new(title: "Оргкомитет", description: "", anchor: :organizers), collection: people_as_features, options: { image: { css: { class_name: 'circle' } } }
     - if defined? ::Tramway::Partner
       - ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
-        = render 'tramway/landing/blocks/templates/features_list', block: OpenStruct.new(title: t("enumerize.tramway/partner/partnership.partnership_type.#{partnership_type}")), collection: partners[partnership_type]
+        = render 'tramway/landing/templates/features_list', block: OpenStruct.new(title: t("enumerize.tramway/partner/partnership.partnership_type.#{partnership_type}")), collection: partners[partnership_type]

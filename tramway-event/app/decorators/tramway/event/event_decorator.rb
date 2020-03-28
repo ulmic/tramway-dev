@@ -7,17 +7,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def show_attributes
-      %i[
-        title
-        duration
-        events_link
-        state
-        created_at
-        photo
-        request_collecting_duration
-        description
-        participants_list
-      ]
+      %i[ title duration events_link state created_at photo request_collecting_duration description participants_list ]
     end
 
     def show_associations
@@ -103,6 +93,5 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   def state
     state_machine_view object, :state
   end
-
   alias tagline duration
 end
