@@ -2,6 +2,6 @@
 
 module Tramway
   module Landing
-    VERSION = '2.2.1'
+    VERSION = '2.2.2'
   end
 end

@@ -2,13 +2,13 @@
   - if defined? title
     %h4.alert-heading 
       = title
+      = render 'tramway/landing/templates/alerts/close_button'
     - if defined? short_description
       %p
         = short_description
     %hr/
     %p.mb-0
       = yield
-      = render 'tramway/landing/templates/alerts/close_button'
   - else
     = yield
     = render 'tramway/landing/templates/alerts/close_button'
