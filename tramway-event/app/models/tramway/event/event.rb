@@ -27,6 +27,9 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   scope :open, -> { where reach: :open }
   scope :closed, -> { where reach: :closed }
 
+  validates :begin_date, presence: true
+  validates :end_date, presence: true
+
   def request_collecting_state
     return :not_initialized unless request_collecting_begin_date.present? || request_collecting_end_date.present?
     return :will_begin_soon if request_collecting_begin_date > DateTime.now

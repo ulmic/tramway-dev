@@ -86,6 +86,10 @@ ru:
             photo:
               too_small_image: слишком маленькое (минимальный размер изображения 1920*1080)
               image_aspect_ratio: не соответствует формату (соотношение сторон должно быть 16 на 9)
+            begin_date:
+              blank: не может быть пустым
+            end_date:
+              blank: не может быть пустым
         tramway/event/participant:
           attributes:
             default:
