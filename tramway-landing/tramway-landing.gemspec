@@ -11,6 +11,8 @@ Gem::Specification.new do |s|
   s.version     = Tramway::Landing::VERSION
   s.authors     = ['Pavel Kalashnikov']
   s.email       = ['kalashnikovisme@gmail.com']
+  s.authors     = ['moshinaan']
+  s.email       = ['moshinaan@gmail.com']
   s.homepage    = 'https://github.com/kalashnikovisme/tramway-landing'
   s.summary     = 'Landing Engine for your Rails projects'
   s.description = 'Landing Engine for your Rails projects'
