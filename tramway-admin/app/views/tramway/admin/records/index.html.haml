@@ -14,7 +14,7 @@
     = render 'search', model_class: model_class
 %hr
 %ul.nav.nav-tabs
-  - if params[:search]
+  - if params[:search].present?
     %li.nav-item
       = link_to search_tab_title(@records.total_count), '#', class: 'nav-link active'
     %li.nav-item
