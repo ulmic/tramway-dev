@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-module Tramway
-  module Page
-    class ApplicationController < ActionController::Base
-      protect_from_forgery with: :exception
-    end
-  end
+class Tramway::Page::ApplicationController < Tramway::Core::ApplicationController
+  protect_from_forgery with: :exception
 end
