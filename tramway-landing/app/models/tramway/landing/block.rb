@@ -24,7 +24,7 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   store_accessor :values, :form_url
 
   scope :on_main_page, -> do
-    active.where(view_state: :published).where("(values -> 'page') IS NOT NULL").order :position 
+    active.where(view_state: :published).where("(values -> 'page') IS NULL").order :position 
   end
   scope :with_navbar_link, -> { where navbar_link: :exist }
   scope :header, -> { on_main_page.where(block_type: :header).first }
