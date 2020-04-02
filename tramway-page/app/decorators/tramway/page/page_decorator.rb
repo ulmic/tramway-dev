@@ -18,6 +18,6 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def public_path
-    Tramway::Page::Engine.routes.url_helpers.page_path object.slug
+    Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug
   end
 end
