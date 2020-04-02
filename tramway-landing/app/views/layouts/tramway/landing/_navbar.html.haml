@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.indigo.scrolling-navbar.fixed-top
-  = link_to yield(:application_name), '#', class: 'navbar-brand'
+  = link_to @application.public_name || yield(:application_name), '#', class: 'navbar-brand'
   - if @links&.any?
     %button.navbar-toggler{ type: :button, data: { toggle: :collapse, target: '#navbarSupportedContent' }, aria: { controls: 'navbarSupportedContent', expanded: 'false', label: 'Toggle navigation' } }
     = fa_icon :bars

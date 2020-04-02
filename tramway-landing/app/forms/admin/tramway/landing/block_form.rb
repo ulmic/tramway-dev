@@ -2,7 +2,7 @@
 
 class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationForm
   properties :title, :background, :view_state_event, :block_type, :position, :navbar_link, :anchor, :description,
-    :link_object_type, :link_object_id, :button_title, :button_link, :view_name, :form_url
+    :link_object_type, :link_object_id, :button_title, :button_link, :view_name, :form_url, :page
 
   def initialize(object = nil)
     super(object).tap do
@@ -21,7 +21,16 @@ class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationF
                       button_title: :string,
                       button_link: :string,
                       view_name: :string,
-                      form_url: :string
+                      form_url: :string,
+                      page: {
+                        type: :select,
+                        input_options: {
+                          hint: I18n.t('hints.tramway.landing.block.page'),
+                          collection: Tramway::Page::Page.landings.active.reduce({}) do |hash, page|
+                            hash.merge! page.title => page.id
+                          end
+                        }
+                      }
     end
   end
 
@@ -51,5 +60,19 @@ class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationF
     model.values ||= {} 
     model.values.merge! form_url: value
     model.save
+  end
+
+  def form_url
+    model.values&.dig 'form_url'
+  end
+
+  def page=(value)
+    model.values ||= {} 
+    model.values.merge! page: value
+    model.save
+  end
+
+  def page
+    model.values&.dig 'page'
   end
 end
