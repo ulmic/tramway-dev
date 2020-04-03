@@ -11,12 +11,13 @@ Tramway-landing provides several types of blocks for main page.
 List of blocks:
 
 * Header
+* Header with form
 * Footer
 * Block with text and image
 * Block with text, image and button
 * Cards
 * Features list
-* Contacts
+* Contacts, also Contacts without map
 * View
 * Just text
 * Link to the object
@@ -149,12 +150,14 @@ Then all your showing blocks will be on the main page.
 How create blocks you can find here
 
 * [Header](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/header/main.md)
+* Header with form
 * [Footer](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/footer/main.md)
 * [Block with text and image](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/block_with_text_and_image/main.md)
 * [Block with text, image and button](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/block_with_text_image_and_button/main.md)
 * [Cards](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/cards/main.md)
 * [Features list](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/features/main.md)
 * [Contacts](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/contacts/main.md)
+* Contacts without map
 * [View](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/view/main.md)
 * [Just text](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/just_text/main.md)
 * Link to object
