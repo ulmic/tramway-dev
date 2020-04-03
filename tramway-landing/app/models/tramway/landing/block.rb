@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
+  belongs_to :page, class_name: 'Tramway::Page::Page'
+
   enumerize :block_type, in: %i[header header_with_form footer page cards features contacts link page_with_button just_text view]
   enumerize :navbar_link, in: %i[exist not_exist], default: :not_exist
   enumerize :link_object_type, in: ['Tramway::SportSchool::Document', 'Tramway::Page::Page']
@@ -20,11 +22,12 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
     end
   end
 
-  store_accessor :values, :page
   store_accessor :values, :form_url
+  store_accessor :button, :button_link
+  store_accessor :button, :button_title
 
   scope :on_main_page, -> do
-    active.where(view_state: :published).where("(values -> 'page') IS NULL").order :position 
+    active.joins(:page).where(view_state: :published).where('tramway_page_pages.page_type = ?', :main).order :position 
   end
   scope :with_navbar_link, -> { where navbar_link: :exist }
   scope :header, -> { on_main_page.where(block_type: :header).first }
@@ -40,5 +43,12 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
 
   def footer?
     block_type.footer?
+  end
+
+  def form_to_render
+    case self.form_url
+    when '/auth/sign_up'
+      "#{Tramway::Auth.authenticable_models.first}SignUpForm".constantize
+    end
   end
 end

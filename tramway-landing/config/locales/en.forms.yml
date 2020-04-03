@@ -4,4 +4,3 @@ en:
       landing:
         block:
           position: "Busy positions. Block type 'Header' should be always the first. Block type 'Footer' should be always the last"
-          page: "Leave it empty, if you want this block on a main page"
