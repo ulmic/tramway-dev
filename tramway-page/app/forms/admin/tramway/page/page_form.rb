@@ -9,7 +9,7 @@ class Admin::Tramway::Page::PageForm < ::Tramway::Core::ApplicationForm
                       page_type: {
                         type: :default,
                         input_options: {
-                          hint: "Body and View fields will be ignored in Landing page type. You will configurate it with Blocks"
+                          hint: "View field will be ignored in Landing page type. You will configurate it with Blocks"
                         }
                       },
                       body: :ckeditor,

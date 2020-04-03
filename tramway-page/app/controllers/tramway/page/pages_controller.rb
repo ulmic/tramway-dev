@@ -5,6 +5,12 @@ class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
 
   def show
     @page = ::Tramway::Page::Page.find_by slug: params[:slug]
-    @blocks = ::Tramway::Landing::BlockDecorator.decorate ::Tramway::Landing::Block.active.where('values @> ?', { page: @page.id.to_s }.to_json)
+    @blocks = @page.blocks.active.map do |block|
+      if block.block_type.header_with_form? && block.form_url.present?
+        # FIXME in future
+        @header_with_form = block.form_to_render.new(Tramway::Auth.authenticable_models.first.new)
+      end
+      ::Tramway::Landing::BlockDecorator.decorate block
+    end
   end
 end

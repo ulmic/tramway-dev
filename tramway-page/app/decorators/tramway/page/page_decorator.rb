@@ -5,9 +5,15 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
     def collections
       [:all]
     end
+
+    def show_associations
+      [ :blocks ]
+    end
   end
 
   delegate :title, to: :object
+
+  decorate_association :blocks, state_machines: [ :view_state ]
 
   def lead
     object.body.first 200
