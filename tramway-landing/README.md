@@ -145,7 +145,42 @@ It will push this content to `<head>` tag only on main page. You aren't able to 
 
 Then all your showing blocks will be on the main page.
 
-## Blocks
+## Migrate from tramway-landing 2.x to tramway-landing 3.x
+
+#### 1. Add tramway-page gem to the Gemfile
+
+*Gemfile*
+```ruby
+gem 'tramway-page', '>= 1.4.1'
+```
+
+#### 2. Run install generator of tramway-page gem
+
+```shell
+rails g tramway:page:install
+```
+
+#### 3. Run upgraded generator of tramway-landing gem
+
+```shell
+rails g tramway:landing:install
+```
+
+#### 4. Create new Tramway::Page::Page object for main page
+
+```ruby
+$> rails c
+Tramway::Page::Page.create! title: 'Main page', page_type: :main
+```
+
+#### 5. Associate every Tramway::Landing::Block with the main page
+
+```ruby
+$> rails c
+Tramway::Landing::Block.update_all page_id: Tramway::Page::Page.last.id
+```
+
+## Blocks docs
 
 How create blocks you can find here
 
