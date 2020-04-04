@@ -18,7 +18,7 @@
 %main.event.show
   .container
     - if @event.responsible_person[:social_networks]&.any? || @event.responsible_person[:phone].present? || @event.responsible_person[:email].present?
-      = render 'tramway/landing/blocks/block_types/contacts', block: OpenStruct.new(title: 'Контакты'), social_networks: @event.responsible_person[:social_networks], email: @event.responsible_person[:email], phone: @event.responsible_person[:phone]
+      = render 'tramway/landing/blocks/block_types/contacts', block: OpenStruct.new(title: @event.responsible_person[:title]), social_networks: @event.responsible_person[:social_networks], email: @event.responsible_person[:email], phone: @event.responsible_person[:phone]
     - if defined? sections_as_features
       = render 'tramway/landing/templates/features_list', collection: sections_as_features
     .row.description
