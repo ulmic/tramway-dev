@@ -32,6 +32,7 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   scope :with_navbar_link, -> { where navbar_link: :exist }
   scope :header, -> { on_main_page.where(block_type: :header).first }
   scope :footer, -> { on_main_page.where(block_type: :footer).first }
+  scope :published, -> { where(view_state: :published) }
 
   def link_object
     link_object_type.constantize.find link_object_id
