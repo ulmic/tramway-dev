@@ -5,9 +5,15 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
     def collections
       [:all]
     end
+
+    def show_associations
+      [ :blocks ]
+    end
   end
 
   delegate :title, to: :object
+
+  decorate_association :blocks, state_machines: [ :view_state ]
 
   def lead
     object.body.first 200
@@ -18,6 +24,6 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def public_path
-    Tramway::Page::Engine.routes.url_helpers.page_path object.slug
+    Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug
   end
 end

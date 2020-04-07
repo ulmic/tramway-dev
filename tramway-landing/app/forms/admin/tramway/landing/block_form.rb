@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationForm
+  association :page
+
   properties :title, :background, :view_state_event, :block_type, :position, :navbar_link, :anchor, :description,
     :link_object_type, :link_object_id, :button_title, :button_link, :view_name, :form_url
 
   def initialize(object = nil)
     super(object).tap do
-      form_properties title: :string,
+      form_properties page: :association,
+                      title: :string,
                       background: :file,
                       position: {
                         type: :numeric,
@@ -23,33 +26,5 @@ class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationF
                       view_name: :string,
                       form_url: :string
     end
-  end
-
-  def button_title
-    model.button ||= {}
-    model.button['title'] || ''
-  end
-
-  def button_link
-    model.button ||= {}
-    model.button['link'] || ''
-  end
-
-  def button_title=(value)
-    model.button ||= {}
-    model.button[:title] = value
-    model.save
-  end
-
-  def button_link=(value)
-    model.button ||= {}
-    model.button[:link] = value
-    model.save
-  end
-
-  def form_url=(value)
-    model.values ||= {} 
-    model.values.merge! form_url: value
-    model.save
   end
 end

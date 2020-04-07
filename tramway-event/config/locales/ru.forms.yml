@@ -1,0 +1,6 @@
+ru:
+  hints:
+    tramway:
+      event:
+        participant_form_field:
+          select_options: "в случае выбора тип поля \"Выпадающий список\", введите через запятую без пробелов все элементы списка"

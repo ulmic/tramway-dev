@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::ExtendedApplicationForm
-  properties :title, :description, :field_type, :options, :position, :list_field, :presence_field
+  properties :title, :description, :field_type, :options, :position, :list_field, :presence_field, :select_options
   association :event
 
   def initialize(object)
@@ -13,7 +13,13 @@ class Admin::Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::Extende
                       options: :text,
                       list_field: :boolean,
                       presence_field: :boolean,
-                      position: :numeric
+                      position: :numeric,
+                      select_options: {
+                        type: :string,
+                        input_options: {
+                          hint: I18n.t('hints.tramway.event.participant_form_field.select_options')
+                        }
+                      }
     end
   end
 
@@ -21,6 +27,7 @@ class Admin::Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::Extende
     super(params).tap do
       model.options = {} if model.options == ''
       model.options&.merge! list_field: (params[:list_field] == '1').to_s
+      model.options&.deep_merge! collection: { array: params[:select_options].split(',') || [] }
       model.options&.deep_merge! validations: { presence: (params[:presence_field] == '1').to_s }
       model.save
     end
@@ -32,6 +39,10 @@ class Admin::Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::Extende
 
   def presence_field
     model.options.present? && model.options.dig('validations', 'presence') == 'true'
+  end
+
+  def select_options
+    model.options.present? && model.options.dig('collection', 'array')&.join(',')
   end
 
   def options

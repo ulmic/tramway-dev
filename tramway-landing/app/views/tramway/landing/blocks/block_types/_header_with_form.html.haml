@@ -4,14 +4,15 @@
       .row.wow.fadeIn
         .col-md-6.mb-4.white-text.text-center.text-md-left
           %h1.display-4.font-weight-bold
-            = @application.public_name
+            = @page&.title || @application.public_name
           %hr.hr-light
             %p
-              %strong
-                = @application.tagline
+              - unless @page.present?
+                %strong
+                  = @application.tagline
             %p.mb-4.d-none.d-md-block
               %strong
-                = @application.short_description
+                = @page&.body || @application.short_description
         .col-md-6.col-xl-5.mb-4
           - if params[:flash] == 'success'
             = render 'tramway/landing/templates/alert', alert_type: :success do
