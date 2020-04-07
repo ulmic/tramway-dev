@@ -47,7 +47,7 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   end
 
   def form_to_render
-    case self.form_url
+    case self.values['form_url']
     when '/auth/sign_up'
       "#{Tramway::Auth.authenticable_models.first}SignUpForm".constantize
     end
