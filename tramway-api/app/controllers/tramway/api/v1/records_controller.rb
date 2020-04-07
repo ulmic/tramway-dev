@@ -3,7 +3,7 @@
 module Tramway::Api::V1
   class RecordsController < ::Tramway::Api::V1::ApplicationController
     before_action :check_available_model_class
-    before_action :check_available_model_action_for_record, only: [ :show, :update, :destroy ]
+    before_action :check_available_model_action_for_record, only: %i[show update destroy]
     before_action :authenticate_user_if_needed
 
     def index
@@ -56,11 +56,9 @@ module Tramway::Api::V1
     end
 
     private
-    
+
     def record
-      if params[:id].present?
-        @record = model_class.find_by! uuid: params[:id]
-      end
+      @record = model_class.find_by! uuid: params[:id] if params[:id].present?
     end
 
     def records
@@ -79,13 +77,16 @@ module Tramway::Api::V1
     def check_available_model_action_for_record
       action_is_available = check_action
       action_is_available.tap do
-        head(:unprocessable_entity) && return if action_is_available.is_a?(Proc) && !action_is_available.call(record, current_user)
+        if action_is_available.is_a?(Proc) && !action_is_available.call(record, current_user)
+          head(:unprocessable_entity) && return
+        end
       end
     end
 
     def available_action_for_collection
       action_is_available = check_action
       return records if action_is_available == true
+
       action_is_available.call records, current_user if action_is_available.is_a?(Proc)
     end
 
@@ -132,12 +133,12 @@ module Tramway::Api::V1
 
     def available_models_for_current_user
       checking_roles.reduce([]) do |models, role|
-        models += ::Tramway::Api.available_models(role: role).map(&:to_s) 
+        models += ::Tramway::Api.available_models(role: role).map(&:to_s)
       end
     end
 
     def checking_roles
-      [ :open, current_user&.role ].compact
+      [:open, current_user&.role].compact
     end
 
     def decorator_class(model_name = nil)

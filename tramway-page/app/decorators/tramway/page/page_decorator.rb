@@ -7,13 +7,13 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def show_associations
-      [ :blocks ]
+      [:blocks]
     end
   end
 
   delegate :title, to: :object
 
-  decorate_association :blocks, state_machines: [ :view_state ]
+  decorate_association :blocks, state_machines: [:view_state]
 
   def lead
     object.body.first 200

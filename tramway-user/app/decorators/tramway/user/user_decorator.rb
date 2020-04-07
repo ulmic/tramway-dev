@@ -16,7 +16,7 @@ class Tramway::User::UserDecorator < ::Tramway::Core::ApplicationDecorator
 
     if defined? Tramway::Conference
       def show_associations
-        [ :social_networks ]
+        [:social_networks]
       end
     end
   end
