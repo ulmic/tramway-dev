@@ -9,7 +9,8 @@
     - if File.exists?("#{Rails.root}/app/assets/javascripts/admin/application.js") || File.exists?("#{Rails.root}/app/assets/javascripts/admin/application.js.coffee")
       = javascript_include_tag 'admin/application'
     = csrf_meta_tags
-    = favicon_link_tag @application.favicon
+    - if @application.favicon.present?
+      = favicon_link_tag @application.favicon
   %body
     = render 'layouts/tramway/admin/shared/navbar'
     %main.container{ role: :main }
