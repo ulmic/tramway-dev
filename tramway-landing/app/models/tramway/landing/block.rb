@@ -26,9 +26,9 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   store_accessor :button, :button_link
   store_accessor :button, :button_title
 
-  scope :on_main_page, -> do
-    active.joins(:page).where(view_state: :published).where('tramway_page_pages.page_type = ?', :main).order :position 
-  end
+  scope :on_main_page, lambda {
+    active.joins(:page).where(view_state: :published).where('tramway_page_pages.page_type = ?', :main).order :position
+  }
   scope :with_navbar_link, -> { where navbar_link: :exist }
   scope :header, -> { on_main_page.where(block_type: :header).first }
   scope :footer, -> { on_main_page.where(block_type: :footer).first }
@@ -39,7 +39,7 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   end
 
   def header?
-    block_type.in? [ 'header', 'header_with_form']
+    block_type.in? %w[header header_with_form]
   end
 
   def footer?

@@ -56,7 +56,10 @@ module Tramway
 
       def action_is_available(project:, role: :open, model_name:, action:, current_user: nil)
         actions = select_actions(project: project, role: role, model_name: model_name)
-        raise "Looks like you did not used array type to define action permissions. Remember it should be this way: `#{model_name} => [ :#{action} ]` or `#{model_name} => [ { #{action}: lambda { |record, current_user| your_condition } } ]`" if actions.present? && !actions.is_a?(Array)
+        if actions.present? && !actions.is_a?(Array)
+          raise "Looks like you did not used array type to define action permissions. Remember it should be this way: `#{model_name} => [ :#{action} ]` or `#{model_name} => [ { #{action}: lambda { |record, current_user| your_condition } } ]`"
+        end
+
         availability = actions&.select do |a|
           if a.is_a? Symbol
             a == action.to_sym

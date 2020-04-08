@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Auth::Web::SignUpsController < Tramway::Auth::Web::ApplicationController
   before_action :check_authenticable_models
 

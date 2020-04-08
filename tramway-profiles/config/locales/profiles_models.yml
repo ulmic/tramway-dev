@@ -6,9 +6,10 @@ ru:
       tramway/profiles/social_network:
         title: Название ссылки
         network_name: Социальная сеть
+        record: Пользователь
         record_id: ID записи
         record_type: Тип записи
-        uid: Username в социальной сети
+        uid: Имя пользователя в социальной сети
   cases:
     tramway/profiles/social_network:
       plural: социальные сети

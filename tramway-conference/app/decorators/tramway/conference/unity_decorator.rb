@@ -7,11 +7,11 @@ class Tramway::Conference::UnityDecorator < ::Tramway::Core::ApplicationDecorato
     end
 
     def show_attributes
-      [ :title, :tagline, :logo, :address, :phone, :latitude, :longtitude, :url, :found_date, :email]
+      %i[title tagline logo address phone latitude longtitude url found_date email]
     end
 
     def show_associations
-      [ :social_networks ]
+      [:social_networks]
     end
   end
 
