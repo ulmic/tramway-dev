@@ -6,9 +6,21 @@ class Tramway::Auth::Web::SignUpsController < Tramway::Auth::Web::ApplicationCon
   def create
     @form = "#{model_class}SignUpForm".constantize.new model_class.new
     if @form.submit params[:record]
-      redirect_to Rails.application.routes.url_helpers.root_path flash: :success
+      additional_params = { flash: :success }
+      url = if params[:redirect].present?
+              [ params[:redirect], '?', additional_params.to_query].join
+            else
+              Rails.application.routes.url_helpers.root_path(flash: :success)
+            end
+      redirect_to url
     else
-      redirect_to Rails.application.routes.url_helpers.root_path flash: :error, errors: @form.errors.messages, record: @form.attributes
+      additional_params = { flash: :error, errors: @form.errors.messages, record: @form.attributes }
+      url = if params[:redirect].present?
+              [ params[:redirect], '?', additional_params.to_query].join
+            else
+              Rails.application.routes.url_helpers.root_path(**additional_params)
+            end
+      redirect_to url
     end
   end
 
