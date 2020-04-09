@@ -7,13 +7,25 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def list_attributes
-      %i[position view_state block_type]
+      %i[page_link position view_state block_type]
     end
 
     delegate :human_view_state_event_name, to: :model_class
   end
 
   delegate_attributes :position, :title, :background, :anchor, :description, :view_name
+
+  def public_path
+    if object.published?
+      Tramway::Page::Engine.routes.url_helpers.page_path slug: object.page.slug
+    else
+      Tramway::Page::Engine.routes.url_helpers.preview_path id: object.page.id
+    end
+  end
+
+  def page_link
+    link_to object.page.title
+  end
 
   def block_type
     object.block_type_text
