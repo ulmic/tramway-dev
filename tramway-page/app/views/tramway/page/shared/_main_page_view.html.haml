@@ -1,0 +1,6 @@
+- if @page.view.present?
+  = render "tramway/page/pages/views/#{@page.view}"
+- else
+  - content_for :title do
+    = @page.title
+  != @page.body
