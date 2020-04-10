@@ -6,6 +6,7 @@ class Tramway::Page::Page < ::Tramway::Core::ApplicationRecord
   enumerize :page_type, in: %i[main other], default: :other
 
   scope :landings, -> { where page_type: :landing }
+  scope :published, -> { where view_state: :published }
 
   state_machine :view_state, initial: :unpublished do
     state :unpublished
