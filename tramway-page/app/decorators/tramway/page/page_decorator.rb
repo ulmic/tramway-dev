@@ -27,8 +27,6 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
   def public_path
     if object.published?
       Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug
-    else
-      Tramway::Page::Engine.routes.url_helpers.preview_path id: object.id
     end
   end
 
