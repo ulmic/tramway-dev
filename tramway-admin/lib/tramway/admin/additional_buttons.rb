@@ -8,6 +8,6 @@ module Tramway::Admin::AdditionalButtons
   end
 
   def additional_buttons(view: nil, record: nil, project: nil)
-    @additional_buttons&.dig record, view
+    @additional_buttons&.with_indifferent_access&.dig project, record, view
   end
 end
