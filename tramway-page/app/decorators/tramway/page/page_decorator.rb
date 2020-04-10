@@ -9,6 +9,7 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
     def show_associations
       [:blocks]
     end
+    delegate :human_view_state_event_name, to: :model_class
   end
 
   delegate :title, to: :object
@@ -24,6 +25,19 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def public_path
-    Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug
+    if object.published?
+      Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug
+    else
+      Tramway::Page::Engine.routes.url_helpers.preview_path id: object.id
+    end
+  end
+
+  def view_state_button_color(event)
+    case event
+    when :publish
+      :success
+    when :hide
+      :default
+    end
   end
 end

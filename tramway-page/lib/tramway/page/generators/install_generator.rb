@@ -20,6 +20,7 @@ module Tramway::Page::Generators
         create_tramway_page_pages
         add_view_to_tramway_page_pages
         add_page_type_to_tramway_page_pages
+        add_view_state_to_tramway_page_pages
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"

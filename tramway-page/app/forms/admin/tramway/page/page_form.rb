@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::Tramway::Page::PageForm < ::Tramway::Core::ApplicationForm
-  properties :title, :body, :slug, :view, :page_type
+  properties :title, :body, :slug, :view, :page_type, :view_state_event
 
   def initialize(object)
     super(object).tap do
