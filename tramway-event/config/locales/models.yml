@@ -141,5 +141,5 @@ ru:
         string: Однострочное поле ввода
         numeric: Число
         date_picker: Дата
-        select: Выпадающий список (да/нет)
+        select: Выпадающий список
         checkbox: Галочка
