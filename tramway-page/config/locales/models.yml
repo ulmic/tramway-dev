@@ -4,7 +4,7 @@ ru:
       tramway/page/page: Страница
     attributes:
       tramway/page/page:
-        blocks: блоки
+        blocks: Блоки
   cases:
     tramway/page/page:
       plural: страницы
