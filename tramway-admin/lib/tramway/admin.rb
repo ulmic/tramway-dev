@@ -39,11 +39,11 @@ module Tramway
           error = Tramway::Error.new(
             plugin: :admin,
             method: :get_models_by_key,
-            message: "Looks like you have not create at least one instance of #{Tramway::Core.application.model_class} model"
+            message: "Looks like you have not create at least one instance of #{Tramway::Core.application.model_class} model OR Tramway Application Model is nil"
           )
           raise error.message
         end
-        checked_models && checked_models != [] && checked_models[project][role]&.keys || []
+        checked_models && checked_models[project]&.dig(role)&.keys || []
       end
 
       def models_array(models_type:, role:)

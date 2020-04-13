@@ -18,7 +18,7 @@
                 = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
               - when :record
                 = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
-            - when Symbol
+            - when Symbol, String
               = dropdown t("admin.navbar.links.#{item.keys.first}") do
                 - item.values.first.each do |sub_item|
                   - if sub_item == :divider
