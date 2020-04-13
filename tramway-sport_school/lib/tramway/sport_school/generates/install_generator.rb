@@ -42,6 +42,7 @@ module Tramway::SportSchool::Generators
         add_name_to_tramway_sport_school_institutions
         add_main_image_to_tramway_sport_school_institutions
         add_favicon_to_tramway_sport_school_institutions
+        add_public_name_to_tramway_sport_school_institutions
       ]
       migrations.each do |migration|
         migration_template "#{migration}.rb", "db/migrate/#{migration}.rb"
