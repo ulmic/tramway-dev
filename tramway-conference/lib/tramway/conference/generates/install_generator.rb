@@ -30,6 +30,7 @@ module Tramway::Conference::Generators
         add_main_image_to_tramway_conference_unities
         add_favicon_to_tramway_conference_unities
         add_name_to_tramway_conference_unities
+        add_public_name_to_tramway_conference_unities
       ]
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"
