@@ -16,6 +16,7 @@ module Tramway::Admin::RecordsModels
   end
 
   def available_models_for(project, role: :admin)
+    project = project.underscore.to_sym unless project.is_a? Symbol
     models = get_models_by_key(@available_models, project, role)
     if project_is_engine?(project)
       models += engine_class(project).dependencies.map do |dependency|

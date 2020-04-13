@@ -53,6 +53,7 @@ module Tramway
       end
 
       def action_is_available?(record, project:, role:, model_name:, action:)
+        project = project.underscore.to_sym unless project.is_a? Symbol
         actions = select_actions(project: project, role: role, model_name: model_name)
         availability = actions&.select do |a|
           if a.is_a? Symbol
