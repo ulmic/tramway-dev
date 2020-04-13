@@ -2,6 +2,9 @@ ru:
   activerecord:
     models:
       tramway/page/page: Страница
+    attributes:
+      tramway/page/page:
+        blocks: блоки
   cases:
     tramway/page/page:
       plural: страницы
