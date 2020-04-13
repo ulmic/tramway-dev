@@ -28,6 +28,8 @@ module Tramway::Conference::Generators
         add_found_date_to_tramway_conference_unities
         add_email_to_tramway_conference_unities
         add_main_image_to_tramway_conference_unities
+        add_favicon_to_tramway_conference_unities
+        add_name_to_tramway_conference_unities
       ]
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"
