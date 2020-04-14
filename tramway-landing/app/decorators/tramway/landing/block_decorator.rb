@@ -24,7 +24,9 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def page_link
-    link_to object.page.title
+    if object.page.present?
+      link_to object.page.title
+    end
   end
 
   def block_type
