@@ -7,7 +7,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def list_attributes
-      %i[page_link position view_state block_type]
+      %i[page_title position view_state block_type]
     end
 
     delegate :human_view_state_event_name, to: :model_class
@@ -23,10 +23,8 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     end
   end
 
-  def page_link
-    if object.page.present?
-      link_to object.page.title
-    end
+  def page_title
+    object.page&.title
   end
 
   def block_type
