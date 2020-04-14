@@ -7,7 +7,7 @@ module Tramway::Admin::Navbar
   end
 
   def navbar_items_for(project, role:)
-    project = project.underscore.to_sym
+    project = project.underscore.to_sym unless project.is_a? Symbol
     @navbar_structure[project]&.map do |item|
       if item.is_a? Class
         should_be_in_navbar_as item, project, role
