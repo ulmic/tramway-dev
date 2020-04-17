@@ -8,7 +8,7 @@ class Tramway::Auth::Web::SignUpsController < Tramway::Auth::Web::ApplicationCon
     if @form.submit params[:record]
       additional_params = { flash: :success }
       url = if params[:redirect].present?
-              [ params[:redirect], '?', additional_params.to_query].join
+              [params[:redirect], '?', additional_params.to_query].join
             else
               Rails.application.routes.url_helpers.root_path(flash: :success)
             end
@@ -16,7 +16,7 @@ class Tramway::Auth::Web::SignUpsController < Tramway::Auth::Web::ApplicationCon
     else
       additional_params = { flash: :error, errors: @form.errors.messages, record: @form.attributes }
       url = if params[:redirect].present?
-              [ params[:redirect], '?', additional_params.to_query].join
+              [params[:redirect], '?', additional_params.to_query].join
             else
               Rails.application.routes.url_helpers.root_path(**additional_params)
             end

@@ -7,7 +7,7 @@ class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
     @page = ::Tramway::Page::Page.published.find_by slug: params[:slug]
     @blocks = @page.blocks.published.active.map do |block|
       if block.block_type.header_with_form? && block.form_url.present?
-        # FIXME in future
+        # FIXME: in future
         @header_with_form = block.form_to_render.new(Tramway::Auth.authenticable_models.first.new, page: @page.id)
       end
       ::Tramway::Landing::BlockDecorator.decorate block
