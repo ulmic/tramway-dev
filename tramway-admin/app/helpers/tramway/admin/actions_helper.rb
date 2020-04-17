@@ -23,7 +23,7 @@ module Tramway::Admin::ActionsHelper
 
   # delete_button is in smart-buttons gem
 
-  def edit_button(url:, button_options:, &block)
+  def edit_button(url:, button_options:)
     link_to(url, **button_options) { yield }
   end
 

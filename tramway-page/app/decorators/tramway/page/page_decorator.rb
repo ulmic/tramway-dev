@@ -25,9 +25,7 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def public_path
-    if object.published?
-      Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug
-    end
+    Tramway::Page::Engine.routes.url_helpers.page_path slug: object.slug if object.published?
   end
 
   def view_state_button_color(event)
