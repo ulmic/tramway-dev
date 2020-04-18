@@ -44,8 +44,6 @@ end
 
 #### 2. Add password encryption into the User model
 
-**Don't forget that User model must be inherited of Tramway::Core::ApplicationRecord**
-
 ```ruby
 class User < ApplicationRecord
   has_secure_password
