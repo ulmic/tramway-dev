@@ -42,6 +42,14 @@ class UserSignUpForm < Tramway::Core::ApplicationForm
 end
 ```
 
+#### 2. Add password encryption into the User model
+
+```ruby
+class User < ApplicationRecord
+  has_secure_password
+end
+```
+
 ## Contributing
 Contribution directions go here.
 
