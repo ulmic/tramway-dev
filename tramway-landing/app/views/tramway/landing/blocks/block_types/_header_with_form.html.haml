@@ -1,3 +1,4 @@
+- @header_with_form = @form if @form.present?
 .view.full-page-intro{ style: "background-image: url('#{block.background.url}'); background-repeat: no-repeat; background-size: cover;" }
   .mask.rgba-black-light.d-flex.justify-content-center.align-items-center
     .container
@@ -22,6 +23,7 @@
               There is some errors
           .card
             .card-body
+              - raise 'Initialize @header_with_form in a controller with something like that `@header_with_form = UserSignUpForm.new User.new`. `User` is your model which you want to Sign Up' unless defined?(@header_with_form)
               = simple_form_for @header_with_form, url: block.form_url, method: :post, input_html: { class: 'form-vertical' } do |f|
                 %h3.dark-grey-text.text-center
                   %strong
