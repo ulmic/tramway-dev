@@ -26,6 +26,7 @@ Tramway::Export.set_exportable_models YourModel, project: :your_project_name
 
 #### 4. Create decorator that describes, how your model should be exported. You need to create exactly decorator name `app/decorators/#{your_model_name}_xls_decorator.rb`
 
+**If you have constant list of columns just use `columns` method this way**
 
 *app/decorators/your_model_xls_decorator.rb*
 
@@ -54,8 +55,7 @@ class YourModelXlsDecorator < Tramway::Export::Xls::ApplicationDecorator
   end
 end
 ```
-
-#### 5. You can set flexible columns for each record. Just use `flexible_columns` method in object area
+**If you don't have constant list of columns, use `flexible_columns` this way**
 
 Just imagine: our model contains method `values` and we want to have columns according to `values` keys. You shouldn't create methods for every column. Just use `Proc`. It's provided by gem `xls_exporter`. You can read more about [here](https://github.com/kalashnikovisme/xls-exporter).
 
@@ -70,7 +70,7 @@ class YourModelXlsDecorator < Tramway::Export::Xls::ApplicationDecorator
 end
 ```
 
-#### 6. Restart your server and visit index page of models in your admin panel
+#### 5. Restart your server and visit index page of models in your admin panel
 
 ### User instructions
 
