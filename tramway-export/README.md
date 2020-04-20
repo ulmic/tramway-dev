@@ -64,7 +64,7 @@ Just imagine: our model contains method `values` and we want to have columns acc
 class YourModelXlsDecorator < Tramway::Export::Xls::ApplicationDecorator
   def flexible_columns
     object.values.keys.map do |key|
-      { key.to_sym => -> { values.dig(key) } }
+      { key.to_sym => -> { object.values.dig(key) } }
     end
   end
 end
