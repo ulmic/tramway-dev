@@ -95,6 +95,7 @@ module Tramway
         def checking_roles
           [:open, current_user&.role].compact
         end
+
         protected
 
         def model_class
