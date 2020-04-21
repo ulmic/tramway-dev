@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    state_machines:
+      tramway/page/page:
+        view_state:
+          states:
+            published: Видена
+            unpublished: Скрыта
+          events:
+            publish: Показать на сайте
+            hide: Скрыть с сайта
