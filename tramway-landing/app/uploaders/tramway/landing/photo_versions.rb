@@ -11,6 +11,10 @@ module Tramway::Landing::PhotoVersions
     version :horizontal do
       process resize_to_fill: [1600, 700, 'Center']
     end
+
+    version :mini do
+      process resize_to_fill: [300, nil]
+    end
   end
 end
 
