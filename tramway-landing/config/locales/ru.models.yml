@@ -20,9 +20,9 @@ ru:
         view_name: Название вьюхи
         button: Наименование кнопки
         page: Страница 
-        form_url: Ссылка формы
+        form_url: Ссылка на форму (используется только для блока "Начальный блок с формой"
         page_id: Страница
-        values: Значение 
+        values: Значение
   cases:
     tramway/landing/block:
       plural: Блоки
@@ -31,6 +31,7 @@ ru:
     tramway/landing/block:
       block_type:
         header: Начальный (Header)
+        header_with_form: Начальный блок с формой (Header)
         footer: Подвал (Footer)
         page: Свободный блок (картинка + текст)
         page_with_button: Свободный блок с кнопкой (картинка + текст + кнопка)
