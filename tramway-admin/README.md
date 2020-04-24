@@ -216,6 +216,7 @@ Start page of admin panel contains only `application.name` by default. To manage
 
 Example:
 
+*config/initializers/tramway/admin.rb*
 ```ruby
 ::Tramway::Admin.welcome_page_actions = lambda do
   @content = '<a href="http://it-way.pro">IT Way</a>'
