@@ -5,6 +5,7 @@ class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
 
   def show
     @page = ::Tramway::Page::Page.published.find_by slug: params[:slug]
+    binding.pry
     @blocks = @page.blocks.published.active.map do |block|
       if block.block_type.header_with_form? && block.form_url.present?
         # FIXME: in future
