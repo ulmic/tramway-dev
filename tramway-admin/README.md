@@ -238,7 +238,8 @@ Tramway::Admin.navbar_structure(
       AnotherYourModel # this line will create 2nd-level link in your navbar, which will send you to the YourModel management,
       :divider # this line adds bootstrap divider to the dropdown list
     ]
-  }
+  },
+  project: :your_application_name
 )
 ```
 
