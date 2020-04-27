@@ -176,7 +176,72 @@ You can set conditions for functions which are available for any role:
 
 Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
 
+## Associations management
 
+### has_and_belongs_to_many
+
+We have models Game and Packs.
+
+*app/models/game.rb*
+```ruby
+class Game < Tramway::Core::ApplicationRecord
+  has_and_belongs_to_many :packs
+end
+```
+
+*app/models/pack.rb*
+```ruby
+class Pack < Tramway::Core::ApplicationRecord
+  has_and_belongs_to_many :games
+end
+```
+
+**You want to manage games in the Pack show admin page**
+
+#### 1. Add association to PackDecorator
+
+*app/decorators/pack_decorator.rb*
+```ruby
+class PackDecorator < Tramway::Core::ApplicationDecorator
+  decorate_association :games
+end
+```
+
+#### 2. Create `Admin::Packs::AddGameForm` and `Admin::Packs::RemoveGameForm`
+
+*app/forms/admin/packs/add_game_form.rb*
+```ruby
+class Admin::Packs::AddGameForm < Tramway::Core::ApplicationForm
+  properties :game_ids
+  association :games
+
+  def initialize(object)
+    super(object).tap do
+      form_properties games: :association
+    end
+  end
+
+  def submit(params)
+    params[:game_ids].each do |id|
+      model.games << Game.find(id) if id.present?
+    end
+    model.save!
+  end
+end
+```
+
+*app/forms/admin/packs/remove_game_form.rb*
+```ruby
+class Admin::Packs::RemoveGameForm < Tramway::Core::ApplicationForm
+  properties :id
+
+  def submit(params)
+    model.games -= [Game.find(params)] if id.present?
+    model.save!
+  end
+end
+
+```
 
 ## Date Picker locale
 
