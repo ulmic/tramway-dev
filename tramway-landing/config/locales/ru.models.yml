@@ -19,10 +19,16 @@ ru:
         button_link: Ссылка кнопки (только для Типа блока "Свободный блок с кнопкой")
         view_name: Название вьюхи
         button: Наименование кнопки 
+      tramway/landing/form:
+        title: Название формы
+        form_name: Класс формы
   cases:
     tramway/landing/block:
       plural: Блоки
       genitive: блок
+    tramway/landing/form:
+      plural: Публичные формы
+      genitive: публичную форму
   enumerize:
     tramway/landing/block:
       block_type:

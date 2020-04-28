@@ -12,6 +12,7 @@ class Tramway::Auth::Web::SignUpsController < Tramway::Auth::Web::ApplicationCon
             else
               Rails.application.routes.url_helpers.root_path(flash: :success)
             end
+      sign_in @form.model if @form.class.sign_in_after
       redirect_to url
     else
       additional_params = { flash: :error, errors: @form.errors.messages, record: @form.attributes }

@@ -13,15 +13,16 @@ module Tramway::Auth
         @session_form = ::Tramway::Auth::SessionForm.new ::Tramway::User::User.active.find_or_initialize_by email: params[:user][:email]
         if @session_form.validate params[:user]
           sign_in @session_form.model
-          redirect_to ::Tramway::Auth.root_path
+          redirect_to ::Tramway::Auth.root_path_for(@session_form.model.class)
         else
           render :new
         end
       end
 
       def destroy
-        sign_out
-        redirect_to ::Tramway::Auth.root_path
+        root_path = ::Tramway::Auth.root_path_for(current_user.class)
+        sign_out params[:model]
+        redirect_to root_path
       end
 
       private

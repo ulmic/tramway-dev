@@ -89,7 +89,7 @@ module Tramway
         #  :tramway, :admin, :application_controller, :form_given, :model_not_included_to_tramway_admin,
         #  model: params[:model]
         # )
-        raise "Looks like model #{params[:model]} is not included to tramway-admin for `#{current_user.role}` role. Add it in the `config/initializers/tramway.rb`. This way `Tramway::Admin.set_available_models(#{params[:model]})`"
+        #raise "Looks like model #{params[:model]} is not included to tramway-admin for `#{current_user.role}` role. Add it in the `config/initializers/tramway.rb`. This way `Tramway::Admin.set_available_models(#{params[:model]})`"
         Tramway::Admin.forms.include? params[:form].underscore.sub(%r{^admin/}, '').sub(/_form$/, '')
       end
 

@@ -2,6 +2,7 @@
 
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   belongs_to :page, class_name: 'Tramway::Page::Page'
+  has_and_belongs_to_many :forms, class_name: 'Tramway::Landing::Form', join_table: :tramway_landing_blocks_forms
 
   enumerize :block_type, in: %i[header header_with_form footer page cards features contacts link page_with_button just_text view]
   enumerize :navbar_link, in: %i[exist not_exist], default: :not_exist
@@ -22,7 +23,6 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
     end
   end
 
-  store_accessor :values, :form_url
   store_accessor :button, :button_link
   store_accessor :button, :button_title
 

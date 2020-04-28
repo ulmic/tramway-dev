@@ -14,23 +14,24 @@
             %p.mb-4.d-none.d-md-block
               %strong
                 = @page&.body || @application.short_description
-        .col-md-6.col-xl-5.mb-4
-          - if params[:flash] == 'success'
-            = render 'tramway/landing/templates/alert', alert_type: :success do
-              Sign up successful!
-          - if params[:flash] == 'error'
-            = render 'tramway/landing/templates/alert', alert_type: :danger do
-              There is some errors
-          .card
-            .card-body
-              - raise 'Initialize @header_with_form in a controller with something like that `@header_with_form = UserSignUpForm.new User.new`. `User` is your model which you want to Sign Up' unless defined?(@header_with_form)
-              = simple_form_for @header_with_form, url: block.form_url, method: :post, input_html: { class: 'form-vertical' } do |f|
-                %h3.dark-grey-text.text-center
-                  %strong
-                    = block.title
-                %hr
-                = hidden_field_tag :model, 'User'
-                = hidden_field_tag :redirect, request.path
-                - @header_with_form.properties.each do |property|
-                  = render 'tramway/core/shared/input', property: property[0], object: :record, type: property[1], form: f, destination: :landing, record: @header_with_form, value: (params[:record].present? ? params[:record][property[0]] : '')
-                = f.button :submit, @header_with_form.submit_message
+        - if block.form_url == 'auth/sign_up'
+          .col-md-6.col-xl-5.mb-4
+            - if params[:flash] == 'success'
+              = render 'tramway/landing/templates/alert', alert_type: :success do
+                Sign up successful!
+            - if params[:flash] == 'error'
+              = render 'tramway/landing/templates/alert', alert_type: :danger do
+                There is some errors
+            .card
+              .card-body
+                - raise 'Initialize @header_with_form in a controller with something like that `@header_with_form = UserSignUpForm.new User.new`. `User` is your model which you want to Sign Up' unless defined?(@header_with_form)
+                = simple_form_for @header_with_form, url: block.form_url, method: :post, input_html: { class: 'form-vertical' } do |f|
+                  %h3.dark-grey-text.text-center
+                    %strong
+                      = block.title
+                  %hr
+                  = hidden_field_tag :model, 'User'
+                  = hidden_field_tag :redirect, request.path
+                  - @header_with_form.properties.each do |property|
+                    = render 'tramway/core/shared/input', property: property[0], object: :record, type: property[1], form: f, destination: :landing, record: @header_with_form, value: (params[:record].present? ? params[:record][property[0]] : '')
+                  = f.button :submit, @header_with_form.submit_message
