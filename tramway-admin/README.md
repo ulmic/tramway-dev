@@ -243,6 +243,13 @@ end
 
 ```
 
+#### 3. Add this forms to initializer
+
+*config/initializers/tramway/admin/forms.rb*
+```ruby
+Tramway::Admin.forms = 'packs/add_game', 'packs/remove_game'
+```
+
 ## Date Picker locale
 
 DatePicker provides `ru`, `en` locales. To set needed locale, just add
