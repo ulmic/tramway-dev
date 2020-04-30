@@ -47,10 +47,6 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     "##{object.anchor}"
   end
 
-  def form_url
-    object.values['form_url']
-  end
-
   def view_state_button_color(event)
     case event
     when :publish

@@ -14,7 +14,8 @@
             %p.mb-4.d-none.d-md-block
               %strong
                 = @page&.body || @application.short_description
-        - if block.form_url == 'auth/sign_up'
+        - forms = actual_forms(block.forms)
+        - if forms.any?
           .col-md-6.col-xl-5.mb-4
             - if params[:flash] == 'success'
               = render 'tramway/landing/templates/alert', alert_type: :success do
@@ -25,13 +26,33 @@
             .card
               .card-body
                 - raise 'Initialize @header_with_form in a controller with something like that `@header_with_form = UserSignUpForm.new User.new`. `User` is your model which you want to Sign Up' unless defined?(@header_with_form)
-                = simple_form_for @header_with_form, url: block.form_url, method: :post, input_html: { class: 'form-vertical' } do |f|
-                  %h3.dark-grey-text.text-center
-                    %strong
-                      = block.title
-                  %hr
-                  = hidden_field_tag :model, 'User'
-                  = hidden_field_tag :redirect, request.path
-                  - @header_with_form.properties.each do |property|
-                    = render 'tramway/core/shared/input', property: property[0], object: :record, type: property[1], form: f, destination: :landing, record: @header_with_form, value: (params[:record].present? ? params[:record][property[0]] : '')
-                  = f.button :submit, @header_with_form.submit_message
+                %h3.dark-grey-text.text-center
+                  - forms.each_with_index do |form, index|
+                    - unless index == 0
+                      |
+                    = link_to '#', class: :form_activation_link, id: form.id do
+                      %strong
+                        = form.title
+                %hr
+                - forms.each do |form|
+                  - current_form = @header_with_form[form.form_name]
+                  = simple_form_for current_form, url: form.url, method: :post, input_html: { class: "form-vertical form_#{form.id} header_with_form" }, html: { class: "form_#{form.id} header_with_form" } do |f|
+                    = hidden_field_tag :model, 'User'
+                    = hidden_field_tag :redirect, request.path
+                    - current_form.properties.each do |property|
+                      = render 'tramway/core/shared/input', property: property[0], object: :user, type: property[1], form: f, destination: :landing, record: current_form, value: (params[:record].present? ? params[:record][property[0]] : '')
+                    = f.button :submit, current_form.submit_message
+:javascript
+  $(document).ready(function() {
+    $("form.header_with_form").each(function(index) {
+      if (index != 0) {
+        $(this).hide();
+      }
+    });
+    $('a.form_activation_link').click(function() {
+      $("form.header_with_form").each(function() {
+        $(this).hide();
+      });
+      $(`form.form_${$(this).first()[0].id}`).show();
+    });
+  });

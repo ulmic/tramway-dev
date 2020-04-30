@@ -10,10 +10,11 @@ module Tramway::Auth
       end
 
       def create
+        binding.pry
         @session_form = ::Tramway::Auth::SessionForm.new ::Tramway::User::User.active.find_or_initialize_by email: params[:user][:email]
         if @session_form.validate params[:user]
           sign_in @session_form.model
-          redirect_to ::Tramway::Auth.root_path_for(@session_form.model.class)
+          redirect_to params[:redirect] || ::Tramway::Auth.root_path_for(@session_form.model.class)
         else
           render :new
         end
@@ -28,7 +29,7 @@ module Tramway::Auth
       private
 
       def redirect_if_signed_in
-        redirect_to ::Tramway::Auth.root_path if signed_in? && request.env['PATH_INFO'] != ::Tramway::Auth.root_path
+        redirect_to ::Tramway::Auth.root_path_for(current_user.class) if signed_in?(params[:model].constantize) && request.env['PATH_INFO'] != ::Tramway::Auth.root_path_for(current_user.class)
       end
     end
   end

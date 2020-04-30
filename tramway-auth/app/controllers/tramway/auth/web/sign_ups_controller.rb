@@ -4,7 +4,7 @@ class Tramway::Auth::Web::SignUpsController < Tramway::Auth::Web::ApplicationCon
   before_action :check_authenticable_models
 
   def create
-    @form = "#{model_class}SignUpForm".constantize.new model_class.new
+    @form = "Public::#{model_class}SignUpForm".constantize.new model_class.new
     if @form.submit params[:record]
       additional_params = { flash: :success }
       url = if params[:redirect].present?
