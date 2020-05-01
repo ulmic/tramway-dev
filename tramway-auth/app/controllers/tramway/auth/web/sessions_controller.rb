@@ -6,6 +6,7 @@ module Tramway::Auth
       before_action :redirect_if_signed_in, except: :destroy
 
       def new
+        @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
         @session_form = ::Tramway::Auth::SessionForm.new ::Tramway::User::User.new
       end
 
