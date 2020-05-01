@@ -85,7 +85,16 @@ $> Tramway::User::User.create! email: 'your@email.com', password: '123456789', r
 
 *config/initializers/tramway.rb*
 ```ruby
-Tramway::Admin.navbar_structure YourModel, AnotherYourModel
+Tramway::Admin.navbar_structure(
+  YourModel, # this line will create first-level link in your navbar, which will send you to the YourModel management
+  {
+    my_dropdown: [ # this line contains dropdown link name
+      AnotherYourModel # this line will create 2nd-level link in your navbar, which will send you to the YourModel management,
+      :divider # this line adds bootstrap divider to the dropdown list
+    ]
+  },
+  project: :your_application_name
+)
 ```
 
 #### 9. Create decorator for models
@@ -167,7 +176,79 @@ You can set conditions for functions which are available for any role:
 
 Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
 
+## Associations management
 
+### has_and_belongs_to_many
+
+We have models Game and Packs.
+
+*app/models/game.rb*
+```ruby
+class Game < Tramway::Core::ApplicationRecord
+  has_and_belongs_to_many :packs
+end
+```
+
+*app/models/pack.rb*
+```ruby
+class Pack < Tramway::Core::ApplicationRecord
+  has_and_belongs_to_many :games
+end
+```
+
+**You want to manage games in the Pack show admin page**
+
+#### 1. Add association to PackDecorator
+
+*app/decorators/pack_decorator.rb*
+```ruby
+class PackDecorator < Tramway::Core::ApplicationDecorator
+  decorate_association :games
+end
+```
+
+#### 2. Create `Admin::Packs::AddGameForm` and `Admin::Packs::RemoveGameForm`
+
+*app/forms/admin/packs/add_game_form.rb*
+```ruby
+class Admin::Packs::AddGameForm < Tramway::Core::ApplicationForm
+  properties :game_ids
+  association :games
+
+  def initialize(object)
+    super(object).tap do
+      form_properties games: :association
+    end
+  end
+
+  def submit(params)
+    params[:game_ids].each do |id|
+      model.games << Game.find(id) if id.present?
+    end
+    model.save!
+  end
+end
+```
+
+*app/forms/admin/packs/remove_game_form.rb*
+```ruby
+class Admin::Packs::RemoveGameForm < Tramway::Core::ApplicationForm
+  properties :id
+
+  def submit(params)
+    model.games -= [Game.find(params)] if id.present?
+    model.save!
+  end
+end
+
+```
+
+#### 3. Add this forms to initializer
+
+*config/initializers/tramway/admin/forms.rb*
+```ruby
+Tramway::Admin.forms = 'packs/add_game', 'packs/remove_game'
+```
 
 ## Date Picker locale
 
@@ -216,6 +297,7 @@ Start page of admin panel contains only `application.name` by default. To manage
 
 Example:
 
+*config/initializers/tramway/admin.rb*
 ```ruby
 ::Tramway::Admin.welcome_page_actions = lambda do
   @content = '<a href="http://it-way.pro">IT Way</a>'
@@ -237,7 +319,8 @@ Tramway::Admin.navbar_structure(
       AnotherYourModel # this line will create 2nd-level link in your navbar, which will send you to the YourModel management,
       :divider # this line adds bootstrap divider to the dropdown list
     ]
-  }
+  },
+  project: :your_application_name
 )
 ```
 
