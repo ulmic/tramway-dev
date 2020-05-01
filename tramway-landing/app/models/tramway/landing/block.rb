@@ -7,7 +7,7 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   enumerize :navbar_link, in: %i[exist not_exist], default: :not_exist
   enumerize :link_object_type, in: ['Tramway::SportSchool::Document', 'Tramway::Page::Page']
 
-  mount_uploader :background, PhotoUploader
+  mount_uploader :background, PhotoUploader, extensions: [ :jpg, :jpeg, :gif, :png ]
 
   state_machine :view_state, initial: :published do
     state :published
