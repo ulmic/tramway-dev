@@ -17,10 +17,16 @@
         - forms = actual_forms(block.forms)
         - if forms.any?
           .col-md-6.col-xl-5.mb-4
-            - if params[:flash] == 'success'
+            - if params[:flash] == 'success_user_sign_up'
               = render 'tramway/landing/templates/alert', alert_type: :success do
                 Sign up successful!
-            - if params[:flash] == 'error'
+            - if params[:flash] == 'success_user_sign_in'
+              = render 'tramway/landing/templates/alert', alert_type: :success do
+                Sign In successful!
+            - if params[:flash] == 'error_user_sign_up'
+              = render 'tramway/landing/templates/alert', alert_type: :danger do
+                There is some errors
+            - if params[:flash] == 'error_user_sign_in'
               = render 'tramway/landing/templates/alert', alert_type: :danger do
                 There is some errors
             .card
@@ -37,8 +43,9 @@
                 - forms.each do |form|
                   - current_form = @header_with_form[form.form_name]
                   = simple_form_for current_form, url: form.url, method: :post, input_html: { class: "form-vertical form_#{form.id} header_with_form" }, html: { class: "form_#{form.id} header_with_form" } do |f|
-                    = hidden_field_tag :model, 'User'
-                    = hidden_field_tag :redirect, request.path
+                    = hidden_field_tag :model, @header_with_form[form.form_name].model.class.to_s
+                    = hidden_field_tag :success_redirect, request.path
+                    = hidden_field_tag :error_redirect, request.path
                     - current_form.properties.each do |property|
                       = render 'tramway/core/shared/input', property: property[0], object: :user, type: property[1], form: f, destination: :landing, record: current_form, value: (params[:record].present? ? params[:record][property[0]] : '')
                     = f.button :submit, current_form.submit_message

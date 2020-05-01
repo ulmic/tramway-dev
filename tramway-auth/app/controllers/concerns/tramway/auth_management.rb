@@ -18,16 +18,6 @@ module Tramway
       redirect_to new_session_path unless signed_in?(user_class)
     end
 
-    def authenticate_admin!
-      if signed_in?
-        if !current_user.admin? && request.env['PATH_INFO'] != ::Tramway::Auth.root_path
-          redirect_to ::Tramway::Auth.root_path
-        end
-      else
-        redirect_to '/auth/session/new'
-      end
-    end
-
     def current_user(user_class = ::Tramway::User::User)
       user = user_class.find_by id: session[user_id_key(user_class)]
       return false unless user

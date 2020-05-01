@@ -31,7 +31,7 @@ module Tramway
       def collections_counts
         @counts = decorator_class.collections.reduce({}) do |hash, collection|
           records = model_class.active.send(collection)
-          records = records.send "#{current_user.role}_scope", current_user.id
+          records = records.send "#{current_admin.role}_scope", current_admin.id
           records = records.ransack(params[:filter]).result if params[:filter].present?
           hash.merge! collection => records.count
         end
@@ -44,8 +44,10 @@ module Tramway
       end
 
       def notifications
-        @notifications ||= Tramway::Admin.notificable_queries&.reduce({}) do |hash, notification|
-          hash.merge! notification[0] => notification[1].call(current_user)
+        if current_admin
+          @notifications ||= Tramway::Admin.notificable_queries&.reduce({}) do |hash, notification|
+            hash.merge! notification[0] => notification[1].call(current_admin)
+          end
         end
         @notifications
       end
@@ -76,7 +78,7 @@ module Tramway
       end
 
       def admin_form_class
-        "::#{current_user.role.camelize}::#{model_class}Form".constantize
+        "::#{current_admin.role.camelize}::#{model_class}Form".constantize
       end
 
       def model_given?
@@ -89,7 +91,7 @@ module Tramway
         #  :tramway, :admin, :application_controller, :form_given, :model_not_included_to_tramway_admin,
         #  model: params[:model]
         # )
-        #raise "Looks like model #{params[:model]} is not included to tramway-admin for `#{current_user.role}` role. Add it in the `config/initializers/tramway.rb`. This way `Tramway::Admin.set_available_models(#{params[:model]})`"
+        #raise "Looks like model #{params[:model]} is not included to tramway-admin for `#{current_admin.role}` role. Add it in the `config/initializers/tramway.rb`. This way `Tramway::Admin.set_available_models(#{params[:model]})`"
         Tramway::Admin.forms.include? params[:form].underscore.sub(%r{^admin/}, '').sub(/_form$/, '')
       end
 
@@ -105,11 +107,21 @@ module Tramway
         check_models_given? :singleton
       end
 
+      def current_admin
+        user = Tramway::User::User.find_by id: session[:admin_id]
+        return false unless user
+        Tramway::User::UserDecorator.decorate user
+      end
+
       private
 
       def check_models_given?(model_type)
-        models = ::Tramway::Admin.send("#{model_type}_models", role: current_user.role)
+        models = ::Tramway::Admin.send("#{model_type}_models", role: current_admin.role)
         models.any? && params[:model].in?(models.map(&:to_s))
+      end
+
+      def authenticate_admin!
+        redirect_to '/admin/session/new' if !current_admin && !request.path.in?(['/admin/session/new', '/admin/session'])
       end
     end
   end
