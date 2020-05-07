@@ -12,7 +12,7 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
     delegate :human_view_state_event_name, to: :model_class
   end
 
-  delegate :title, to: :object
+  delegate_attributes :title, :page_type, :body
 
   decorate_association :blocks, state_machines: [:view_state]
 
