@@ -5,6 +5,18 @@ ru:
     attributes:
       tramway/page/page:
         blocks: Блоки
+        name: Название
+        title: Название
+        body: Контент
+        slug: Идентификатор (slug)
+        view: Представление
+        page_type: Тип страницы
+        view_state: Видимость на сайте
+  enumerize:
+    tramway/page/page:
+      page_type:
+        main: Главная Страница
+        other: Другое
   cases:
     tramway/page/page:
       plural: страницы
