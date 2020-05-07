@@ -54,4 +54,4 @@ ru:
         not_exist: Отсутствует
   errors:
     messages:
-      extension_whitelist_error: неверный формата, расшерение файла должно быть jpg, jpeg, gif, png, или svg
+      extension_whitelist_error: неверный формата, расширение файла должно быть jpg, jpeg, gif или png.
