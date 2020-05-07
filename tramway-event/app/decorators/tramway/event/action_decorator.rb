@@ -10,6 +10,10 @@ class Tramway::Event::ActionDecorator < Tramway::Core::ApplicationDecorator
     "#{object.title} - #{date_view(object.deadline)} - #{state_machine_view(object, :action_state)}"
   end
 
+  def title
+    object.title
+  end
+
   def action_state_button_color(event)
     case event
     when :do
