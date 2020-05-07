@@ -23,7 +23,7 @@ class Tramway::User::UserDecorator < ::Tramway::Core::ApplicationDecorator
 
   decorate_association :social_networks, as: :record if defined? Tramway::Conference
 
-  delegate_attributes :first_name, :last_name, :email, :phone, :role, :created_at, :updated_at
+  delegate_attributes :first_name, :last_name, :email, :phone, :role, :created_at, :updated_at, :admin?
 
   def name
     "#{object&.first_name} #{object&.last_name}"

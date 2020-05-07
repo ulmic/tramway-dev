@@ -50,6 +50,6 @@ class Admin::Tramway::Event::ParticipantFormFieldForm < ::Tramway::Core::Extende
   end
 
   def options=(value)
-    super value == '' ? value : JSON.parse(value)
+    model.options = value == '' ? value : JSON.parse(value)
   end
 end

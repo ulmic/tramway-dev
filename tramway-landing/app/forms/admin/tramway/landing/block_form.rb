@@ -4,7 +4,7 @@ class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationF
   association :page
 
   properties :title, :background, :view_state_event, :block_type, :position, :navbar_link, :anchor, :description,
-    :link_object_type, :link_object_id, :button_title, :button_link, :view_name, :form_url
+    :link_object_type, :link_object_id, :button_title, :button_link, :view_name
 
   def initialize(object = nil)
     super(object).tap do
@@ -23,8 +23,7 @@ class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationF
                       description: :ckeditor,
                       button_title: :string,
                       button_link: :string,
-                      view_name: :string,
-                      form_url: :string
+                      view_name: :string
     end
   end
 end

@@ -5,10 +5,6 @@ module Tramway::Auth
     properties :email
     attr_accessor :password
 
-    def model_name
-      User
-    end
-
     def validate(params)
       (!model.new_record? && model.authenticate(params[:password])).tap do |result|
         add_wrong_email_or_password_error unless result

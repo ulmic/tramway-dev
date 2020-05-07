@@ -25,6 +25,7 @@ module Tramway::Landing::Generators
         add_view_name_to_tramway_landing_blocks
         add_values_to_tramway_landing_blocks
         add_page_id_to_tramway_landing_blocks
+        create_tramway_landing_forms
       ]
 
       migrations.each do |migration|

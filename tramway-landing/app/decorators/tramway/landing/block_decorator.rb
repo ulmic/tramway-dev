@@ -9,15 +9,24 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     def list_attributes
       %i[page_title position view_state block_type]
     end
+    
+    def show_associations
+      [ :forms ]
+    end
 
     delegate :human_view_state_event_name, to: :model_class
   end
+
+  decorate_association :forms
+  decorate_association :page
 
   delegate_attributes :position, :title, :background, :anchor, :description, :view_name
 
   def public_path
     if object.published?
-      Tramway::Page::Engine.routes.url_helpers.page_path slug: object.page.slug
+      if object.page.slug.present?
+        Tramway::Page::Engine.routes.url_helpers.page_path slug: object.page.slug
+      end
     else
       Tramway::Page::Engine.routes.url_helpers.preview_path id: object.page.id
     end
@@ -39,10 +48,6 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     "##{object.anchor}"
   end
 
-  def form_url
-    object.values['form_url']
-  end
-
   def view_state_button_color(event)
     case event
     when :publish
@@ -53,9 +58,9 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def button
-    if object.button.present? && object.button['title'].present? && object.button['link'].present?
-      content_tag :a, href: object.button['link'], target: '_blank', class: 'btn btn-primary' do
-        object.button['title']
+    if object.button.present? && object.button['button_title'].present? && object.button['button_link'].present?
+      content_tag :a, href: object.button['button_link'], target: '_blank', class: 'btn btn-primary' do
+        object.button['button_title']
       end
     end
   end

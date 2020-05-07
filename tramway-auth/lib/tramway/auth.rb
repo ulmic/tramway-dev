@@ -28,10 +28,13 @@ module Tramway
         @layout_path ||= 'tramway/user/application'
       end
 
-      attr_writer :root_path
+      def root_path_for=(**options)
+        @root_path ||= {}
+        @root_path.merge! options
+      end
 
-      def root_path
-        @root_path || '/'
+      def root_path_for(user_class)
+        @root_path&.dig(user_class) || '/'
       end
     end
   end

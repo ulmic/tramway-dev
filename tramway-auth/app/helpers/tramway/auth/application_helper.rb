@@ -7,6 +7,12 @@ module Tramway
       include ::FontAwesome5::Rails::IconHelper
       include Tramway::Core::TitleHelper
       include Tramway::Admin::NavbarHelper
+      include Tramway::Admin::CasesHelper
+      include Tramway::Admin::RussianCasesHelper
+
+      def decorator_class(model_name = nil)
+        "#{model_name || model_class}Decorator".constantize
+      end
     end
   end
 end
