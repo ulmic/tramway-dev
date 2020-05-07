@@ -20,6 +20,13 @@ $ gem install tramway-auth
 
 ## Usage
 
+### Set authentication
+
+*config/initializers/tramway/auth.rb*
+```ruby
+Tramway::Auth.root_path_for YourModel => "/your_path", AnotherYourModel => "/another_path"
+```
+
 ### Add sign up
 
 #### 1. Create model sign up form

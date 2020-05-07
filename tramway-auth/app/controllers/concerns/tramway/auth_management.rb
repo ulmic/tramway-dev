@@ -3,33 +3,31 @@
 module Tramway
   module AuthManagement
     def sign_in(user)
-      session[:user_id] = user.id
+      session[user_id_key(user.class)] = user.id
     end
 
-    def sign_out
-      session[:user_id] = nil
+    def sign_out(user_class = ::Tramway::User::User)
+      session[user_id_key(user_class.constantize)] = nil
     end
 
-    def signed_in?
-      current_user
+    def signed_in?(user_class = ::Tramway::User::User)
+      current_user(user_class)
     end
 
-    def authenticate_user!
-      redirect_to new_session_path unless signed_in?
+    def authenticate_user!(user_class = ::Tramway::User::User)
+      redirect_to new_session_path unless signed_in?(user_class)
     end
 
-    def authenticate_admin!
-      if signed_in?
-        if !current_user.admin? && request.env['PATH_INFO'] != ::Tramway::Auth.root_path
-          redirect_to ::Tramway::Auth.root_path
-        end
-      else
-        redirect_to '/auth/session/new'
-      end
+    def current_user(user_class = ::Tramway::User::User)
+      user = user_class.find_by id: session[user_id_key(user_class)]
+      return false unless user
+      "#{user_class}Decorator".constantize.decorate user
     end
 
-    def current_user
-      @_current_user ||= ::Tramway::User::User.find_by id: session[:user_id]
+    private
+
+    def user_id_key(user_class)
+      "#{user_class.to_s.underscore}_id".to_sym
     end
   end
 end

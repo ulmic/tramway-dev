@@ -4,7 +4,6 @@ module Tramway
   module Admin
     module ApplicationHelper
       include ::FontAwesome5::Rails::IconHelper
-      include AuthManagement
       include AdditionalButtonsBuilder
       include ::SmartButtons
       include CasesHelper
@@ -25,6 +24,12 @@ module Tramway
                               object.class.name
                             end
         ::Tramway::Admin.available_models_for(@application_engine || @application.name).map(&:to_s).include?(object_class_name) ? :record : :singleton
+      end
+
+      def current_admin
+        user = Tramway::User::User.find_by id: session[:admin_id]
+        return false unless user
+        Tramway::User::UserDecorator.decorate user
       end
     end
   end

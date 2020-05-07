@@ -9,15 +9,23 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     def list_attributes
       %i[page_title position view_state block_type]
     end
+    
+    def show_associations
+      [ :forms ]
+    end
 
     delegate :human_view_state_event_name, to: :model_class
   end
+
+  decorate_association :forms
 
   delegate_attributes :position, :title, :background, :anchor, :description, :view_name
 
   def public_path
     if object.published?
-      Tramway::Page::Engine.routes.url_helpers.page_path slug: object.page.slug
+      if object.page.slug.present?
+        Tramway::Page::Engine.routes.url_helpers.page_path slug: object.page.slug
+      end
     else
       Tramway::Page::Engine.routes.url_helpers.preview_path id: object.page.id
     end
@@ -37,10 +45,6 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
 
   def link
     "##{object.anchor}"
-  end
-
-  def form_url
-    object.values['form_url']
   end
 
   def view_state_button_color(event)

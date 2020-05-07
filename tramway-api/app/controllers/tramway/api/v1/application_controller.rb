@@ -15,7 +15,8 @@ module Tramway
         def snake_case(params)
           hash = {}
           params.each do |attribute, value|
-            hash.merge! attribute.to_s.gsub('-', '_') => value
+            key = UUID.validate(attribute) ? attribute : attribute.to_s.gsub('-', '_')
+            hash.merge! key => value
           end
           hash
         end

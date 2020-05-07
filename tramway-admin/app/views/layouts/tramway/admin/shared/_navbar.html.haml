@@ -7,9 +7,9 @@
     %button.navbar-toggler.collapsed{ aria: { controls: :navbar, expanded: "false", label: 'Toggle Navigation' }, data: { target: "#navbar", toggle: :collapse }, type: :button }
       %span.navbar-toggler-icon
     .navbar-collapse.collapse#navbar
-      - if signed_in?
+      - if current_admin
         %ul.navbar-nav
-          - ::Tramway::Admin.navbar_items_for(@application_engine || @application.name, role: current_user.role)&.each do |item|
+          - ::Tramway::Admin.navbar_items_for(@application_engine || @application.name, role: current_admin.role)&.each do |item|
             - case item.keys.first
             - when Class
               - model = item.keys.first
@@ -31,14 +31,14 @@
                       = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
 
       %ul.nav.navbar-nav.ml-auto
-        - if signed_in?
+        - if current_admin
           - if @notifications_count.present?
             - if @notifications_count > 0
               %li.nav-item.dropdown.notifications
                 = link_to '#', class: 'nav-link icon-in-navbar dropdown-toggle', id: :notifications_dropdown, role: :button, aria: { haspopup: true, expanded: false }, data: { toggle: :dropdown } do
                   %span.badge.badge-light
                     = @notifications_count
-                .dropdown-menu.dropdown-menu-right{ aria: { labelledby: :notifications_dropdown } }
+                .dropdown-menu.dropdown-menu-right.scrollable{ aria: { labelledby: :notifications_dropdown } }
                   - @notifications.each_with_index do |collection, index|
                     - collection[1].each do |item|
                       = link_to decorator_class(item.class).decorate(item).title, record_path(item, model: item.class), class: 'dropdown-item'
@@ -50,7 +50,9 @@
                   %span.badge.badge-light
                     = @notifications_count
           %li.nav-item
-            = link_to Tramway::Auth::Engine.routes.url_helpers.session_path, method: :delete, class: 'nav-link' do
+            -# FIXME url_helpers return with /admin for some reason
+            -#= link_to Tramway::Auth::Engine.routes.url_helpers.session_path(model: Tramway::User::User).sub('/admin', ''), method: :delete, class: 'nav-link' do
+            = link_to '/admin/sign_out', class: 'nav-link' do
               = fa_icon 'sign-out-alt'
               = t('helpers.links.sign_out')
         - else

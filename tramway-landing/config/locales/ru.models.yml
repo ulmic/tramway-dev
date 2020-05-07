@@ -23,10 +23,16 @@ ru:
         form_url: Ссылка на форму (используется только для блока "Начальный блок с формой"
         page_id: Страница
         values: Значение
+      tramway/landing/form:
+        title: Название формы
+        form_name: Класс формы
   cases:
     tramway/landing/block:
       plural: Блоки
       genitive: блок
+    tramway/landing/form:
+      plural: Публичные формы
+      genitive: публичную форму
   enumerize:
     tramway/landing/block:
       block_type:
