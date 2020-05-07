@@ -18,6 +18,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   decorate_association :forms
+  decorate_association :page
 
   delegate_attributes :position, :title, :background, :anchor, :description, :view_name
 
@@ -57,9 +58,9 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def button
-    if object.button.present? && object.button['title'].present? && object.button['link'].present?
-      content_tag :a, href: object.button['link'], target: '_blank', class: 'btn btn-primary' do
-        object.button['title']
+    if object.button.present? && object.button['button_title'].present? && object.button['button_link'].present?
+      content_tag :a, href: object.button['button_link'], target: '_blank', class: 'btn btn-primary' do
+        object.button['button_title']
       end
     end
   end
