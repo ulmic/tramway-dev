@@ -5,6 +5,8 @@ class CreateTramwayLandingForms < ActiveRecord::Migration[5.1]
     create_table :tramway_landing_forms do |t|
       t.text :title
       t.text :form_name
+      t.integer :block_id
+      t.integer :position
       t.text :state, default: :active
 
       t.timestamps
