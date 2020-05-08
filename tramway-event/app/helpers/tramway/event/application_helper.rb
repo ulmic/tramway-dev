@@ -8,6 +8,7 @@ module Tramway
       include ::FontAwesome5::Rails::IconHelper
       include ::Tramway::Collections::Helper
       include ::Tramway::Profiles::LinksHelper
+      include ::Tramway::Landing::ApplicationHelper
     end
   end
 end
