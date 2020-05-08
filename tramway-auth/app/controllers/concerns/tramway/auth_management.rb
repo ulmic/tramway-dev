@@ -21,6 +21,7 @@ module Tramway
     def current_user(user_class = ::Tramway::User::User)
       user = user_class.find_by id: session[user_id_key(user_class)]
       return false unless user
+
       "#{user_class}Decorator".constantize.decorate user
     end
 

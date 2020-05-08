@@ -10,7 +10,7 @@ class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
         # FIXME: in future
         @header_with_form = block.form_to_render.new(Tramway::Auth.authenticable_models.first.new, page: @page.id)
       end
-      if block.block_type.in? [ :header, :header_with_form ]
+      if block.block_type.in? %i[header header_with_form]
         @links = Tramway::Landing::BlockLinkDecorator.decorate @page.with_navbar_link.active
       end
       ::Tramway::Landing::BlockDecorator.decorate block
