@@ -30,7 +30,7 @@ The gem is available as open source under the terms of the [MIT License](http://
 ## Русский
 
 #### 1. Выберите в админке "Страницы"
-page-1.png
+![page-1.png](https://github.com/ulmic/tramway-dev/blob/develop/tramway-page/docs/page-1.png)
 
 #### 2. Нажмите на "+" для создания новой Страницы
 page-2.png
