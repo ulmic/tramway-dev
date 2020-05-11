@@ -1,3 +1,5 @@
+## English
+
 # Tramway::Landing
 It uses [Material Design Bootstrap](https://mdbootstrap.com/) by default
 
@@ -202,3 +204,19 @@ Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## Русский
+
+Инструкцию по созданию блоков, Вы можете посмотреть здесь
+
+* [Начальный (Header)]()
+* [Начальный блок с формой (Header)]()
+* [Подвал (Footer)]()
+* [Свободный блок (картинка+текс)]()
+* [Свободный блок с кнопкой (картинка + текст + кнопка)]()
+* [Карточки (выводит опредеделенный набор карточек)]()
+* [Список возможностей]()
+* [Блок с контактами]()
+* [Представление]()
+* [Просто текст]()
+* [Ссылка на объект]()
