@@ -26,6 +26,6 @@ coming soon...
 #### 4. Нажмите "Показать на сайте"
 ![admin-4](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/block_with_text_and_image/admin-2.png)
 
-#### 5. Теперь, зайдите на главную страницу вашего сайта и проверяйте результат
+#### 5. Теперь, зайдите на страницу вашего сайта и проверяйте результат
 
-![admin-5](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/block_with_text_image_and_button/example.png)
+![admin-5](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/block_with_text_and_image/example.png)
