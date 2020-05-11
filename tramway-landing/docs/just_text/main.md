@@ -22,5 +22,5 @@ coming soon...
 
 ![admin-2](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/just_text/admin-1.png)
 
-#### 4. Нажмите "Показать на сайте"
-![admin-4](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/just_text/admin-2.png)
+#### 3. Нажмите "Показать на сайте"
+![admin-3](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/just_text/admin-2.png)
