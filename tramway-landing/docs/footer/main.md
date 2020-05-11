@@ -25,8 +25,9 @@ coming soon...
 ![admin-5](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/footer/example.png)
 
 
+### Руководство программиста
 
-#### 6. Вы можете запрограммировать контент на главной странице
+#### Вы можете запрограммировать контент странице
 
 #### Пример кода
 
