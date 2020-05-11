@@ -218,5 +218,5 @@ The gem is available as open source under the terms of the [MIT License](http://
 * Список возможностей
 * Блок с контактами
 * Представление
-* Просто текст](
+* Просто текст
 * Ссылка на объект
