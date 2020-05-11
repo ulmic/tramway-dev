@@ -215,7 +215,7 @@ The gem is available as open source under the terms of the [MIT License](http://
 * [Свободный блок (картинка+текст)](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/block_with_text_and_image/main.md)
 * [Свободный блок с кнопкой (картинка + текст + кнопка)](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/block_with_text_image_and_button/main.md)
 * [Карточки (выводит опредеделенный набор карточек)-программируется](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/cards/main.md)
-* Список возможностей
+* [Список возможностей-программируется](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/features/main.md)
 * Блок с контактами
 * Представление
 * Просто текст
