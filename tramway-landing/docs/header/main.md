@@ -35,7 +35,9 @@
 
 ![admin-4](https://raw.githubusercontent.com/ulmic/tramway-dev/develop/tramway-landing/docs/header/admin-4.png)
 
-#### 6. Вы можете запрограммировать контент на главной странице
+### Руководство программиста
+
+#### Вы можете запрограммировать контент странице
 
 #### Пример кода
 
