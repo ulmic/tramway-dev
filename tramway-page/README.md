@@ -44,4 +44,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 #### 5. Теперь перейдите на страницу, нажав на кнопу "Перейти".
 ![page-5.png](https://github.com/ulmic/tramway-dev/blob/develop/tramway-page/docs/page-5.png)
 
-#### 6. Создана пустая страница. Смотрите здесь, как добавить на страницу Блоки.
+#### 6. Создана пустая страница. Смотрите здесь, [как добавить на страницу Блоки.](https://github.com/ulmic/tramway-dev/tree/develop/tramway-landing#%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
