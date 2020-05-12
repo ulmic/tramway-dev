@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tramway::Landing::Form < ApplicationRecord
   belongs_to :block, class_name: 'Tramway::Landing::Block'
 

@@ -91,7 +91,7 @@ module Tramway
         #  :tramway, :admin, :application_controller, :form_given, :model_not_included_to_tramway_admin,
         #  model: params[:model]
         # )
-        #raise "Looks like model #{params[:model]} is not included to tramway-admin for `#{current_admin.role}` role. Add it in the `config/initializers/tramway.rb`. This way `Tramway::Admin.set_available_models(#{params[:model]})`"
+        # raise "Looks like model #{params[:model]} is not included to tramway-admin for `#{current_admin.role}` role. Add it in the `config/initializers/tramway.rb`. This way `Tramway::Admin.set_available_models(#{params[:model]})`"
         Tramway::Admin.forms.include? params[:form].underscore.sub(%r{^admin/}, '').sub(/_form$/, '')
       end
 
@@ -110,6 +110,7 @@ module Tramway
       def current_admin
         user = Tramway::User::User.find_by id: session[:admin_id]
         return false unless user
+
         Tramway::User::UserDecorator.decorate user
       end
 
@@ -121,7 +122,9 @@ module Tramway
       end
 
       def authenticate_admin!
-        redirect_to '/admin/session/new' if !current_admin && !request.path.in?(['/admin/session/new', '/admin/session'])
+        if !current_admin && !request.path.in?(['/admin/session/new', '/admin/session'])
+          redirect_to '/admin/session/new'
+        end
       end
     end
   end

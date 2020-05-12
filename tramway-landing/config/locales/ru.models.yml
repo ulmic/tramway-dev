@@ -52,3 +52,6 @@ ru:
       navbar_link:
         exist: Присутствует
         not_exist: Отсутствует
+  errors:
+    messages:
+      extension_whitelist_error: неверный формата, расширение файла должно быть jpg, jpeg, gif или png.

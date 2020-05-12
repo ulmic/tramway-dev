@@ -7,8 +7,8 @@ module Tramway
       include Tramway::Profiles::LinksHelper if defined?(::Tramway::Profiles)
 
       def actual_forms(forms)
-        forms = forms.select { |f| f.form_name != 'user_sign_up' } if @signed_in
-        forms = forms.select { |f| f.form_name != 'user_sign_in' } if @signed_in
+        forms = forms.reject { |f| f.form_name == 'user_sign_up' } if @signed_in
+        forms = forms.reject { |f| f.form_name == 'user_sign_in' } if @signed_in
         forms
       end
       
@@ -29,6 +29,20 @@ module Tramway
           else
             raw block.page.body
           end
+
+      def block_title(block)
+        if block.page.page_type.main?
+          content_for?(:application_name) && yield(:application_name).present? ? yield(:application_name) : @application.public_name
+        else
+          block.page.title
+        end
+      end
+
+      def block_tagline(block)
+        if block.page.page_type.main?
+          content_for?(:application_tagline) && yield(:application_tagline).present? ? yield(:application_tagline) : @application.tagline
+        else
+          raw block.page.body
         end
       end
     end
