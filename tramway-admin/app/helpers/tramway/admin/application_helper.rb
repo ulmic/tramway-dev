@@ -29,6 +29,7 @@ module Tramway
       def current_admin
         user = Tramway::User::User.find_by id: session[:admin_id]
         return false unless user
+
         Tramway::User::UserDecorator.decorate user
       end
     end

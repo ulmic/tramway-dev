@@ -24,7 +24,9 @@ module Tramway::Auth
       private
 
       def redirect_if_signed_in
-        redirect_to ::Tramway::Auth.root_path_for(current_user.class) if params[:model].present? && signed_in?(params[:model].constantize) && request.env['PATH_INFO'] != ::Tramway::Auth.root_path_for(current_user.class)
+        if params[:model].present? && signed_in?(params[:model].constantize) && request.env['PATH_INFO'] != ::Tramway::Auth.root_path_for(current_user.class)
+          redirect_to ::Tramway::Auth.root_path_for(current_user.class)
+        end
       end
     end
   end

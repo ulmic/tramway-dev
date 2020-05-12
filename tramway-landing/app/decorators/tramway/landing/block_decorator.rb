@@ -9,9 +9,9 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     def list_attributes
       %i[page_title position view_state block_type]
     end
-    
+
     def show_associations
-      [ :forms ]
+      [:forms]
     end
 
     delegate :human_view_state_event_name, to: :model_class
@@ -24,9 +24,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
 
   def public_path
     if object.published?
-      if object.page.slug.present?
-        Tramway::Page::Engine.routes.url_helpers.page_path slug: object.page.slug
-      end
+      Tramway::Page::Engine.routes.url_helpers.page_path slug: object.page.slug if object.page.slug.present?
     else
       Tramway::Page::Engine.routes.url_helpers.preview_path id: object.page.id
     end
