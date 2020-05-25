@@ -49,12 +49,45 @@ Tramway::Admin.set_available_models ::Tramway::Landing::Block, project: #{projec
 Tramway::Admin.navbar_structure ::Tramway::Landing::Block
 ```
 
-#### 4. Run server `rails s`
-#### 5. Open `localhost:3000/admin`
-#### 6. Click on `Blocks`, add new block with type `Header`
-#### 7. Click `Show` in the block menu
+#### 4. Add `PhotoVersions` to middleware (will be removed soon)
 
-#### 8. Then create your main page controller `rails g controller web/welcome`
+*lib/middleware/tramway/landing_middleware.rb*
+```ruby
+module Tramway
+  class LandingMiddleware
+    def initialize(app)
+      @app = app
+    end
+    
+    def call(env)
+      PhotoUploader.include Tramway::Landing::PhotoVersions
+      
+      @app.call(env)
+    end
+  end
+end
+```
+
+*confing/initializers/application.rb*
+```ruby
+...
+require_relative '../lib/middleware/tramway/landing_middleware'
+...
+
+module YourApplication
+  class Application < Rails::Application
+    config.middleware.use = ::Tramway::LandingMiddleware
+  end
+end
+```
+
+
+#### 5. Run server `rails s`
+#### 6. Open `localhost:3000/admin`
+#### 7. Click on `Blocks`, add new block with type `Header`
+#### 8. Click `Show` in the block menu
+
+#### 9. Then create your main page controller `rails g controller web/welcome`
 
 *app/controllers/web/welcome_controller.rb*
 ```ruby
@@ -75,7 +108,7 @@ class Web::WelcomeController < ApplicationController
 end
 ```
 
-#### 9. Add new controller to the routes
+#### 10. Add new controller to the routes
 
 *config/routes.rb*
 ```ruby
@@ -84,7 +117,7 @@ root to: 'web/welcome#index'
 # ...
 ```
 
-#### 10. Add view for the new landing
+#### 11. Add view for the new landing
 
 *app/views/web/welcome/index.html.haml*
 ```haml
