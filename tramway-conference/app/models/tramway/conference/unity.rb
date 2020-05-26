@@ -5,5 +5,7 @@ module Tramway::Conference
     has_many :social_networks, as: :record, class_name: 'Tramway::Profiles::SocialNetwork'
 
     include ::Tramway::Partner::Scopes
+
+    uploader :favicon, :ico
   end
 end
