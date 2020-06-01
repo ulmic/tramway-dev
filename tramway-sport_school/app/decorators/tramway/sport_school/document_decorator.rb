@@ -9,7 +9,15 @@ class Tramway::SportSchool::DocumentDecorator < ::Tramway::Core::ApplicationDeco
     def list_attributes
       [:view_state]
     end
+
+    def show_attributes
+      [:title]
+    end
+
+    delegate :human_view_state_event_name, to: :model_class
   end
+
+  delegate_attributes :title
 
   def view_state
     object.human_view_state_name

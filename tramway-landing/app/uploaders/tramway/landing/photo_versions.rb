@@ -17,5 +17,3 @@ module Tramway::Landing::PhotoVersions
     end
   end
 end
-
-PhotoUploader.include Tramway::Landing::PhotoVersions

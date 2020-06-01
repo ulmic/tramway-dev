@@ -11,7 +11,7 @@ module Tramway
         forms = forms.reject { |f| f.form_name == 'user_sign_in' } if @signed_in
         forms
       end
-      
+
       def block_title(collection_block)
         collection_block.each do |block|
           if block.page.page_type.main?

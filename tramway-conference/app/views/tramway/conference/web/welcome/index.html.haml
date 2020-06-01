@@ -28,14 +28,15 @@
 - @collection_news = @news
 
 %br
-.container
-  .row-fluid
-    %h1.text-center
-      Ближайшие мероприятия
-- @close_events.each do |event|
+- if @close_events.any?
   .container
     .row-fluid
-      = render 'tramway/landing/templates/section_with_image_and_text', block: event
+      %h1.text-center
+        Ближайшие мероприятия
+  - @close_events.each do |event|
+    .container
+      .row-fluid
+        = render 'tramway/landing/templates/section_with_image_and_text', block: event
 
 - content_for :main_image do
   = request.protocol + request.host_with_port + @blocks.select { |block| block.model.block_type.header? }.first.background.url

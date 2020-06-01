@@ -7,5 +7,5 @@ class Tramway::SportSchool::InstitutionDecorator < ::Tramway::Core::ApplicationD
     end
   end
 
-  delegate :logo, to: :object
+  delegate_attributes :logo, :title
 end
