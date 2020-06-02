@@ -19,9 +19,9 @@
             = record.send attribute
         %td.actions
           .row
-            &nbsp&nbsp&nbsp
+            &nbsp;&nbsp;&nbsp;
             = link_to fa_icon('pencil-alt'), edit_current_model_record_path(record.id), class: 'btn btn-warning btn-xs'
-            &nbsp&nbsp
+            &nbsp;&nbsp;
             = delete_button url: current_model_record_path(record.id), form_options: { class: :smart_button }, button_options: { class: 'btn btn-xs btn-danger' } do
               = fa_icon 'trash-alt'
           %br

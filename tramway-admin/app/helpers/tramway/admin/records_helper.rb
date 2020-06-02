@@ -47,6 +47,11 @@ module Tramway::Admin
       model_class.methods.include? :full_text_search
     end
 
+    def build_options_for_select(name, collection)
+      selected_value = params[:list_filters].present? ? params[:list_filters][name] : nil
+      options_for_select(collection, selected_value)
+    end
+
     def admin_index_path_of_model(model_class, tab, filter)
       if tab
         records_path model: model_class, filter: filter, scope: tab
