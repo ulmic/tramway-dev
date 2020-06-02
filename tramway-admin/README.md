@@ -106,13 +106,28 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
     def collections
       [ :all, :scope1, :scope2 ]
     end
+    
+    def list_filters
+      {
+        filter_name: {
+          select_collection: filter_collection,
+          query: lambda do |list, value|
+            list.where some_attribute: value
+          end
+        }
+      }
+    end
   end
   
   delegate :title, to: :object
 end
 ```
 
-**NOTE:** `collections` methods must return array of scopes of `YourModel`. Every collection will be a tab in a list of your model in admin panel.
+**NOTES:**
+* `collections` method must return array of scopes of `YourModel`. Every collection will be a tab in a list of your model in admin panel
+* `list_filters` method returns hash of filters where:
+  * select_collection - collection which will be in the select of filter. It must be compatible with [options_for_select](https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/options_for_select) method
+  * query - some Active Record query which be used as a filter of records
 
 #### 10. Add inheritance to YourModel
 
