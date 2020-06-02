@@ -99,18 +99,20 @@ Tramway::Admin.navbar_structure(
 
 #### 9. Create decorator for models
 
-*app/decorators/your_model_decorator.rb
+*app/decorators/your_model_decorator.rb*
 ```ruby
 class YourModelDecorator < Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [ :all, :scope1, :scope2 ]
     end
   end
   
   delegate :title, to: :object
 end
 ```
+
+**NOTE:** `collections` methods must return array of scopes of `YourModel`. Every collection will be a tab in a list of your model in admin panel.
 
 #### 10. Add inheritance to YourModel
 
