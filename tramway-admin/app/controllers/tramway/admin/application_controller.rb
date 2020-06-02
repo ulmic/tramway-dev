@@ -33,6 +33,11 @@ module Tramway
           records = model_class.active.send(collection)
           records = records.send "#{current_admin.role}_scope", current_admin.id
           records = records.ransack(params[:filter]).result if params[:filter].present?
+          params[:list_filters]&.each do |filter, value|
+            if value.present?
+              records = decorator_class.list_filters[filter.to_sym][:query].call(records, value)
+            end
+          end
           hash.merge! collection => records.count
         end
       end

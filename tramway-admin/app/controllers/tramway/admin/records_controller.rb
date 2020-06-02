@@ -6,6 +6,11 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     records = model_class.active.order(id: :desc).send scope
     records = records.full_text_search params[:search] if params[:search].present?
     records = records.ransack(params[:filter]).result if params[:filter].present?
+    params[:list_filters]&.each do |filter, value|
+      if value.present?
+        records = decorator_class.list_filters[filter.to_sym][:query].call(records, value)
+      end
+    end
     records = records.send "#{current_admin.role}_scope", current_admin.id
     @records = decorator_class.decorate records.page params[:page]
   end
