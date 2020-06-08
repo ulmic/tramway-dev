@@ -140,6 +140,24 @@ class Admin::YourModelForm < Tramway::Core::ApplicationForm
   end
 end
 ```
+
+### 12. You can add search to your index page
+
+Tramway use gem [PgSearch](https://github.com/Casecommons/pg_search`) as search engine
+
+Just add `search` method to `YourModel` like this
+
+```ruby
+search_by *attributes, **associations # `attributes` and `associations` should be the same syntax as in PgSearch
+```
+
+Example:
+
+```ruby
+class YourModel < Tramway::Core::ApplicationRecord
+  search_by :my_attribute, :another_attribute, my_association: [ :my_association_attribute, :another_my_association_attribute ]
+```
+
 #### 12. Run server `rails s`
 #### 13. Launch `localhost:3000/admin`
 
