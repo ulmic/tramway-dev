@@ -99,18 +99,35 @@ Tramway::Admin.navbar_structure(
 
 #### 9. Create decorator for models
 
-*app/decorators/your_model_decorator.rb
+*app/decorators/your_model_decorator.rb*
 ```ruby
 class YourModelDecorator < Tramway::Core::ApplicationDecorator
   class << self
     def collections
-      [ :all ]
+      [ :all, :scope1, :scope2 ]
+    end
+    
+    def list_filters
+      {
+        filter_name: {
+          select_collection: filter_collection,
+          query: lambda do |list, value|
+            list.where some_attribute: value
+          end
+        }
+      }
     end
   end
   
   delegate :title, to: :object
 end
 ```
+
+**NOTES:**
+* `collections` method must return array of scopes of `YourModel`. Every collection will be a tab in a list of your model in admin panel
+* `list_filters` method returns hash of filters where:
+  * select_collection - collection which will be in the select of filter. It must be compatible with [options_for_select](https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/options_for_select) method
+  * query - some Active Record query which be used as a filter of records
 
 #### 10. Add inheritance to YourModel
 
@@ -138,6 +155,24 @@ class Admin::YourModelForm < Tramway::Core::ApplicationForm
   end
 end
 ```
+
+### 12. You can add search to your index page
+
+Tramway use gem [PgSearch](https://github.com/Casecommons/pg_search`) as search engine
+
+Just add `search` method to `YourModel` like this
+
+```ruby
+search_by *attributes, **associations # `attributes` and `associations` should be the same syntax as in PgSearch
+```
+
+Example:
+
+```ruby
+class YourModel < Tramway::Core::ApplicationRecord
+  search_by :my_attribute, :another_attribute, my_association: [ :my_association_attribute, :another_my_association_attribute ]
+```
+
 #### 12. Run server `rails s`
 #### 13. Launch `localhost:3000/admin`
 

@@ -19,7 +19,7 @@
           .col-md-6.col-xl-5.mb-4
             - if params[:flash] == 'success_user_sign_up'
               = render 'tramway/landing/templates/alert', alert_type: :success do
-                Sign up successful!
+                = t('.sign_up_successful')
             - if params[:flash] == 'success_user_sign_in'
               = render 'tramway/landing/templates/alert', alert_type: :success do
                 Sign In successful!
