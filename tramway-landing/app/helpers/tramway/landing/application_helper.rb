@@ -12,22 +12,26 @@ module Tramway
         forms
       end
 
-      def block_title(collection_block)
-        collection_block.each do |block|
+      def block_title(block)
+        unless block.is_a? Array
           if block.page.page_type.main?
-            (content_for?(:application_name) && yield(:application_name).present?) ? yield(:application_name) : @application.public_name
-          else
-            block.page.title
+            content_for?(:application_name) && content_for(:application_name).present? ? content_for(:application_name) : @application.public_name
+          end
+        else
+          block.each do |current_block|
+            current_block.page.title
           end
         end
       end
 
-      def block_tagline(collection_block)
-        collection_block.each do |block|
+      def block_tagline(block)
+        unless block.is_a? Array
           if block.page.page_type.main?
-            (content_for?(:application_tagline) && yield(:application_tagline).present?) ? yield(:application_tagline) : @application.tagline
+            content_for?(:application_tagline) && content_for(:application_tagline).present? ? content_for(:application_tagline) : @application.tagline
           else
-            raw block.page.body
+            block.each do |current_block|
+              raw block.page.body
+            end
           end
         end
       end
