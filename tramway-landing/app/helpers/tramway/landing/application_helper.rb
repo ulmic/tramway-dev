@@ -13,18 +13,26 @@ module Tramway
       end
 
       def block_title(block)
-        if block.page.page_type.main?
-          content_for?(:application_name) && content_for(:application_name).present? ? content_for(:application_name) : @application.public_name
+        if block.is_a? Array
+          block.each do |current_block|
+            current_block.page.title
+          end
         else
-          block.page.title
+          if block.page.page_type.main?
+            content_for?(:application_name) && content_for(:application_name).present? ? content_for(:application_name) : @application.public_name
+          end
         end
       end
 
       def block_tagline(block)
-        if block.page.page_type.main?
-          content_for?(:application_tagline) && content_for(:application_tagline).present? ? content_for(:application_tagline) : @application.tagline
-        else
-          raw block.page.body
+        unless block.is_a? Array
+          if block.page.page_type.main?
+            content_for?(:application_tagline) && content_for(:application_tagline).present? ? content_for(:application_tagline) : @application.tagline
+          else
+            block.each do |_current_block|
+              raw block.page.body
+            end
+          end
         end
       end
     end
