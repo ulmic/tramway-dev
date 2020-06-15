@@ -22,13 +22,13 @@
                 = t('.sign_up_successful')
             - if params[:flash] == 'success_user_sign_in'
               = render 'tramway/landing/templates/alert', alert_type: :success do
-                = t('sign_in_successful')
+                = t('.sign_in_successful')
             - if params[:flash] == 'error_user_sign_up'
               = render 'tramway/landing/templates/alert', alert_type: :danger do
                 = t('.there_is_some_errors')
             - if params[:flash] == 'error_user_sign_in'
               = render 'tramway/landing/templates/alert', alert_type: :danger do
-                = t('.there_is_some_errors')
+                = t('.ivalid_email_or_password')
             .card
               .card-body
                 - raise 'Initialize @header_with_form in a controller with something like that `@header_with_form = UserSignUpForm.new User.new`. `User` is your model which you want to Sign Up' unless defined?(@header_with_form)
