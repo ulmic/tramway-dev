@@ -110,9 +110,16 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
     def list_filters
       {
         filter_name: {
+          type: :select,
           select_collection: filter_collection,
           query: lambda do |list, value|
             list.where some_attribute: value
+          end
+        },
+        date_filter_name: {
+          type: :dates,
+          query: lambda do |list, begin_date, end_date|
+            list.where 'created_at > ? AND created_at < ?', begin_date, end_date
           end
         }
       }
@@ -128,6 +135,17 @@ end
 * `list_filters` method returns hash of filters where:
   * select_collection - collection which will be in the select of filter. It must be compatible with [options_for_select](https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/options_for_select) method
   * query - some Active Record query which be used as a filter of records
+
+Filters naming:
+
+```yaml
+en:
+  tramway:
+    admin:
+      filters:
+        model_name:
+          filter_name: You Filter
+```
 
 #### 10. Add inheritance to YourModel
 
