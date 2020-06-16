@@ -5,7 +5,8 @@
 - tabs = get_collection
 .page-header
   .row
-    .col-md-6
+    - search_render_show = searchable_model?(model_class) || decorator_class(model_class).list_filters.any?
+    %div{ class: "col-md-#{search_render_show ? 4 : 12}" }
       %h1
         = current_title
         = link_to fa_icon(:plus), new_current_model_record_path, class: 'btn btn-primary'

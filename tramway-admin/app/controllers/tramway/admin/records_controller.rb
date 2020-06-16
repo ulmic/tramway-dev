@@ -7,7 +7,16 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     records = records.full_text_search params[:search] if params[:search].present?
     records = records.ransack(params[:filter]).result if params[:filter].present?
     params[:list_filters]&.each do |filter, value|
-      records = decorator_class.list_filters[filter.to_sym][:query].call(records, value) if value.present?
+      case decorator_class.list_filters[filter.to_sym][:type]
+      when :select
+        records = decorator_class.list_filters[filter.to_sym][:query].call(records, value) if value.present?
+      when :dates
+        begin_date = params[:list_filters][filter.to_sym][:begin_date]
+        end_date = params[:list_filters][filter.to_sym][:end_date]
+        if begin_date.present? && end_date.present?
+          records = decorator_class.list_filters[filter.to_sym][:query].call(records, begin_date, end_date) if value.present?
+        end
+      end
     end
     records = records.send "#{current_admin.role}_scope", current_admin.id
     @records = decorator_class.decorate records.page params[:page]
