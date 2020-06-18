@@ -16,8 +16,8 @@
                 - when :select
                   = select_tag "list_filters[#{filter[0]}]", build_options_for_select(filter[0], filter[1][:select_collection]), include_blank: true, class: 'form-control'
                 - when :dates
-                  = text_field_tag "list_filters[#{filter[0]}][begin_date]", '', class: 'form-control', id: 'filter_datepicker_begin_date', value: params[:list_filters][filter[0]][:begin_date]
-                  = text_field_tag "list_filters[#{filter[0]}][end_date]", '', class: 'form-control', id: 'filter_datepicker_end_date', value: params[:list_filters][filter[0]][:end_date]
+                  = text_field_tag "list_filters[#{filter[0]}][begin_date]", '', class: 'form-control', id: 'filter_datepicker_begin_date', value: params.dig(:list_filters, filter[0], :begin_date)
+                  = text_field_tag "list_filters[#{filter[0]}][end_date]", '', class: 'form-control', id: 'filter_datepicker_end_date', value: params.dig(:list_filters, filter[0], :end_date)
                   :javascript
                     $(function () {
                       $('#filter_datepicker_begin_date').datepicker();
