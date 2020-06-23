@@ -22,7 +22,7 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
 
   enumerize :reach, default: :open, in: %i[open closed]
 
-  scope :actual, -> { where('begin_date > ?', DateTime.now) }
+  scope :actual, -> { where('begin_date > ?', DateTime.now).where('begin_date < ?', DateTime.now+2)}
   scope :past, -> { where 'end_date < ?', DateTime.now }
   scope :open, -> { where reach: :open }
   scope :closed, -> { where reach: :closed }
