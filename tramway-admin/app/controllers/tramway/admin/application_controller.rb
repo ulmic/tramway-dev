@@ -41,7 +41,9 @@ module Tramway
               begin_date = params[:list_filters][filter.to_sym][:begin_date]
               end_date = params[:list_filters][filter.to_sym][:end_date]
               if begin_date.present? && end_date.present?
-                records = decorator_class.list_filters[filter.to_sym][:query].call(records, begin_date, end_date) if value.present?
+                if value.present?
+                  records = decorator_class.list_filters[filter.to_sym][:query].call(records, begin_date, end_date)
+                end
               end
             end
           end
