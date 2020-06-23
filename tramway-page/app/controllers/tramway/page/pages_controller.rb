@@ -4,6 +4,7 @@ class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
   layout 'tramway/landing/application'
 
   def show
+    @application = ::Tramway::Core.application_object # FIXME need to be in the Tramway::Core::ApplicationController
     @page = ::Tramway::Page::Page.published.find_by slug: params[:slug]
     @blocks = @page.blocks.published.active.map do |block|
       if block.block_type.header_with_form? && block.form_url.present?
