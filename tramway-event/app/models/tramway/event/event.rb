@@ -12,7 +12,7 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   end
 
   has_many :participants, class_name: 'Tramway::Event::Participant'
-  has_many :participant_form_fields, class_name: 'Tramway::Event::ParticipantFormField'
+  has_many :participant_form_fields, -> { order(position: :asc) }, class_name: 'Tramway::Event::ParticipantFormField'
   has_many :sections, class_name: 'Tramway::Event::Section'
   has_many :partakings, as: :part, class_name: 'Tramway::Event::Partaking'
   has_many :partnerships, class_name: 'Tramway::Partner::Partnership', as: :partner
