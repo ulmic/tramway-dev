@@ -138,13 +138,28 @@ end
 
 Filters naming:
 
+*Select filters*
+
 ```yaml
 en:
   tramway:
     admin:
       filters:
         model_name:
-          filter_name: You Filter
+          filter_name: Your Filter
+```
+
+*Date filters*
+
+```yaml
+en:
+  tramway:
+    admin:
+      filters:
+        model_name:
+          date_filter_name:
+            begin_date: Your Begin date filter
+            end_date Your end date filter
 ```
 
 #### 10. Add inheritance to YourModel
