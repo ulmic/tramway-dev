@@ -10,19 +10,26 @@
         - decorator_class(model_class).list_filters.each_slice(3) do |slice|
           .row-fluid.filters
             - slice.each do |filter|
-              .col-md-4
-                = label_tag t("admin.filters.#{model_class.to_s.underscore}.#{filter[0]}")
-                - case filter[1][:type]
-                - when :select
+              - case filter[1][:type]
+              - when :select
+                .col-md-4
+                  = label_tag t("admin.filters.#{model_class.to_s.underscore}.#{filter[0]}")
                   = select_tag "list_filters[#{filter[0]}]", build_options_for_select(filter[0], filter[1][:select_collection]), include_blank: true, class: 'form-control'
-                - when :dates
-                  = text_field_tag "list_filters[#{filter[0]}][begin_date]", '', class: 'form-control', id: 'filter_datepicker_begin_date', value: params.dig(:list_filters, filter[0], :begin_date)
-                  = text_field_tag "list_filters[#{filter[0]}][end_date]", '', class: 'form-control', id: 'filter_datepicker_end_date', value: params.dig(:list_filters, filter[0], :end_date)
-                  :javascript
-                    $(function () {
-                      $('#filter_datepicker_begin_date').datepicker();
-                      $('#filter_datepicker_end_date').datepicker();
-                    });
+              - when :dates
+                .col-md-8.dates_filter
+                  .begin_date
+                    = label_tag t("admin.filters.#{model_class.to_s.underscore}.#{filter[0]}.begin_date")
+                    = text_field_tag "list_filters[#{filter[0]}][begin_date]", '', class: 'form-control', id: 'filter_datepicker_begin_date', value: params.dig(:list_filters, filter[0], :begin_date)
+                  %span
+                    \ -
+                  .end_date
+                    = label_tag t("admin.filters.#{model_class.to_s.underscore}.#{filter[0]}.end_date")
+                    = text_field_tag "list_filters[#{filter[0]}][end_date]", '', class: 'form-control', id: 'filter_datepicker_end_date', value: params.dig(:list_filters, filter[0], :end_date)
+                :javascript
+                  $(function () {
+                    $('#filter_datepicker_begin_date').datepicker();
+                    $('#filter_datepicker_end_date').datepicker();
+                  });
         .row-fluid.filters
           .col-md-4.offset-md-8.submit
             = submit_tag t('helpers.actions.search'), class: 'btn btn-primary'
