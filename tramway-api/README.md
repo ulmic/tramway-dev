@@ -67,7 +67,7 @@ Run `bundle install`
 Then generate User (you use another name, it's just an example) model
 
 ```
-rails g model user email:text password_digest:text username:text state:text uid:text
+rails g model user email:text password_digest:text username:text state:text uuid:uuid
 ```
 
 Enable extension in your database:
