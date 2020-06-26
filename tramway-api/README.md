@@ -44,6 +44,7 @@ coming soon...
   gem 'state_machine', github: 'seuros/state_machine'
   gem 'knock'
   gem 'audited'
+  gem 'ransack'
   ```
 
 ## Usage
