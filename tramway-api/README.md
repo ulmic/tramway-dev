@@ -104,7 +104,16 @@ Create file `config/initializers/tramway.rb`
 
 ```ruby
 ::Tramway::Api.auth_config = { user_model: User, auth_attributes: %i[email username] }
-::Tramway::Api.set_available_models user: { open: %i[create], closed: %i[update] }, project: :your_project_name
+::Tramway::Api.set_available_models({
+  User => [
+    {
+      show: lambda do |record, current_user|
+        record.id == current_user.id         # shows only current_user profile
+      end
+    }
+  ],
+  project: :your_project_name
+})
 ```
 
 Run `rails g tramway:core:install`
