@@ -363,9 +363,29 @@ Docs coming soon
 
 ### Show
 
-Production ready
+#### Description
 
-Docs coming soon
+It returns just one record, if it is not deleted.
+
+#### Using
+
+1. Allow method show in tramway initializer for `YourModel` 
+
+*config/initializers/tramway.rb*
+
+```ruby
+::Tramway::Api.set_available_models({ YourModel => [ :show ] }, project: :your_project_name })
+```
+
+2. Run your server on the localhost `rails s`
+3. Made this query to test new API method (for example: you can create file `bin/test_tramway.rb` with this lines):
+
+```ruby
+require 'net/http'
+
+YourModel.create! attribute_1: 'some value', attribute_2: 'some_value'
+Net::HTTP.get('localhost:3000', "/api/v1/records/#{YourModel.last.id}?model=YourModel")
+```
 
 ### Destroy
 
