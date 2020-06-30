@@ -65,6 +65,16 @@ gem 'knock'
 
 Run `bundle install`
 
+*config/routes.rb*
+
+```ruby
+Rails.application.routes.draw do
+  # ...
+  mount Tramway::Api::Engine, at: '/api'
+  # ...
+end
+```
+
 Then generate User (you use another name, it's just an example) model
 
 ```
