@@ -83,6 +83,17 @@ module Tramway
           new_hash.merge! pair[0].to_s => pair[1]
         end
       end
+
+      def id_methods_of(options = {})
+        @@id_methods ||= {}
+        @@id_methods.merge!(options.reduce({}) do |hash, pair|
+          hash.merge! pair[0].to_s => pair[1]
+        end)
+      end
+
+      def id_method_of(model:)
+        @@id_methods[model.to_s]
+      end
     end
   end
 end

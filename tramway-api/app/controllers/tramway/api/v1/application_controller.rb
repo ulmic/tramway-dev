@@ -24,7 +24,8 @@ module Tramway
         private
 
         def record
-          @record = model_class.find_by! uuid: params[:id] if params[:id].present?
+          id_method = Tramway::Api.id_method_of(model: model_class) || :uuid
+          @record = model_class.find_by! id_method => params[:id] if params[:id].present?
         end
 
         def records
@@ -100,12 +101,10 @@ module Tramway
         protected
 
         def model_class
-          if params[:model].to_s.in? available_models_for_current_user
-            begin
-              params[:model].constantize
-            rescue ActiveSupport::Concern::MultipleIncludedBlocks => e
-              raise "#{e}. Maybe #{params[:model]} model doesn't exists or there is naming conflicts with it"
-            end
+          begin
+            params[:model].constantize
+          rescue ActiveSupport::Concern::MultipleIncludedBlocks => e
+            raise "#{e}. Maybe #{params[:model]} model doesn't exists or there is naming conflicts with it"
           end
         end
 

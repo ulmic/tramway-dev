@@ -6,7 +6,8 @@ class Tramway::Api::V1::ApplicationSerializer < ActiveModel::Serializer
   attribute :id
 
   def id
-    object.uuid
+    id_method = Tramway::Api.id_method_of(model: object.class) || :uuid
+    object.send(id_method)
   end
 
   def created_at
