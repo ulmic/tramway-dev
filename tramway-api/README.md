@@ -65,6 +65,10 @@ gem 'knock'
 
 Run `bundle install`
 
+### Initialize @application object
+
+[How-to](https://github.com/Purple-Magic/tramway-core/blob/develop/README.md#every-tramway-application-need-initialized-application-object-or-if-you-create-tramway-plugin-it-should-be-application_engine-object)
+
 *config/routes.rb*
 
 ```ruby
