@@ -111,10 +111,16 @@ class User < Tramway::Core::ApplicationRecord
 end
 ```
 
-Create file `config/initializers/tramway.rb`
+#### Create file `config/initializers/tramway.rb`
+#### If you need JWT authentication add this line to the `config/initializers/tramway.rb`
 
 ```ruby
 ::Tramway::Api.auth_config = { user_model: User, auth_attributes: %i[email username] }
+```
+
+#### Configurate available models. Tramway will create end points according to this config
+
+```
 ::Tramway::Api.set_available_models({
   User => [
     {
