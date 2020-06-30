@@ -346,7 +346,7 @@ Create serializer
 *app/serializers/user_serializer.rb*
 
 ```ruby
-class UserSerializer < Tramway::Core::ApplicationSerializer
+class UserSerializer < Tramway::Api::V1::ApplicationSerializer
   attributes :username, :email
 end
 ```
