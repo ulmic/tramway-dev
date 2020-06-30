@@ -94,8 +94,20 @@ def change
 end
 ```
 
+### You can choose a method, which will be using as public ID method
 
-Add generating uuid by default to every model, that is accessible by API
+By default, it's a `uuid` method
+
+To choose your own public ID method, just add this line to:
+
+*config/initializers/tramway.rb*
+
+```ruby
+Tramway::Api.id_methods_of(User => :id)
+```
+If you want to use `uuid` by default, please, add it to your models
+
+#### Add generating uuid by default to every model, that is accessible by API
 
 *db/migrate/add_uuid_to_some_model.rb*
 
