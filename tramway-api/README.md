@@ -379,7 +379,7 @@ It returns just one record, if it is not deleted.
 
 #### Using
 
-1. Allow method show in tramway initializer for `YourModel` 
+##### Allow method show in tramway initializer for `YourModel` 
 
 *config/initializers/tramway.rb*
 
@@ -387,8 +387,18 @@ It returns just one record, if it is not deleted.
 ::Tramway::Api.set_available_models({ YourModel => [ :show ] }, project: :your_project_name })
 ```
 
-2. Run your server on the localhost `rails s`
-3. Made this query to test new API method (for example: you can create file `bin/test_tramway.rb` with this lines):
+##### Create serializer
+
+*app/serializers/user_serializer.rb*
+
+```ruby
+class UserSerializer < Tramway::Core::ApplicationSerializer
+  attributes :username, :email
+end
+```
+
+##### Run your server on the localhost `rails s`
+##### Made this query to test new API method (for example: you can create file `bin/test_tramway.rb` with this lines):
 
 ```ruby
 require 'net/http'
