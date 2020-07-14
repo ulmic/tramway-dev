@@ -88,7 +88,7 @@ rails g model user email:text password_digest:text username:text state:text uuid
 Enable extension in your database:
 
 *db/migrate/enable_extension.rb*
-```
+```ruby
 class EnableExtensionUUIDOSSP < ActiveRecord::Migration
   def change
     enable_extension 'uuid-ossp'
