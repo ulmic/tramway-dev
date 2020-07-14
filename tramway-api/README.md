@@ -89,8 +89,10 @@ Enable extension in your database:
 
 *db/migrate/enable_extension.rb*
 ```
-def change
-  enable_extension 'uuid-ossp'
+class EnableExtensionUUIDOSSP < ActiveRecord::Migration
+  def change
+    enable_extension 'uuid-ossp'
+  end
 end
 ```
 
