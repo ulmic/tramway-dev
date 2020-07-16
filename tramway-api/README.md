@@ -414,7 +414,7 @@ Now you can your request. It has such structure
 Params Structure
 {
   data: {
-    attributes:
+    attributes: {
       attribute1: 'some value',
       attribute2: 'some value',
       name: 'some full name',
@@ -457,7 +457,7 @@ Now you can your request. It has such structure
 Params Structure
 {
   data: {
-    attributes:
+    attributes: {
       attribute1: 'some value',
       attribute2: 'some value',
       name: 'some full name',
