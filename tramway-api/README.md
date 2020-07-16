@@ -410,7 +410,7 @@ Now you can your request. It has such structure
 
 **POST** `/api/v1/records?model=YourModel`
 
-```json
+```
 Params Structure
 {
   data: {
@@ -453,7 +453,7 @@ Now you can your request. It has such structure
 
 **PATCH** `/api/v1/records/#{object_id}?model=YourModel`
 
-```json
+```
 Params Structure
 {
   data: {
