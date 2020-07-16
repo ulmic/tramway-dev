@@ -385,15 +385,89 @@ You have your records in JSON API spec.
 
 ### Create
 
-Production ready
+*config/initializers/tramway.rb*
 
-Docs coming soon
+```ruby
+::Tramway::Api.set_available_models({ YourModel => [ :create ] }, project: :your_project_name })
+```
+
+*app/forms/your_model_form.rb*
+
+```ruby
+class YourModelForm < ApplicationForm
+  properties :attribute1, :attribute2, :name
+  
+  association :another_association_model
+  
+  def name=(value)
+    model.first_name = value.split(' ')[0]
+    model.first_name = value.split(' ')[1]
+  end
+end
+```
+
+Now you can your request. It has such structure
+
+**POST** `/api/v1/records?model=YourModel`
+
+```json
+Params Structure
+{
+  data: {
+    attributes:
+      attribute1: 'some value',
+      attribute2: 'some value',
+      name: 'some full name',
+      another_association_model: {
+        # here a list of attributes, which you described in AnotherAssociationModelForm
+      }
+    }
+  }
+}
+```
 
 ### Update
 
-Production ready
+*config/initializers/tramway.rb*
 
-Docs coming soon
+```ruby
+::Tramway::Api.set_available_models({ YourModel => [ :update ] }, project: :your_project_name })
+```
+
+*app/forms/your_model_form.rb*
+
+```ruby
+class YourModelForm < ApplicationForm
+  properties :attribute1, :attribute2, :name
+  
+  association :another_association_model
+  
+  def name=(value)
+    model.first_name = value.split(' ')[0]
+    model.first_name = value.split(' ')[1]
+  end
+end
+```
+
+Now you can your request. It has such structure
+
+**PATCH** `/api/v1/records/#{object_id}?model=YourModel`
+
+```json
+Params Structure
+{
+  data: {
+    attributes:
+      attribute1: 'some value',
+      attribute2: 'some value',
+      name: 'some full name',
+      another_association_model: {
+        # here a list of attributes, which you described in AnotherAssociationModelForm
+      }
+    }
+  }
+}
+```
 
 ### Show
 
