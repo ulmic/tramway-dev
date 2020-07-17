@@ -394,7 +394,7 @@ You have your records in JSON API spec.
 *app/forms/your_model_form.rb*
 
 ```ruby
-class YourModelForm < ApplicationForm
+class YourModelForm < Tramway::Core::ApplicationForm
   properties :attribute1, :attribute2, :name
   
   association :another_association_model
@@ -437,7 +437,7 @@ Params Structure
 *app/forms/your_model_form.rb*
 
 ```ruby
-class YourModelForm < ApplicationForm
+class YourModelForm < Tramway::Core::ApplicationForm
   properties :attribute1, :attribute2, :name
   
   association :another_association_model
