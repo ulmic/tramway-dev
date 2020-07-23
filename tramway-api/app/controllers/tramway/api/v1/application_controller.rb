@@ -29,7 +29,8 @@ module Tramway
         end
 
         def records
-          collection = model_class.active.order(id: :desc).send params[:scope] || :all
+          active_records = model_class.respond_to?(:active) ? model_class.active : model_class.all
+          collection = active_records.order(id: :desc).send params[:scope] || :all
           collection = collection.full_text_search params[:search] if params[:search]
           collection
         end
