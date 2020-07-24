@@ -31,7 +31,8 @@ module Tramway
         def records
           active_records = model_class.respond_to?(:active) ? model_class.active : model_class.all
           collection = active_records.order(id: :desc).send params[:scope] || :all
-          collection = collection.full_text_search params[:search] if params[:search]
+          collection = collection.page(params[:page]).per(params[:per]) if params[:page].present?
+          collection = collection.full_text_search params[:search] if params[:search].present?
           collection
         end
 
