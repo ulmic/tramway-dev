@@ -105,9 +105,17 @@ To choose your own public ID method, just add this line to:
 *config/initializers/tramway.rb*
 
 ```ruby
-Tramway::Api.id_methods_of(User => :id)
+Tramway::Api.id_methods_of(User => { default: :id })
 ```
 If you want to use `uuid` by default, please, add it to your models
+
+### Also, you can add array of secondary methods as IDs, but you'll need to add their names to a request
+
+```ruby
+Tramway::Api.id_methods_of(User => { default: id, other: :email }
+```
+
+in this case your request will look like this `/api/v1/records/someEmail@mail.com?model=User&key=email`
 
 #### Add generating uuid by default to every model, that is accessible by API
 
@@ -382,6 +390,8 @@ end
 ```
 
 You have your records in JSON API spec.
+
+You also able to use pagination, provided by `kaminari`
 
 ### Create
 
