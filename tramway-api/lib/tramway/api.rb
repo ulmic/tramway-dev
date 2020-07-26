@@ -91,8 +91,12 @@ module Tramway
         end)
       end
 
-      def id_method_of(model:)
-        @@id_methods[model.to_s]
+      def other_id_methods_of(model:)
+        @@id_methods[model.to_s][:other]
+      end
+
+      def default_id_method_of(model:)
+        @@id_methods[model.to_s][:default]
       end
     end
   end

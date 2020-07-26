@@ -24,8 +24,14 @@ module Tramway
         private
 
         def record
-          id_method = Tramway::Api.id_method_of(model: model_class) || :uuid
-          @record = model_class.find_by! id_method => params[:id] if params[:id].present?
+          if params[:key].present?
+            if ids_methods_of(model: model_class).include? params[:key]
+              @record = model_class.find_by! params[:key] => params[:id] if params[:id].present?
+            end
+          else
+            default_id_method = Tramway::Api.default_id_method_of(model: model_class) || :uuid
+            @record = model_class.find_by! default_id_method => params[:id] if params[:id].present?
+          end
         end
 
         def records
