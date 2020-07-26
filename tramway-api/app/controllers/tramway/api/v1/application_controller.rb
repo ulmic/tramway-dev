@@ -25,7 +25,7 @@ module Tramway
 
         def record
           if params[:key].present?
-            if ids_methods_of(model: model_class).include? params[:key]
+            if other_id_methods_of(model: model_class).include? params[:key]
               @record = model_class.find_by! params[:key] => params[:id] if params[:id].present?
             end
           else
