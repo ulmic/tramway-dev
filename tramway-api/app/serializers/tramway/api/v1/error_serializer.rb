@@ -16,8 +16,10 @@ class Tramway::Api::V1::ErrorSerializer < ActiveModel::Serializer
   def error_messages(object, path = []) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     error_messages = {}
 
-    object.errors.messages.each do |name, messages|
-      error_messages.merge!((path + [name]).join('/') => messages)
+    if object.respond_to? :errors
+      object.errors.messages.each do |name, messages|
+        error_messages.merge!((path + [name]).join('/') => messages)
+      end
     end
 
     if object.model
