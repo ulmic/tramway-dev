@@ -22,21 +22,23 @@ class Tramway::Api::V1::ErrorSerializer < ActiveModel::Serializer
       end
     end
 
-    if object.model
-      object.model.errors.messages.each do |name, messages|
-        error_messages.merge!((path + [name]).join('/') => messages)
+    if object.respond_to? :model
+      if object.model
+        object.model.errors.messages.each do |name, messages|
+          error_messages.merge!((path + [name]).join('/') => messages)
+        end
       end
-    end
 
-    object.model&.attributes&.each do |attribute_key, attribute_value|
-      if attribute_value.is_a?(Array)
-        attribute_value.each_with_index do |array_attribute_value, array_attribute_key|
-          error_messages.merge!(
-            error_messages(
-              array_attribute_value,
-              path + [attribute_key] + [array_attribute_key]
+      object.model&.attributes&.each do |attribute_key, attribute_value|
+        if attribute_value.is_a?(Array)
+          attribute_value.each_with_index do |array_attribute_value, array_attribute_key|
+            error_messages.merge!(
+              error_messages(
+                array_attribute_value,
+                path + [attribute_key] + [array_attribute_key]
+              )
             )
-          )
+          end
         end
       end
     end
