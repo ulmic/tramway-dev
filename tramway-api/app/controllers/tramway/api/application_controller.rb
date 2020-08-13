@@ -58,9 +58,7 @@ module Tramway
 
       def current_user
         Tramway::Api.user_based_models.map do |user_based_model|
-          unless user_based_model == User
-            send("current_#{user_based_model.name.underscore}")
-          end
+          send("current_#{user_based_model.name.underscore}") unless user_based_model == User
         end.compact.first
       end
     end

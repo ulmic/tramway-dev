@@ -109,11 +109,9 @@ module Tramway
         protected
 
         def model_class
-          begin
-            params[:model].constantize
-          rescue ActiveSupport::Concern::MultipleIncludedBlocks => e
-            raise "#{e}. Maybe #{params[:model]} model doesn't exists or there is naming conflicts with it"
-          end
+          params[:model].constantize
+        rescue ActiveSupport::Concern::MultipleIncludedBlocks => e
+          raise "#{e}. Maybe #{params[:model]} model doesn't exists or there is naming conflicts with it"
         end
 
         def decorator_class(model_name = nil)
