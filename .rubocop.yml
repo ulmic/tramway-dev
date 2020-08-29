@@ -15,7 +15,7 @@ Style/ClassAndModuleChildren:
 Style/FrozenStringLiteralComment:
   Exclude:
     - bin/stage
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 AllCops:
   Exclude:
