@@ -14,5 +14,5 @@ class Tramway::User::User < ::Tramway::Core::ApplicationRecord
 
   scope :admins, -> { where role: :admin }
   scope :simple_users, -> { where role: :user }
-  scope :is_active, -> { where state: :active}
+  scope :is_active, -> { where state: :active }
 end

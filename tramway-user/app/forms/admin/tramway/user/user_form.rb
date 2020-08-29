@@ -5,7 +5,7 @@ class Admin::Tramway::User::UserForm < ::Tramway::Core::ApplicationForm
 
   properties :email, :password, :first_name, :last_name, :role, :phone
 
-  validates :email, email: true, uniqueness: true, on: :destroy 
+  validates :email, email: true, uniqueness: true, on: :destroy
 
   def initialize(object)
     super(object).tap do
