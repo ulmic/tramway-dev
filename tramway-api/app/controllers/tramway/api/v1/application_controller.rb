@@ -45,6 +45,7 @@ module Tramway
         def check_available_model_class
           unless model_class
             head(:unauthorized) && return unless current_user
+
             head(:unprocessable_entity) && return
           end
         end
