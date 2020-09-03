@@ -1,29 +1,25 @@
 - records_in_the_row = 4
-- if phone.present? || email.present?
+- if defined?(::Tramway::Profiles)
+  - social_networks = (@application.social_networks.active if @application.respond_to?(:social_networks)) unless social_networks
+  - social_networks&.each do |profile|
+    %ul.list-group
+      %li.list-group-item
+        = profile_link profile
+- if yield(:phone).present? || yield(:email).present?
   .row.features-small.mt-5.wow.fadeIn
-    - if phone.present?
+    - if yield(:phone).present?
       .col-xl-3.col-lg-6
         .row.link{ data: { href: "tel:#{phone}" } }
           .col-2
             %i.fas.fa-2x.mb-1.fa-phone.indigo-text{ aria: { hidden: 'true' } }
           .col-10.mb-2.pl-3
             %h5.feature-title.font-bold.mb-1
-              = phone
-    - if email.present?
+              = yield(:phone)
+    - if yield(:email).present?
       .col-xl-3.col-lg-6
         .row.link{ data: { href: "mailto:#{email}" } }
           .col-2
             %i.fas.fa-2x.mb-1.fa-envelope.indigo-text{ aria: { hidden: 'true' } }
           .col-10.mb-2.pl-3
             %h5.feature-title.font-bold.mb-1
-              = email 
-- social_networks&.each_slice(records_in_the_row) do |slice|
-  .row.features-small.mt-5.wow.fadeIn
-    - slice.each do |social_network, index|
-      .col-xl-3.col-lg-6
-        .row.link{ data: { href: profile_url(social_network) } }
-          .col-2
-            %i.fab.fa-2x.mb-1.indigo-text{ aria: { hidden: 'true' }, class: "fa-#{social_network.network_name}" }
-          .col-10.mb-2.pl-3
-            %h5.feature-title.font-bold.mb-1
-              = social_network.title
+              = yield(:email)
