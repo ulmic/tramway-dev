@@ -5,10 +5,8 @@ class Admin::Tramway::User::UserForm < ::Tramway::Core::ApplicationForm
 
   properties :email, :password, :first_name, :last_name, :role, :phone
 
-  #fix me
-  unless self.model_class.columns_hash['project_id'].present?
-    validates :email, email: true, uniqueness: true, on: :destroy
-  end
+  # fix me
+  validates :email, email: true, uniqueness: true, on: :destroy unless model_class.columns_hash['project_id'].present?
 
   def initialize(object)
     super(object).tap do
