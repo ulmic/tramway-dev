@@ -29,7 +29,7 @@ end
 
 **NOTE: BE CAREFUL**. You shouldn't remove roles after creating one or more records in Tramway::User::User table.
 
-**NOTE: BE CAREFUL 2**. All new roles instead of `user` will be have access to the admin panel
+**NOTE: BE CAREFUL 2**. All new roles instead of `user` will have access to the admin panel
 
 ## Block soft deletion of some records
 
