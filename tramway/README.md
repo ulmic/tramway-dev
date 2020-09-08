@@ -4,7 +4,7 @@
 
 #### 1. Create concern with the patch
 
-*app/models/concerns/tramway/user/user.rb*
+*app/models/concerns/tramway/user/user_concern.rb*
 ```ruby
 module Tramway::User::UserConcern
   extend ActiveSupport::Concern
