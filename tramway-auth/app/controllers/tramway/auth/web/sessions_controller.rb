@@ -7,11 +7,15 @@ module Tramway::Auth
 
       def create
         @session_form = ::Tramway::Auth::SessionForm.new params[:model].constantize.active.find_by email: params[:user][:email]
-        if @session_form.validate params[:user]
-          sign_in @session_form.model
-          redirect_to [params[:success_redirect], '?', { flash: :success_user_sign_in }.to_query].join || ::Tramway::Auth.root_path_for(@session_form.model.class)
+        if @session_form.model.present?
+          if @session_form.validate params[:user]
+            sign_in @session_form.model
+            redirect_to [params[:success_redirect], '?', { flash: :success_user_sign_in }.to_query].join || ::Tramway::Auth.root_path_for(@session_form.model.class)
+          else
+            redirect_to [params[:error_redirect], '?', { flash: :error_user_sign_in }.to_query].join || ::Tramway::Auth.root_path_for(@session_form.model.class)
+          end
         else
-          redirect_to [params[:error_redirect], '?', { flash: :error_user_sign_in }.to_query].join || ::Tramway::Auth.root_path_for(@session_form.model.class)
+          redirect_to [params[:error_redirect], '?', { flash: :error_user_sign_in }.to_query].join || ::Tramway::Auth.root_path_for(params[:model].constantize)
         end
       end
 
