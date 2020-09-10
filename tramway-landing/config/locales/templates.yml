@@ -3,7 +3,8 @@ ru:
     landing:
       templates:
         alert:
+          invalid_email_or_password: Пользователь не найден или введен неверный пароль
           sign_up_successful: Регистрация прошла успешно
           ign_in_successful: Авторизация прошла успешно
           there_is_some_errors: Исправьте ошибки
-          ivalid_email_or_password: email или пароль введены неверно
+          
