@@ -67,7 +67,6 @@ Tramway решает две проблемы:
 * [Peklo Tool](https://tool.peklo.studio/)
 * [Sorted House](https://sortedhouse.com)
 * [Molodoy.online](http://molodoy.online) 
-* [МБУ ДО ДЮСШ Ленинского района](http://sportschool-ulsk.ru/) (не поддерживается)
 
 And a lot of private projects 🥰
 
