@@ -67,6 +67,11 @@ Tramway решает две проблемы:
 * [Peklo Tool](https://tool.peklo.studio/)
 * [Sorted House](https://sortedhouse.com)
 * [Molodoy.online](http://molodoy.online) 
+* Telegram Quest bots (Russian)
+  * [Параллельные вселенные (Ульяновск)](https://t.me/questfantasy_bot)
+  * [Андрей Егоров, следователь по Ленинскому району (Ульяновск)](https://t.me/questhorror_bot)
+  * [*Неизвестный номер* (Ульяновск)](https://t.me/questlove_bot)
+  * [Кира, помощница журналиста (Ульяновск)](https://t.me/questdetective_bot)
 
 And a lot of private projects 🥰
 
