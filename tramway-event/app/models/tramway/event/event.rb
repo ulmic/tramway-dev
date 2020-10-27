@@ -8,6 +8,8 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
   def check_dimensions
     if photo.present?
       errors.add :photo, :too_small_image if photo.width.present? && (photo.width < 1920 || photo.height < 1080)
+    else
+      errors.add :photo, :is_not_present
     end
   end
 
@@ -22,7 +24,9 @@ class Tramway::Event::Event < ::Tramway::Event::ApplicationRecord
 
   enumerize :reach, default: :open, in: %i[open closed]
 
-  scope :actual, -> { where('begin_date > ?', DateTime.now).where('begin_date < ?', DateTime.now + 11.days).order(begin_date: :asc) }
+  scope :actual, -> do
+    where('begin_date > ?', DateTime.now).or(where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now)).order(begin_date: :asc)
+  end
   scope :past, -> { where 'end_date < ?', DateTime.now }
   scope :open, -> { where reach: :open }
   scope :closed, -> { where reach: :closed }

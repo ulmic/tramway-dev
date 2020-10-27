@@ -1,11 +1,12 @@
-.row.form
-  .col-lg-12
-    %h1.text-center
-      = t(".request_collecting_state.#{event.request_collecting_state}")
-    - if event.request_collecting_state == :are_being_right_now && event.participant_form_fields.any?
-      - class_name = 'tramway_event_participant'
-      = simple_form_for @participant_form, url: ::Tramway::Event::Engine.routes.url_helpers.participants_path, method: :post, html: { class: class_name, id: class_name } do |f|
-        = f.input :event_id, as: :hidden, input_html: { value: event.id, class: class_name, id: "#{class_name}_event_id", name: "#{class_name}[event_id]" }
-        - event.participant_form_fields.inputs_list.each do |field|
-          = render 'tramway/core/shared/input_extended', field: field, class_name: class_name, f: f, value: (params[:participant].present? ? params[:participant][field.title] : '')
-        = f.button :submit, t('.submit_form')
+- unless event.request_collecting_state == :not_initialized
+  .row.form
+    .col-lg-12
+      %h1.text-center
+        = t(".request_collecting_state.#{event.request_collecting_state}")
+      - if event.request_collecting_state == :are_being_right_now && event.participant_form_fields.any?
+        - class_name = 'tramway_event_participant'
+        = simple_form_for @participant_form, url: ::Tramway::Event::Engine.routes.url_helpers.participants_path, method: :post, html: { class: class_name, id: class_name } do |f|
+          = f.input :event_id, as: :hidden, input_html: { value: event.id, class: class_name, id: "#{class_name}_event_id", name: "#{class_name}[event_id]" }
+          - event.participant_form_fields.inputs_list.each do |field|
+            = render 'tramway/core/shared/input_extended', field: field, class_name: class_name, f: f, value: (params[:participant].present? ? params[:participant][field.title] : '')
+          = f.button :submit, t('.submit_form')
