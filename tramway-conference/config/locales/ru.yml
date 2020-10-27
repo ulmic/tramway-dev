@@ -2,9 +2,6 @@ ru:
   application:
     name: Конференция
     tagline: Главный слоган лендоса конференции
-  tramway:
-    landing:
-      blocks:
-        block_types:
-          header:
-            past_events: Прошедшие мероприятия
+  navbar:
+    links:
+      past_events: Прошедшие мероприятия

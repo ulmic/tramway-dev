@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::Tramway::Conference::UnityForm < ::Tramway::Core::ApplicationForm
-  properties :title, :tagline, :logo, :state, :phone, :address, :longtitude, :latitude, :url, :found_date, :email, :favicon
+  properties :title, :tagline, :logo, :state, :phone, :address, :longtitude, :latitude, :url, :found_date, :email,
+    :favicon, :public_name
 
   def initialize(object)
     super(object).tap do
@@ -14,7 +15,8 @@ class Admin::Tramway::Conference::UnityForm < ::Tramway::Core::ApplicationForm
                       url: :string,
                       found_date: :date_picker,
                       email: :string,
-                      favicon: :file
+                      favicon: :file,
+                      public_name: :string
     end
   end
 end
