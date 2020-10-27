@@ -1,7 +1,7 @@
 - if link.is_a? Hash
   .nav-item.dropdown
     %a.nav-link.dropdown-toggle.scrollable{id: "dropdown_menu_button_#{link.keys.first}", aria: { expanded: :false, haspopup: :true }, data: { toggle: :dropdown } }
-      = link.keys.first
+      = t("navbar.links.#{link.keys.first}")
     .dropdown-menu.dropdown-primary.scrollable{ aria: { labelledby: "dropdown_menu_button_#{link.keys.first}" } }
       - link.values.first.each do |menu_item|
         = link_to menu_item.title, menu_item.link, class: 'dropdown-item'
