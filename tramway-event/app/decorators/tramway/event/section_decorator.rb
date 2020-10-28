@@ -5,11 +5,15 @@ class Tramway::Event::SectionDecorator < ::Tramway::Landing::BlockTypes::Feature
     def collections
       [:all]
     end
+
+    def show_associations
+      [ :partakings ]
+    end
   end
 
   delegate :description, to: :object
   decorate_association :event
-  decorate_association :partakings, decorator: Tramway::Event::PartakingFeatureDecorator
+  decorate_association :partakings, as: :part, decorator: Tramway::Event::PartakingFeatureDecorator
 
   def name
     "#{object.title} | #{object.event.title}"

@@ -23,7 +23,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   decorate_associations :participants, :partnerships, :organizations
   decorate_association :participant_form_fields, as: :event
   decorate_association :sections, as: :event
-  decorate_association :partakings, as: :event
+  decorate_association :partakings, as: :part
   decorate_association :actions, as: :event, state_machines: [:action_state]
 
   def background
