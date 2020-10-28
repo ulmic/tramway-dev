@@ -40,6 +40,7 @@ ru:
         short_description: Краткое описание
         actions: Действие
         reach: Доступность мероприятия
+        sections: События
       tramway/event/participant:
         name: Имя
         list_fields: Данные

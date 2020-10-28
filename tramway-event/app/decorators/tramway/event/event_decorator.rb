@@ -11,7 +11,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
     end
 
     def show_associations
-      %i[participant_form_fields actions]
+      %i[participant_form_fields actions sections]
     end
 
     def list_attributes
@@ -20,8 +20,9 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   delegate :title, to: :object
-  decorate_associations :participants, :sections, :partakings, :partnerships, :organizations
+  decorate_associations :participants, :partakings, :partnerships, :organizations
   decorate_association :participant_form_fields, as: :event
+  decorate_association :sections, as: :event
   decorate_association :actions, as: :event, state_machines: [:action_state]
 
   def background
