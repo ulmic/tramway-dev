@@ -6,4 +6,7 @@ class Tramway::Site::Person < Tramway::Site::ApplicationRecord
   def title
     names.join(' ')
   end
+
+  alias name title
+  alias public_name title
 end

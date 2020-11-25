@@ -21,7 +21,8 @@ module Tramway::Site::Generators
 
     def copy_migrations
       migrations = [
-        :create_tramway_site_people
+        :create_tramway_site_people,
+        :add_main_image_tramway_site_people
       ]
       migrations.each do |migration_name|
         migration_template "#{migration_name}.rb", "db/migrate/#{migration_name}.rb"
