@@ -23,6 +23,8 @@ module ::Tramway::Extensions
     Tramway::User::User.include Tramway::User::UserConcern
   end
 end
+
+Tramway::User::User.include Tramway::User::UserConcern # don't forget this line too
 ```
 
 #### 3. Reload your server
