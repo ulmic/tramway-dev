@@ -26,6 +26,10 @@ $ gem install tramway-user
 
 `Tramway::User::User` has scope `admins` which returns all admins from the app.
 
+## Instructions
+
+Edit roles for `Tramway::User::User` model - [doc](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
+
 ## Contributing
 Contribution directions go here.
 
