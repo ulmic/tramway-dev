@@ -2,6 +2,6 @@
 
 module Tramway
   module Partner
-    VERSION = '1.0.3.2'
+    VERSION = '1.0.4'
   end
 end
