@@ -14,6 +14,15 @@ module Tramway
       def head_content
         (defined?(@@head_content) && @@head_content) || []
       end
+
+      def set_navbar(bool, project:)
+        @@navbars ||= {}
+        @@navbars.merge! project => bool
+      end
+
+      def navbar_for(project)
+        @@navbars.with_indifferent_access[project]
+      end
     end
   end
 end
