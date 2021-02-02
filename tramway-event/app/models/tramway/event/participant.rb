@@ -3,8 +3,8 @@
 class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
   belongs_to :event, class_name: 'Tramway::Event::Event'
 
-  state_machine :participation_state, initial: :requested do
-    state :requested
+  aasm :participation_state do
+    state :requested, initial: true
     state :prev_approved
     state :waiting
     state :rejected
@@ -13,31 +13,31 @@ class Tramway::Event::Participant < ::Tramway::Event::ApplicationRecord
     state :reserved
 
     event :previous_approve do
-      transition %i[requested without_answer waiting] => :prev_approved
+      transitions from: %i[requested without_answer waiting], to: :prev_approved
     end
 
     event :wait_for_decision do
-      transition %i[requested without_answer] => :waiting
+      transitions from: %i[requested without_answer], to: :waiting
     end
 
     event :reserve do
-      transition %i[requested without_answer waiting] => :reserved
+      transitions from: %i[requested without_answer waiting], to: :reserved
     end
 
     event :reject do
-      transition %i[requested without_answer waiting prev_approved reserved] => :rejected
+      transitions from: %i[requested without_answer waiting prev_approved reserved], to: :rejected
     end
 
     event :approve do
-      transition %i[prev_approved reserved requested] => :approved
+      transitions from: %i[prev_approved reserved requested], to: :approved
     end
 
     event :not_got_answer do
-      transition requested: :without_answer
+      transitions from: :requested, to: :without_answer
     end
 
     event :return_to_requested do
-      transition %i[prev_approved rejected] => :requested
+      transitions from: %i[prev_approved rejected], to: :requested
     end
   end
 

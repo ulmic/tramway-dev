@@ -8,16 +8,16 @@ class Tramway::Page::Page < ::Tramway::Core::ApplicationRecord
   scope :landings, -> { where page_type: :landing }
   scope :published, -> { where view_state: :published }
 
-  state_machine :view_state, initial: :unpublished do
-    state :unpublished
+  aasm :view_state do
+    state :unpublished, initial: true
     state :published
 
     event :publish do
-      transition unpublished: :published
+      transitions from: :unpublished, to: :published
     end
 
     event :hide do
-      transition published: :unpublished
+      transitions from: :published, to: :unpublished
     end
   end
 end

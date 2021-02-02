@@ -10,16 +10,16 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
 
   uploader :background, :photo, extensions: %i[jpg jpeg gif png]
 
-  state_machine :view_state, initial: :published do
-    state :published
+  aasm :view_state do
+    state :published, initial: true
     state :hidden
 
     event :publish do
-      transition hidden: :published
+      transitions from: :hidden, to: :published
     end
 
     event :hide do
-      transition published: :hidden
+      transitions from: :published, to: :hidden
     end
   end
 

@@ -41,7 +41,6 @@ coming soon...
   ```ruby
   gem 'active_model_serializers', '0.10.5'
   gem 'tramway-core'
-  gem 'state_machine', github: 'seuros/state_machine'
   gem 'knock'
   gem 'audited'
   gem 'ransack'

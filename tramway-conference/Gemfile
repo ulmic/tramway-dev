@@ -24,18 +24,13 @@ gem 'rmagick'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'sprockets', '~> 3.7.2'
-gem 'state_machine', github: 'seuros/state_machine'
 gem 'state_machine_buttons', '>= 0.4.1'
-gem 'tramway-admin', github: 'ulmic/tramway-admin', branch: :develop
-gem 'tramway-core', github: 'ulmic/tramway-core', branch: :develop
-gem 'tramway-landing', github: 'ulmic/tramway-landing', branch: :develop
-gem 'tramway-user', github: 'ulmic/tramway-user', branch: :develop
+gem 'tramway-admin'
+gem 'tramway-core'
+gem 'tramway-landing'
+gem 'tramway-user'
 gem 'trap', '~> 2.1'
 
 group :development do
   gem 'pry'
-  # gem 'tramway-user', path: '../tramway-user'
-  # gem 'tramway-core', path: '../tramway-core'
-  # gem 'tramway-admin', path: '../tramway-admin'
-  # gem 'tramway-landing', path: ../tramway-landing'
 end
