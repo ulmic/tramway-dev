@@ -3,7 +3,7 @@
 class Tramway::Event::Action < Tramway::Core::ApplicationRecord
   belongs_to :event, class_name: 'Tramway::Event::Event'
 
-  aasm :action_state do
+  aasm :action_state, column: :action_state do
     state :must_be_done, initial: true
     state :done
     state :declined

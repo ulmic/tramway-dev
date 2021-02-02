@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Event::ParticipantFormField < ::Tramway::Event::ApplicationRecord
+class Tramway::Event::ParticipantFormField < ::Tramway::Core::ApplicationRecord
   belongs_to :event, class_name: 'Tramway::Event::Event'
 
   enumerize :field_type, in: %i[text string numeric date_picker select checkbox], default: :text
