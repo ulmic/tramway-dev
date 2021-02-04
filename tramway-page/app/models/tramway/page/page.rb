@@ -8,7 +8,7 @@ class Tramway::Page::Page < ::Tramway::Core::ApplicationRecord
   scope :landings, -> { where page_type: :landing }
   scope :published, -> { where view_state: :published }
 
-  aasm :view_state do
+  aasm :view_state, column: :view_state do
     state :unpublished, initial: true
     state :published
 
