@@ -3,7 +3,7 @@
 class Tramway::Event::Participant < ::Tramway::Core::ApplicationRecord
   belongs_to :event, class_name: 'Tramway::Event::Event'
 
-  aasm :participation_state do
+  aasm :participation_state, column: :participation_state do
     state :requested, initial: true
     state :prev_approved
     state :waiting

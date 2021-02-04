@@ -13,8 +13,6 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
     def show_associations
       [:forms]
     end
-
-    delegate :human_view_state_event_name, to: :model_class
   end
 
   decorate_association :forms
@@ -39,7 +37,7 @@ class Tramway::Landing::BlockDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def view_state
-    object.human_view_state_name
+    object.view_state
   end
 
   def link
