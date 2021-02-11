@@ -3,7 +3,7 @@
   %head
     = render 'layouts/tramway/landing/head'
   %body{ class: @application&.name }
-    - @tools.each do |tool|
+    - @tools&.each do |tool|
       - if tool.with_body_fragment?
         = render "layouts/tramway/landing/tools/#{tool.title}_body", account_id: tool.account_id
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'

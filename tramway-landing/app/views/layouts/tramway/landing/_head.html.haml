@@ -11,5 +11,5 @@
   = favicon_link_tag @application.favicon
 - ::Tramway::Landing.head_content.each do |content|
   - self.instance_exec &content
-- @tools.each do |tool|
+- @tools&.each do |tool|
   = render "layouts/tramway/landing/tools/#{tool.title}_head", account_id: tool.account_id
