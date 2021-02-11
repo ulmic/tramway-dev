@@ -2,6 +2,7 @@ ru:
   activerecord:
     models:
       tramway/landing/block: Блок
+      tramway/landing/tool: Инструмент
     attributes:
       tramway/landing/block:
         name: Название
@@ -26,6 +27,9 @@ ru:
       tramway/landing/form:
         title: Название формы
         form_name: Класс формы
+      tramway/landing/tool:
+        title: Выберите сервис
+        account_id: ID в системе
   cases:
     tramway/landing/block:
       plural: Блоки
@@ -33,6 +37,9 @@ ru:
     tramway/landing/form:
       plural: Публичные формы
       genitive: публичную форму
+    tramway/landing/tool:
+      plural: Инструменты
+      genitive: инструмент
   enumerize:
     tramway/landing/block:
       block_type:
