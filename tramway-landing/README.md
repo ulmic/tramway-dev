@@ -232,6 +232,52 @@ How create blocks you can find here
 * [Just text](https://github.com/ulmic/tramway-dev/blob/develop/tramway-landing/docs/just_text/main.md)
 * Link to object
 
+## Tools
+
+### Google Tag Manager, Google Analytics, Yandex Metrika
+
+#### 1. Add landing tools to the initializer
+
+*config/initializers/tramway.rb*
+```ruby
+Tramway::Admin.set_available_models(
+  ::Tramway::Landing::Block,
+  ::Tramway::Landing::Tool,
+  project: #{project_name_which_you_use_in_the_application}
+)
+
+Tramway::Admin.navbar_structure(
+  ::Tramway::Landing::Block,
+  ::Tramway::Landing::Tool
+)
+```
+
+#### 2. Click on `Tools`, create new tool with type `[Google Tag Manager, Google Analytics, Yandex Metrika]` and add account_id for your profile in this tool.
+
+#### 3. Add to `WelcomeController` query to get `@tools`
+
+*app/controllers/web/welcome_controller.rb*
+```ruby
+class Web::WelcomeController < ApplicationController
+  before_action :application
+  
+  layout 'tramway/landing/application'
+
+  def index
+    @blocks = ::Tramway::Landing::BlockDecorator.decorate ::Tramway::Landing::Block.on_main_page
+    @tools = ::Tramway::Landing::Tool.active
+  end
+  
+  private
+  
+  def application
+    @application = ::Tramway::Core.application_object
+  end
+end
+```
+
+And now all we need to integrate tool to your web page will be integrated automatically. **Enjoy!**
+
 ## Contributing
 Contribution directions go here.
 
