@@ -359,7 +359,7 @@ Every model you've added in initializer will be able by URL `api/v1/records?mode
 Just update your initializer:
 
 ```ruby
-::Tramway::Api.set_available_models user: { open: %i[create], closed: %i[update index] } # we've added index method
+::Tramway::Api.set_available_models({ User => { %i[index] })
 ```
 
 Create serializer
