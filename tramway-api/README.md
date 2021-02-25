@@ -293,7 +293,6 @@ RSpec.describe 'Post generate token', type: :feature do
 
   end
 end
-
 ```
 
 Run `rspec` to test
@@ -338,11 +337,6 @@ this model must have field `password_digest`, because we use `bcrypt` gem for au
 ### set_available_models
 
 Sets ActiveRecord models which will be used in API
-
-Argument is a hash. Keys are underscored models names, values are hashes with actions of available methods for every model.
-* `open` key means that this action will be used without authentication
-* `closed` key means that this action will be used with authentication
-
 
 Enabled methods:
 
@@ -433,6 +427,46 @@ Params Structure
     }
   }
 }
+```
+
+Also, you can test it with this 
+
+*spec/factories/your_models.rb*
+
+```ruby
+FactoryBot.define do
+  factory :your_model do
+    attribute1 { # some code which generate value for this attribute }
+    attribute2 { # some code which generate value for this attribute }
+    name { generate :name }
+  end
+end
+```
+
+*spec/api/your_model_spec.rb*
+
+```ruby
+require 'rails_helper'
+
+RSpec.describe 'Post generate token', type: :feature do
+  describe 'POST /api/v1/user_token' do
+    let(:user) { create :user, password: '123456789' }
+
+    it 'returns created status' do
+      post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
+
+      expect(response.status).to eq 201
+    end
+    
+    it 'returns token' do
+      post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
+
+      expect(json_response[:auth_token].present?).to be_truthy
+      expect(json_response[:user]).to include_json({ email: user.email, uuid: user.uuid })
+    end
+
+  end
+end
 ```
 
 ### Update
