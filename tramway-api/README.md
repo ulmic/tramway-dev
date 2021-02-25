@@ -145,7 +145,7 @@ end
 
 #### Configurate available models. Tramway will create end points according to this config
 
-```
+```ruby
 ::Tramway::Api.set_available_models({
   User => [
     {
