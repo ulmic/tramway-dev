@@ -96,7 +96,8 @@ module Tramway
       end
 
       def default_id_method_of(model:)
-        @@id_methods[model.to_s][:default]
+        @@id_methods ||= {}
+        @@id_methods.dig(model.to_s, :default)
       end
     end
   end

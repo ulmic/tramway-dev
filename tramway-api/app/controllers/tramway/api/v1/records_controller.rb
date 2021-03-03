@@ -5,6 +5,7 @@ module Tramway::Api::V1
     before_action :check_available_model_class
     before_action :check_available_model_action_for_record, only: %i[show update destroy]
     before_action :authenticate_user_if_needed
+    before_action :application
 
     def index
       collection = available_action_for_collection
@@ -53,6 +54,12 @@ module Tramway::Api::V1
              serializer: serializer_class,
              include: '*',
              status: :no_content
+    end
+
+    def application
+      if ::Tramway::Core.application
+        @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
+      end
     end
   end
 end

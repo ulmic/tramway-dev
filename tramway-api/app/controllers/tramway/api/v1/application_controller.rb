@@ -4,6 +4,8 @@ module Tramway
   module Api
     module V1
       class ApplicationController < ::Tramway::Api::ApplicationController
+        before_action :application
+
         def render_errors_for(model)
           render json: model, status: :unprocessable_entity, serializer: ::Tramway::Api::V1::ErrorSerializer
         end
