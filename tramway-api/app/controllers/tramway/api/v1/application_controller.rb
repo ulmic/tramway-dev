@@ -72,7 +72,7 @@ module Tramway
           action_is_available = checking_roles.map do |role|
             Tramway::Api.action_is_available(
               action: action_name.to_sym,
-              project: (@application_engine || @application.name),
+              project: (@application_engine || application_name),
               role: role,
               model_name: params[:model],
               current_user: current_user
@@ -93,7 +93,7 @@ module Tramway
         def authenticate_user_if_needed
           action_is_open = Tramway::Api.action_is_available(
             action: action_name.to_sym,
-            project: (@application_engine || @application.name),
+            project: (@application_engine || application_name),
             model_name: params[:model]
           )
           head(:unauthorized) && return if !current_user && !action_is_open
@@ -110,6 +110,10 @@ module Tramway
         end
 
         protected
+
+        def application_name
+          @application.present? ? @application.name : raise('Tramway::Api @application not initialized')
+        end
 
         def model_class
           params[:model].constantize
