@@ -112,7 +112,18 @@ module Tramway
         protected
 
         def application_name
-          @application.present? ? @application.name : raise('Tramway::Api @application not initialized')
+          if @application.present?
+            @application.name
+          else
+            if ::Tramway::Core.application
+              @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
+            end
+            if @application.present?
+              @application.name
+            else
+              raise("Tramway::Api @application not initialized, Tramway::Core.application: #{::Tramway::Core.application}, model_class: #{Tramway::Core.application&.model_class }")
+            end
+          end
         end
 
         def model_class
