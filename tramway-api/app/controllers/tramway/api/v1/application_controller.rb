@@ -4,8 +4,6 @@ module Tramway
   module Api
     module V1
       class ApplicationController < ::Tramway::Api::ApplicationController
-        before_action :application
-
         def render_errors_for(model)
           render json: model, status: :unprocessable_entity, serializer: ::Tramway::Api::V1::ErrorSerializer
         end
@@ -21,40 +19,6 @@ module Tramway
             hash.merge! key => value
           end
           hash
-        end
-
-        # Need to be removed
-        
-        before_action :load_application
-
-        def load_application
-          if engine_loaded(request).present?
-            build_application_with_engine engine_loaded request
-          elsif application_class(request).present?
-            @application = application_class(request).camelize.constantize.first
-          else
-            @application = application_object request
-          end
-        end
-
-        private
-
-        def build_application_with_engine(engine_loaded)
-          engine_module = "::Tramway::#{engine_loaded.camelize}".constantize
-          @application = "#{engine_module}::#{engine_module.application.to_s.camelize}".constantize.first
-          @application_engine = engine_loaded
-        end
-
-        def application_class(request)
-          Constraints::DomainConstraint.new(request.domain).application_class
-        end
-
-        def engine_loaded(request)
-          Constraints::DomainConstraint.new(request.domain).engine_loaded
-        end
-
-        def application_object(request)
-          Constraints::DomainConstraint.new(request.domain).application_object
         end
 
         private
