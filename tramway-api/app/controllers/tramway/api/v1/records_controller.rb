@@ -8,9 +8,11 @@ module Tramway::Api::V1
     before_action :application
 
     def index
-      collection = available_action_for_collection
+      @collection = available_action_for_collection
 
-      render json: collection,
+      raise 'Collection has empty uuid. It should not be empty, because all records with empty uuid will not be rendered' if @collection.map(&:uuid).map(&:empty?).include? true
+
+      render json: @collection,
              each_serializer: serializer_class,
              include: '*',
              status: :ok
