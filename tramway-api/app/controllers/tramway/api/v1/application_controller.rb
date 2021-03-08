@@ -89,7 +89,6 @@ module Tramway
         end
 
         def authenticate_user_if_needed
-          load_application
           action_is_open = Tramway::Api.action_is_available(
             action: action_name.to_sym,
             project: (@application_engine || application_name),
