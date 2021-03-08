@@ -1,4 +1,8 @@
 - if @page.view.present?
+  :css
+    nav.navbar {
+      display: none;
+    }
   = render "tramway/page/pages/views/#{@page.view}"
 - else
   - content_for :title do
