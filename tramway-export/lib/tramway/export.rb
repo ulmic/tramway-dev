@@ -19,7 +19,7 @@ module Tramway
         return false unless project.present?
 
         @exportable_models[project.to_sym]&.include?(model_class) ||
-          @exportable_models[project.to_sym].map { |config| config.is_a?(Hash) && config.keys.first.to_s == model_class.to_s }.include?(true)
+          @exportable_models[project.to_sym]&.map { |config| config.is_a?(Hash) && config.keys.first.to_s == model_class.to_s }&.include?(true)
       end
     end
   end
