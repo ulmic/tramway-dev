@@ -9,7 +9,21 @@ class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
     def show_associations
       [:blocks]
     end
+
     delegate :human_view_state_event_name, to: :model_class
+  end
+
+  def additional_buttons
+    {
+      show: [
+        { 
+          url: Tramway::Page::Engine.routes.url_helpers.preview_path(id: object.id),
+          method: :get,
+          text: 'Preview',
+          color: :primary
+        }
+      ]
+    }
   end
 
   delegate_attributes :title, :page_type, :body
