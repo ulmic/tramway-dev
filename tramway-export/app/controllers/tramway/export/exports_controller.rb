@@ -65,7 +65,7 @@ class Tramway::Export::ExportsController < Tramway::Admin::ApplicationController
 
   def available?
     if params[:collection].present?
-      ::Tramway::Export.exportable_model?(params[:model], project: @application.name) && Tramway::Export.exportable_models(project: @application.name)&.map do |config|
+      ::Tramway::Export.exportable_model?(model_class, project: @application.name) && Tramway::Export.exportable_models(project: @application.name)&.map do |config|
         config.is_a?(Hash) && config.values.first.map(&:to_s).include?(params[:collection])
       end&.include?(true)
     else

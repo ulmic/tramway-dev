@@ -3,13 +3,12 @@ ru:
     tramway/landing/block:
       published: Опубликованные
       hidden: Скрытые
-  activerecord:
-    state_machines:
-      tramway/landing/block:
-        view_state:
-          states:
-            published: Виден
-            hidden: Скрытый
-          events:
-            publish: Показать на сайте
-            hide: Скрыть с сайта
+  state_machines:
+    tramway/landing/block:
+      view_state:
+        states:
+          published: Виден
+          hidden: Скрытый
+        events:
+          publish: Показать на сайте
+          hide: Скрыть с сайта
