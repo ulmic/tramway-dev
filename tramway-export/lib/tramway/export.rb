@@ -18,7 +18,7 @@ module Tramway
       def exportable_model?(model_class, project:)
         return false unless project.present?
 
-        @exportable_models[project.to_sym].map(&:to_s)&.include?(model_class.to_s) ||
+        @exportable_models[project.to_sym]&.map(&:to_s)&.include?(model_class.to_s) ||
           @exportable_models[project.to_sym]&.map { |config| config.is_a?(Hash) && config.keys.first.to_s == model_class.to_s }&.include?(true)
       end
     end
