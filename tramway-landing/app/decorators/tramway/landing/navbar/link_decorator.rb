@@ -8,4 +8,8 @@ class Tramway::Landing::Navbar::LinkDecorator < Tramway::Core::ApplicationDecora
   def link
     object[:link]
   end
+
+  def icon
+    object[:icon]
+  end
 end

@@ -5,6 +5,7 @@ module Tramway
     module ApplicationHelper
       include Tramway::Admin::RussianCasesHelper
       include Tramway::Profiles::LinksHelper if defined?(::Tramway::Profiles)
+      include ::FontAwesome5::Rails::IconHelper
 
       def actual_forms(forms)
         forms = forms.reject { |f| f.form_name == 'user_sign_up' } if @signed_in
