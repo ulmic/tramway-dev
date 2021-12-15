@@ -43,7 +43,7 @@ module Tramway
 
       def find_user_by_auth_attributes
         user_based_model = params[:user_based_model].constantize
-        Tramway::Api.auth_attributes[user_based_model].each do |attribute|
+        Tramway::Api.auth_attributes[params[:user_based_model]].each do |attribute|
           object = user_based_model.active.where.not(attribute => nil).find_by(attribute => auth_params[:login])
           return object if object
         end
@@ -56,7 +56,7 @@ module Tramway
 
       def current_user
         Tramway::Api.user_based_models.map do |user_based_model|
-          send("current_#{user_based_model.name.underscore}") unless user_based_model == User
+          send("current_#{user_based_model.constantize.name.underscore}") unless user_based_model == User
         end.compact.first
       end
     end
