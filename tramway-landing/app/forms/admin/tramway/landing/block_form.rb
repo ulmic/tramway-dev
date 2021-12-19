@@ -14,7 +14,7 @@ class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationF
                       position: {
                         type: :numeric,
                         input_options: {
-                          hint: I18n.t('hints.tramway.landing.block.position', array: ::Tramway::Landing::Block.active.on_main_page.map(&:position).join(','))
+                          hint: I18n.t('hints.tramway.landing.block.position', array: ::Tramway::Landing::Block.on_main_page.map(&:position).join(','))
                         }
                       },
                       block_type: :default,

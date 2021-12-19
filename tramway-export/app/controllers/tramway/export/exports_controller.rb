@@ -7,7 +7,7 @@ class Tramway::Export::ExportsController < Tramway::Admin::ApplicationController
     scope = params[:scope].present? ? params[:scope] : :all
     model_class = model_class_name(params[:model])
     xls_decorator_class = xls_decorator_class_name(params[:model])
-    records = model_class.active.order(id: :desc).send scope
+    records = model_class.order(id: :desc).send scope
     records = records.ransack(params[:filter]).result if params[:filter].present?
     records = records.send "#{current_admin.role}_scope", current_admin.id
     records = xls_decorator_class.decorate records
@@ -33,7 +33,7 @@ class Tramway::Export::ExportsController < Tramway::Admin::ApplicationController
 
     model_class = model_class_name(params[:model])
     xls_collection_decorator_class = xls_collection_decorator_class_name(params[:model], params[:collection])
-    records = model_class.find(params[:id]).send(params[:collection]).active.order(id: :desc)
+    records = model_class.find(params[:id]).send(params[:collection]).order(id: :desc)
     records = records.send "#{current_admin.role}_scope", current_admin.id
     records = xls_collection_decorator_class.decorate records
 

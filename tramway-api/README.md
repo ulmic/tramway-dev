@@ -378,7 +378,7 @@ end
 it 'returns needed count' do
   get '/api/v1/records', params: { model: 'User' }, headers: headers
 
-  expect(json_response[:data].size).to eq User.active.count
+  expect(json_response[:data].size).to eq User.count
 end
 ```
 

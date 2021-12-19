@@ -20,7 +20,7 @@ class Tramway::Event::ParticipantXlsDecorator < Tramway::Export::Xls::Applicatio
   end
 
   def flexible_columns
-    object.event.participant_form_fields.active.order(position: :asc).map(&:title).map do |key|
+    object.event.participant_form_fields.order(position: :asc).map(&:title).map do |key|
       { Tramway::Event::Participant.human_attribute_name(key).to_sym => -> { values&.dig(key) } }
     end
   end

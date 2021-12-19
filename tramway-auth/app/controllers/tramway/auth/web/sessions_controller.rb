@@ -6,7 +6,7 @@ module Tramway::Auth
       before_action :redirect_if_signed_in, except: :destroy
 
       def create
-        @session_form = ::Tramway::Auth::SessionForm.new params[:model].constantize.active.find_by email: params[:user][:email]
+        @session_form = ::Tramway::Auth::SessionForm.new params[:model].constantize.find_by email: params[:user][:email]
         if @session_form.model.present?
           if @session_form.validate params[:user]
             sign_in @session_form.model

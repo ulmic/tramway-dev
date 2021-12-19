@@ -44,7 +44,7 @@ class Tramway::Event::ParticipantDecorator < ::Tramway::Core::ApplicationDecorat
           object.event.title
         end)
       end)
-      object.event.participant_form_fields.active.map do |field|
+      object.event.participant_form_fields.map do |field|
         hash = if field.options.is_a?(Hash)
                  field.options
                else

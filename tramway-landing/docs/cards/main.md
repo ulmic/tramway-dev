@@ -49,7 +49,7 @@ end
 
 ```ruby
 class Tramway::SportSchool::Web::WelcomeController < ::Tramway::SportSchool::ApplicationController
-  @collection_trainers = ::Tramway::SportSchool::Trainer.active.published.map do |t|
+  @collection_trainers = ::Tramway::SportSchool::Trainer.published.map do |t|
     ::Tramway::SportSchool::Cards::TrainerDecorator.new t # this decorator is inherited from Tramway::Landing::BlockTypes::CardsDecorator
   end
 end

@@ -34,7 +34,7 @@ class Tramway::Event::Events::Show::EventDecorator < ::Tramway::Core::Applicatio
   def partners
     if defined?(::Tramway::Partner)
       @partners ||= ::Tramway::Partner::Partnership.partnership_type.values.reduce({}) do |hash, partnership_type|
-        hash.merge! partnership_type => (object.send(partnership_type.to_s.pluralize).active.map do |partner|
+        hash.merge! partnership_type => (object.send(partnership_type.to_s.pluralize).map do |partner|
           Tramway::Partner::OrganizationFeatureDecorator.decorate partner
         end)
       end

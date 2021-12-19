@@ -35,7 +35,7 @@ module Tramway
         user_based_model = params[:user_based_model].constantize
         @entity ||=
           if user_based_model.respond_to? :from_token_request
-            user_based_model.active.from_token_request request
+            user_based_model.from_token_request request
           else
             params[:auth] && find_user_by_auth_attributes
           end
@@ -44,7 +44,7 @@ module Tramway
       def find_user_by_auth_attributes
         user_based_model = params[:user_based_model].constantize
         Tramway::Api.auth_attributes[params[:user_based_model]].each do |attribute|
-          object = user_based_model.active.where.not(attribute => nil).find_by(attribute => auth_params[:login])
+          object = user_based_model.where.not(attribute => nil).find_by(attribute => auth_params[:login])
           return object if object
         end
         nil

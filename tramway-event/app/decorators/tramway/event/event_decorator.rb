@@ -77,7 +77,7 @@ class Tramway::Event::EventDecorator < ::Tramway::Core::ApplicationDecorator
   end
 
   def requested_participants
-    object.participants.active.count
+    object.participants.count
   end
 
   def approved_participants
