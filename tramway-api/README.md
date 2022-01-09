@@ -257,7 +257,7 @@ RSpec.describe 'Post creating user', type: :feature do
 
     it 'returns created status' do
       post '/api/v1/user', params: { user: attributes }
-      expect(response.status).to eq 201
+      expect(response[:status]).to eq 201
     end
     
     it 'returns no errors' do
@@ -281,7 +281,7 @@ RSpec.describe 'Post generate token', type: :feature do
     it 'returns created status' do
       post '/api/v1/user_tokens', params: { auth: { login: user.email, password: '123456789' }  }
 
-      expect(response.status).to eq 201
+      expect(response[:status]).to eq 201
     end
     
     it 'returns token' do
@@ -372,7 +372,7 @@ Then write test:
 it 'returns status' do
   get '/api/v1/records', params: { model: 'User' }, headers: headers
 
-  expect(response.status).to eq 200
+  expect(response[:status]).to eq 200
 end
 
 it 'returns needed count' do
@@ -455,7 +455,7 @@ RSpec.describe 'Post generate token', type: :feature do
     it 'returns created status' do
       post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
 
-      expect(response.status).to eq 201
+      expect(response[:status]).to eq 201
     end
     
     it 'returns token' do
