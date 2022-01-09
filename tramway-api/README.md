@@ -275,17 +275,17 @@ end
 require 'rails_helper'
 
 RSpec.describe 'Post generate token', type: :feature do
-  describe 'POST /api/v1/user_token' do
+  describe 'POST /api/v1/user_tokens' do
     let(:user) { create :user, password: '123456789' }
 
     it 'returns created status' do
-      post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
+      post '/api/v1/user_tokens', params: { auth: { login: user.email, password: '123456789' }  }
 
       expect(response.status).to eq 201
     end
     
     it 'returns token' do
-      post '/api/v1/user_token', params: { auth: { login: user.email, password: '123456789' }  }
+      post '/api/v1/user_tokens', params: { auth: { login: user.email, password: '123456789' }  }
 
       expect(json_response[:auth_token].present?).to be_truthy
       expect(json_response[:user]).to include_json({ email: user.email, uuid: user.uuid })
