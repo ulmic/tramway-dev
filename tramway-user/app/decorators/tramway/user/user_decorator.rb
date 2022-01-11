@@ -28,4 +28,6 @@ class Tramway::User::UserDecorator < ::Tramway::Core::ApplicationDecorator
   def name
     "#{object&.first_name} #{object&.last_name}"
   end
+  
+  alias title name
 end
