@@ -51,7 +51,7 @@ module Tramway::Api::V1
     end
 
     def destroy
-      record.remove
+      record.destroy
       render json: record,
              serializer: serializer_class,
              include: '*',
