@@ -1,5 +1,5 @@
 - if Tramway::Landing.navbar_for(@application_engine || @application&.name)
-  %nav.navbar.navbar-expand-lg.navbar-dark.indigo.scrolling-navbar.fixed-top
+  %nav.navbar.navbar-expand-lg.navbar-dark.indigo.scrolling-navbar.fixed-top{ style: 'padding-left: 1rem' }
     = link_to @application&.public_name || yield(:application_name), '/', class: 'navbar-brand'
     %button.navbar-toggler{ type: :button, data: { toggle: :collapse, target: '#navbarSupportedContent' }, aria: { controls: 'navbarSupportedContent', expanded: 'false', label: 'Toggle navigation' } }
       - if @links&.any?
