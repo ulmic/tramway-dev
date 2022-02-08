@@ -12,6 +12,10 @@ class Tramway::User::User < ::Tramway::Core::ApplicationRecord
     role.admin?
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   scope :admins, -> { where role: :admin }
   scope :simple_users, -> { where role: :user }
 end
