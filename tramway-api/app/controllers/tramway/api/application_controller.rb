@@ -16,7 +16,7 @@ module Tramway
       end
 
       def authenticate
-        return if current_user || params[:user_based_model].in?(Tramway::Api.user_based_models)
+        return if current_tramway_user || params[:user_based_model].in?(Tramway::Api.user_based_models)
 
         unauthorized
       end
@@ -54,7 +54,7 @@ module Tramway
         params[:auth]&.permit(:login, :password)
       end
 
-      def current_user
+      def current_tramway_user
         Tramway::Api.user_based_models.map do |user_based_model|
           send("current_#{user_based_model.constantize.name.underscore}") unless user_based_model == User
         end.compact.first

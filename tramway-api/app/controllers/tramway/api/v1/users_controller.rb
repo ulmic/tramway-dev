@@ -26,7 +26,7 @@ class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationControl
   end
 
   def show
-    render json: current_user, status: :ok
+    render json: current_tramway_user, status: :ok
   end
 
   private

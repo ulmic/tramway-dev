@@ -44,7 +44,7 @@ module Tramway
 
         def check_available_model_class
           unless model_class
-            head(:unauthorized) && return unless current_user
+            head(:unauthorized) && return unless current_tramway_user
 
             head(:unprocessable_entity) && return
           end
@@ -53,7 +53,7 @@ module Tramway
         def check_available_model_action_for_record
           action_is_available = check_action
           action_is_available.tap do
-            if action_is_available.is_a?(Proc) && !action_is_available.call(record, current_user)
+            if action_is_available.is_a?(Proc) && !action_is_available.call(record, current_tramway_user)
               head(:unprocessable_entity) && return
             end
           end
@@ -63,7 +63,7 @@ module Tramway
           action_is_available = check_action
           return records if action_is_available == true
 
-          action_is_available.call records, current_user if action_is_available.is_a?(Proc)
+          action_is_available.call records, current_tramway_user if action_is_available.is_a?(Proc)
         end
 
         def check_action
@@ -73,7 +73,7 @@ module Tramway
               project: (@application_engine || application_name),
               role: role,
               model_name: params[:model],
-              current_user: current_user
+              current_tramway_user: current_tramway_user
             )
           end.compact.uniq - [false]
 
@@ -94,17 +94,17 @@ module Tramway
             project: (@application_engine || application_name),
             model_name: params[:model]
           )
-          head(:unauthorized) && return if !current_user && !action_is_open
+          head(:unauthorized) && return if !current_tramway_user && !action_is_open
         end
 
-        def available_models_for_current_user
+        def available_models_for_current_tramway_user
           checking_roles.reduce([]) do |models, role|
             models += ::Tramway::Api.available_models(role: role).map(&:to_s)
           end
         end
 
         def checking_roles
-          [:open, current_user&.role].compact
+          [:open, current_tramway_user&.role].compact
         end
 
         protected
