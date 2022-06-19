@@ -3,7 +3,7 @@
 class Tramway::Page::Page < ::Tramway::Core::ApplicationRecord
   has_many :blocks, -> { order(position: :asc) }, class_name: 'Tramway::Landing::Block'
 
-  enumerize :page_type, in: %i[main other], default: :other
+  enumerize :page_type, in: %i[main other without_layout], default: :other
 
   scope :landings, -> { where page_type: :landing }
   scope :published, -> { where view_state: :published }

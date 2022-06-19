@@ -15,5 +15,6 @@ class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
       end
       ::Tramway::Landing::BlockDecorator.decorate block
     end
+    render(layout: false) if @page.page_type.without_layout?
   end
 end
