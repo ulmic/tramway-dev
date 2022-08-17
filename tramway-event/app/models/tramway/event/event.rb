@@ -8,8 +8,6 @@ class Tramway::Event::Event < ::Tramway::Core::ApplicationRecord
   def check_dimensions
     if photo.present?
       errors.add :photo, :too_small_image if photo.width.present? && (photo.width < 1920 || photo.height < 1080)
-    else
-      errors.add :photo, :is_not_present
     end
   end
 
