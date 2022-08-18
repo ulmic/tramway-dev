@@ -73,7 +73,7 @@ module Tramway
               project: (@application_engine || application_name),
               role: role,
               model_name: params[:model],
-              current_tramway_user: current_tramway_user
+              current_user: current_tramway_user
             )
           end.compact.uniq - [false]
 
