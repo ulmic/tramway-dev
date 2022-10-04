@@ -5,7 +5,7 @@ class Tramway::Event::ParticipantFormField < ::Tramway::Core::ApplicationRecord
 
   enumerize :field_type, in: %i[text string numeric date_picker select checkbox], default: :text
 
-  scope :inputs_list, -> { active.order(position: :asc) }
+  scope :inputs_list, -> { order(position: :asc) }
 
   def required
     options.present? && options.dig('validations', 'presence') == 'true'
