@@ -1,9 +1,0 @@
-- content_for :title do
-  = @event.title
-- content_for :footer_links do
-  %ul
-    - @events.each do |event|
-      %li
-        = link_to event.title, event_path(event.id)
-= render 'tramway/event/events/show_page', event: @event, sections: @sections, sections_as_features: @sections_as_features, people_as_features: @people_as_features, partners: @partners
-= render "tramway/landing/blocks/block_types/footer", block: @footer
