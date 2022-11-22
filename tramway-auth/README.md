@@ -34,7 +34,7 @@ Tramway::Auth.root_path_for YourModel => "/your_path", AnotherYourModel => "/ano
 We have `User` model. System will create instances of this model on Sign Up. Then we should create `UserSignUpForm`.
 
 ```ruby
-class UserSignUpForm < Tramway::Core::ApplicationForm
+class UserSignUpForm < Tramway::ApplicationForm
   properties :email, :password # you may add all you needed properties here
   
   def initiailize(object)
@@ -51,7 +51,7 @@ end
 
 #### 2. Add password encryption into the User model
 
-**Don't forget that User model must inherited of Tramway::Core::ApplicationRecord**
+**Don't forget that User model must inherited of Tramway::ApplicationRecord**
 
 ```ruby
 class User < ApplicationRecord

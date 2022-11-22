@@ -5,7 +5,7 @@ module Tramway
     module ApplicationHelper
       include AuthManagement
       include ::FontAwesome5::Rails::IconHelper
-      include Tramway::Core::TitleHelper
+      include Tramway::TitleHelper
       include Tramway::Admin::NavbarHelper
       include Tramway::Admin::CasesHelper
       include Tramway::Admin::RussianCasesHelper

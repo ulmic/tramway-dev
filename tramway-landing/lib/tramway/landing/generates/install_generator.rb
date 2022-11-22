@@ -4,7 +4,7 @@ require 'rails/generators'
 require 'tramway/core/generators/install_generator'
 
 module Tramway::Landing::Generators
-  class InstallGenerator < ::Tramway::Core::Generators::InstallGenerator
+  class InstallGenerator < ::Tramway::Generators::InstallGenerator
     include Rails::Generators::Migration
     source_root File.expand_path('templates', __dir__)
 

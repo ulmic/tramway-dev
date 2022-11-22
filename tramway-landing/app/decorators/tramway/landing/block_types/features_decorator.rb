@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Landing::BlockTypes::FeaturesDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Landing::BlockTypes::FeaturesDecorator < ::Tramway::ApplicationDecorator
   def icon; end
 
   def image; end

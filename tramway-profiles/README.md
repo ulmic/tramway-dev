@@ -27,7 +27,7 @@ rails db:migrate
 ::Tramway::Admin.set_available_models(::Tramway::Profiles::SocialNetwork, project: :your_project_name)
 ```
 
-#### 5. Now you have SocialNetwork objects in your project, that associated with [Tramway::Core.application](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core#how-to-create-model-that-will-be-an-application-model-for-the-tramway) by default
+#### 5. Now you have SocialNetwork objects in your project, that associated with [Tramway.application](https://github.com/ulmic/tramway-dev/tree/develop/tramway-core#how-to-create-model-that-will-be-an-application-model-for-the-tramway) by default
 
 ## Usage. English
 

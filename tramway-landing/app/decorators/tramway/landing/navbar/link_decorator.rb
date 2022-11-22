@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Landing::Navbar::LinkDecorator < Tramway::Core::ApplicationDecorator
+class Tramway::Landing::Navbar::LinkDecorator < Tramway::ApplicationDecorator
   def title
     object[:title]
   end

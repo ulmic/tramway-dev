@@ -103,7 +103,7 @@ class Web::WelcomeController < ApplicationController
   private
   
   def application
-    @application = ::Tramway::Core.application_object
+    @application = ::Tramway.application_object
   end
 end
 ```
@@ -271,7 +271,7 @@ class Web::WelcomeController < ApplicationController
   private
   
   def application
-    @application = ::Tramway::Core.application_object
+    @application = ::Tramway.application_object
   end
 end
 ```

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::SportSchool::Organization < ::Tramway::Core::ApplicationRecord
+class Tramway::SportSchool::Organization < ::Tramway::ApplicationRecord
   mount_uploader :logo, PhotoUploader
 
   enumerize :organization_type, in: %i[required partner sponsor], default: :required

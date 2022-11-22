@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Page::PageDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Page::PageDecorator < ::Tramway::ApplicationDecorator
   class << self
     def collections
       [:all]

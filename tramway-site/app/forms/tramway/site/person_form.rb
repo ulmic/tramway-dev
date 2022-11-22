@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Site::PersonForm < Tramway::Core::ExtendedApplicationForm
+class Tramway::Site::PersonForm < Tramway::ExtendedApplicationForm
   properties :full_name, :photo, :short_bio, :bio
 
   def initialize(object)

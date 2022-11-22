@@ -6,7 +6,7 @@ class Tramway::Export::ApplicationDecorator
   end
 
   class << self
-    include Tramway::Core::Delegating::ClassHelper
+    include Tramway::Delegating::ClassHelper
 
     def columns
       []

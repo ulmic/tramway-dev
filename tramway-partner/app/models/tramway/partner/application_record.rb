@@ -2,7 +2,7 @@
 
 module Tramway
   module Partner
-    class ApplicationRecord < ::Tramway::Core::ApplicationRecord
+    class ApplicationRecord < ::Tramway::ApplicationRecord
       self.abstract_class = true
     end
   end

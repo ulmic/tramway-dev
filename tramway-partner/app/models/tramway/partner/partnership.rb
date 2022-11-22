@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Partner::Partnership < ::Tramway::Core::ApplicationRecord
+class Tramway::Partner::Partnership < ::Tramway::ApplicationRecord
   belongs_to :organization, class_name: 'Tramway::Partner::Organization'
   belongs_to :partner, polymorphic: true
 

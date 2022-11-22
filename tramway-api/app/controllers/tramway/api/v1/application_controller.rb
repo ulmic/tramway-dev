@@ -110,11 +110,11 @@ module Tramway
         protected
 
         def application_name
-          @application ||= Tramway::Core.application&.model_class&.first || Tramway::Core.application
+          @application ||= Tramway.application&.model_class&.first || Tramway.application
           begin
             @application.name
           rescue
-            raise("Tramway::Api @application not initialized, Tramway::Core.application: #{::Tramway::Core.application}, model_class: #{Tramway::Core.application&.model_class }")
+            raise("Tramway::Api @application not initialized, Tramway.application: #{::Tramway.application}, model_class: #{Tramway.application&.model_class }")
           end
         end
 

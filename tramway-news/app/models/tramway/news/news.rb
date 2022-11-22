@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ::Tramway::News::News < ::Tramway::Core::ApplicationRecord
+class ::Tramway::News::News < ::Tramway::ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def author

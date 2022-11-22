@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::Tramway::Landing::BlockForm < ::Tramway::Core::ExtendedApplicationForm
+class Admin::Tramway::Landing::BlockForm < ::Tramway::ExtendedApplicationForm
   association :page
 
   properties :title, :background, :view_state_event, :block_type, :position, :navbar_link, :anchor, :description,

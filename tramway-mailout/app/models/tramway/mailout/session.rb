@@ -3,7 +3,7 @@
 require 'tramway/mailout/job_proxy'
 
 module Tramway::Mailout
-  class Session < ::Tramway::Core::ApplicationRecord
+  class Session < ::Tramway::ApplicationRecord
     belongs_to :campaign, polymorphic: true
 
     state_machine :mailing_state, initial: :ready, namespace: :mailing do

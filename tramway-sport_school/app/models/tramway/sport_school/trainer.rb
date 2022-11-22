@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Tramway::SportSchool
-  class Trainer < ::Tramway::Core::ApplicationRecord
+  class Trainer < ::Tramway::ApplicationRecord
     enumerize :degree, in: %i[master_of_sport candidate_master_of_sports]
 
     mount_uploader :photo, PhotoUploader

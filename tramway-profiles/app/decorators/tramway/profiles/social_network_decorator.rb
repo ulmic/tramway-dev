@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ::Tramway::Profiles::SocialNetworkDecorator < ::Tramway::Core::ApplicationDecorator
+class ::Tramway::Profiles::SocialNetworkDecorator < ::Tramway::ApplicationDecorator
   class << self
     def collections
       [:all]

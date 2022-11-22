@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::Tramway::Partner::OrganizationForm < ::Tramway::Core::ApplicationForm
+class Admin::Tramway::Partner::OrganizationForm < ::Tramway::ApplicationForm
   properties :title, :logo, :url
 
   def initialize(object)

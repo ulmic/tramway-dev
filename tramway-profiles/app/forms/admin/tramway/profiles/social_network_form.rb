@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::Tramway::Profiles::SocialNetworkForm < ::Tramway::Core::ApplicationForm
+class Admin::Tramway::Profiles::SocialNetworkForm < ::Tramway::ApplicationForm
   properties :title, :network_name, :uid, :record_id, :record_type
 
   association :record

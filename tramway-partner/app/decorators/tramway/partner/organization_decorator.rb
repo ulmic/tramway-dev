@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Partner::OrganizationDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Partner::OrganizationDecorator < ::Tramway::ApplicationDecorator
   class << self
     def collections
       [:all]

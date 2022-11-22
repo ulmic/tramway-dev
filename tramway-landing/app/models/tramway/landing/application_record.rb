@@ -2,7 +2,7 @@
 
 module Tramway
   module Landing
-    class ApplicationRecord < ::Tramway::Core::ApplicationRecord
+    class ApplicationRecord < ::Tramway::ApplicationRecord
       self.abstract_class = true
     end
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::SportSchool::KindSportDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::SportSchool::KindSportDecorator < ::Tramway::ApplicationDecorator
   class << self
     def collections
       %i[all published hidden]

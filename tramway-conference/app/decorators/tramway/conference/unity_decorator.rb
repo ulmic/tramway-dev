@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Conference::UnityDecorator < ::Tramway::Core::ApplicationDecorator
+class Tramway::Conference::UnityDecorator < ::Tramway::ApplicationDecorator
   class << self
     def collections
       [:all]

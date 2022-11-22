@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Site::PersonDecorator < Tramway::Core::ApplicationDecorator
+class Tramway::Site::PersonDecorator < Tramway::ApplicationDecorator
   class << self
     def show_attributes
       %i[full_name short_bio bio photo]

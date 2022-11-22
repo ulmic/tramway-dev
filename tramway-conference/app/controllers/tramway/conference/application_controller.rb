@@ -2,13 +2,13 @@
 
 module Tramway
   module Conference
-    class ApplicationController < ::Tramway::Core::ApplicationController
+    class ApplicationController < ::Tramway::ApplicationController
       layout 'tramway/landing/application'
       protect_from_forgery with: :exception
       before_action :application
 
       def application
-        @application = ::Tramway::Core.application_object
+        @application = ::Tramway.application_object
       end
     end
   end

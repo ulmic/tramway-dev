@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::Tramway::Page::PageForm < ::Tramway::Core::ApplicationForm
+class Admin::Tramway::Page::PageForm < ::Tramway::ApplicationForm
   properties :title, :body, :slug, :view, :page_type, :view_state_event
 
   def initialize(object)

@@ -7,8 +7,8 @@ module Tramway
       before_action :application
 
       def application
-        if ::Tramway::Core.application
-          @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
+        if ::Tramway.application
+          @application = Tramway.application&.model_class&.first || Tramway.application
         end
       end
     end

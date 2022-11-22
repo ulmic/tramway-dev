@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Profiles::SocialNetwork < ::Tramway::Core::ApplicationRecord
+class Tramway::Profiles::SocialNetwork < ::Tramway::ApplicationRecord
   belongs_to :record, polymorphic: true, required: false
 
   enumerize :network_name, in: %i[vk facebook twitter instagram telegram patreon]

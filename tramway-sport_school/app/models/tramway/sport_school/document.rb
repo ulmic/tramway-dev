@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Tramway::SportSchool
-  class Document < ::Tramway::Core::ApplicationRecord
+  class Document < ::Tramway::ApplicationRecord
     mount_uploader :file, FileUploader
 
     enumerize :document_type, in: %i[education school_info provision headers finance materially], default: :education

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::Tramway::Conference::UnityForm < ::Tramway::Core::ApplicationForm
+class Admin::Tramway::Conference::UnityForm < ::Tramway::ApplicationForm
   properties :title, :tagline, :logo, :state, :phone, :address, :longtitude, :latitude, :url, :found_date, :email,
     :favicon, :public_name
 

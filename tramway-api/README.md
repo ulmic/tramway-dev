@@ -27,7 +27,7 @@ coming soon...
 * только с ActiveRecord
 * только с версией Rails 5.1.* (поддержка 5.2 вскоре будет реализована автором гема, поддержка автором Rails 6 начнётся с версии 6.1. По религиозным автор не использует Rails версий *.0.*
 * Ruby >= 2.3
-* все модели, которые будут использованы гемом должны наследоваться от `Tramway::Core::ApplicationRecord`
+* все модели, которые будут использованы гемом должны наследоваться от `Tramway::ApplicationRecord`
 * все модели, которые будут использованы гемом должны иметь атрибут `state`, типа `string` или `text`. Этот атрибут нужен для реализации мягкого удаления. Полное удаление записей из базы не поддерживается
 * все модели, которые будут использованы гемом должны иметь атрибут 
 
@@ -127,7 +127,7 @@ t.uuid :uuid, default: 'uuid_generate_v4()'
 *app/models/user.rb*
 
 ```ruby
-class User < Tramway::Core::ApplicationRecord
+class User < Tramway::ApplicationRecord
   has_secure_password
   
   def self.from_token_payload(payload)
@@ -173,7 +173,7 @@ end
 Create file *app/forms/user_sign_up_form.rb*
 
 ```ruby
-class UserSignUpForm < Tramway::Core::ApplicationForm
+class UserSignUpForm < Tramway::ApplicationForm
   properties :username, :email, :password
 end
 ```
@@ -397,7 +397,7 @@ You also able to use pagination, provided by `kaminari`
 *app/forms/your_model_form.rb*
 
 ```ruby
-class YourModelForm < Tramway::Core::ApplicationForm
+class YourModelForm < Tramway::ApplicationForm
   properties :attribute1, :attribute2, :name
   
   association :another_association_model
@@ -480,7 +480,7 @@ end
 *app/forms/your_model_form.rb*
 
 ```ruby
-class YourModelForm < Tramway::Core::ApplicationForm
+class YourModelForm < Tramway::ApplicationForm
   properties :attribute1, :attribute2, :name
   
   association :another_association_model
@@ -533,7 +533,7 @@ It returns just one record, if it is not deleted.
 *app/serializers/user_serializer.rb*
 
 ```ruby
-class UserSerializer < Tramway::Core::ApplicationSerializer
+class UserSerializer < Tramway::ApplicationSerializer
   attributes :username, :email
 end
 ```

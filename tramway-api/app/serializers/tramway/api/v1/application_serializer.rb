@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Tramway::Api::V1::ApplicationSerializer < ActiveModel::Serializer
-  include ::Tramway::Core::Concerns::AttributesDecoratorHelper
+  include ::Tramway::Concerns::AttributesDecoratorHelper
 
   attribute :id
 

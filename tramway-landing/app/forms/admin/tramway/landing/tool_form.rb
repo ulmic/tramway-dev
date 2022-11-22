@@ -1,4 +1,4 @@
-class Admin::Tramway::Landing::ToolForm < Tramway::Core::ApplicationForm
+class Admin::Tramway::Landing::ToolForm < Tramway::ApplicationForm
   properties :title, :account_id
 
   def initialize(object)

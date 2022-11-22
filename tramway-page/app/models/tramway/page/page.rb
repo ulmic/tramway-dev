@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Page::Page < ::Tramway::Core::ApplicationRecord
+class Tramway::Page::Page < ::Tramway::ApplicationRecord
   has_many :blocks, -> { order(position: :asc) }, class_name: 'Tramway::Landing::Block'
 
   enumerize :page_type, in: %i[main other without_layout], default: :other
