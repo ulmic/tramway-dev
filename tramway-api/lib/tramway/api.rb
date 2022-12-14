@@ -11,7 +11,7 @@ module Tramway
       include ::Tramway::Api::SingletonModels
 
       def auth_config
-        @@auth_config ||= [{ user_model: ::Tramway::User::User, auth_attributes: :email }]
+        @@auth_config ||= [{ user_model: ::Tramway::User, auth_attributes: :email }]
       end
 
       def auth_config=(params)

@@ -1,12 +1,12 @@
 # Tramway
 
-## If you want to edit roles to the Tramway::User::User class
+## If you want to edit roles to the Tramway::User class
 
 #### 1. Create concern with the patch
 
 *app/models/concerns/tramway/user/user_concern.rb*
 ```ruby
-module Tramway::User::UserConcern
+module Tramway::UserConcern
   extend ActiveSupport::Concern
   
   included do
@@ -20,16 +20,16 @@ end
 ```ruby
 module ::Tramway::Extensions
   def self.load
-    Tramway::User::User.include Tramway::User::UserConcern
+    Tramway::User.include Tramway::UserConcern
   end
 end
 
-Tramway::User::User.include Tramway::User::UserConcern # don't forget this line too
+Tramway::User.include Tramway::UserConcern # don't forget this line too
 ```
 
 #### 3. Reload your server
 
-**NOTE: BE CAREFUL**. You shouldn't remove roles after creating one or more records in Tramway::User::User table.
+**NOTE: BE CAREFUL**. You shouldn't remove roles after creating one or more records in Tramway::User table.
 
 **NOTE: BE CAREFUL 2**. All new roles instead of `user` will have access to the admin panel
 
