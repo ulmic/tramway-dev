@@ -47,7 +47,7 @@
                     = hidden_field_tag :success_redirect, request.path
                     = hidden_field_tag :error_redirect, request.path
                     - current_form.properties.each do |property|
-                      = render 'tramway/core/shared/input', property: property[0], object: :user, type: property[1], form: f, destination: :landing, record: current_form, value: (params[:record].present? ? params[:record][property[0]] : '')
+                      = render 'tramway/shared/input', property: property[0], object: :user, type: property[1], form: f, destination: :landing, record: current_form, value: (params[:record].present? ? params[:record][property[0]] : '')
                     = f.button :submit, current_form.submit_message
 :javascript
   $(document).ready(function() {

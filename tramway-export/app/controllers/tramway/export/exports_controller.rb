@@ -2,7 +2,7 @@
 
 require 'xls_exporter'
 
-class Tramway::Export::ExportsController < Tramway::Admin::ApplicationController
+class Tramway::Export::ExportsController < Tramway::ApplicationController
   def index
     scope = params[:scope].present? ? params[:scope] : :all
     model_class = model_class_name(params[:model])

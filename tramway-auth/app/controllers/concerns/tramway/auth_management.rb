@@ -7,7 +7,7 @@ module Tramway
     end
 
     def sign_out(user_class = ::Tramway::User::User)
-      session[user_id_key(user_class.constantize)] = nil
+      session[user_id_key(user_class.constantize)] = nil if user_class.present?
     end
 
     def signed_in?(user_class = ::Tramway::User::User)

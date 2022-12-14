@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 ::Tramway::Auth.root_path_for Tramway::User::User => '/admin'
-::Tramway::Admin.set_singleton_models ::Tramway::Conference::Unity, project: :conference
-::Tramway::Admin.set_available_models(::Tramway::Event::Event,
+::Tramway.set_singleton_models ::Tramway::Conference::Unity, project: :conference
+::Tramway.set_available_models(::Tramway::Event::Event,
   ::Tramway::Event::ParticipantFormField,
   ::Tramway::Event::Participant,
   ::Tramway::Event::Section,

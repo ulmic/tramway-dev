@@ -5,6 +5,9 @@ module Tramway::Auth
     class SessionsController < ::Tramway::Auth::Web::ApplicationController
       before_action :redirect_if_signed_in, except: :destroy
 
+      def new
+      end
+
       def create
         @session_form = ::Tramway::Auth::SessionForm.new params[:model].constantize.find_by email: params[:user][:email]
         if @session_form.model.present?
@@ -20,8 +23,9 @@ module Tramway::Auth
       end
 
       def destroy
-        root_path = ::Tramway::Auth.root_path_for(current_user.class)
+        root_path = Tramway::Engine.routes.url_helpers.root_path
         sign_out params[:model]
+
         redirect_to params[:redirect] || root_path
       end
 

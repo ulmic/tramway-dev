@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails/generators'
-require 'tramway/core/generators/install_generator'
+require 'tramway/generators/install_generator'
 
 module Tramway::Mailout::Generators
   class InstallGenerator < ::Tramway::Generators::InstallGenerator
@@ -9,7 +9,7 @@ module Tramway::Mailout::Generators
     source_root File.expand_path('templates', __dir__)
 
     def run_other_generators
-      generate 'tramway:core:install'
+      generate 'tramway:install'
     end
 
     def self.next_migration_number(path)

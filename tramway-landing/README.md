@@ -45,8 +45,8 @@ rails db:migrate
 
 *config/initializers/tramway.rb*
 ```ruby
-Tramway::Admin.set_available_models ::Tramway::Landing::Block, project: #{project_name_which_you_use_in_the_application}
-Tramway::Admin.navbar_structure ::Tramway::Landing::Block
+Tramway.set_available_models ::Tramway::Landing::Block, project: #{project_name_which_you_use_in_the_application}
+Tramway.navbar_structure ::Tramway::Landing::Block
 ```
 
 #### 4. Add `PhotoVersions` to middleware (will be removed soon)
@@ -240,13 +240,13 @@ How create blocks you can find here
 
 *config/initializers/tramway.rb*
 ```ruby
-Tramway::Admin.set_available_models(
+Tramway.set_available_models(
   ::Tramway::Landing::Block,
   ::Tramway::Landing::Tool,
   project: #{project_name_which_you_use_in_the_application}
 )
 
-Tramway::Admin.navbar_structure(
+Tramway.navbar_structure(
   ::Tramway::Landing::Block,
   ::Tramway::Landing::Tool
 )

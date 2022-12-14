@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-::Tramway::Admin.set_available_models(::Tramway::Profiles::SocialNetwork, project: :profiles)
+::Tramway.set_available_models(::Tramway::Profiles::SocialNetwork, project: :profiles)

@@ -1,4 +1,4 @@
-//= require tramway/core/application
+//= require tramway/application
 //= require_tree .
 
 $(document).ready(function() {

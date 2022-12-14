@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails/generators'
-require 'tramway/core/generators/install_generator'
+require 'tramway/generators/install_generator'
 
 module Tramway::Landing::Generators
   class InstallGenerator < ::Tramway::Generators::InstallGenerator

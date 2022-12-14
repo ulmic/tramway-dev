@@ -33,14 +33,14 @@ coming soon...
 
 Недостатки, которые будут вскоре ликвидированы:
 
-* ядро `tramway-core` подгружает в себя ненужных для API гемов (недостаток не имеет смысла в случае использования вместе с этим решением гема `tramway-admin`):
+* ядро `tramway` подгружает в себя ненужных для API гемов (недостаток не имеет смысла в случае использования вместе с этим решением гема `tramway-admin`):
   * bootstrap
   * font_awesome5_rails
   * haml
 * требуется ручное добавление требуемых для работы гемов
   ```ruby
   gem 'active_model_serializers', '0.10.5'
-  gem 'tramway-core'
+  gem 'tramway'
   gem 'knock'
   gem 'audited'
   gem 'ransack'
@@ -57,7 +57,7 @@ rails new tramway_api_sample
 ```ruby
 gem 'tramway-api', '>= 1.1.0.1'
 gem 'active_model_serializers', '0.10.5'
-gem 'tramway-core'
+gem 'tramway'
 gem 'state_machine', github: 'seuros/state_machine'
 gem 'knock'
 ```
@@ -66,7 +66,7 @@ Run `bundle install`
 
 ### Initialize @application object
 
-[How-to](https://github.com/Purple-Magic/tramway-core/blob/develop/README.md#every-tramway-application-need-initialized-application-object-or-if-you-create-tramway-plugin-it-should-be-application_engine-object)
+[How-to](https://github.com/Purple-Magic/tramway/blob/develop/README.md#every-tramway-application-need-initialized-application-object-or-if-you-create-tramway-plugin-it-should-be-application_engine-object)
 
 *config/routes.rb*
 
@@ -158,7 +158,7 @@ end
 })
 ```
 
-Run `rails g tramway:core:install`
+Run `rails g tramway:install`
 
 Run `rails db:create db:migrate`
 
