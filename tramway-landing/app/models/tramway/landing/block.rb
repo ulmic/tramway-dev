@@ -10,7 +10,7 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
 
   uploader :background, :photo, extensions: %i[jpg jpeg gif png]
 
-  aasm column: :view_state do
+  aasm :view_state, column: :view_state do
     state :published, initial: true
     state :hidden
 
@@ -21,6 +21,10 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
     event :hide do
       transitions from: :published, to: :hidden
     end
+  end
+
+  aasm do
+    state :hack
   end
 
   store_accessor :button, :button_link

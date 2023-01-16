@@ -1,9 +1,0 @@
-en:
-  tramway:
-    auth:
-      web:
-        sessions:
-          new:
-            title: Sign In
-  errors:
-    wrong_email_or_password: Invalid email or password

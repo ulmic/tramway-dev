@@ -1,6 +1,6 @@
 - records_in_the_row = 4
 - if defined?(::Tramway::Profiles)
-  - social_networks = (@application.social_networks.active if @application.respond_to?(:social_networks)) unless social_networks
+  - social_networks = (@application.social_networks if @application.respond_to?(:social_networks)) unless social_networks
   - social_networks&.each do |profile|
     %ul.list-group
       %li.list-group-item

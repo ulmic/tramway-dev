@@ -2,7 +2,7 @@
 
 module Tramway
   module Api
-    class ApplicationController < ::Tramway::ApplicationController
+    class ApplicationController < ActionController::Base
       include ::Knock::Authenticable
       protect_from_forgery with: :null_session, if: proc { |c| c.request.format == 'application/json' }
       rescue_from ActiveRecord::RecordNotFound, with: :not_found if Rails.env.production?
