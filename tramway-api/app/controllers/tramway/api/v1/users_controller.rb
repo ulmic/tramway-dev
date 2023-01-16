@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'tramway/helpers/class_name_helpers'
+require 'tramway/class_name_helpers'
 
 class Tramway::Api::V1::UsersController < ::Tramway::Api::V1::ApplicationController
   before_action :authenticate, only: :show
