@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::Page::Page < ::Tramway::ApplicationRecord
+class Tramway::Page::Page < Tramway::ApplicationRecord
   has_many :blocks, -> { order(position: :asc) }, class_name: 'Tramway::Landing::Block'
 
   enumerize :page_type, in: %i[main other without_layout], default: :other
@@ -19,5 +19,9 @@ class Tramway::Page::Page < ::Tramway::ApplicationRecord
     event :hide do
       transitions from: :published, to: :unpublished
     end
+  end
+
+  aasm do
+    state :hack
   end
 end

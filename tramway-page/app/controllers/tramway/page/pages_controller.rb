@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class ::Tramway::Page::PagesController < ::Tramway::Page::ApplicationController
+class Tramway::Page::PagesController < Tramway::Page::ApplicationController
   layout 'tramway/landing/application'
 
   def show
-    @page = ::Tramway::Page::Page.published.find_by slug: params[:slug]
+    @page = Tramway::Page::Page.published.find_by slug: params[:slug]
     @blocks = @page.blocks.published.map do |block|
       if block.block_type.header_with_form? && block.form_url.present?
         # FIXME: in future
