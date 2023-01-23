@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-::Tramway.set_available_models(::Tramway::Landing::Block, project: :landing)
+Rails.application.config.after_initialize do
+  Tramway.set_available_models(Tramway::Landing::Block, project: :landing)
+end
