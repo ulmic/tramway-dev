@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  spec.add_dependency 'active_model_serializers', '0.10.12' # 0.10.6 breaks the returned json, need to investigate
+  # spec.add_dependency 'active_model_serializers', '0.10.12' # 0.10.6 breaks the returned json, need to investigate
   spec.add_dependency 'knock'
   spec.add_dependency 'tramway', '>= 0.1.0'
   spec.add_dependency 'uuid'

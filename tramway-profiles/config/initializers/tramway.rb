@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-::Tramway.set_available_models(::Tramway::Profiles::SocialNetwork, project: :profiles)
+Rails.application.config.after_initialize do
+  Tramway.set_available_models(Tramway::Profiles::SocialNetwork, project: :profiles)
+end
