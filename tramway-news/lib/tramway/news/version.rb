@@ -2,6 +2,6 @@
 
 module Tramway
   module News
-    VERSION = '1.0.4.5'
+    VERSION = '1.0.4.6'
   end
 end

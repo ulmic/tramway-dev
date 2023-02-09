@@ -2,6 +2,6 @@
 
 module Tramway
   module Page
-    VERSION = '1.6.0.3'
+    VERSION = '1.6.0.4'
   end
 end
