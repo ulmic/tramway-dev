@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ::Tramway::Page::PreviewsController < ::Tramway::Page::ApplicationController
-  include Tramway::AuthManagement
+  include Tramway::Concerns::AuthManagement
   layout 'tramway/landing/application'
 
   before_action :authenticate_admin!
