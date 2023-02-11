@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-class Tramway::Landing::PageWithButtonDecorator < ::Tramway::ApplicationDecorator
+class Tramway::Landing::BlockTypes::PageWithButtonDecorator < Tramway::ApplicationDecorator
 end
