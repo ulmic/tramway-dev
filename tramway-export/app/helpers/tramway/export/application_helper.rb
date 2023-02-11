@@ -3,7 +3,7 @@
 module Tramway
   module Export
     module ApplicationHelper
-      include AuthManagement
+      include Tramway::Concerns::AuthManagement
     end
   end
 end
