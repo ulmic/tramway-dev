@@ -39,6 +39,7 @@
         = render 'tramway/landing/templates/section_with_image_and_text', block: event
 
 - content_for :main_image do
-  = request.protocol + request.host_with_port + @blocks.select { |block| block.model.block_type.header? }.first.background.url
+  - if @blocks.any?
+    = request.protocol + request.host_with_port + @blocks.select { |block| block.model.block_type.header? }.first.background.url
 - ::Tramway::Partner::Partnership.partnership_type.values.each do |partnership_type|
   = render 'tramway/landing/templates/features_list', block: OpenStruct.new(title: t("enumerize.tramway/partner/partnership.partnership_type.#{partnership_type}")), collection: @partners[partnership_type]

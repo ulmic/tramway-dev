@@ -3,7 +3,5 @@
     - if block.background.present?
       - background_url = block.background.is_a?(String) ? block.background : block.background.url
       = image_tag background_url, class: 'img-fluid'
-    - else
-      - raise "Block background should valid image URL or PhotoUploader object. Block: #{block}"
   .col-md-5{ style: 'text-align: justify' }
     = render 'tramway/landing/templates/text', block: block
